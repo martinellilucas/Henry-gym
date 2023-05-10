@@ -8,7 +8,7 @@ const Landing = () => {
         accusantium excepturi pariatur nam maxime aperiam velit, dignissimos
         odit quas.
       </p>
-      <button>Ingresar a la pag</button>
+      <button>Ingresar</button>
     </div>
   );
 };
