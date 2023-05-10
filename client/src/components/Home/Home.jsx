@@ -3,7 +3,7 @@ import Cards from "../Cards/Cards";
 const Home = () => {
   return (
     <div>
-      <h1>Este es el Home</h1>
+      <h1>Este es el Home Henry's Gym</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
         dignissimos officia facere, eos architecto corrupti tempore dolores
