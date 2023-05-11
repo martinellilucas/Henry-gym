@@ -38,6 +38,26 @@ let capsEntries = entries.map((entry)=>[
 
 sequelize.models = Object.fromEntries(capsEntries);
 
+
+const { Cliente, Ejercicio, Rutina } = sequelize.models;
+
+const RutinaxEjercicio = sequelize.define('RutinaxEjercicio', {
+   // Atributos específicos de la tabla intermedia
+ }, {
+   timestamps: false // Desactivar createdAt y updatedAt
+ });
+
+ const RutinaxCliente = sequelize.define('RutinaxCliente', {
+    // Atributos específicos de la tabla intermedia
+  }, {
+    timestamps: false // Desactivar createdAt y updatedAt
+  });
+
+// Aca vendrian las relaciones
+Rutina.belongsToMany(Ejercicio, {through: 'RutinaxEjercicio'});
+Rutina.belongsToMany(Cliente, {through: 'RutinaxCliente'});
+
+
 module.exports = {
     ...sequelize.models,
     conn:sequelize
