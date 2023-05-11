@@ -55,7 +55,10 @@ const RutinaxEjercicio = sequelize.define('RutinaxEjercicio', {
 
 // Aca vendrian las relaciones
 Rutina.belongsToMany(Ejercicio, {through: 'RutinaxEjercicio'});
+Ejercicio.belongsToMany(Rutina, {through: 'RutinaxEjercicio'});
+
 Rutina.belongsToMany(Cliente, {through: 'RutinaxCliente'});
+Cliente.belongsToMany(Rutina, {through: 'RutinaxCliente'});
 
 
 module.exports = {
