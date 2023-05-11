@@ -1,14 +1,12 @@
+import s from './Landing.module.css';
+import Video from "../../assets/Video.mp4"
+import { Button, ButtonGroup } from '@chakra-ui/react'
+
+
 const Landing = () => {
   return (
-    <div>
-      <h1>Este es el Landing Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nostrum
-        facilis possimus dicta fugit suscipit autem unde ea recusandae. Dolorum
-        accusantium excepturi pariatur nam maxime aperiam velit, dignissimos
-        odit quas.
-      </p>
-      <button>Ingresar</button>
+    <div className={s.vidContainer}>
+      <Button colorScheme='blue'>Button</Button>
     </div>
   );
 };
