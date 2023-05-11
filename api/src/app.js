@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const router = require("./routes/index.js");
 
 require("./db.js");
 
@@ -23,8 +24,7 @@ server.use((req, res, next) => {
   next();
 });
 
-//! Aqui hacemos uso de las rutas cuando esten codeadas
-// server.use("/", routes);
+server.use("/", router);
 
 server.use((err, req, res, next) => {
   const status = err.status || 500;
