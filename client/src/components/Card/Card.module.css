@@ -1,0 +1,38 @@
+.cardBody {
+  width: 400px;
+  border: 10px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 2px 2px 5px white;
+}
+
+.image {
+  border-radius: 15px;
+}
+.nivel {
+  font-size: 2em;
+  font-weight: bold;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.item {
+  font-size: -5em;
+  font-weight: lighter;
+}
+.btn {
+  margin: 10px;
+  padding: 5px 50px;
+}

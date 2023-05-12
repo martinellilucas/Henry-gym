@@ -1,3 +1,4 @@
+
 import {
   Box,
   chakra,
@@ -36,8 +37,10 @@ const SocialButton = ({ children, label, href }) => {
   );
 };
 
+
 export default function SmallCentered() {
   return (
+
     <Box
       bg={useColorModeValue("gray.600", "gray.300")}
       color={useColorModeValue("white", "white")}
@@ -109,37 +112,3 @@ export default function SmallCentered() {
   );
 }
 
-// import react from "react"
-// import Style from "./App.module.css"
-// import { FaInstagram} from "react-icons/fa"
-// import { FaWhatsapp } from "react-icons/fa"
-// import { Link } from "react-router-dom"
-
-// const Footer = () => {
-//   	const imageUrl = 'https://cdn.discordapp.com/attachments/1105187840230441004/1105887915847983204/logo.jpeg.png'
-
-//   return (
-//     <div className={Style.All}>
-//     <img src={imageUrl} className={Style.imageLogo} alt="Descripcion de la imagen"/>
-//     <Link className= {Style.about} to='/about'>Sobre nosotros</Link>
-//     <div className={Style.socialIcons}>
-//         <a href="https://www.instagram.com/agus_purici/" target="_blank">
-//         <p className={Style.ig}>
-//           <FaInstagram />
-//         </p>
-//       </a>
-//       <a href="whatsapp://send?phone=NUMERO&text=Hola%20quiero%20contactar%20contigo" target="_blank">
-//         <p className={Style.Whatsapp}>
-//           <FaWhatsapp />
-//         </p>
-//       </a>
-//     </div>
-
-//       <h3 className={Style.hora}> Horario de atención</h3>
-//       <p> Lunes a viernes 6:30hs a 22:30hs </p>
-//       <p> Sabados 9hs a 12hs</p>
-// </div>
-//   )
-// }
-
-// export default Footer;
