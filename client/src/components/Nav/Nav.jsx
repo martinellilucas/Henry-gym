@@ -7,27 +7,53 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 const Nav = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={style.nav}>
+    <Box
+      className={style.nav}
+      height={isScrolled ? "140px" : "160px"}
+      position="sticky"
+      top="0"
+      zIndex="999"
+      transition="height 0.3s"
+    >
       <div className={style.searchContainer}>
-        <img className={style.logo} src={logo} alt="logo"></img>
-        <SearchBar className={style.search}></SearchBar>
+        <img className={style.logo} src={logo} alt="logo" />
+        <SearchBar className={style.search} />
       </div>
+
       <Breadcrumb separator=">" className={style.itemContainer}>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/home">
             INICIO
           </BreadcrumbLink>
         </BreadcrumbItem>
-
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink>CLASES</BreadcrumbLink>
         </BreadcrumbItem>
-
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink>RUTINAS</BreadcrumbLink>
         </BreadcrumbItem>
@@ -41,7 +67,7 @@ const Nav = () => {
         </BreadcrumbItem>
         <Button colorScheme="whiteAlpha">INGRESAR</Button>
       </Breadcrumb>
-    </div>
+    </Box>
   );
 };
 
