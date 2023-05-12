@@ -1,6 +1,7 @@
 import Cards from "../Cards/Cards";
 import Carousel from "../Carrusel/carrusel";
 import SmallCentered from "../Footer/footer"
+import style from "../Home/Home.module.css";
 
 
 
@@ -8,14 +9,10 @@ import SmallCentered from "../Footer/footer"
 const Home = () => {
   return (
     <div>
-      <h1>Este es el Home Henry's Gym</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-        dignissimos officia facere, eos architecto corrupti tempore dolores
-        possimus quis consequatur non ducimus similique, quasi commodi? Culpa
-        repellat vero quam nobis.
-      </p>
       <Carousel></Carousel>
+      <div className={style.titleContainer}>
+        <h1>NUESTRAS RUTINAS</h1>
+      </div>
       <Cards></Cards>
       <SmallCentered />
     </div>
