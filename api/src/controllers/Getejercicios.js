@@ -14,15 +14,15 @@ const getEjercicios = async () =>{
 
     for (let index = 0; index < musculos.length; index++) {
         const element = musculos[index];
-        const ejerciciosPorGrupo = axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${element}`, { 
+        const ejerciciosPorGrupo = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${element}`, { 
             headers: {
             'X-Api-Key': 'rJLHZ3xHnrXhVO7TeiYG6A==HEblEtWX8CXXwTfp'
             }
-            }).then(response => response)
+            }).then(response => response.data)
         
         ejerciciosPorGrupo.forEach(ejercicio =>{allExercises.push(ejercicio)} );
     }
-
+    return allExercises;
 }
 
 
