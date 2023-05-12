@@ -1,4 +1,7 @@
 import Cards from "../Cards/Cards";
+import Carousel from "../Carrusel/carrusel";
+
+
 
 
 const Home = () => {
@@ -11,6 +14,7 @@ const Home = () => {
         possimus quis consequatur non ducimus similique, quasi commodi? Culpa
         repellat vero quam nobis.
       </p>
+      <Carousel></Carousel>
       <Cards></Cards>
     </div>
   );
