@@ -2,15 +2,16 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_URL } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/HenryGym`,
+const sequelize = new Sequelize( DB_URL,
   {
     logging: false,
     native: false,
   }
 );
+
+
 
 const basename = path.basename(__filename);
 
@@ -59,11 +60,11 @@ const RutinaxCliente = sequelize.define(
 
 // Aca vendrian las relaciones
 
-Rutina.belongsToMany(Ejercicio, {through: 'RutinaxEjercicio'});
-Ejercicio.belongsToMany(Rutina, {through: 'RutinaxEjercicio'});
+Rutina.belongsToMany(Ejercicio, { through: 'RutinaxEjercicio' });
+Ejercicio.belongsToMany(Rutina, { through: 'RutinaxEjercicio' });
 
-Rutina.belongsToMany(Cliente, {through: 'RutinaxCliente'});
-Cliente.belongsToMany(Rutina, {through: 'RutinaxCliente'});
+Rutina.belongsToMany(Cliente, { through: 'RutinaxCliente' });
+Cliente.belongsToMany(Rutina, { through: 'RutinaxCliente' });
 
 
 
