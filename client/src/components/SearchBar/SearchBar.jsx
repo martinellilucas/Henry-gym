@@ -1,7 +1,9 @@
+import style from "../SearchBar/SearchBar.module.css";
+
 const SearchBar = () => {
   return (
     <div>
-      <input placeholder="Buscar actividad"></input>
+      <input className={style.search} placeholder="Buscar actividad"></input>
     </div>
   );
 };
