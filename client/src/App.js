@@ -14,11 +14,11 @@ function App() {
     <div>
       {pathname !== "/" && <Nav />}
       <Routes>
+        <Route path="*" element={<Error />} />
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="*" element={<Error />} />
       </Routes>
       {pathname !== "/" && <SmallCentered />}
     </div>

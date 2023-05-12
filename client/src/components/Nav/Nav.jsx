@@ -31,6 +31,17 @@ const Nav = () => {
     };
   }, []);
 
+  const scrollToRutinas = () => {
+    const rutinasSection = document.getElementById("rutinas");
+    if (rutinasSection) {
+      rutinasSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
+
   return (
     <Box
       className={style.nav}
@@ -55,7 +66,7 @@ const Nav = () => {
           <BreadcrumbLink>CLASES</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>RUTINAS</BreadcrumbLink>
+          <BreadcrumbLink onClick={scrollToRutinas}>RUTINAS</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink>MEMBRESIAS</BreadcrumbLink>
