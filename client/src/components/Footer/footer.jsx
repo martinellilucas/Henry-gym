@@ -1,4 +1,5 @@
 
+import Logo from '../../assets/logo.png'
 import {
   Box,
   chakra,
@@ -42,21 +43,25 @@ export default function SmallCentered() {
   return (
 
     <Box
+     justifyContent={'center'}
+     alignItems={'center'}
       bg={useColorModeValue("gray.600", "gray.300")}
       color={useColorModeValue("white", "white")}
     >
       <Container
-        as={Stack}
+        display={'flex'}
+        justifyContent={'space-around'}
+        alignItems={'center'}
         maxW={"6xl"}
         py={4}
         spacing={4}
-        justify={"center"}
-        align={"center"}
       >
+        <Box as={Stack} alignItems={'center'}>
         <Image
           h={12}
+          w={12}
           float={"left"}
-          src="https://cdn.discordapp.com/attachments/1105187840230441004/1106343139029037067/logo.png"
+          src={Logo} 
         />
         <Stack direction={"row"} spacing={6}>
           <Link 
@@ -74,9 +79,14 @@ export default function SmallCentered() {
            py={2}
            >Sobre nosotros</Link>
         </Stack>
+        </Box>
+
+        <Box alignItems={'center'} as={Stack}>
         <Text>Horario de atención: </Text>
         <Text>Lunes a viernes 6:30hs a 22:30hs</Text>
         <Text> Sabados 9hs a 12hs </Text>
+        </Box>
+       
       </Container>
 
       <Box

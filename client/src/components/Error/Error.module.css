@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    background-color: #92d8d4;
+}
+
+.error {
+    background-color: white;
+    border-radius: 0;
+    height: 10%;
+    width: 55.4%;
+    background-size: cover;
+}
+
+.imageCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+}
+
+
+.descripcion {
+}
+
+.button {
+}
