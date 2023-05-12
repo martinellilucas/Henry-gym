@@ -1,7 +1,12 @@
 import Cards from "../Cards/Cards";
+
+
 import Carousel from "../Carousel/Caruosel.jsx";
 
 import style from "../Home/Home.module.css";
+
+
+
 
 const Home = () => {
   return (
