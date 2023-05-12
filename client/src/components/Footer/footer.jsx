@@ -39,8 +39,8 @@ const SocialButton = ({ children, label, href }) => {
 export default function SmallCentered() {
   return (
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
+      bg={useColorModeValue("gray.600", "gray.300")}
+      color={useColorModeValue("white", "white")}
     >
       <Container
         as={Stack}
@@ -52,14 +52,28 @@ export default function SmallCentered() {
       >
         <Image
           h={12}
-          float={'left'}
+          float={"left"}
           src="https://cdn.discordapp.com/attachments/1105187840230441004/1106343139029037067/logo.png"
-         
         />
         <Stack direction={"row"} spacing={6}>
-          <Link href={"#"}>Home</Link>
-          <Link href={"#"}>About</Link>
+          <Link 
+           as="a"
+           href="/about"
+           color="white"
+           fontWeight="bold"
+           textDecoration="none"
+           bg="grey"
+           _hover={{ bg: "blue.600" }}
+           _active={{ bg: "blue.700" }}
+           _focus={{ boxShadow: "outline" }}
+           borderRadius="full"
+           px={4}
+           py={2}
+           >Sobre nosotros</Link>
         </Stack>
+        <Text>Horario de atención: </Text>
+        <Text>Lunes a viernes 6:30hs a 22:30hs</Text>
+        <Text> Sabados 9hs a 12hs </Text>
       </Container>
 
       <Box
@@ -78,11 +92,15 @@ export default function SmallCentered() {
         >
           <Text>© Henry's gym</Text>
           <Stack direction={"row"} spacing={6}>
-            <SocialButton label={"WhatsApp"} href={"#"}>
+            <SocialButton  _hover={{ bg: "blue.600" }}
+           _active={{ bg: "blue.700" }}
+           _focus={{ boxShadow: "outline" }} label={"WhatsApp"} href={"#"}>
               <FaWhatsapp />
             </SocialButton>
-            <SocialButton label={"Instagram"} href={"#"}>
-              <FaInstagram />
+            <SocialButton  label={"Instagram"} href={"#"}>
+              <FaInstagram  _hover={{ bg: "blue.600" }}
+           _active={{ bg: "grey" }}
+           _focus={{ boxShadow: "outline" }} />
             </SocialButton>
           </Stack>
         </Container>

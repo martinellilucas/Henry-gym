@@ -1,5 +1,6 @@
 import Cards from "../Cards/Cards";
 import Carousel from "../Carrusel/carrusel";
+import SmallCentered from "../Footer/footer"
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
       </p>
       <Carousel></Carousel>
       <Cards></Cards>
+      <SmallCentered />
     </div>
   );
 };
