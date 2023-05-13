@@ -9,53 +9,68 @@ import {
   StackDivider,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import style from "./Ejercicios.module.css";
+import { getEjercicios } from "../../redux/Actions";
 
 const Ejercicios = () => {
-  const ejercicios = useState([]);
+  const { ejercicios } = useSelector((store) => store);
+
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    dispatch(getEjercicios());
+  }, []);
+
   return (
     <div>
-      <h1>EJERCICIOS</h1>
-      {ejercicios.map((e) => {
-        return (
-          <Card>
-            <CardHeader>
-              <Heading size="md">{e.name}</Heading>
-            </CardHeader>
+      <h1 className={style.title}>EJERCICIOS</h1>
+      <div className={style.cards}>
+        {ejercicios.length ? (
+          ejercicios.map((e) => {
+            return (
+              <div key={e.id}>
+                <Card className={style.card} bg="blackAlpha.500">
+                  <CardHeader>
+                    <Heading size="xl">{e.name}</Heading>
+                  </CardHeader>
 
-            <CardBody>
-              <Stack divider={<StackDivider />} spacing="4">
-                <Box>
-                  <Heading size="xs" textTransform="uppercase">
-                    Dificultad
-                  </Heading>
-                  <Text pt="2" fontSize="sm">
-                    {e.difficulty}
-                  </Text>
-                </Box>
-                <Box>
-                  <Heading size="xs" textTransform="uppercase">
-                    Grupo Muscular
-                  </Heading>
-                  <Text pt="2" fontSize="sm">
-                    {e.muscle}
-                  </Text>
-                </Box>
-                <Box>
-                  <Heading size="xs" textTransform="uppercase">
-                    Instrucciones
-                  </Heading>
-                  <Text pt="2" fontSize="sm">
-                    {e.instructions}
-                  </Text>
-                </Box>
-              </Stack>
-            </CardBody>
-          </Card>
-        );
-      })}
+                  <CardBody>
+                    <Stack divider={<StackDivider />} spacing="4">
+                      <Box>
+                        <Heading size="xs" textTransform="uppercase">
+                          Dificultad
+                        </Heading>
+                        <Text pt="2" fontSize="sm">
+                          {e.difficulty}
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Heading size="xs" textTransform="uppercase">
+                          Grupo Muscular
+                        </Heading>
+                        <Text pt="2" fontSize="sm">
+                          {e.muscle}
+                        </Text>
+                      </Box>
+                      <Box>
+                        <Heading size="xs" textTransform="uppercase">
+                          Instrucciones
+                        </Heading>
+                        <textarea className={style.textarea}>
+                          {e.instructions}
+                        </textarea>
+                      </Box>
+                    </Stack>
+                  </CardBody>
+                </Card>
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };

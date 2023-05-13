@@ -8,13 +8,21 @@ const Card = ({ id, nivel, ejercicios, grupoMuscular, imagen }) => {
       <ul className={style.list}>
         Ejercicios
         {ejercicios.map((ejercicio) => {
-          return <li className={style.item}>{ejercicio}</li>;
+          return (
+            <li key={ejercicio} className={style.item}>
+              {ejercicio}
+            </li>
+          );
         })}
       </ul>
       <ul className={style.list}>
         Grupo Muscular
         {grupoMuscular.map((grupo) => {
-          return <li className={style.item}>{grupo}</li>;
+          return (
+            <li key={grupo} className={style.item}>
+              {grupo}
+            </li>
+          );
         })}
       </ul>
       <Divider />
