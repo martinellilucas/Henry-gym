@@ -43,8 +43,6 @@ const getEjercicios = async () => {
       });
     }
 
-    console.log(allExercises);
-
     allExercises.map(async (e) => {
       await Ejercicio.create({
         name: e.name,
