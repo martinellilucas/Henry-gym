@@ -10,8 +10,10 @@ const getRutinas = async () => {
         grupoMuscular: [...rutina.grupoMuscular],
       });
     });
+    return await Rutina.findAll();
+  } else {
+    return await Rutina.findAll();
   }
-  return await Rutina.findAll();
 };
 
 module.exports = getRutinas;
