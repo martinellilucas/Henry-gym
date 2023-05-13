@@ -1,0 +1,29 @@
+.cards {
+  display: grid;
+  margin: 0 auto;
+  grid-gap: 1rem;
+  margin: 5%;
+
+  grid-template-columns: repeat(2, 1fr);
+  padding: 50px;
+}
+
+.card {
+  height: 450px;
+}
+.textarea {
+  height: 150px;
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  background-color: lightgray;
+  border-radius: 10px;
+  resize: none;
+}
+
+.title {
+  font-size: 7ex;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 50px;
+}
