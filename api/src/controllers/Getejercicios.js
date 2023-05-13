@@ -1,3 +1,4 @@
+
 const { Ejercicio } = require("../db");
 const axios = require("axios");
 
@@ -33,6 +34,7 @@ const getEjercicios = async () => {
           headers: {
             "X-Api-Key": "rJLHZ3xHnrXhVO7TeiYG6A==HEblEtWX8CXXwTfp",
           },
+
         })
         .then((response) => response.data);
 
