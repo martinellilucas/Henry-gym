@@ -26,7 +26,6 @@ const getEjercicios = async () =>{
             ejerciciosPorGrupo.forEach(ejercicio =>{allExercises.push(ejercicio)} );
         }
     
-        console.log(allExercises)
         
         allExercises.map(async(e) => {
           await Ejercicio.create({

@@ -1,9 +1,10 @@
-const { Router } = require("express");
+const getIDEjercicio = require('../controllers/getIDEjercicio')
 
-const handlerIdEjercicios = (req, res) => {
+const handlerIdEjercicios = async(req, res) => {
   try {
     const { id } = req.params;
-    res.status(200).send(`Este es el detail del id ${id}`);
+    const ejercicio = await getIDEjercicio(id);
+    res.status(200).json(ejercicio);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
