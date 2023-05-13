@@ -120,6 +120,7 @@ const Cards = () => {
       {rutinas.map((rutina) => {
         return (
           <Card
+            key={rutina.id}
             id={rutina.id}
             nivel={rutina.nivel}
             ejercicios={rutina.ejercicios}
