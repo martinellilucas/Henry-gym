@@ -9,6 +9,7 @@ import About from "../src/components/About/About";
 import SmallCentered from "../src/components/Footer/footer";
 import Rutinas from "./components/Rutinas/Rutinas";
 import Ejercicios from "./components/Ejercicios/Ejercicios";
+import CrearRutina from "./components/CrearRutina/CrearRutina";
 
 function App() {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/rutinas" element={<Rutinas />} />
         <Route path="/ejercicios" element={<Ejercicios />} />
+        <Route path="/postrut" element={<CrearRutina />} />
       </Routes>
       {pathname !== "/" && <SmallCentered />}
     </div>
