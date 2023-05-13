@@ -8,8 +8,7 @@ import Detail from "../src/components/Detail/Detail";
 import About from "../src/components/About/About";
 import SmallCentered from "../src/components/Footer/footer";
 import Rutinas from "./components/Rutinas/Rutinas";
-import Ejercicios from "./components/Ejercicios/Ejercicios";
-import CrearRutina from "./components/CrearRutina/CrearRutina";
+import Pagination from "./components/PaginationEjercicios/Pagination";
 
 function App() {
   const { pathname } = useLocation();
@@ -23,8 +22,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/rutinas" element={<Rutinas />} />
-        <Route path="/ejercicios" element={<Ejercicios />} />
-        <Route path="/postrut" element={<CrearRutina />} />
+        <Route path="/ejercicios" element={<Pagination />} />
       </Routes>
       {pathname !== "/" && <SmallCentered />}
     </div>
