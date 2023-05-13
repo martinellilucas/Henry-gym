@@ -1,10 +1,11 @@
 import axios from "axios";
 
-/////ejemplo
+
 export const GET_RUTINAS = "GET_RUTINAS";
 export const GET_EJERCICIOS = "GET_EJERCICIOS";
 export const GET_EJERCICIOS_ID = "GET_EJERCICIOS_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+
 
 export function getAllRutinas() {
   return async function (dispatch) {
