@@ -17,7 +17,16 @@ module.exports = (sequelize) => {
     grupoMuscular : {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull : false
-    }
+    },
+    description : {
+      type : DataTypes.TEXT,
+      allowNull : true
+    },
+    createdByDB : {
+        type : DataTypes.BOOLEAN,
+        allowNull : false,
+        defaultValue : true
+       }
   }, {
     timestamps: false // Desactiva los timestamps
   });

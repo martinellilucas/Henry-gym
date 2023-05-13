@@ -1,7 +1,34 @@
-.search {
-  margin-top: 50px;
-  margin-left: 100px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1.5em;
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+  border-radius: 14rem;
+  background-color: lightgray;
+  margin: 0.3rem;
+  height: 1.5rem;
+  width: 5rem;
+  font-weight: bold;
+  
+}
+.button:hover {
+  background-color: rgb(178, 180, 180);
+}
+
+.input {
+  cursor: auto;
+  border: none;
+  border-radius: 1rem;
+  height: 1.5rem;
+  width: 20rem;
+  color: black;
+  background-color: lightgray;
+  margin: none;
+  text-align: left;
+  padding-left: 0.5rem;
+  font-weight: bold;
 }
