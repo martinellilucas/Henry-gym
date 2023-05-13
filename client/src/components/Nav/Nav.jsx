@@ -1,4 +1,4 @@
-import SearchBar from "../SearchBar/SearchBar";
+//import SearchBar from "../SearchBar/SearchBar";
 import logo from "../../assets/logo.png";
 import style from "../Nav/Nav.module.css";
 import {
@@ -53,7 +53,7 @@ const Nav = () => {
     >
       <div className={style.searchContainer}>
         <img className={style.logo} src={logo} alt="logo" />
-        <SearchBar className={style.search} />
+        {/* <SearchBar className={style.search} /> */}
       </div>
 
       <Breadcrumb separator=">" className={style.itemContainer}>
