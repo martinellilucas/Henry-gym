@@ -13,8 +13,8 @@ const Home = () => {
     <div className={style.home}>
       <Carousel></Carousel>
       <div className={style.titleContainer}>
-        <Box id="rutinas">
-          <h1>NUESTRAS MEMBRESIAS</h1>
+        <Box>
+          <h1 id="membresias">NUESTRAS MEMBRESIAS</h1>
         </Box>
       </div>
       <ThreeTierPricing></ThreeTierPricing>

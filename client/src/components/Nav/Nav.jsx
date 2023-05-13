@@ -31,10 +31,10 @@ const Nav = () => {
     };
   }, []);
 
-  const scrollToRutinas = () => {
-    const rutinasSection = document.getElementById("rutinas");
-    if (rutinasSection) {
-      rutinasSection.scrollIntoView({
+  const scrollToMembresias = () => {
+    const membresiasSection = document.getElementById("membresias");
+    if (membresiasSection) {
+      membresiasSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",
@@ -66,10 +66,19 @@ const Nav = () => {
           <BreadcrumbLink>CLASES</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToRutinas}>RUTINAS</BreadcrumbLink>
+          <BreadcrumbLink as={NavLink} to="/rutinas">
+            RUTINAS
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>MEMBRESIAS</BreadcrumbLink>
+          <BreadcrumbLink as={NavLink} to="/ejercicios">
+            EJERCICIOS
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem className={style.item}>
+          <BreadcrumbLink onClick={scrollToMembresias}>
+            MEMBRESIAS
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/about">

@@ -55,7 +55,7 @@ export default function Carousel() {
 
       <IconButton
         aria-label="left-arrow"
-        colorScheme="messenger"
+        colorScheme="blackAlpha"
         borderRadius="full"
         position="absolute"
         left={side}
@@ -70,7 +70,7 @@ export default function Carousel() {
       <IconButton
         className={style.rightBtn}
         aria-label="right-arrow"
-        colorScheme="messenger"
+        colorScheme="blackAlpha"
         borderRadius="full"
         position="absolute"
         right={side}
