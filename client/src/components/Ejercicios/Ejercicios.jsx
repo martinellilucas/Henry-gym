@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./Ejercicios.module.css";
 import { getEjercicios } from "../../redux/Actions";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Ejercicios = () => {
   const { ejercicios } = useSelector((store) => store);
@@ -25,6 +26,9 @@ const Ejercicios = () => {
   return (
     <div>
       <h1 className={style.title}>EJERCICIOS</h1>
+      <div> 
+        <SearchBar />
+      </div>
       <div className={style.cards}>
         {ejercicios.length ? (
           ejercicios.map((e) => {
