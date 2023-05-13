@@ -9,21 +9,26 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV1,
         primaryKey: true,
     },
-    nombre: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    descripcion: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
+    instructions: {
+        type: DataTypes.TEXT,
+        allowNull: false 
+    },
     imagen: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    muscle: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    grupoMuscular: {
-      type: DataTypes.STRING,
-      allowNull: false
+    difficulty : {
+      type : DataTypes.ENUM,
+      values: ['beginner', 'intermediate', 'expert'],
+      allowNull: false 
     }
   }, {
     timestamps: false // Desactiva los timestamps
