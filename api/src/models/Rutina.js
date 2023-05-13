@@ -9,10 +9,14 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV1,
         primaryKey: true,
     },
-    nivel: {
+      difficulty: {
         type: DataTypes.ENUM,
-        values: ['Principiante', 'Intermedio', 'Experto'], 
+        values: ['beginner', 'intermediate', 'expert'], 
         allowNull: false
+    },
+    grupoMuscular : {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull : false
     }
   }, {
     timestamps: false // Desactiva los timestamps
