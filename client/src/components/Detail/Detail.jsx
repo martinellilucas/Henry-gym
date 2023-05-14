@@ -1,4 +1,10 @@
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 const Detail = () => {
+  const detail = useSelector((store) => store.ejercicioDetail);
+  const { id } = useParams();
+
   return (
     <div>
       <h1>Detail</h1>
