@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import EjercicioCards from "../EjercicioCards/EjercicioCards";
 import SearchBar from "../SearchBar/SearchBar";
+import style from "./Pagination.module.css";
 import { getEjercicios } from "../../redux/Actions";
 
 export default function Pagination() {
@@ -45,7 +46,7 @@ export default function Pagination() {
   };
 
   return (
-    <Box>
+    <Box className={style.body}>
       <Flex
         display="flex"
         flexDirection="column"

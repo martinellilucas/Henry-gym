@@ -9,6 +9,7 @@
 
 .card {
   height: 450px;
+  text-shadow: 1px 1px 3px white;
 }
 .textarea {
   height: 150px;

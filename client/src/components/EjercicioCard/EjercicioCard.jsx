@@ -13,7 +13,7 @@ import style from "./EjercicioCard.module.css";
 export function EjercicioCard(e) {
   return (
     <div key={e.id}>
-      <Card className={style.card} bg="blackAlpha.500">
+      <Card className={style.card} bg="blackAlpha.600">
         <CardHeader>
           <Heading size="xl">{e.name}</Heading>
         </CardHeader>
