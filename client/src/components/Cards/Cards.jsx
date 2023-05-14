@@ -10,8 +10,9 @@ const Cards = ({ rutinas }) => {
             <Card
               key={rutina.id}
               id={rutina.id}
-              nivel={rutina.nivel}
+              difficulty={rutina.difficulty}
               ejercicios={rutina.ejercicios}
+              imagen={rutina.imagen}
               grupoMuscular={rutina.grupoMuscular}
             ></Card>
           );
