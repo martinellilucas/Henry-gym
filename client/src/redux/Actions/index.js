@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const GET_RUTINAS = "GET_RUTINAS";
 export const GET_EJERCICIOS = "GET_EJERCICIOS";
-export const GET_EJERCICIOS_ID = "GET_EJERCICIOS_ID";
+export const GET_RUTINA_ID = "GET_RUTINA_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER_BY_MUSCULO = "FILTER_BY_MUSCULO";
@@ -32,12 +32,12 @@ export const getEjercicios = () => {
   };
 };
 
-export const searchById = (id) => {
+export const rutinaById = (id) => {
   return async (dispatch) => {
     const response = await axios.get(
-      `https://henry-gym-production.up.railway.app/ejercicios/${id}`
+      `https://henry-gym-production.up.railway.app/rutinas/${id}`
     );
-    dispatch({ type: GET_EJERCICIOS_ID, payload: response.data });
+    dispatch({ type: GET_RUTINA_ID, payload: response.data });
   };
 };
 
