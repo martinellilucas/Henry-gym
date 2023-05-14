@@ -46,19 +46,24 @@ export default function Pagination() {
 
   return (
     <Box>
-      <Flex align="center" justify="space-between">
+      <Flex
+        display="flex"
+        flexDirection="column"
+        align="center"
+        justify="center"
+      >
         <SearchBar />
-        <Flex align="center">
+        <Flex margin="50px" align="center">
           <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
             &lt;
           </Button>
-          <Text mx="2">{currentPage}</Text>
+
           {pageIndex.map((index) => (
             <Button
               key={index}
               value={index}
               onClick={() => handleClickButton(index)}
-              colorScheme={index === currentPage ? "red" : undefined}
+              colorScheme={index === currentPage ? "blackAlpha" : undefined}
             >
               {index}
             </Button>
