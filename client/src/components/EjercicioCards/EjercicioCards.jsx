@@ -3,7 +3,7 @@ import EjercicioCard from "../EjercicioCard/EjercicioCard";
 
 export default function EjercicioCards({ ejercicios }) {
   return (
-    <Box padding={"2%"} width="100%" marginY="120px" justifyContent="center">
+    <Box padding={"2%"} width="100%" justifyContent="center">
       <SimpleGrid columns={2} spacing={8} justifyContent="center">
         {ejercicios?.map((e) => (
           <EjercicioCard
