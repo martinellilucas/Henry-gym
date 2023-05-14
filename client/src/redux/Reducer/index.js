@@ -3,19 +3,19 @@ import {
   CLEAR_DETAIL,
   GET_EJERCICIOS,
   GET_EJERCICIOS_ID,
-  GET_NAME_EJERCICIOS
+  GET_NAME_EJERCICIOS,
+  GET_RUTINAS,
 } from "../Actions/index";
 
 const initialState = {
-
   ejercicios: [],
   filteredEjercicios: [],
   ejercicioDetail: [],
+  rutinas: [],
 };
 
 export default function footReducer(state = initialState, action) {
   switch (action.type) {
-    
     case GET_EJERCICIOS:
       return {
         ...state,
@@ -33,15 +33,18 @@ export default function footReducer(state = initialState, action) {
         ejercicioDetail: [],
       };
 
-      case GET_NAME_EJERCICIOS:
-        return {
-          ...state,
-          ejercicios: action.payload,
-        }
+    case GET_NAME_EJERCICIOS:
+      return {
+        ...state,
+        ejercicios: action.payload,
+      };
+    case GET_RUTINAS:
+      return {
+        ...state,
+        rutinas: action.payload,
+      };
 
     default:
       return state;
-
   }
- 
 }
