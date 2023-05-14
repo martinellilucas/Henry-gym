@@ -2,7 +2,7 @@
 import {
   CLEAR_DETAIL,
   GET_EJERCICIOS,
-  GET_EJERCICIOS_ID,
+  GET_RUTINA_ID,
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
 } from "../Actions/index";
@@ -10,7 +10,7 @@ import {
 const initialState = {
   ejercicios: [],
   filteredEjercicios: [],
-  ejercicioDetail: [],
+  rutinaDetail: [],
   rutinas: [],
 };
 
@@ -22,10 +22,10 @@ export default function footReducer(state = initialState, action) {
         ejercicios: action.payload,
         filteredEjercicios: action.payload,
       };
-    case GET_EJERCICIOS_ID:
+    case GET_RUTINA_ID:
       return {
         ...state,
-        ejercicioDetail: action.payload,
+        rutinaDetail: action.payload,
       };
     case CLEAR_DETAIL:
       return {

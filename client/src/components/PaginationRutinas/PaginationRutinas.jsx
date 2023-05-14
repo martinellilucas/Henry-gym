@@ -75,7 +75,7 @@ export default function Pagination() {
             </Button>
           </Flex>
         </Flex>
-        <Cards rutinas={paginate} />
+        <Cards rutinas={paginate} disabled={false} />
       </Box>
     </div>
   );
