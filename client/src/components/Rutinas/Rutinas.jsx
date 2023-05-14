@@ -13,8 +13,7 @@ const Rutinas = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className={style.title}>ZONA DE MUSCULACIÓN</h1>
+    <div className={style.container}>
       <Cards rutinas={rutinas}></Cards>
     </div>
   );

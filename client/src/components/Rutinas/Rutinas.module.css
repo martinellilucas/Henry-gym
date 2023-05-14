@@ -1,6 +1,8 @@
-.title {
-  font-size: 7ex;
-  font-weight: bolder;
-  text-align: center;
-  padding: 50px;
+.container {
+  background-image: url("../../assets/rutinasBG.png");
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 850px;
 }
