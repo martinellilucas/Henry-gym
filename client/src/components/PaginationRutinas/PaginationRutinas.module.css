@@ -1,8 +1,9 @@
 .container {
   background-image: url("../../assets/rutinasBG.png");
   background-position: top;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   padding-top: 850px;
+  padding-bottom: 10px;
 }

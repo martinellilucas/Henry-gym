@@ -16,7 +16,6 @@ export default function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (name.length === 0) return alert ("Busca un ejercicio");
     dispatch(getEjerciciosByName(name));
   }
   return (
@@ -27,7 +26,13 @@ export default function SearchBar() {
         placeholder="Por ejemplo: Hammer Curls"
         onChange={(e) => handleInputChange(e)}
       ></input>
-      <button className={style.button} type="submit" onClick={(e) => handleSubmit(e)}>BUSCAR</button>
+      <button
+        className={style.button}
+        type="submit"
+        onClick={(e) => handleSubmit(e)}
+      >
+        BUSCAR
+      </button>
     </div>
   );
 }
