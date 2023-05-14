@@ -1,6 +1,6 @@
 const rutinas = require("../../Rutinas.js");
 const { Rutina } = require("../db");
-
+const urls = require("../storage/imgURLS.js");
 const getRutinas = async () => {
   const consult = await Rutina.findAll();
   if (!consult.length) {
@@ -8,6 +8,7 @@ const getRutinas = async () => {
       await Rutina.create({
         difficulty: rutina.difficulty,
         ejercicios: [...rutina.ejercicios],
+        imagen: urls[rutina.grupoMuscular[0]],
         grupoMuscular: [...rutina.grupoMuscular],
       });
     });

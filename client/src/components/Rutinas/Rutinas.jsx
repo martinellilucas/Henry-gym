@@ -7,9 +7,11 @@ import { getRutinas } from "../../redux/Actions";
 const Rutinas = () => {
   const rutinas = useSelector((state) => state.rutinas);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getRutinas());
   }, []);
+
   return (
     <div>
       <h1 className={style.title}>ZONA DE MUSCULACIÓN</h1>
