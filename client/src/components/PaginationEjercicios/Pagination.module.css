@@ -6,3 +6,9 @@
   width: 100%;
   padding-top: 850px;
 }
+
+.film{
+  border: 2px solid black;
+  transform: scale(1.15);
+  margin: 20px;
+}

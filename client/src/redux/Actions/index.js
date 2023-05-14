@@ -5,6 +5,8 @@ export const GET_EJERCICIOS = "GET_EJERCICIOS";
 export const GET_EJERCICIOS_ID = "GET_EJERCICIOS_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
+export const FILTER_BY_MUSCULO = "FILTER_BY_MUSCULO";
+export const FILTER_BY_DIFICULTAD = "FILTER_BY_DIFICULTAD";
 
 export const getRutinas = () => {
   return async (dispatch) => {
@@ -58,5 +60,20 @@ export const getEjerciciosByName = (name) => {
     }
   };
 };
+
+export const filterByMusculo = (musculo) => {
+  return {
+    type : "FILTER_BY_MUSCULO",
+    payload : musculo
+  }
+}
+
+export const filterByDificultad = (dificultad) => {
+  return {
+    type : "FILTER_BY_DIFICULTAD",
+    payload : dificultad
+  }
+}
+
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
