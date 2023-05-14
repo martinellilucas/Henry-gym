@@ -3,7 +3,7 @@ import { Button, Divider } from "@chakra-ui/react";
 const Card = ({ id, nivel, ejercicios, grupoMuscular, imagen }) => {
   return (
     <div className={style.cardBody}>
-      <img className={style.image} src={imagen} alt="img"></img>
+      {/*  <img className={style.image} src={imagen} alt="img"></img> */}
       <h1 className={style.nivel}>Dificultad: {nivel}</h1>
       <ul className={style.list}>
         Ejercicios

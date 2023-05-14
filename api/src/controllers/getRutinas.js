@@ -7,6 +7,7 @@ const getRutinas = async () => {
     rutinas.map(async (rutina) => {
       await Rutina.create({
         difficulty: rutina.difficulty,
+        ejercicios: [...rutina.ejercicios],
         grupoMuscular: [...rutina.grupoMuscular],
       });
     });
