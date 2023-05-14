@@ -5,6 +5,9 @@ import {
   GET_EJERCICIOS_ID,
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
+  FILTER_BY_MUSCULO,
+  FILTER_BY_DIFICULTAD,
+
 } from "../Actions/index";
 
 const initialState = {
@@ -12,6 +15,7 @@ const initialState = {
   filteredEjercicios: [],
   ejercicioDetail: [],
   rutinas: [],
+  dificultad: [],
 };
 
 export default function footReducer(state = initialState, action) {
@@ -44,7 +48,26 @@ export default function footReducer(state = initialState, action) {
         rutinas: action.payload,
       };
 
+    case FILTER_BY_MUSCULO:
+      return {
+        ...state,
+        filteredEjercicios: state.ejercicios.filter((ejercicio) =>
+          ejercicio.muscle.includes(action.payload)
+        ),  
+      }
+
+    case FILTER_BY_DIFICULTAD:
+      return {
+        ...state,
+        filteredEjercicios: state.ejercicios.filter((ejercicio) =>
+          ejercicio.difficulty.includes(action.payload)
+        ),
+      }
+
+
+
     default:
       return state;
   }
+
 }
