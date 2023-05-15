@@ -1,9 +1,15 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import EjercicioCard from "../EjercicioCard/EjercicioCard";
+import style from "./EjercicioCards.module.css";
 
 export default function EjercicioCards({ ejercicios }) {
   return (
-    <Box padding={"2%"} width="100%" justifyContent="center">
+    <Box
+      className={style.cards}
+      padding={"2%"}
+      width="100%"
+      justifyContent="center"
+    >
       <SimpleGrid columns={2} spacing={8} justifyContent="center">
         {ejercicios?.map((e) => (
           <EjercicioCard
