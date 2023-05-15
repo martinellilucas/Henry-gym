@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import Cards from "../Cards/Cards";
 import { getRutinas } from "../../redux/Actions";
 import style from "./PaginationRutinas.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function Pagination() {
   const allRutinas = useSelector((state) => state.rutinas);
@@ -45,8 +46,11 @@ export default function Pagination() {
   };
 
   return (
-    <div className={style.container}>
-      <Box>
+    <div className={style.body}>
+      <Box className={style.container}>
+        <NavLink to="/form">
+          <Button colorScheme="blackAlpha">CREA LA TUYA</Button>
+        </NavLink>
         <Flex
           display="flex"
           flexDirection="column"
@@ -62,7 +66,7 @@ export default function Pagination() {
                 key={index}
                 value={index}
                 onClick={() => handleClickButton(index)}
-                colorScheme={index === currentPage ? "red" : undefined}
+                colorScheme={index === currentPage ? "blackAlpha" : undefined}
               >
                 {index}
               </Button>
