@@ -39,7 +39,7 @@ export default function footReducer(state = initialState, action) {
     case GET_NAME_EJERCICIOS:
       return {
         ...state,
-        ejercicios: [...state.filteredEjercicios],
+        ejercicios: action.payload,
         filteredEjercicios: action.payload,
       };
     case GET_RUTINAS:
