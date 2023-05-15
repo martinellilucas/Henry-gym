@@ -1,4 +1,4 @@
-const { Ejercicio, Rutina } = require("../db");
+const { Ejercicio,Rutina } = require("../db");
 
 const postRutinas = async ({
   grupoMuscular,
@@ -19,6 +19,11 @@ const postRutinas = async ({
     imagen,
     ejercicios: [nombres],
   });
+
+  ejercicios.forEach(async(ejer) => {
+    await newRutina.addEjercicio(ejer)
+  })
+  
 
   return newRutina;
 };

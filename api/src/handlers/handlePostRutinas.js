@@ -4,12 +4,12 @@ const handlerPostRutinas = async (req, res) => {
 try {
     const {
         grupoMuscular,
-        description,
+        imagen,
         ejercicios,
         difficulty
     } = req.body
 
-    const rutinaCreada = await postRutinas({grupoMuscular,difficulty,description,ejercicios})
+    const rutinaCreada = await postRutinas({grupoMuscular,difficulty,imagen,ejercicios})
 
 
     res.status(200).send(`Rutina creada ${rutinaCreada}`)
