@@ -53,6 +53,7 @@ export default function PostRutina() {
   return (
     <div className={style.div2}>
       <Box
+        onSubmit={handleSubmit}
         className={style.box}
         borderWidth="1px"
         rounded="lg"
@@ -77,6 +78,7 @@ export default function PostRutina() {
           <Flex w="100%" justifyContent="space-between">
             {step === 1 ? (
               <Button
+                type="submit"
                 w="7rem"
                 colorScheme="red"
                 variant="solid"
