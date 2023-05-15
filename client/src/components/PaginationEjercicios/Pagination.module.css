@@ -1,14 +1,22 @@
 .body {
   background-image: url("../../assets/ejerciciosBG.png");
-  background-position: top;
-  background-size: contain;
+  background-position: top left;
+  background-size: auto;
   background-repeat: no-repeat;
+  background-attachment: scroll;
+  padding-top: 950px;
   width: 100%;
-  padding-top: 850px;
 }
 
-.film{
+.film {
   border: 2px solid black;
+  border-radius: 5px;
   transform: scale(1.15);
   margin: 20px;
+}
+.filterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
 }

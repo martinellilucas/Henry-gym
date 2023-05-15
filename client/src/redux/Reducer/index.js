@@ -2,21 +2,19 @@
 import {
   CLEAR_DETAIL,
   GET_EJERCICIOS,
-  GET_EJERCICIOS_ID,
+  GET_RUTINA_ID,
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
   FILTER_BY_MUSCULO,
   FILTER_BY_DIFICULTAD,
-
 } from "../Actions/index";
 
 const initialState = {
   ejercicios: [],
   filteredEjercicios: [],
-  ejercicioDetail: [],
+  rutinaDetail: [],
   rutinas: [],
-  dificultad: [],
-  postRutina: []
+  dificultad: []
 };
 
 export default function footReducer(state = initialState, action) {
@@ -27,10 +25,10 @@ export default function footReducer(state = initialState, action) {
         ejercicios: action.payload,
         filteredEjercicios: action.payload,
       };
-    case GET_EJERCICIOS_ID:
+    case GET_RUTINA_ID:
       return {
         ...state,
-        ejercicioDetail: action.payload,
+        rutinaDetail: action.payload,
       };
     case CLEAR_DETAIL:
       return {
@@ -41,7 +39,8 @@ export default function footReducer(state = initialState, action) {
     case GET_NAME_EJERCICIOS:
       return {
         ...state,
-        ejercicios: action.payload,
+        ejercicios: [...state.filteredEjercicios],
+        filteredEjercicios: action.payload,
       };
     case GET_RUTINAS:
       return {
@@ -52,24 +51,19 @@ export default function footReducer(state = initialState, action) {
     case FILTER_BY_MUSCULO:
       return {
         ...state,
-        postRutina : [...state.postRutina , state.postRutina.filter((ejercicio) => ejercicio.muscle.includes(action.payload))],
-        filteredEjercicios: state.ejercicios.filter((ejercicio) =>
+        ejercicios: state.filteredEjercicios.filter((ejercicio) =>
           ejercicio.muscle.includes(action.payload)
-        ), 
-      }
-
+        ),
+      };
     case FILTER_BY_DIFICULTAD:
       return {
         ...state,
-        filteredEjercicios: state.ejercicios.filter((ejercicio) =>
+        ejercicios: state.filteredEjercicios.filter((ejercicio) =>
           ejercicio.difficulty.includes(action.payload)
         ),
-      }
-
-
+      };
 
     default:
-      return state;
+      return { ...state };
   }
-
 }
