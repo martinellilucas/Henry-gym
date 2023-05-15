@@ -134,13 +134,13 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
               rounded="md"
               onChange={onChange}
             >
-              <option value={"Beginner"} name="difficulty">
+              <option value={"beginner"} name="difficulty">
                 Beginner
               </option>
-              <option value={"Intermedate"} name="difficulty">
+              <option value={"intermediate"} name="difficulty">
                 Intermedate
               </option>
-              <option value={"Expert"} name="difficulty">
+              <option value={"expert"} name="difficulty">
                 Expert
               </option>
             </Select>
