@@ -2,18 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 
 .button {
   cursor: pointer;
-  background: none;
-  border-radius: 14rem;
+  border-radius: 5px;
   background-color: lightgray;
   margin: 0.3rem;
-  height: 1.5rem;
-  width: 5rem;
+  height: max-content;
+  width: max-content;
   font-weight: bold;
+  font-size: 1.2em;
+  padding: 2px 10px;
 }
 .button:hover {
   background-color: rgb(178, 180, 180);
@@ -22,13 +22,12 @@
 .input {
   cursor: auto;
   border: none;
-  border-radius: 1rem;
-  height: 1.5rem;
-  width: 20rem;
+  border-radius: 5px;
+  font-size: 1.2em;
   color: black;
   background-color: lightgray;
   margin: none;
   text-align: left;
-  padding-left: 0.5rem;
+  padding: 2px 10px;
   font-weight: bold;
 }

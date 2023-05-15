@@ -9,12 +9,12 @@ import { filterByMusculo } from "../../redux/Actions";
 import { filterByDificultad } from "../../redux/Actions";
 
 export default function Pagination() {
-  const allEjercicios = useSelector((state) => state.filteredEjercicios);
+  const allEjercicios = useSelector((state) => state.ejercicios);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
-  const count = 12;
+  const count = 8;
   const pageIndex = [];
 
   const ejerciciosPages = Math.ceil(allEjercicios.length / count);
@@ -47,22 +47,19 @@ export default function Pagination() {
     setCurrentPage(value);
   };
 
-  function handlerFilteredMusculos(e){
+  function handlerFilteredMusculos(e) {
     e.preventDefault();
     dispatch(filterByMusculo(e.target.value));
     setCurrentPage(1);
     document.getElementById("selectDificultad").selectedIndex = 0;
   }
 
-  function handlerFilteredDificultad(e){
+  function handlerFilteredDificultad(e) {
     e.preventDefault();
     dispatch(filterByDificultad(e.target.value));
     setCurrentPage(1);
     document.getElementById("selectMusculo").selectedIndex = 0;
   }
-
-
-
 
   return (
     <Box className={style.body}>
@@ -72,54 +69,50 @@ export default function Pagination() {
         align="center"
         justify="center"
       >
-        <SearchBar />
+        <div className={style.filterContainer}>
+          <SearchBar />
+          <select
+            id="selectMusculo"
+            onChange={(e) => handlerFilteredMusculos(e)}
+            className={style.film}
+          >
+            <option value="">Filtrado Por Musculo</option>
+            <option value="">Todos</option>
+            <option value="abdominals">Abdominals</option>
+            <option value="abductors">Abductors</option>
+            <option value="biceps">Biceps</option>
+            <option value="calves">Calves</option>
+            <option value="chest">Chest</option>
+            <option value="biceps">Biceps</option>
+            <option value="forearms">Forearms</option>
+            <option value="glutes">Glutes</option>
+            <option value="hamstrings">Hamstrings</option>
+            <option value="lats">Lats</option>
+            <option value="lower_back">Lower back</option>
+            <option value="middle_back">Middle back</option>
+            <option value="neck">Neck</option>
+            <option value="quadriceps">Quadriceps</option>
+            <option value="shoulders">Shoulders</option>
+            <option value="traps">Traps</option>
+            <option value="triceps">Triceps</option>
+          </select>
 
-
-        <select 
-      id="selectMusculo"
-      onChange={(e) => handlerFilteredMusculos(e)}
-      className={style.film}
-      >
-        <option value="" >Filtrado Por Musculo</option>
-        <option value="">Todos</option>
-        <option value="abdominals" >Abdominals</option>
-        <option value="abductors" >Abductors</option>
-        <option value="biceps" >Biceps</option>
-        <option value="calves" >Calves</option>
-        <option value="chest" >Chest</option>
-        <option value="biceps" >Biceps</option>
-        <option value="forearms" >Forearms</option>
-        <option value="glutes" >Glutes</option>
-        <option value="hamstrings" >Hamstrings</option>
-        <option value="lats" >Lats</option>
-        <option value="lower_back" >Lower back</option>
-        <option value="middle_back" >Middle back</option>
-        <option value="neck" >Neck</option>
-        <option value="quadriceps" >Quadriceps</option>
-        <option value="shoulders" >Shoulders</option>
-        <option value="traps" >Traps</option>
-        <option value="triceps" >Triceps</option>
-        </select>
-
-        <select
-        id="selectDificultad"
-        onChange={(e) => handlerFilteredDificultad(e)}
-        className={style.film}>
-          <option value="">Filtrado Por Dificultad</option>
-          <option value="">Todos</option>
-          <option value="beginner" >Beginner</option>
-          <option value="intermediate" >Intermediate</option>
-          <option value="expert" >Expert</option>
-        </select>
+          <select
+            id="selectDificultad"
+            onChange={(e) => handlerFilteredDificultad(e)}
+            className={style.film}
+          >
+            <option value="">Filtrado Por Dificultad</option>
+            <option value="">Todos</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
         <Flex margin="50px" align="center">
-
-
-
           <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
             &lt;
           </Button>
-
-          
 
           {pageIndex.map((index) => (
             <Button
@@ -140,9 +133,6 @@ export default function Pagination() {
         </Flex>
       </Flex>
       <EjercicioCards ejercicios={paginate} />
-
-
-
     </Box>
   );
 }
