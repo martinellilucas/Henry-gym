@@ -6,10 +6,12 @@ const postRutinas = async ({
   difficulty,
   ejercicios,
 }) => {
+
   const nombres = [];
   ejercicios.forEach((element) => {
     nombres.push(element.name);
   });
+
 
   const newRutina = await Rutina.create({
     grupoMuscular,
