@@ -1,23 +1,32 @@
- const { Ejercicio , Rutina} = require('../db');
+const { Ejercicio, Rutina } = require("../db");
 
- const postRutinas = async ({grupoMuscular,description,difficulty,ejercicios}) => {
+const postRutinas = async ({
+  grupoMuscular,
+  imagen,
+  difficulty,
+  ejercicios,
+}) => {
+  console.log(
+    `entro aca papa, estoy buscas ${
+      (grupoMuscular, imagen, difficulty, ejercicios)
+    }`
+  );
 
-    console.log(`entro aca papa, estoy buscas ${grupoMuscular,description,difficulty,ejercicios}`)
+  const newRutina = await Rutina.create({
+    grupoMuscular,
+    difficulty,
+    imagen,
+  });
 
-    const newRutina = await Rutina.create({
-        grupoMuscular,difficulty,description
-    })
+  const ejerciciosDb = await Ejercicio.findAll({
+    where: {
+      name: ejercicios,
+    },
+  });
 
-    const ejerciciosDb = await Ejercicio.findAll({
-        where : {
-            name : ejercicios
-        }
-    })
+  const creado = await newRutina.addEjercicio(ejerciciosDb);
 
-    const creado = await newRutina.addEjercicio(ejerciciosDb)
+  return creado;
+};
 
-    return creado
-
- }
-
- module.exports = postRutinas
+module.exports = postRutinas;

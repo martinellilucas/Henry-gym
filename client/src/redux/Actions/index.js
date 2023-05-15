@@ -63,17 +63,26 @@ export const getEjerciciosByName = (name) => {
 
 export const filterByMusculo = (musculo) => {
   return {
-    type : FILTER_BY_MUSCULO,
-    payload : musculo
-  }
-}
+    type: FILTER_BY_MUSCULO,
+    payload: musculo,
+  };
+};
 
 export const filterByDificultad = (dificultad) => {
   return {
-    type : FILTER_BY_DIFICULTAD,
-    payload : dificultad
-  }
-}
+    type: FILTER_BY_DIFICULTAD,
+    payload: dificultad,
+  };
+};
 
+export const postRutina = (rutina) => {
+  return async function () {
+    await axios
+      .post("https://henry-gym-production.up.railway.app/rutinas", rutina)
+      .then((res) => {
+        return res.data;
+      });
+  };
+};
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

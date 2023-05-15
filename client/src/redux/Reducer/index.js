@@ -14,7 +14,7 @@ const initialState = {
   filteredEjercicios: [],
   rutinaDetail: [],
   rutinas: [],
-  dificultad: []
+  dificultad: [],
 };
 
 export default function footReducer(state = initialState, action) {

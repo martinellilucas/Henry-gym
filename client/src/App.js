@@ -24,7 +24,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/rutinas" element={<PaginationRutinas />} />
         <Route path="/ejercicios" element={<Pagination />} />
-        <Route path="/postRutina" element={<PostRutina/>} />
+        <Route path="/form" element={<PostRutina />} />
       </Routes>
       {pathname !== "/" && <SmallCentered />}
     </div>

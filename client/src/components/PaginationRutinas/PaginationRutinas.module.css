@@ -1,4 +1,4 @@
-.container {
+.body {
   background-image: url("../../assets/rutinasBG.png");
   background-position: top;
   background-size: cover;
@@ -6,4 +6,11 @@
   width: 100%;
   padding-top: 850px;
   padding-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
