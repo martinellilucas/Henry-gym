@@ -6,25 +6,21 @@ const postRutinas = async ({
   difficulty,
   ejercicios,
 }) => {
-  console.log(
-    `entro aca papa, esto es musculo ${grupoMuscular}, esto es imagen ${imagen} y dificultad ${difficulty} y ultimo ejercicios ${ejercicios}`
-  );
+
+  const nombres = [];
+  ejercicios.forEach((element) => {
+    nombres.push(element.name);
+  });
+
 
   const newRutina = await Rutina.create({
     grupoMuscular,
     difficulty,
     imagen,
+    ejercicios: [nombres],
   });
 
-  const ejerciciosDb = await Ejercicio.findAll({
-    where: {
-      name: ejercicios,
-    },
-  });
-
-  const creado = await newRutina.addEjercicio(ejerciciosDb);
-
-  return creado;
+  return newRutina;
 };
 
 module.exports = postRutinas;
