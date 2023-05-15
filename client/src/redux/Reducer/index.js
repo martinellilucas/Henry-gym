@@ -14,7 +14,7 @@ const initialState = {
   filteredEjercicios: [],
   rutinaDetail: [],
   rutinas: [],
-  dificultad: [],
+  dificultad: []
 };
 
 export default function footReducer(state = initialState, action) {
@@ -55,7 +55,6 @@ export default function footReducer(state = initialState, action) {
           ejercicio.muscle.includes(action.payload)
         ),
       };
-
     case FILTER_BY_DIFICULTAD:
       return {
         ...state,

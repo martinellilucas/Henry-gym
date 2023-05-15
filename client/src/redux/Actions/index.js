@@ -63,14 +63,14 @@ export const getEjerciciosByName = (name) => {
 
 export const filterByMusculo = (musculo) => {
   return {
-    type : "FILTER_BY_MUSCULO",
+    type : FILTER_BY_MUSCULO,
     payload : musculo
   }
 }
 
 export const filterByDificultad = (dificultad) => {
   return {
-    type : "FILTER_BY_DIFICULTAD",
+    type : FILTER_BY_DIFICULTAD,
     payload : dificultad
   }
 }
