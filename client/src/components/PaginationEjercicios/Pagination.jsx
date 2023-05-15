@@ -42,6 +42,10 @@ export default function Pagination() {
     }
   };
 
+   function search(){
+     setPage(1);
+   }
+
   const handleClickButton = (value) => {
     setPage(value);
     setCurrentPage(value);
@@ -50,14 +54,14 @@ export default function Pagination() {
   function handlerFilteredMusculos(e) {
     e.preventDefault();
     dispatch(filterByMusculo(e.target.value));
-    setCurrentPage(1);
+    setPage(1);
     document.getElementById("selectDificultad").selectedIndex = 0;
   }
 
   function handlerFilteredDificultad(e) {
     e.preventDefault();
     dispatch(filterByDificultad(e.target.value));
-    setCurrentPage(1);
+    setPage(1);
     document.getElementById("selectMusculo").selectedIndex = 0;
   }
 
@@ -70,8 +74,10 @@ export default function Pagination() {
         justify="center"
       >
         <div className={style.filterContainer}>
+          <div onChange={(e) => search(e)}>
           <SearchBar />
-          <select
+          </div>
+          <select 
             id="selectMusculo"
             onChange={(e) => handlerFilteredMusculos(e)}
             className={style.film}

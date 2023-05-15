@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getEjerciciosByName } from "../../redux/Actions";
 import style from "../SearchBar/SearchBar.module.css";
-//import * as actions from "../../redux/Actions"
+
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -36,13 +36,3 @@ export default function SearchBar() {
     </div>
   );
 }
-
-// const SearchBar = () => {
-//   return (
-//     <div>
-//       <input className={style.search} placeholder=""></input>
-//     </div>
-//   );
-// };
-
-// export default SearchBar;
