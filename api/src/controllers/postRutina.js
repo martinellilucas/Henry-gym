@@ -7,9 +7,7 @@ const postRutinas = async ({
   ejercicios,
 }) => {
   console.log(
-    `entro aca papa, estoy buscas ${
-      (grupoMuscular, imagen, difficulty, ejercicios)
-    }`
+    `entro aca papa, esto es musculo ${grupoMuscular}, esto es imagen ${imagen} y dificultad ${difficulty} y ultimo ejercicios ${ejercicios}`
   );
 
   const newRutina = await Rutina.create({
