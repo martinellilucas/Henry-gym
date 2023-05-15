@@ -1,29 +1,21 @@
-const { Ejercicio,Rutina } = require("../db");
+const { Ejercicio, Rutina } = require("../db");
 
-const postRutinas = async ({
-  grupoMuscular,
-  imagen,
-  difficulty,
-  ejercicios,
-}) => {
-
+const postRutinas = async (difficulty, grupoMuscular, ejercicios, imagen) => {
   const nombres = [];
   ejercicios.forEach((element) => {
     nombres.push(element.name);
   });
 
-
   const newRutina = await Rutina.create({
-    grupoMuscular,
     difficulty,
+    grupoMuscular,
+    ejercicios: [...nombres],
     imagen,
-    ejercicios: [nombres],
   });
 
-  ejercicios.forEach(async(ejer) => {
-    await newRutina.addEjercicio(ejer)
-  })
-  
+  ejercicios.forEach(async (ejer) => {
+    await newRutina.addEjercicio(ejer.id);
+  });
 
   return newRutina;
 };
