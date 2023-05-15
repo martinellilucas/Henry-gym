@@ -82,9 +82,8 @@ export default function PostRutina() {
                 w="7rem"
                 colorScheme="red"
                 variant="solid"
-                type="submit"
                 onClick={(e) => {
-                  handleSubmit(e)
+                  handleSubmit(e);
                   toast({
                     title: "Rutina Creada!",
                     description: "Haz creado una Rutina Nueva.",
@@ -92,8 +91,6 @@ export default function PostRutina() {
                     duration: 3000,
                     isClosable: true,
                   });
-                  
-                
                 }}
               >
                 Submit
