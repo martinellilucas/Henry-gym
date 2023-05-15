@@ -161,11 +161,8 @@ const Form1 = () => {
                     })}
                 </Box>
             </Box>
-                
-    
-                </Box>
-                
-            </Box>
+        </Box>
+     </Box>
     );
 };
 
