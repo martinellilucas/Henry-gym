@@ -86,9 +86,7 @@ const Nav = () => {
       </Breadcrumb>
       {!isLoading && !user ? (
         <Button
-          onClick={() =>
-            loginWithRedirect({ returnTo: window.location.origin + "home" })
-          }
+          onClick={() => loginWithRedirect(window.location.origin + "/home")}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
