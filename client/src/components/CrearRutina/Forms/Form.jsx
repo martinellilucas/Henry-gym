@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 
 const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
+  const newForm = form;
+
   const musculos = [
     "abdominals",
     "abductors",
@@ -29,52 +31,13 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
     "triceps",
   ];
 
-  const validation = (target) => {
-    const regexURL = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
-    if (target === "difficulty") {
-      if (!form.difficulty.length) {
-        setError({ ...error, difficulty: "Debe seleccionar una dificultad" });
-      } else {
-        setError({ ...error, difficulty: "" });
-      }
-    }
-    if (target === "grupoMuscular") {
-      if (form.grupoMuscular.length >= 3) {
-        setError({
-          ...error,
-          grupoMuscular:
-            "Puede seleccionar hasta un maximo de 3 grupos musculares",
-        });
-      }
-      if (!form.grupoMuscular.length) {
-        setError({
-          ...error,
-          grupoMuscular: "Debe seleccionar al menos 1 grupo muscular",
-        });
-      } else {
-        setError({ ...error, grupoMuscular: "" });
-      }
-    }
-    if (target === "imagen") {
-      if (!regexURL.test(form.imagen)) {
-        setError({
-          ...error,
-          imagen:
-            "Invalid URL, try an ULR like: https://github.com/martinellilucas",
-        });
-      } else {
-        setError({ ...error, imagen: "" });
-      }
-    }
-  };
-
   const onChange = (event) => {
     const value = event.target.value;
     const target = event.target.name;
 
     // PARA AGREGAR Y SACAR MUSCULOS
     if (target === "grupoMuscular") {
-      if (!form.grupoMuscular.includes(value)) {
+      if (!newForm.grupoMuscular.includes(value)) {
         setForm({
           ...form,
           grupoMuscular: [...form.grupoMuscular, value],
@@ -83,14 +46,12 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
             ejercicios.find((e) => e.muscle === value),
           ],
         });
-        validation(target);
       } else {
         setForm({
           ...form,
           grupoMuscular: [...form.grupoMuscular.filter((e) => e !== value)],
           ejercicios: [...form.ejercicios.filter((e) => e.muscle !== value)],
         });
-        validation(target);
       }
     } else {
       setForm({
@@ -98,7 +59,6 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
         [target]: value,
       });
     }
-    validation(target);
   };
 
   return (
@@ -106,7 +66,6 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
         Creación de rutina
       </Heading>
-
       <Box display="flex" flexDirection="column">
         <Box>
           <FormControl as={GridItem} colSpan={6}>
@@ -132,13 +91,15 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
               w="full"
               value={form.difficulty}
               rounded="md"
-              onChange={onChange}
+              onChange={(e) => {
+                onChange(e, error, setError);
+              }}
             >
               <option value={"beginner"} name="difficulty">
                 Beginner
               </option>
               <option value={"intermediate"} name="difficulty">
-                Intermedate
+                Intermediate
               </option>
               <option value={"expert"} name="difficulty">
                 Expert
@@ -174,9 +135,6 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
             <></>
           )}
           <div>
-            <label className={style.label} htmlFor="imagen">
-              Imagen
-            </label>
             <input
               className={style.imagen}
               name="imagen"
