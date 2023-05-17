@@ -5,8 +5,10 @@ import { Button } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Landing = () => {
+  const { loginWithRedirect, user, isLoading } = useAuth0();
   return (
     <Box>
       <Box className={style.videoContainer}>
@@ -16,8 +18,18 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        <h1 className={style.msg}>Welcome, click 'explore' button to enter.</h1>
-
+        {!isLoading && !user && (
+          <NavLink to="/login">
+            <Button
+              onClick={() => loginWithRedirect()}
+              className={style.btn}
+              colorScheme="blackAlpha"
+              size="lg"
+            >
+              LOGIN
+            </Button>
+          </NavLink>
+        )}
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
           <h1 className={style.title}>HENRY'S GYM</h1>
