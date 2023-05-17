@@ -9,7 +9,7 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
@@ -17,7 +17,7 @@ import Profile from "../Profile/Profile";
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -95,7 +95,10 @@ const Nav = () => {
       </Breadcrumb>
       {!isAuthenticated && !user ? (
         <Button
-          onClick={() => loginWithRedirect()}
+          onClick={() => {
+            loginWithRedirect();
+            navigate("/home");
+          }}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
