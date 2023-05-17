@@ -20,7 +20,9 @@ const Landing = () => {
       <Box className={style.bottomContainer}>
         {!isLoading && !user ? (
           <Button
-            onClick={() => loginWithRedirect()}
+            onClick={() =>
+              loginWithRedirect({ returnTo: window.location.origin + "home" })
+            }
             className={style.btn}
             colorScheme="blackAlpha"
             size="lg"
@@ -28,7 +30,9 @@ const Landing = () => {
             LOGIN
           </Button>
         ) : (
-          <h1 className={style.title}>Welcome, you are logged in</h1>
+          <h1 className={style.title} color="white">
+            Welcome, you are logged in
+          </h1>
         )}
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
