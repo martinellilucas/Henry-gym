@@ -64,7 +64,7 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
   return (
     <Box className={style.form}>
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-        Creación de rutina
+        Create your on routine
       </Heading>
       <Box display="flex" flexDirection="column">
         <Box>
@@ -79,12 +79,12 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
               }}
               mt="2%"
             >
-              Dificultad
+              Difficulty
             </FormLabel>
             <Select
               id="dificultad"
               name="difficulty"
-              placeholder="Elegir uno"
+              placeholder="Select one"
               focusBorderColor="brand.400"
               shadow="sm"
               size="sm"
@@ -141,7 +141,7 @@ const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
               value={form.imagen}
               onChange={onChange}
               type="text"
-              placeholder="Ingrese la url de una imagen"
+              placeholder="Type an URL for the image"
             ></input>
           </div>
           {error.imagen ? (

@@ -1,9 +1,9 @@
 .card {
   height: 450px;
-  text-shadow: 1px 1px 3px white;
+  margin-left: 10%;
 }
 .textarea {
-  height: 150px;
+  height: 100px;
   margin-top: 5px;
   width: 100%;
   padding: 8px;
@@ -13,8 +13,6 @@
 }
 
 .title {
-  font-size: 7ex;
   font-weight: bolder;
-  text-align: center;
-  padding-top: 50px;
+  color: white;
 }

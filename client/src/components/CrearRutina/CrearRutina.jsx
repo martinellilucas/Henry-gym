@@ -40,7 +40,7 @@ const ThankYou = () => {
   return (
     <>
       <Heading className={styles.form3}>
-        Muchas gracias por cooperar a que sigamos creciendo!
+        Thank you very much for helping us to continue growing!
       </Heading>
       <NavLink to={"/home"}>
         <Button>Go Home</Button>
@@ -80,14 +80,14 @@ export default function PostRutina() {
     const regexURL = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
     setError((prevError) => ({
       ...prevError,
-      difficulty: form.difficulty ? "" : "Debe seleccionar una dificultad",
+      difficulty: form.difficulty ? "" : "You must select the difficulty",
       grupoMuscular:
         form.grupoMuscular.length > 0 && form.grupoMuscular.length <= 3
           ? ""
-          : "Debe seleccionar entre 1 y 3 grupos musculares",
+          : "You must select between 1 and 3 muscles",
       imagen: regexURL.test(form.imagen)
         ? ""
-        : "Debe proporcionar una URL de imagen",
+        : "You must type a valid URL for the image",
     }));
   }
 
@@ -125,8 +125,8 @@ export default function PostRutina() {
 
     if (error.difficulty || error.grupoMuscular || error.imagen) {
       toast({
-        title: "Poneme las cosas fracasado",
-        description: "Faltan casillas para llenar.",
+        title: "Missing data",
+        description: "There are unfilled boxes",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -134,8 +134,8 @@ export default function PostRutina() {
     } else {
       dispatch(postRutina(form));
       toast({
-        title: "Rutina Creada!",
-        description: "Haz creado una Rutina Nueva.",
+        title: "Routine created!",
+        description: "You have created a new routine.",
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -166,7 +166,7 @@ export default function PostRutina() {
         {step === 1 ? (
           <Box className={style.form}>
             <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-              Creación de rutina
+              Create your own routine
             </Heading>
             <Box display="flex" flexDirection="column">
               <Box>
@@ -181,12 +181,12 @@ export default function PostRutina() {
                     }}
                     mt="2%"
                   >
-                    Dificultad
+                    Difficulty
                   </FormLabel>
                   <Select
                     id="dificultad"
                     name="difficulty"
-                    placeholder="Elegir uno"
+                    placeholder="Select one"
                     focusBorderColor="brand.400"
                     shadow="sm"
                     size="sm"
@@ -229,7 +229,7 @@ export default function PostRutina() {
                     value={form.imagen}
                     onChange={onChange}
                     type="url"
-                    placeholder="Ingrese la URL de una imagen"
+                    placeholder="Type an URL for the image"
                   />
                 </div>
                 {error.imagen && (

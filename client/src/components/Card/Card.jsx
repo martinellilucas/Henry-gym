@@ -5,8 +5,8 @@ const Card = ({ id, difficulty, ejercicios, grupoMuscular, imagen }) => {
   return (
     <div className={style.cardBody}>
       <img className={style.image} src={imagen} alt="img"></img>
-      <h1 className={style.text}>Dificultad: {difficulty}</h1>
-      <h1 className={style.text}>Ejercicios</h1>
+      <h1 className={style.text}>Difficulty: {difficulty}</h1>
+      <h1 className={style.text}>Exercises</h1>
       <ul className={style.list}>
         {ejercicios?.map((ejercicio) => {
           return (
@@ -16,7 +16,7 @@ const Card = ({ id, difficulty, ejercicios, grupoMuscular, imagen }) => {
           );
         })}
       </ul>
-      <h1 className={style.text}>Grupo Muscular</h1>
+      <h1 className={style.text}>Muscles</h1>
       <ul className={style.list}>
         {grupoMuscular?.map((grupo) => {
           return (
@@ -29,7 +29,7 @@ const Card = ({ id, difficulty, ejercicios, grupoMuscular, imagen }) => {
       <Divider />
       <NavLink to={`/detail/${id}`}>
         <Button className={style.btn} variant="solid" colorScheme="blackAlpha">
-          DETALLES
+          DETAIL
         </Button>
       </NavLink>
     </div>

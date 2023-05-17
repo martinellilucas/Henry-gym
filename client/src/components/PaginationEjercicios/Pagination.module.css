@@ -1,11 +1,11 @@
 .body {
   background-image: url("../../assets/ejerciciosBG.png");
-  background-position: top left;
-  background-size: auto;
+  background-position: top;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  padding-top: 950px;
   width: 100%;
+  padding-top: 250px;
 }
 
 .film {

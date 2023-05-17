@@ -45,21 +45,17 @@ const Nav = () => {
   return (
     <Box
       className={style.nav}
-      height={isScrolled ? "140px" : "160px"}
       position="sticky"
       top="0"
       zIndex="999"
       transition="height 0.3s"
     >
-      <div className={style.searchContainer}>
-        <img className={style.logo} src={logo} alt="logo" />
-        {/* <SearchBar className={style.search} /> */}
-      </div>
+      <img className={style.logo} src={logo} alt="logo" />
 
-      <Breadcrumb separator=">" className={style.itemContainer}>
+      <Breadcrumb separator=" " className={style.itemContainer}>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/home">
-            INICIO
+            HOME
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
@@ -67,26 +63,28 @@ const Nav = () => {
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/rutinas">
-            RUTINAS
+            ROUTINES
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/ejercicios">
-            EJERCICIOS
+            EXERCISES
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToMembresias}>
-            MEMBRESIAS
+            MEMBERSHIPS
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/about">
-            CONOCENOS
+            ABOUT
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <Button colorScheme="whiteAlpha">INGRESAR</Button>
       </Breadcrumb>
+      <Button className={style.button} colorScheme="whiteAlpha">
+        LOGIN
+      </Button>
     </Box>
   );
 };

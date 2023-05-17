@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { getEjerciciosByName } from "../../redux/Actions";
 import style from "../SearchBar/SearchBar.module.css";
 
-
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -23,7 +22,7 @@ export default function SearchBar() {
       <input
         className={style.input}
         type="text"
-        placeholder="Por ejemplo: Hammer Curls"
+        placeholder="Hammer Curls"
         onChange={(e) => handleInputChange(e)}
       ></input>
       <button
@@ -31,7 +30,7 @@ export default function SearchBar() {
         type="submit"
         onClick={(e) => handleSubmit(e)}
       >
-        BUSCAR
+        SEARCH
       </button>
     </div>
   );
