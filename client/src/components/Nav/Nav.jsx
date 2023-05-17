@@ -1,6 +1,6 @@
-//import SearchBar from "../SearchBar/SearchBar";
-import logo from "../../assets/logo.png";
-import style from "../Nav/Nav.module.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,13 +10,14 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import logo from "../../assets/logo.png";
+import style from "../Nav/Nav.module.css";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const navigate = useNavigate(); // Accede al objeto de navegación
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +44,10 @@ const Nav = () => {
         inline: "nearest",
       });
     }
+  };
+
+  const handleLogout = () => {
+    logout({ returnTo: "https://henry-gym-pf.onrender.com/home" });
   };
 
   return (
@@ -86,21 +91,20 @@ const Nav = () => {
         </BreadcrumbItem>
       </Breadcrumb>
       {!isAuthenticated ? (
-        <Button
-          onClick={() => loginWithRedirect()}
-          className={style.btn}
-          colorScheme="blackAlpha"
-          size="lg"
-        >
-          LOGIN
-        </Button>
+        <NavLink to="/home">
+          <Button
+            onClick={() => loginWithRedirect()}
+            className={style.btn}
+            colorScheme="blackAlpha"
+            size="lg"
+          >
+            LOGIN
+          </Button>
+        </NavLink>
       ) : (
         <div className={style.profileContainer}>
           <Profile />
-          <Button
-            colorScheme="blackAlpha"
-            onClick={() => logout({ returnTo: window.location.origin })}
-          >
+          <Button colorScheme="blackAlpha" onClick={handleLogout}>
             LOGOUT
           </Button>
         </div>
