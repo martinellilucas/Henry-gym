@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Landing = () => {
-  const { loginWithRedirect, user, isLoading } = useAuth0();
   return (
     <Box>
       <Box className={style.videoContainer}>
@@ -18,22 +17,8 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        {!isLoading && !user ? (
-          <Button
-            onClick={() =>
-              loginWithRedirect({ returnTo: window.location.origin + "home" })
-            }
-            className={style.btn}
-            colorScheme="blackAlpha"
-            size="lg"
-          >
-            LOGIN
-          </Button>
-        ) : (
-          <h1 className={style.title} color="white">
-            Welcome, you are logged in
-          </h1>
-        )}
+        <h1 className={style.msg}>Welcome, click 'explore' button to enter.</h1>
+
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
           <h1 className={style.title}>HENRY'S GYM</h1>
