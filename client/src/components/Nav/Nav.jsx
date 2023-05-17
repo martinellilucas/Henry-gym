@@ -95,9 +95,12 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
-        <div>
+        <div className={style.profileContainer}>
           <Profile />
-          <Button onClick={() => logout({ returnTo: window.location.origin })}>
+          <Button
+            colorScheme="blackAlpha"
+            onClick={() => logout({ returnTo: window.location.origin })}
+          >
             LOGOUT
           </Button>
         </div>
