@@ -37,17 +37,55 @@ export default function PostRutina() {
     difficulty: "",
     grupoMuscular: [],
     imagen: "",
-    ejercicios: [],
   });
 
+  const [hasError, setHasError] = useState(true)
+  
   useEffect(() => {
     dispatch(getEjercicios());
   }, [dispatch]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(postRutina(form));
-    setForm({ difficulty: "", grupoMuscular: [], imagen: "", ejercicios: [] });
+  function validate(form,error,setError,setHasError) {
+    const regexURL = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+    
+    console.log(`este es la dificultad ${form.difficulty}`)
+
+    if (!form.difficulty.length || !form.grupoMuscular.length ||!form.imagen ){
+      setError({
+        difficulty: !form.difficulty ? "Debe seleccionar una dificultad" : "",
+        grupoMuscular:
+          form.grupoMuscular.length === 0
+            ? "Debe seleccionar al menos 1 grupo muscular"
+            : "",
+        imagen: !regexURL.test(form.imagen) ? "Debe proporcionar una URL de imagen" : "",
+
+    })} else {setHasError(false)}
+  }
+
+  const handleSubmit = async (event) => {
+
+    await validate(form,error,setError,setHasError)
+
+    if(hasError){
+      event.preventDefault();
+      toast({
+        title: 'Poneme las cosas fracasado',
+        description: "Faltan casillas para llenar.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      event.preventDefault();
+      dispatch(postRutina(form));
+        toast({
+                    title: "Rutina Creada!",
+                    description: "Haz creado una Rutina Nueva.",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,})
+      setForm({ difficulty: "", grupoMuscular: [], imagen: "", ejercicios: [] });
+    }
   };
 
   return (
@@ -69,7 +107,6 @@ export default function PostRutina() {
             form={form}
             setForm={setForm}
             error={error}
-            setError={setError}
           />
         ) : (
           <Form2 />
@@ -80,17 +117,11 @@ export default function PostRutina() {
               <Button
                 type="submit"
                 w="7rem"
+                disabled 
                 colorScheme="red"
                 variant="solid"
                 onClick={(e) => {
                   handleSubmit(e);
-                  toast({
-                    title: "Rutina Creada!",
-                    description: "Haz creado una Rutina Nueva.",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true,
-                  });
                 }}
               >
                 Submit
