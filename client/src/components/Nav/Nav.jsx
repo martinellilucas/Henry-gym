@@ -16,7 +16,7 @@ import Profile from "../Profile/Profile";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,14 +65,22 @@ const Nav = () => {
           <BreadcrumbLink>CLASES</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/rutinas">
-            ROUTINES
-          </BreadcrumbLink>
+          {isAuthenticated && user ? (
+            <BreadcrumbLink as={NavLink} to="/rutinas">
+              ROUTINES
+            </BreadcrumbLink>
+          ) : (
+            <></>
+          )}
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/ejercicios">
-            EXERCISES
-          </BreadcrumbLink>
+          {isAuthenticated && user ? (
+            <BreadcrumbLink as={NavLink} to="/ejercicios">
+              EXERCISES
+            </BreadcrumbLink>
+          ) : (
+            <></>
+          )}
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToMembresias}>
@@ -85,7 +93,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isAuthenticated ? (
+      {!isAuthenticated && !user ? (
         <Button
           onClick={() => loginWithRedirect()}
           className={style.btn}
