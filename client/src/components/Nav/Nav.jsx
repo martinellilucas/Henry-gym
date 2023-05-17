@@ -16,8 +16,7 @@ import Profile from "../Profile/Profile";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { loginWithRedirect, user, isLoading, logout, isAuthenticated } =
-    useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,7 +87,7 @@ const Nav = () => {
       </Breadcrumb>
       {!isAuthenticated ? (
         <Button
-          onClick={() => loginWithRedirect(window.location.origin + "/home")}
+          onClick={() => loginWithRedirect(window.location.origin)}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
