@@ -1,12 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router"; // Importa desde "react-router" en lugar de "react-router-dom"
+import { useNavigate } from "react-router-dom"; // Importa desde "react-router" en lugar de "react-router-dom"
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const DOMAIN = "dev-oa6kftjco4pbuzjl.us.auth0.com";
 const CLIENT_ID = "6T6Kos97gZ7SHcH6Gf1Fxv6Uu14OK5qP";
 
 const Auth0ProviderWithHistory = ({ children }) => {
-  const history = useHistory(); // Utiliza useHistory en lugar de useNavigate
+  const history = useNavigate(); // Utiliza useHistory en lugar de useNavigate
 
   const onRedirectCallback = (appState) => {
     history.push(appState?.returnTo || "/home"); // Redirige a "/home" después del inicio de sesión
