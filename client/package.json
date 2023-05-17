@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.0",
     "@chakra-ui/react": "^2.6.1",
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.10.0",

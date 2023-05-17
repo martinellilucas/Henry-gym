@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import LoginButton from "../LoginButton/LoginButton";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -82,9 +83,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <Button className={style.button} colorScheme="whiteAlpha">
-        LOGIN
-      </Button>
+      <LoginButton />
     </Box>
   );
 };

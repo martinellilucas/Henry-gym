@@ -7,14 +7,18 @@ import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import store from "../src/redux/Store/store";
+import { Auth0Provider } from "@auth0/auth0-react";
+import Auth0ProviderConfig from "./components/AuthZeroConfig/auth0config";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
+      <Auth0Provider {...Auth0ProviderConfig}>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </Auth0Provider>
     </BrowserRouter>
   </Provider>
 );
