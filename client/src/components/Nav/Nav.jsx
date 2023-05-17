@@ -45,7 +45,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>CLASES</BreadcrumbLink>
+          <BreadcrumbLink>CLASSES</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           {isAuthenticated && user ? (
