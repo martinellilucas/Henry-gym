@@ -8,15 +8,15 @@ const CLIENT_ID = "6T6Kos97gZ7SHcH6Gf1Fxv6Uu14OK5qP";
 const Auth0ProviderWithHistory = ({ children }) => {
   const history = useNavigate();
 
-  const onRedirectCallback = () => {
-    history.push("/home");
+  const onRedirectCallback = (appState) => {
+    history.push(appState?.returnTo || window.location.pathname);
   };
 
   return (
     <Auth0Provider
       domain={DOMAIN}
       clientId={CLIENT_ID}
-      redirectUri={window.location.origin + "/home"}
+      redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
       {children}
