@@ -1,0 +1,35 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: lightgray;
+  margin: 0.3rem;
+  height: max-content;
+  width: max-content;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 2px 10px;
+  border: 2px solid black;
+}
+.button:hover {
+  background-color: rgb(178, 180, 180);
+}
+
+.input {
+  cursor: auto;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: black;
+  background-color: lightgray;
+  margin: none;
+  text-align: center;
+  padding: 2px 10px;
+  font-weight: bold;
+  border: 2px solid black;
+}

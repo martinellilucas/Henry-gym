@@ -1,0 +1,18 @@
+.card {
+  height: 450px;
+  margin-left: 10%;
+}
+.textarea {
+  height: 100px;
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  background-color: lightgray;
+  border-radius: 10px;
+  resize: none;
+}
+
+.title {
+  font-weight: bolder;
+  color: white;
+}
