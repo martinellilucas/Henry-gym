@@ -9,7 +9,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
   const navigate = useNavigate();
 
   const onRedirectCallback = (appState) => {
-    navigate("https://henry-gym-pf.onrender.com/home"); // Redirige a la ubicación deseada
+    navigate("/home"); // Redirige a la ubicación deseada
   };
 
   return (
