@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 
-const DOMAIN = "dev-oa6kftjco4pbuzjl.us.auth0.com";
-const CLIENT_ID = "6T6Kos97gZ7SHcH6Gf1Fxv6Uu14OK5qP";
+const DOMAIN = "dev-7nbk3insf1dr67c3.us.auth0.com";
+const CLIENT_ID = "5GMWPIA9jVbH6tuVHd3lpPN4oTVILKdn";
 
 const Auth0ProviderWithHistory = ({ children }) => {
   const navigate = useNavigate();
 
   const onRedirectCallback = () => {
-    navigate("/home"); // Redirige a la ubicación deseada
+    navigate("/home");
   };
 
   return (
@@ -17,7 +17,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       domain={DOMAIN}
       clientId={CLIENT_ID}
       redirectUri={window.location.origin}
-      onRedirectCallback={onRedirectCallback} // Añade el callback de redirección
+      onRedirectCallback={onRedirectCallback}
     >
       {children}
     </Auth0Provider>
