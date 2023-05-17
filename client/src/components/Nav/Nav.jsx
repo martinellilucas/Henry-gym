@@ -15,24 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const scrollToMembresias = () => {
     const membresiasSection = document.getElementById("membresias");
@@ -97,7 +80,6 @@ const Nav = () => {
         <Button
           onClick={() => {
             loginWithRedirect();
-            navigate("/home");
           }}
           className={style.btn}
           colorScheme="blackAlpha"
