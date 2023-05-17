@@ -12,10 +12,12 @@ import {
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import Profile from "../Profile/Profile";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { loginWithRedirect, user, isLoading, logout } = useAuth0();
+  const { loginWithRedirect, user, isLoading, logout, isAuthenticated } =
+    useAuth0();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,11 +86,9 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isLoading && !user ? (
+      {!isAuthenticated ? (
         <Button
-          onClick={() =>
-            loginWithRedirect({ returnTo: window.location.origin + "home" })
-          }
+          onClick={() => loginWithRedirect(window.location.origin + "/home")}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
@@ -96,9 +96,12 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
-        <Button onClick={() => logout({ returnTo: window.location.origin })}>
-          LOGOUT
-        </Button>
+        <>
+          <Profile />
+          <Button onClick={() => logout({ returnTo: window.location.origin })}>
+            LOGOUT
+          </Button>
+        </>
       )}
     </Box>
   );
