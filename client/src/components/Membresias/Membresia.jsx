@@ -40,7 +40,7 @@ export default function ThreeTierPricing() {
     <Box py={12}>
       <VStack spacing={2} textAlign="center">
         <Heading as="h1" fontSize="5xl" fontWeight="bolder" textAlign="center">
-          ¡Sumate a uno de nuestros planes!
+          ¡Join one of our plans!
         </Heading>
         <Text
           textAlign="center"
@@ -48,7 +48,7 @@ export default function ThreeTierPricing() {
           fontWeight="bolder"
           color={"gray.500"}
         >
-          ¡Elegí el que más se adecúe a tus gustos y comenzá ya mismo!
+          ¡Choose the one that best suits you and start right away!
         </Text>
       </VStack>
       <Stack
@@ -61,7 +61,7 @@ export default function ThreeTierPricing() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Plata
+              Silver
             </Text>
             <img
               className={style.img2}
@@ -72,13 +72,13 @@ export default function ThreeTierPricing() {
             />
             <HStack justifyContent="center">
               <Text fontSize="3xl" fontWeight="600">
-                $
+                U$D
               </Text>
               <Text fontSize="5xl" fontWeight="900">
-                5000
+                30
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /mensual
+                /monthly
               </Text>
             </HStack>
           </Box>
@@ -90,15 +90,15 @@ export default function ThreeTierPricing() {
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Horario libre.
+                Free time.
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Musculacion.
+                Bodybuilding.
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Rutinas todos los dias.
+                Rutines every day.
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
@@ -108,7 +108,7 @@ export default function ThreeTierPricing() {
                   colorScheme="red"
                   variant="outline"
                 >
-                  Comenzar ahora
+                  Start now
                 </Button>
               </NavLink>
             </Box>
@@ -133,12 +133,12 @@ export default function ThreeTierPricing() {
                 fontWeight="600"
                 rounded="xl"
               >
-                Más Popular
+                Most popular
               </Text>
             </Box>
             <Box py={4} px={12}>
               <Text fontWeight="500" fontSize="2xl">
-                Oro
+                Gold
               </Text>
               <img
                 className={style.img}
@@ -149,13 +149,13 @@ export default function ThreeTierPricing() {
               />
               <HStack justifyContent="center">
                 <Text fontSize="3xl" fontWeight="600">
-                  $
+                  U$D
                 </Text>
                 <Text fontSize="5xl" fontWeight="900">
-                  7500
+                  50
                 </Text>
                 <Text fontSize="3xl" color="gray.500">
-                  /mensual
+                  /monthly
                 </Text>
               </HStack>
             </Box>
@@ -167,29 +167,25 @@ export default function ThreeTierPricing() {
               <List spacing={3} textAlign="start" px={12}>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  Musculacion y una clase mas a tu eleccion.
+                  Bodybuilding and one of our classes of your choice.
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  Horario libre y clases grupales con horarios.
+                  Free schedule and group classes with schedules.
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  Rutinas todos los dias.
+                  Rutines every day.
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  Un profesor profesional guiandote.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  Descuentos en marcas adheridas!
+                  <ListIcon as={FaCheckCircle} color="green.500" />A
+                  professional teacher guiding you.
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
                 <NavLink to="/about">
                   <Button className={style.Button} colorScheme="red">
-                    Comenzar ahora
+                    Start now
                   </Button>
                 </NavLink>
               </Box>
@@ -199,7 +195,7 @@ export default function ThreeTierPricing() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Platino
+              Platinum
             </Text>
             <img
               className={style.img3}
@@ -210,13 +206,13 @@ export default function ThreeTierPricing() {
             />
             <HStack justifyContent="center">
               <Text fontSize="3xl" fontWeight="600">
-                $
+                U$D
               </Text>
               <Text fontSize="5xl" fontWeight="900">
-                10000
+                100
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /mensual
+                /monthly
               </Text>
             </HStack>
           </Box>
@@ -228,15 +224,19 @@ export default function ThreeTierPricing() {
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Musculacion y todas las clases extras que quieras!
+                Bodybuilding and three of our classes of your choice
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Horario libre.
+                Free schedule.
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Descuentos y sorteos en marcas adheridas.
+                Rutines every day.
+              </ListItem>
+              <ListItem>
+                <ListIcon as={FaCheckCircle} color="green.500" />A professional
+                teacher guiding you.
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
@@ -246,7 +246,7 @@ export default function ThreeTierPricing() {
                   colorScheme="red"
                   variant="outline"
                 >
-                  Comenzar ahora
+                  Start now
                 </Button>
               </NavLink>
             </Box>

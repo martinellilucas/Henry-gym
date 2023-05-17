@@ -12,7 +12,7 @@ export default function Pagination() {
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
-  const count = 6;
+  const count = 8;
   const pageIndex = [];
 
   const rutinasPages = Math.ceil(allRutinas.length / count);
@@ -49,7 +49,7 @@ export default function Pagination() {
     <div className={style.body}>
       <Box className={style.container}>
         <NavLink to="/form">
-          <Button colorScheme="blackAlpha">CREA LA TUYA</Button>
+          <Button colorScheme="blackAlpha">CREATE YOUR OWN</Button>
         </NavLink>
         <Flex
           display="flex"

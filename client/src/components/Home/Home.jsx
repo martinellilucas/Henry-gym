@@ -14,7 +14,7 @@ const Home = () => {
       <Carousel></Carousel>
       <div className={style.titleContainer}>
         <Box>
-          <h1 id="membresias">NUESTRAS MEMBRESIAS</h1>
+          <h1 id="membresias">OUR MEMBERSHIPS</h1>
         </Box>
       </div>
       <ThreeTierPricing></ThreeTierPricing>

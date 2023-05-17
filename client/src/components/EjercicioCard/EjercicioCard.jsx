@@ -13,31 +13,55 @@ import style from "./EjercicioCard.module.css";
 export function EjercicioCard(e) {
   return (
     <div key={e.id}>
-      <Card className={style.card} bg="blackAlpha.600">
+      <Card className={style.card} bg="blackAlpha.700">
         <CardHeader>
-          <Heading size="xl">{e.name}</Heading>
+          <Heading className={style.title} size="xl">
+            {e.name}
+          </Heading>
         </CardHeader>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
             <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Dificultad
+              <Heading
+                className={style.title}
+                size="s"
+                textTransform="uppercase"
+              >
+                Difficulty
               </Heading>
-              <Text pt="2" fontSize="sm">
+              <Text
+                color="white"
+                textTransform="uppercase"
+                pt="2"
+                fontSize="sm"
+              >
                 {e.difficulty}
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Grupo Muscular
+              <Heading
+                className={style.title}
+                size="s"
+                textTransform="uppercase"
+              >
+                Muscle
               </Heading>
-              <Text pt="2" fontSize="sm">
+              <Text
+                color="white"
+                textTransform="uppercase"
+                pt="2"
+                fontSize="sm"
+              >
                 {e.muscle}
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Instrucciones
+              <Heading
+                className={style.title}
+                size="s"
+                textTransform="uppercase"
+              >
+                Instructions
               </Heading>
               <textarea className={style.textarea}>{e.instructions}</textarea>
             </Box>

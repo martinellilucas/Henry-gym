@@ -17,7 +17,7 @@ const Landing = () => {
 
       <Box className={style.bottomContainer}>
         <Button className={style.btn} colorScheme="blackAlpha" size="lg">
-          INGRESAR
+          LOGIN
         </Button>
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
@@ -25,7 +25,7 @@ const Landing = () => {
         </Box>
         <NavLink to="/home">
           <Button className={style.btn} colorScheme="blackAlpha" size="lg">
-            EXPLORAR
+            EXPLORE
           </Button>
         </NavLink>
       </Box>

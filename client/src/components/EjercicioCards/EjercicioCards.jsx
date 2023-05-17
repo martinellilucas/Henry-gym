@@ -10,17 +10,15 @@ export default function EjercicioCards({ ejercicios }) {
       width="100%"
       justifyContent="center"
     >
-      <SimpleGrid columns={2} spacing={8} justifyContent="center">
-        {ejercicios?.map((e) => (
-          <EjercicioCard
-            key={e.id}
-            name={e.name}
-            difficulty={e.difficulty}
-            muscle={e.muscle}
-            instructions={e.instructions}
-          />
-        ))}
-      </SimpleGrid>
+      {ejercicios?.map((e) => (
+        <EjercicioCard
+          key={e.id}
+          name={e.name}
+          difficulty={e.difficulty}
+          muscle={e.muscle}
+          instructions={e.instructions}
+        />
+      ))}
     </Box>
   );
 }

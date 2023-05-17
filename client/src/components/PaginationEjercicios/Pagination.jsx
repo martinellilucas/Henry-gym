@@ -42,9 +42,9 @@ export default function Pagination() {
     }
   };
 
-   function search(){
-     setPage(1);
-   }
+  function search() {
+    setPage(1);
+  }
 
   const handleClickButton = (value) => {
     setPage(value);
@@ -75,15 +75,15 @@ export default function Pagination() {
       >
         <div className={style.filterContainer}>
           <div onChange={(e) => search(e)}>
-          <SearchBar />
+            <SearchBar />
           </div>
-          <select 
+          <select
             id="selectMusculo"
             onChange={(e) => handlerFilteredMusculos(e)}
             className={style.film}
           >
-            <option value="">Filtrado Por Musculo</option>
-            <option value="">Todos</option>
+            <option value="">Filter by muscle</option>
+            <option value="">All</option>
             <option value="abdominals">Abdominals</option>
             <option value="abductors">Abductors</option>
             <option value="biceps">Biceps</option>
@@ -108,8 +108,8 @@ export default function Pagination() {
             onChange={(e) => handlerFilteredDificultad(e)}
             className={style.film}
           >
-            <option value="">Filtrado Por Dificultad</option>
-            <option value="">Todos</option>
+            <option value="">Filter by difficulty</option>
+            <option value="">All</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="expert">Expert</option>
