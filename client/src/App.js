@@ -10,12 +10,16 @@ import SmallCentered from "../src/components/Footer/footer";
 import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import PostRutina from "./components/CrearRutina/CrearRutina";
+import SidebarWithHeader from "./components/DashboardAdmin/DashboardAdmin";
 
 function App() {
   const { pathname } = useLocation();
+  const showNavbarAndFooter = !(pathname === "/dashboard" || pathname === "/");
+
   return (
     <div>
-      {pathname !== "/" && <Nav />}
+      {showNavbarAndFooter && <Nav />}
+
       <Routes>
         <Route path="*" element={<Error />} />
         <Route path="/" element={<Landing />} />
@@ -25,10 +29,13 @@ function App() {
         <Route path="/rutinas" element={<PaginationRutinas />} />
         <Route path="/ejercicios" element={<Pagination />} />
         <Route path="/form" element={<PostRutina />} />
+        <Route path="/dashboard" element={<SidebarWithHeader />} />
       </Routes>
-      {pathname !== "/" && <SmallCentered />}
+      
+      {showNavbarAndFooter && <SmallCentered />}
     </div>
   );
 }
 
 export default App;
+
