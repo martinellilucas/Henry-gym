@@ -87,7 +87,7 @@ const Nav = () => {
       </Breadcrumb>
       {!isAuthenticated ? (
         <Button
-          onClick={() => loginWithRedirect(window.location.origin)}
+          onClick={() => loginWithRedirect()}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
