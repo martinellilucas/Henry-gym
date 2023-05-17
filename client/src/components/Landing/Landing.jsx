@@ -7,6 +7,15 @@ import { Image } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
+const LoginButton = () => {
+  const { loginWithRedirect } = useAuth0();
+
+  const handleLogin = () => {
+    loginWithRedirect({ redirectUri: "/home" });
+  };
+  return <Button onClick={handleLogin}>Log In</Button>;
+};
+
 const Landing = () => {
   const { loginWithRedirect, user, isLoading } = useAuth0();
   return (
