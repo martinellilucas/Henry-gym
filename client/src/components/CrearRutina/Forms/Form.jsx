@@ -9,10 +9,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-
-const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
-  
-  const newForm = form
+const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
+  const newForm = form;
 
   const musculos = [
     "abdominals",
@@ -33,12 +31,7 @@ const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
     "triceps",
   ];
 
-  
-
   const onChange = (event) => {
-
-    
-
     const value = event.target.value;
     const target = event.target.name;
 
@@ -53,14 +46,12 @@ const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
             ejercicios.find((e) => e.muscle === value),
           ],
         });
-        
       } else {
         setForm({
           ...form,
           grupoMuscular: [...form.grupoMuscular.filter((e) => e !== value)],
           ejercicios: [...form.ejercicios.filter((e) => e.muscle !== value)],
         });
-  
       }
     } else {
       setForm({
@@ -75,7 +66,6 @@ const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
         Creación de rutina
       </Heading>
-
       <Box display="flex" flexDirection="column">
         <Box>
           <FormControl as={GridItem} colSpan={6}>
@@ -102,14 +92,14 @@ const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
               value={form.difficulty}
               rounded="md"
               onChange={(e) => {
-              onChange(e,error,setError)
+                onChange(e, error, setError);
               }}
             >
               <option value={"beginner"} name="difficulty">
                 Beginner
               </option>
               <option value={"intermediate"} name="difficulty">
-                Intermedate
+                Intermediate
               </option>
               <option value={"expert"} name="difficulty">
                 Expert
@@ -145,7 +135,6 @@ const Form1 = ({ form, setForm, error, setError, ejercicios}) => {
             <></>
           )}
           <div>
-          
             <input
               className={style.imagen}
               name="imagen"
