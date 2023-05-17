@@ -95,12 +95,12 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
-        <>
+        <div>
           <Profile />
           <Button onClick={() => logout({ returnTo: window.location.origin })}>
             LOGOUT
           </Button>
-        </>
+        </div>
       )}
     </Box>
   );
