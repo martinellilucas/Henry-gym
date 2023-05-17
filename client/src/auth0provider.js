@@ -8,7 +8,7 @@ const CLIENT_ID = "6T6Kos97gZ7SHcH6Gf1Fxv6Uu14OK5qP";
 const Auth0ProviderWithHistory = ({ children }) => {
   const navigate = useNavigate();
 
-  const onRedirectCallback = (appState) => {
+  const onRedirectCallback = () => {
     navigate("/home"); // Redirige a la ubicación deseada
   };
 
