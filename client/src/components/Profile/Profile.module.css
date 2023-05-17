@@ -9,3 +9,10 @@
   font-size: 1em;
   color: white;
 }
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
