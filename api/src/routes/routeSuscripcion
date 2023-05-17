@@ -1,0 +1,7 @@
+const handlerGetSuscripcion = require("../handlers/handlerGetSuscripcion");
+const { Router } = require("express");
+const routeSuscripcion = Router();
+
+routeSuscripcion.get("/", handlerGetSuscripcion);
+
+module.exports = routeSuscripcion;
