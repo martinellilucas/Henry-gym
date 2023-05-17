@@ -5,7 +5,6 @@ import { Button } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Landing = () => {
   return (
