@@ -1,66 +1,33 @@
+import React from "react";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  GridItem,
+  Heading,
+  Select,
+} from "@chakra-ui/react";
 import style from "./Form.module.css";
 
-import {
-  Heading,
-  FormControl,
-  GridItem,
-  FormLabel,
-  Select,
-  Box,
-} from "@chakra-ui/react";
-
-const Form1 = ({ form, setForm, error, setError, ejercicios }) => {
-  const newForm = form;
-
-  const musculos = [
-    "abdominals",
-    "abductors",
-    "adductors",
-    "biceps",
-    "calves",
-    "chest",
-    "forearms",
-    "glutes",
-    "hamstrings",
-    "lats",
-    "lower_back",
-    "middle_back",
-    "neck",
-    "quadriceps",
-    "traps",
-    "triceps",
-  ];
-
-  const onChange = (event) => {
-    const value = event.target.value;
-    const target = event.target.name;
-
-    // PARA AGREGAR Y SACAR MUSCULOS
-    if (target === "grupoMuscular") {
-      if (!newForm.grupoMuscular.includes(value)) {
-        setForm({
-          ...form,
-          grupoMuscular: [...form.grupoMuscular, value],
-          ejercicios: [
-            ...form.ejercicios,
-            ejercicios.find((e) => e.muscle === value),
-          ],
-        });
-      } else {
-        setForm({
-          ...form,
-          grupoMuscular: [...form.grupoMuscular.filter((e) => e !== value)],
-          ejercicios: [...form.ejercicios.filter((e) => e.muscle !== value)],
-        });
-      }
-    } else {
-      setForm({
-        ...form,
-        [target]: value,
-      });
-    }
-  };
-
+const musculos = [
+  "abdominals",
+  "abductors",
+  "adductors",
+  "biceps",
+  "calves",
+  "chest",
+  "forearms",
+  "glutes",
+  "hamstrings",
+  "lats",
+  "lower_back",
+  "middle_back",
+  "neck",
+  "quadriceps",
+  "traps",
+  "triceps",
+];
+const Form1 = ({ form, error, onChange, setError }) => {
   return (
     <Box className={style.form}>
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
