@@ -63,7 +63,7 @@ const Nav = () => {
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink as={NavLink} to="/rutinas">
-            RUTINES
+            ROUTINES
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
