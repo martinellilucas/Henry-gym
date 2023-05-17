@@ -1,40 +1,11 @@
-import {
-  Box,
-  ButtonGroup,
-  Button,
-  FormControl,
-  GridItem,
-  FormLabel,
-  Select,
-  Heading,
-  Flex,
-} from "@chakra-ui/react";
-import style from "./Forms/Form.module.css";
+import { Box, ButtonGroup, Button, Heading, Flex } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useToast } from "@chakra-ui/react";
 import styles from "./CrearRutina.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getEjercicios, postRutina } from "../../redux/Actions";
-
-const musculos = [
-  "abdominals",
-  "abductors",
-  "adductors",
-  "biceps",
-  "calves",
-  "chest",
-  "forearms",
-  "glutes",
-  "hamstrings",
-  "lats",
-  "lower_back",
-  "middle_back",
-  "neck",
-  "quadriceps",
-  "traps",
-  "triceps",
-];
+import Form1 from "./Forms/Form";
 
 const ThankYou = () => {
   return (
@@ -150,6 +121,13 @@ export default function PostRutina() {
     }
   };
 
+  const isDisabled = !(
+    form.difficulty &&
+    form.grupoMuscular.length > 0 &&
+    form.grupoMuscular.length <= 3 &&
+    form.imagen
+  );
+
   return (
     <div className={styles.div2}>
       <Box
@@ -164,80 +142,12 @@ export default function PostRutina() {
         as="form"
       >
         {step === 1 ? (
-          <Box className={style.form}>
-            <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-              Create your own routine
-            </Heading>
-            <Box display="flex" flexDirection="column">
-              <Box>
-                <FormControl as={GridItem} colSpan={6}>
-                  <FormLabel
-                    htmlFor="difficulty"
-                    fontSize="sm"
-                    fontWeight="md"
-                    color="gray.700"
-                    _dark={{
-                      color: "gray.50",
-                    }}
-                    mt="2%"
-                  >
-                    Difficulty
-                  </FormLabel>
-                  <Select
-                    id="dificultad"
-                    name="difficulty"
-                    placeholder="Select one"
-                    focusBorderColor="brand.400"
-                    shadow="sm"
-                    size="sm"
-                    w="full"
-                    value={form.difficulty}
-                    rounded="md"
-                    onChange={onChange}
-                  >
-                    <option value={"beginner"}>Beginner</option>
-                    <option value={"intermediate"}>Intermediate</option>
-                    <option value={"expert"}>Expert</option>
-                  </Select>
-                </FormControl>
-                {error.difficulty && (
-                  <span className={style.msgError}>{error.difficulty}</span>
-                )}
-                <Box className={style.checkbox}>
-                  {musculos.map((e) => (
-                    <div className={style.checkOption} key={e}>
-                      <label className={style.labelOption} htmlFor={e}>
-                        {e.toUpperCase()}
-                      </label>
-                      <input
-                        type="checkbox"
-                        onChange={onChange}
-                        name="grupoMuscular"
-                        value={e}
-                        id={e}
-                      />
-                    </div>
-                  ))}
-                </Box>
-                {error.grupoMuscular && (
-                  <span className={style.msgError}>{error.grupoMuscular}</span>
-                )}
-                <div>
-                  <input
-                    className={style.imagen}
-                    name="imagen"
-                    value={form.imagen}
-                    onChange={onChange}
-                    type="url"
-                    placeholder="Type an URL for the image"
-                  />
-                </div>
-                {error.imagen && (
-                  <span className={style.msgError}>{error.imagen}</span>
-                )}
-              </Box>
-            </Box>
-          </Box>
+          <Form1
+            form={form}
+            error={error}
+            onChange={onChange}
+            setError={setError}
+          />
         ) : (
           <ThankYou />
         )}
@@ -249,12 +159,7 @@ export default function PostRutina() {
                 w="7rem"
                 colorScheme="red"
                 variant="solid"
-                isDisabled={
-                  !form.difficulty ||
-                  form.grupoMuscular.length === 0 ||
-                  form.grupoMuscular.length > 3 ||
-                  !form.imagen
-                }
+                isDisabled={isDisabled}
               >
                 Submit
               </Button>
