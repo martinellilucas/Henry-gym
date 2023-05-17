@@ -18,7 +18,7 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        {!isLoading && !user && (
+        {!isLoading && !user ? (
           <Button
             onClick={() => loginWithRedirect()}
             className={style.btn}
@@ -27,6 +27,8 @@ const Landing = () => {
           >
             LOGIN
           </Button>
+        ) : (
+          <h1 className={style.title}>Welcome, you are logged in</h1>
         )}
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
