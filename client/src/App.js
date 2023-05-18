@@ -11,6 +11,7 @@ import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import PostRutina from "./components/CrearRutina/CrearRutina";
 import Auth0ProviderWithHistory from "./auth0provider";
+import ClasesMembresia from "./components/Clases/Clases";
 
 function App() {
   const { pathname } = useLocation();
@@ -27,6 +28,7 @@ function App() {
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
           <Route path="/form" element={<PostRutina />} />
+          <Route path="/clases" element={<ClasesMembresia />} />
         </Routes>
         {pathname !== "/" && <SmallCentered />}
       </div>
