@@ -49,7 +49,7 @@ const Profile = () => {
                 src={user.picture}
                 alt={user.name}
               />
-              <BreadcrumbSeparator />
+
               <Heading className={style.title}>{user.name}</Heading>
               <Heading className={style.text}>{user.email}</Heading>
               <Heading className={style.text}>Membership</Heading>
