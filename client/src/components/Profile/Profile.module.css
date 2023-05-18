@@ -1,8 +1,8 @@
 .img {
   --color: royalblue; /* the color of the border */
-  --border: 10px; /* the thickness of the border */
+  --border: 5px; /* the thickness of the border */
   --offset: 30px; /* control the movement of the border */
-  --gap: 3px; /* the gap on hover */
+  --gap: 5px; /* the gap on hover */
 
   border-radius: 50%;
   cursor: pointer;
