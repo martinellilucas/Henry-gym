@@ -72,7 +72,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isAuthenticated && !user ? (
+      {!isAuthenticated ? (
         <Button
           onClick={() => {
             loginWithRedirect();
