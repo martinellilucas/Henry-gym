@@ -17,14 +17,25 @@ import Profile from "../Profile/Profile";
 const Nav = () => {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const scrollToMembresias = () => {
-    const membresiasSection = document.getElementById("membresias");
-    if (membresiasSection) {
-      membresiasSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+    if (window.location.pathname !== "/home") {
+      window.location.href = "/home";
+    } else {
+      const membresiasSection = document.getElementById("membresias");
+      if (membresiasSection) {
+        membresiasSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
     }
   };
 
@@ -40,12 +51,14 @@ const Nav = () => {
 
       <Breadcrumb separator=" " className={style.itemContainer}>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/home">
+          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/home">
             HOME
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/clases" >CLASSES</BreadcrumbLink>
+          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/clases">
+            CLASSES
+          </BreadcrumbLink>
         </BreadcrumbItem>
         {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
@@ -56,7 +69,7 @@ const Nav = () => {
         )}
         {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
-            <BreadcrumbLink as={NavLink} to="/ejercicios">
+            <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/ejercicios">
               EXERCISES
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -67,7 +80,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/about">
+          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/about">
             ABOUT
           </BreadcrumbLink>
         </BreadcrumbItem>
