@@ -1,0 +1,501 @@
+[33mcommit d08a581943ad0306bbe60106d39fc3b06dbe8625[m[33m ([m[1;36mHEAD -> [m[1;32mauthzeroTobi[m[33m, [m[1;31morigin/authzeroTobi[m[33m)[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 18:34:34 2023 -0300
+
+    pruebas auth0
+
+[33mcommit 8bb37b5a76383e9b83892c80b07508e682c5ef8b[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 17:55:33 2023 -0300
+
+    pruebas auth0
+
+[33mcommit fdc1f67798cdbccc462bd661083826c9908589e0[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 17:38:03 2023 -0300
+
+    pruebas auth0
+
+[33mcommit 1a54ceb69fffe5c6bef1c3f0b695b9dbda91cba7[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 17:32:40 2023 -0300
+
+    pruebas auth0
+
+[33mcommit fdcef56dc515bc63e139ec1af336270d193b9490[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 17:27:47 2023 -0300
+
+    pruebas auth0
+
+[33mcommit 008f4313959ca47520c90d85a6841b7bdc3b1466[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 17:23:34 2023 -0300
+
+    pruebas
+
+[33mcommit 08c5d8eb0042d5ec040446deada5a22a72bfd3f3[m[33m ([m[1;31morigin/developer[m[33m, [m[1;32mdeveloper[m[33m)[m
+Merge: 8fa87a0 bde08cc
+Author: tob1zap <118204991+tob1zap@users.noreply.github.com>
+Date:   Wed May 17 16:51:38 2023 -0300
+
+    Merge pull request #81 from martinellilucas/auth0-redirect
+    
+    auth0-redirect
+
+[33mcommit bde08cc65a76366d021a12160486e09d6eae8fe6[m[33m ([m[1;31morigin/auth0-redirect[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 16:50:29 2023 -0300
+
+    auth0-redirect
+
+[33mcommit 8fa87a0e96ea4fd76b26b177ca0d96df3d8b8784[m
+Merge: 88f4b67 b349c1e
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Wed May 17 16:28:03 2023 -0300
+
+    Merge pull request #79 from martinellilucas/build
+    
+    redux
+
+[33mcommit b349c1e472c6f5272a76c90394abab0d4ff2f3cd[m[33m ([m[1;31morigin/build[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 16:25:42 2023 -0300
+
+    redux
+
+[33mcommit 88f4b67b716ba27a0bd47e45add7ceef2e261515[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 16:24:28 2023 -0300
+
+    redux
+
+[33mcommit acf1e2d698ec560af4d77e842adc82cfdc7987ec[m
+Merge: dd9235a a999122
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Wed May 17 15:39:53 2023 -0300
+
+    Merge pull request #76 from martinellilucas/auth0
+    
+    Auth0
+
+[33mcommit a9991220f2ebc8b1beff062ce244e5e7cc447f2e[m[33m ([m[1;31morigin/auth0[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 15:36:53 2023 -0300
+
+    Auth0
+
+[33mcommit dd9235a22915aca42b44e185c42af934b9dce219[m
+Merge: 528c7fb 8bd4ae9
+Author: Matias Augusto Cano <107439266+matiaascano@users.noreply.github.com>
+Date:   Wed May 17 14:49:58 2023 -0300
+
+    Merge pull request #74 from martinellilucas/solucionDeForm
+    
+    modularizacion de form
+
+[33mcommit 8bd4ae9f5e73568935a9d934409c17e8934a8763[m[33m ([m[1;31morigin/solucionDeForm[m[33m, [m[1;32msolucionDeForm[m[33m)[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 14:37:39 2023 -0300
+
+    modularizacion de form
+
+[33mcommit 528c7fb2063ee1ea90bf0fe71af5953b33583ecd[m
+Merge: 7b90189 d765220
+Author: Matias Augusto Cano <107439266+matiaascano@users.noreply.github.com>
+Date:   Wed May 17 13:42:29 2023 -0300
+
+    Merge pull request #73 from martinellilucas/spanglish-out
+    
+    Spanglish out
+
+[33mcommit d7652207b8bb81a3d7f722dff4ed1f7ac12be0bb[m[33m ([m[1;31morigin/spanglish-out[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 13:17:10 2023 -0300
+
+    routines no rutines xd
+
+[33mcommit 480a3b3fbcea17c3f57e214c1c67ff8423810155[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Wed May 17 13:15:04 2023 -0300
+
+    Cambie varios estilados y pase la pagina a ingles
+
+[33mcommit 7b90189397f8bf85065e52ccb66ecfcdce423bca[m
+Merge: 5212d10 dfb3c26
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Wed May 17 11:20:12 2023 -0300
+
+    Merge pull request #72 from martinellilucas/solucionDeForm
+    
+    Solucion de form
+
+[33mcommit dfb3c26c82f5417335f6a1544c33be7e6648176b[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Wed May 17 01:37:39 2023 -0300
+
+    FORMS ARREGLADOS
+
+[33mcommit aad2f662689b4d45aa1e6a34d5c7552509ceb81e[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Tue May 16 23:55:04 2023 -0300
+
+    Form casi resuelto
+
+[33mcommit 5212d108518f2f0a36fc22d7b12a90959e253aef[m
+Merge: 84e2687 def87f9
+Author: aguspurici <96840030+aguspurici@users.noreply.github.com>
+Date:   Tue May 16 22:33:16 2023 -0300
+
+    Merge pull request #71 from martinellilucas/suscripcion
+    
+    Creacion de modelos y rutas de Clase, Entrenador y suscripcion
+
+[33mcommit def87f98ed07fb4ccd5b367ede132f3a9584ff41[m[33m ([m[1;31morigin/suscripcion[m[33m)[m
+Author: SebastianGaviriaM <sebastiangaviriamontoya@gmail.com>
+Date:   Tue May 16 18:32:27 2023 -0500
+
+    Creacion de modelos y rutas de Clase, Entrenador y suscripcion
+
+[33mcommit 84e26873e6995ec8d1a10adff6d85970169ccb64[m[33m ([m[1;32mpostRutinaFixIntento[m[33m)[m
+Merge: 1879c7b 6669580
+Author: tob1zap <118204991+tob1zap@users.noreply.github.com>
+Date:   Mon May 15 15:10:33 2023 -0300
+
+    Merge pull request #70 from martinellilucas/solucionDeForm
+    
+    solucion del form, no las validaciones
+
+[33mcommit 6669580fa424e3d730376eccefbd879c96e345ab[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Mon May 15 15:09:32 2023 -0300
+
+    solucion del form, no las validaciones
+
+[33mcommit 1879c7bc6ff661d48a83227958ee20bb471304b5[m
+Merge: 88c3cd7 e656755
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Mon May 15 14:51:16 2023 -0300
+
+    Merge pull request #69 from martinellilucas/botonbuscar
+    
+    error del buscar
+
+[33mcommit e65675563f4451c74c1aa493bd8b2186614f3bbc[m[33m ([m[1;31morigin/botonbuscar[m[33m)[m
+Author: aguspurici <agustinmp.2002@gmail.com>
+Date:   Mon May 15 12:49:17 2023 -0300
+
+    error del buscar
+
+[33mcommit 88c3cd7fe3be2ce29ffaf072f2915e8649d9d9ba[m
+Merge: cd4a5f8 8f1265f
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 12:42:04 2023 -0300
+
+    Merge pull request #68 from martinellilucas/nav
+    
+    error de filtros y de la searchbar con la paginacion
+
+[33mcommit 8f1265ff180c9752db4c35fd4e4f7edf4991c3c3[m[33m ([m[1;31morigin/nav[m[33m)[m
+Author: aguspurici <agustinmp.2002@gmail.com>
+Date:   Mon May 15 12:19:10 2023 -0300
+
+    error de filtros y de la searchbar con la paginacion
+
+[33mcommit cd4a5f843f666ed4eaa9d3f6513159e0c0b80343[m
+Merge: 8164a1f ed5508c
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 03:34:29 2023 -0300
+
+    Merge pull request #67 from martinellilucas/prueba-post-2
+    
+    error arreglado
+
+[33mcommit ed5508c81cbfccb7c93834461e7fe3159dca3680[m[33m ([m[1;31morigin/prueba-post-2[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Mon May 15 03:32:45 2023 -0300
+
+    error arreglado
+
+[33mcommit 8164a1f1eae4b66fc56b49cc77101cf3467f0d44[m
+Merge: b83fb76 a77adab
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 03:16:42 2023 -0300
+
+    Merge pull request #66 from martinellilucas/lastChance
+    
+    last chance
+
+[33mcommit a77adabb51dd5c4c58c54dd9856c4cd30dd11e64[m[33m ([m[1;31morigin/lastChance[m[33m)[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Mon May 15 03:15:34 2023 -0300
+
+    last chance
+
+[33mcommit b83fb76cb07929336b6dbcc6749c3dc3121e6736[m
+Merge: abdf18d 24f7508
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Mon May 15 02:51:34 2023 -0300
+
+    Merge pull request #64 from martinellilucas/prueba-post
+    
+    post corregido
+
+[33mcommit 24f7508443842e46b20097443110a4e5ba7a2128[m[33m ([m[1;31morigin/prueba-post[m[33m)[m
+Merge: 3d081eb abdf18d
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 02:51:27 2023 -0300
+
+    Merge branch 'developer' into prueba-post
+
+[33mcommit 3d081eb5c2ba947a1bc8a0e644c43148e307afac[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Mon May 15 02:50:21 2023 -0300
+
+    post corregido
+
+[33mcommit abdf18dbf9f2c69a6bbc33c96d08640836eeaec3[m
+Merge: 190cd30 501d438
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 02:19:43 2023 -0300
+
+    Merge pull request #63 from martinellilucas/consola
+    
+    boludes\
+
+[33mcommit 501d4382eb093aaf39ac4c2391eaf88a5bf4744f[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Mon May 15 02:18:51 2023 -0300
+
+    boludes\
+
+[33mcommit 190cd30e2ecd0c742575d5bad34757f8b9723abd[m
+Merge: 4affb58 9847287
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Mon May 15 02:15:36 2023 -0300
+
+    Merge pull request #62 from martinellilucas/consola
+    
+    consola
+
+[33mcommit 9847287b99c289957368fa67d27df26abcb1996e[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Mon May 15 02:12:46 2023 -0300
+
+    consola
+
+[33mcommit 4affb583f8205954d6707d720a93b63e5dd0559e[m
+Merge: 0c98fc7 5dd9b18
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Mon May 15 01:51:13 2023 -0300
+
+    Merge pull request #60 from martinellilucas/validation-form
+    
+    validaciones del formulario tienen 1 bug
+
+[33mcommit 5dd9b18a5525149920bb5dd9dc124e5e6fa15114[m[33m ([m[1;31morigin/validation-form[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Mon May 15 01:49:07 2023 -0300
+
+    validaciones del formulario tienen 1 bug
+
+[33mcommit 0c98fc7b2be96c6f3e4f2898cafa0aca9834fe4e[m
+Merge: 098e1c1 6d4011a
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 23:05:49 2023 -0300
+
+    Merge pull request #59 from martinellilucas/Form
+    
+    Formulario
+
+[33mcommit 6d4011af4c8dd9745e7a007ceb5be842c5b65fd0[m
+Merge: 93901e1 098e1c1
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Sun May 14 23:04:37 2023 -0300
+
+    Merge branch 'developer' into Form
+
+[33mcommit 098e1c134a7f7fc668fde6ea66112d94c2bae192[m
+Merge: a1cd265 696865b
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Sun May 14 23:03:28 2023 -0300
+
+    Merge pull request #58 from martinellilucas/bug-filtros-search
+    
+    bug resuelto
+
+[33mcommit 93901e141e996fae61ccdc4cdee9e034011d4d66[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Sun May 14 23:02:46 2023 -0300
+
+    Formulario
+
+[33mcommit 696865b049d6364ec472b6c2872459c954edd7d8[m[33m ([m[1;31morigin/bug-filtros-search[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 21:35:03 2023 -0300
+
+    bug resuelto
+
+[33mcommit a1cd265b397440f709f1e59ddf22c8166710513b[m
+Merge: e32ef80 805180f
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 20:28:27 2023 -0300
+
+    Merge pull request #57 from martinellilucas/rutinas-id-detail
+    
+    detail page
+
+[33mcommit 805180f8e9488811be729aa70bc083f992640542[m[33m ([m[1;31morigin/rutinas-id-detail[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 19:55:00 2023 -0300
+
+    detail page
+
+[33mcommit e32ef80d94b9df52e4aa18692dfbc5b4785da8e1[m
+Merge: 14fe196 1bb3442
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Sun May 14 19:20:29 2023 -0300
+
+    Merge pull request #56 from martinellilucas/FiltrosEjercicios
+    
+    Filtros de los ejercicios sin css
+
+[33mcommit 1bb34427414a9390768e182a548a633eb71f2d24[m[33m ([m[1;31morigin/FiltrosEjercicios[m[33m)[m
+Author: matiaascano <matiaascano@gmail.com>
+Date:   Sun May 14 19:15:42 2023 -0300
+
+    Filtros de los ejercicios sin css
+
+[33mcommit 14fe196e2baeb2931535278d52aae59a59a65dd3[m
+Merge: 78cba9f 64db9a4
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 17:31:04 2023 -0300
+
+    Merge pull request #54 from martinellilucas/ejercicios-bground
+    
+    ejercicios vista estilado
+
+[33mcommit 78cba9f08c7fb5c3e4fc009aae058b05636acd50[m
+Merge: 2b2c4af 3c52057
+Author: Matias Augusto Cano <107439266+matiaascano@users.noreply.github.com>
+Date:   Sun May 14 17:29:59 2023 -0300
+
+    Merge pull request #55 from martinellilucas/paginationRutinas
+    
+    paginado de rutinas
+
+[33mcommit 3c520570a3f660669520ee95353aa8ea8f7d5f61[m[33m ([m[1;31morigin/paginationRutinas[m[33m, [m[1;32mpaginationRutinas[m[33m)[m
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Sun May 14 17:24:03 2023 -0300
+
+    paginado de rutinas
+
+[33mcommit 64db9a48c838c2c62d59c094cea3cbf1a743ce3d[m[33m ([m[1;31morigin/ejercicios-bground[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 17:14:00 2023 -0300
+
+    ejercicios vista estilado
+
+[33mcommit 2b2c4af6ef38f371ec07a3dd6c4c37d1f1c94fbb[m
+Merge: 015fb99 eede4ea
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 16:56:12 2023 -0300
+
+    Merge pull request #53 from martinellilucas/rutinas-render
+    
+    renderizado de rutinas terminado
+
+[33mcommit eede4eac86e17d1ad6ea6eeb99407e4f0d3826d9[m[33m ([m[1;31morigin/rutinas-render[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 16:38:58 2023 -0300
+
+    renderizado de rutinas terminado
+
+[33mcommit 015fb9941025b9bdc1cb999d123473048ed60c06[m
+Merge: ad0ae8a b967dd3
+Author: RcdLF <105218136+RcdLF@users.noreply.github.com>
+Date:   Sun May 14 16:16:50 2023 -0300
+
+    Merge pull request #52 from martinellilucas/Script
+    
+    No cambiar el Json de start en Api
+
+[33mcommit b967dd3c09058bb860367e3a336e63ee5132c741[m[33m ([m[1;31morigin/Script[m[33m)[m
+Author: unknown <luciofuentes55@gmail.com>
+Date:   Sun May 14 16:10:16 2023 -0300
+
+    No cambiar el Json de start en Api
+
+[33mcommit ad0ae8a32b473e862f95db3b7a4d4c0c2f95f771[m
+Merge: e9a3b89 9e7caeb
+Author: Matias Augusto Cano <107439266+matiaascano@users.noreply.github.com>
+Date:   Sun May 14 15:22:33 2023 -0300
+
+    Merge pull request #50 from martinellilucas/rutinas-render
+    
+    agregue imagenes a las rutinas falta probarlo, ahora se renderizan la…
+
+[33mcommit 9e7caeb74221730b38f3507c44be5fccc3853c59[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 15:08:32 2023 -0300
+
+    agregue imagenes a las rutinas falta probarlo, ahora se renderizan las rutinas de la db
+
+[33mcommit e9a3b892c9797537643ca9c04ce67eea7f3db511[m
+Merge: 83bbfaf 9c4d8d8
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 14:05:17 2023 -0300
+
+    Merge pull request #49 from martinellilucas/retoque-pagination
+    
+    retoque css
+
+[33mcommit 9c4d8d8132398a4c85f6b5b86816f1893599ef6b[m[33m ([m[1;31morigin/retoque-pagination[m[33m)[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 14:04:59 2023 -0300
+
+    conflictos resueltos
+
+[33mcommit 6f92da1e8c86b54bab8490b6ed5af14b093484c3[m
+Merge: 28c46eb 83bbfaf
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 14:03:10 2023 -0300
+
+    Merge branch 'developer' into retoque-pagination
+
+[33mcommit 83bbfaf17736acf9a9fd0823cab27d48cd4d8d12[m
+Merge: 2ce4057 d798e1e
+Author: Lucas Martinelli <74325322+martinellilucas@users.noreply.github.com>
+Date:   Sun May 14 14:00:45 2023 -0300
+
+    Merge pull request #48 from martinellilucas/rutinas-render
+    
+    ruta, handler y controller getRutinaById
+
+[33mcommit 28c46eb44829fe50806c35d45c7da837f5f9f2a6[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 12:44:55 2023 -0300
+
+    retoque css
+
+[33mcommit d798e1e3ad7eb29afa7535a404ad1bc178269652[m
+Author: Lucas Martinelli <martinellilucas8@gmail.com>
+Date:   Sun May 14 12:20:18 2023 -0300
+
+    ruta, handler y controller getRutinaById
+
+[33mcommit 2ce405713d90cc26c5964e2830ba663839d4b6d3[m
+Merge: f555e74 7a36da3
+Author: tob1zap <118204991+tob1zap@users.noreply.github.com>
+Date:   Sat May 13 20:43:14 2023 -0300
+
+    Merge pull request #47 from martinellilucas/paginationEjercicios
+    
+    Pagination ejercicios
+
+[33mcommit 7a36da3d7cfc6940cfcd5384a306992400166bcc[m[33m ([m[1;31morigin/paginationEjercicios[m[33m, [m[1;32mpaginationEjercicios[m[33m)[m
+Merge: 5c7b29b f555e74
+Author: tobi <tobiaszapata99@gmail.com>
+Date:   Sat May 13 20:39:47 2023 -0300
+
+    paginado, cartas y contenedor de cartas de ejercicios
