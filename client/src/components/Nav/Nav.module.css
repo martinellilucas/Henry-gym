@@ -6,20 +6,19 @@
   width: 100%;
   background: rgb(10, 10, 10, 0.9);
   border-bottom: 1px solid white;
-  height: 70px;
+  height: 120px;
 }
 .logo {
   width: 100px;
   height: 100px;
   background-color: white;
-  border-radius: 50px;
+  border-radius: 50%;
   margin-left: 30px;
   border: 2px solid white;
 }
 
 .itemContainer {
   height: max-content;
-
   font-size: 1.2em;
   font-weight: BOLD;
   text-align: center;
