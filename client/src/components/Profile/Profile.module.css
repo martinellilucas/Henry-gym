@@ -37,12 +37,7 @@
 img:hover {
   --_s: 0px;
 }
-.innerImg {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 2px solid royalblue;
-}
+
 .body {
   display: flex;
   flex-direction: column;
