@@ -15,9 +15,10 @@ import {
 } from "@chakra-ui/react";
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
   if (isLoading) {
     return <div>LOADING...</div>;
   }
@@ -46,7 +47,14 @@ const Profile = () => {
             </DrawerBody>
 
             <DrawerFooter>
-              <Heading>Henry's Gym</Heading>
+              <Button
+                colorScheme="blackAlpha"
+                onClick={() => {
+                  logout();
+                }}
+              >
+                LOGOUT
+              </Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

@@ -5,34 +5,16 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
   Button,
   Box,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const scrollToMembresias = () => {
     const membresiasSection = document.getElementById("membresias");
@@ -62,18 +44,22 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>CLASES</BreadcrumbLink>
+          <BreadcrumbLink>CLASSES</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/rutinas">
-            ROUTINES
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/ejercicios">
-            EXERCISES
-          </BreadcrumbLink>
-        </BreadcrumbItem>
+        {!isAuthenticated && (
+          <BreadcrumbItem className={style.item}>
+            <BreadcrumbLink as={NavLink} to="/rutinas">
+              ROUTINES
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        )}
+        {!isAuthenticated && (
+          <BreadcrumbItem className={style.item}>
+            <BreadcrumbLink as={NavLink} to="/ejercicios">
+              EXERCISES
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        )}
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToMembresias}>
             MEMBERSHIPS
@@ -95,15 +81,7 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
-        <div className={style.profileContainer}>
-          <Profile />
-          <Button
-            colorScheme="blackAlpha"
-            onClick={() => logout({ returnTo: window.location.origin })}
-          >
-            LOGOUT
-          </Button>
-        </div>
+        <Profile />
       )}
     </Box>
   );
