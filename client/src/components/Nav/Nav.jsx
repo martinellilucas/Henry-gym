@@ -90,10 +90,7 @@ const Nav = () => {
       ) : (
         <div className={style.profileContainer}>
           <Profile />
-          <Button
-            colorScheme="blackAlpha"
-            onClick={() => logout({ returnTo: window.location.origin })}
-          >
+          <Button colorScheme="blackAlpha" onClick={() => logout()}>
             LOGOUT
           </Button>
         </div>
