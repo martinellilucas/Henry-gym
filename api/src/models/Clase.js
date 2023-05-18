@@ -22,10 +22,6 @@ module.exports = (sequelize) => {
       horario: {
         type: DataTypes.TIME,
         allowNull: false,
-      },
-      entrenador:{
-        type: DataTypes.UUID,
-        allowNull: false
       }
     },
     {
