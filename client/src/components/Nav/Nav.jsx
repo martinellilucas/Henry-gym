@@ -8,13 +8,16 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
+
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
 
   const scrollToMembresias = () => {
     const membresiasSection = document.getElementById("membresias");
@@ -26,7 +29,7 @@ const Nav = () => {
       });
     }
   };
-
+  const navigate = useNavigate();
   return (
     <Box
       className={style.nav}
@@ -45,6 +48,7 @@ const Nav = () => {
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink>CLASSES</BreadcrumbLink>
+
         </BreadcrumbItem>
         {!isAuthenticated && (
           <BreadcrumbItem className={style.item}>
@@ -71,9 +75,11 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isAuthenticated ? (
+      {!isAuthenticated && !user ? (
         <Button
-          onClick={() => loginWithRedirect()}
+          onClick={() => {
+            loginWithRedirect();
+          }}
           className={style.btn}
           colorScheme="blackAlpha"
           size="lg"
@@ -81,7 +87,9 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
+
         <Profile />
+
       )}
     </Box>
   );
