@@ -1,5 +1,4 @@
 .img {
-  margin-right: 30px;
   --color: royalblue; /* the color of the border */
   --border: 10px; /* the thickness of the border */
   --offset: 30px; /* control the movement of the border */
