@@ -7,6 +7,7 @@
   background: rgb(10, 10, 10, 0.9);
   border-bottom: 1px solid white;
   height: 120px;
+  padding-right: 30px;
 }
 .logo {
   width: 100px;
@@ -28,10 +29,4 @@
 }
 .button {
   margin-right: 30px;
-}
-.profileContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
