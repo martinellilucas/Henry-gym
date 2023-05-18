@@ -12,6 +12,7 @@ import {
   Button,
   useDisclosure,
   Heading,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 const Profile = () => {
@@ -25,7 +26,7 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <>
-        <Button ref={btnRef} onClick={onOpen}>
+        <Button className={style.btn} ref={btnRef} onClick={onOpen}>
           <img className={style.img} src={user.picture} alt={user.name} />
         </Button>
 
@@ -39,11 +40,16 @@ const Profile = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Profile</DrawerHeader>
-            <DrawerBody>
-              <img className={style.img} src={user.picture} alt={user.name} />
-              <Heading>{user.name}</Heading>
-              <Heading>{user.email}</Heading>
-              <Heading>My membership</Heading>
+            <DrawerBody className={style.body}>
+              <img
+                className={style.innerImg}
+                src={user.picture}
+                alt={user.name}
+              />
+              <BreadcrumbSeparator />
+              <Heading className={style.title}>{user.name}</Heading>
+              <Heading className={style.text}>{user.email}</Heading>
+              <Heading className={style.text}>Membership</Heading>
             </DrawerBody>
 
             <DrawerFooter>

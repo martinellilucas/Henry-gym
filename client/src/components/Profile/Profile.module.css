@@ -4,17 +4,35 @@
   border-radius: 50%;
   border: 2px solid royalblue;
 }
-
-.name {
-  font-size: 1em;
-  color: white;
-  margin-left: 20px;
-  margin-right: 20px;
+.innerImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid royalblue;
 }
-
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+.text {
+  font-size: 1em;
+  font-weight: lighter;
+}
 .profileContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.btn {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  margin-right: 30px;
 }
