@@ -12,7 +12,7 @@ import {
   Button,
   useDisclosure,
   Heading,
-  BreadcrumbSeparator,
+  Text,
 } from "@chakra-ui/react";
 
 const Profile = () => {
@@ -51,8 +51,8 @@ const Profile = () => {
               />
 
               <Heading className={style.title}>{user.name}</Heading>
-              <Heading className={style.text}>{user.email}</Heading>
-              <Heading className={style.text}>Membership</Heading>
+              <Text className={style.text}>{user.email}</Text>
+              <Text className={style.text}>Membership</Text>
             </DrawerBody>
 
             <DrawerFooter>
