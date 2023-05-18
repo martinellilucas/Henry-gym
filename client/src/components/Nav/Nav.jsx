@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+//import SearchBar from "../SearchBar/SearchBar";
+import logo from "../../assets/logo.png";
+import style from "../Nav/Nav.module.css";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,14 +10,13 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import style from "../Nav/Nav.module.css";
+import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const navigate = useNavigate(); // Accede al objeto de navegación
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,10 +43,6 @@ const Nav = () => {
         inline: "nearest",
       });
     }
-  };
-
-  const handleLogout = () => {
-    logout({ returnTo: "https://henry-gym-pf.onrender.com/home" });
   };
 
   return (
@@ -91,20 +86,21 @@ const Nav = () => {
         </BreadcrumbItem>
       </Breadcrumb>
       {!isAuthenticated ? (
-        <NavLink to="/home">
-          <Button
-            onClick={() => loginWithRedirect()}
-            className={style.btn}
-            colorScheme="blackAlpha"
-            size="lg"
-          >
-            LOGIN
-          </Button>
-        </NavLink>
+        <Button
+          onClick={() => loginWithRedirect()}
+          className={style.btn}
+          colorScheme="blackAlpha"
+          size="lg"
+        >
+          LOGIN
+        </Button>
       ) : (
         <div className={style.profileContainer}>
           <Profile />
-          <Button colorScheme="blackAlpha" onClick={handleLogout}>
+          <Button
+            colorScheme="blackAlpha"
+            onClick={() => logout({ returnTo: "/home" })}
+          >
             LOGOUT
           </Button>
         </div>
