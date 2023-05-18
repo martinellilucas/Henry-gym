@@ -26,9 +26,12 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <>
-        <Button className={style.btn} ref={btnRef} onClick={onOpen}>
-          <img className={style.img} src={user.picture} alt={user.name} />
-        </Button>
+        <img
+          className={style.img}
+          src={user.picture}
+          alt={user.name}
+          onClick={onOpen}
+        />
 
         <Drawer
           isOpen={isOpen}
