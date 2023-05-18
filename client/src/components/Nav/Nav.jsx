@@ -27,7 +27,7 @@ const Nav = () => {
       });
     }
   };
-  const navigate = useNavigate();
+
   return (
     <Box
       className={style.nav}
@@ -94,7 +94,6 @@ const Nav = () => {
             colorScheme="blackAlpha"
             onClick={() => {
               logout();
-              navigate("/home");
             }}
           >
             LOGOUT
