@@ -1,5 +1,5 @@
 import "./App.css";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../src/components/Nav/Nav";
 import Error from "../src/components/Error/Error";
 import Home from "../src/components/Home/Home";
@@ -18,8 +18,7 @@ function App() {
     <Auth0ProviderWithHistory>
       <div>
         {pathname !== "/" && <Nav />}
-        <Switch>
-          <Route path="*" element={<Error />} />
+        <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -27,7 +26,7 @@ function App() {
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
           <Route path="/form" element={<PostRutina />} />
-        </Switch>
+        </Routes>
         {pathname !== "/" && <SmallCentered />}
       </div>
     </Auth0ProviderWithHistory>
