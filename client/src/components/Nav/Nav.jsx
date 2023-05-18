@@ -99,7 +99,7 @@ const Nav = () => {
           <Profile />
           <Button
             colorScheme="blackAlpha"
-            onClick={() => logout({ returnTo: "/home" })}
+            onClick={() => logout({ returnTo: window.location.origin })}
           >
             LOGOUT
           </Button>
