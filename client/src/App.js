@@ -15,20 +15,22 @@ import Auth0ProviderWithHistory from "./auth0provider";
 function App() {
   const { pathname } = useLocation();
   return (
-    <div>
-      {pathname !== "/" && <Nav />}
-      <Routes>
-        <Route path="*" element={<Error />} />
-        <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/rutinas" element={<PaginationRutinas />} />
-        <Route path="/ejercicios" element={<Pagination />} />
-        <Route path="/form" element={<PostRutina />} />
-      </Routes>
-      {pathname !== "/" && <SmallCentered />}
-    </div>
+    <Auth0ProviderWithHistory>
+      <div>
+        {pathname !== "/" && <Nav />}
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/rutinas" element={<PaginationRutinas />} />
+          <Route path="/ejercicios" element={<Pagination />} />
+          <Route path="/form" element={<PostRutina />} />
+          <Route element={<Error />} />
+        </Routes>
+        {pathname !== "/" && <SmallCentered />}
+      </div>
+    </Auth0ProviderWithHistory>
   );
 }
 
