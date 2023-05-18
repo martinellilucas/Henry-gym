@@ -9,24 +9,23 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV1,
         primaryKey: true,
     },
-    identificacion: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    contraseña: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    apellido: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    suscripcion_activa: {
+    tipoDeSuscripcion: {
+      type: DataTypes.ENUM,
+      values: ["Plata", "Oro", "Platino", null],
+      defaultValue: null,
+      allowNull: false,
+    },
+    isAdmin: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false
     }
   }, {
