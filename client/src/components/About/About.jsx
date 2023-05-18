@@ -6,19 +6,14 @@ import Lucas from "../../assets/personaltrainer3.jpg";
 const About = () => {
   return (
     <div className={style.container}>
-      <h1 className={style.title}>About</h1>
+      <h1 className={style.title}>About Us</h1>
       <p className={style.text}>
-        Somos una organización dedicada a ayudar a las personas a mejorar su
-        salud y bienestar a través del ejercicio físico. Nuestro objetivo
-        principal es proporcionar un espacio seguro y cómodo para que nuestros
-        miembros puedan hacer ejercicio y lograr sus objetivos de fitness.
-        Además de las instalaciones, también ofrecemos servicios de
-        entrenamiento personalizado, clases de grupo, nutrición y asesoramiento
-        para ayudar a nuestros miembros a alcanzar sus objetivos. Creemos que el
-        ejercicio es esencial para mantener una vida saludable y equilibrada, y
-        nuestro equipo está compuesto por expertos en fitness y salud que están
-        comprometidos en ayudar a nuestros miembros a alcanzar su máximo
-        potencial.
+      We are an organization dedicated to helping people improve their health and well-being through physical exercise. 
+      Our primary goal is to provide a safe and comfortable space for our members to exercise and achieve their fitness goals. 
+      In addition to the facilities, we also offer personalized training services, group classes, nutrition and counseling to help our members 
+      achieve their goals. We believe that exercise is essential to maintaining a healthy and balanced life, and our team is made up of health 
+      and fitness experts who are committed to helping our members reach their full potential.
+
       </p>
       <div className={style.imgContainer}>
         <div>
