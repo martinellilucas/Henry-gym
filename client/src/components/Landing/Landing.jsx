@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const Landing = () => {
   return (
-    <Box>
+    <Box className={style.body}>
       <Box className={style.videoContainer}>
         <video className={style.video} autoPlay muted loop>
           <source src={Video} type="video/mp4" />

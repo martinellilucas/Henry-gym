@@ -63,6 +63,7 @@
     )
     30;
   animation: borderRadial var(--d) linear infinite forwards;
+  font-family: "Titillium Web", sans-serif;
 }
 .logo {
   width: 100px;
@@ -76,7 +77,7 @@
 .itemContainer {
   height: max-content;
   font-size: 1.2em;
-  font-weight: BOLD;
+  font-weight: bolder;
   text-align: center;
   margin-left: 50px;
 }

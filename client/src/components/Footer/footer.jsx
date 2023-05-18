@@ -40,6 +40,7 @@ const SocialButton = ({ children, label, href }) => {
 export default function SmallCentered() {
   return (
     <Box
+      fontFamily='"Titillium Web", sans-serif'
       justifyContent={"center"}
       alignItems={"center"}
       bg={useColorModeValue("blackAlpha.800")}

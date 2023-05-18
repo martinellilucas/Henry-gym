@@ -15,6 +15,7 @@
   font-size: 1.2em;
   padding: 2px 10px;
   border: 2px solid black;
+  font-family: "Titillium Web", sans-serif;
 }
 .button:hover {
   background-color: rgb(178, 180, 180);
@@ -32,4 +33,5 @@
   padding: 2px 10px;
   font-weight: bold;
   border: 2px solid black;
+  font-family: "Titillium Web", sans-serif;
 }

@@ -9,6 +9,7 @@
   background-position: center;
   background-size: cover;
   background-image: url("../../assets/Error.gif");
+  font-family: "Titillium Web", sans-serif;
 }
 
 .descripcion {

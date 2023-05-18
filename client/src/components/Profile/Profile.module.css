@@ -40,6 +40,7 @@ img:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Titillium Web", sans-serif;
 }
 .title {
   font-size: 1.2em;
@@ -48,4 +49,7 @@ img:hover {
 .text {
   font-size: 1em;
   font-weight: lighter;
+}
+.body {
+  font-family: "Titillium Web", sans-serif;
 }
