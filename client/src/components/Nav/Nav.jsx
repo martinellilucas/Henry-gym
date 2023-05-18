@@ -47,14 +47,14 @@ const Nav = () => {
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink>CLASSES</BreadcrumbLink>
         </BreadcrumbItem>
-        {!isAuthenticated && (
+        {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
             <BreadcrumbLink as={NavLink} to="/rutinas">
               ROUTINES
             </BreadcrumbLink>
           </BreadcrumbItem>
         )}
-        {!isAuthenticated && (
+        {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
             <BreadcrumbLink as={NavLink} to="/ejercicios">
               EXERCISES
