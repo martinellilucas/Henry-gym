@@ -1,6 +1,63 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+:root {
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+}
+@keyframes borderRadial {
+  20% {
+    --gradX: 100%;
+    --gradY: 50%;
+  }
+  40% {
+    --gradX: 100%;
+    --gradY: 100%;
+  }
+  60% {
+    --gradX: 50%;
+    --gradY: 100%;
+  }
+  80% {
+    --gradX: 0%;
+    --gradY: 50%;
+  }
+  100% {
+    --gradX: 50%;
+    --gradY: 0%;
+  }
+}
 .btn {
   padding: 1.5em 2.5em;
-  box-shadow: 2px 2px 5px white;
+  border-radius: 15px;
+  border: 0.35rem solid;
+  border-image: radial-gradient(
+      ellipse at var(--gradX) var(--gradY),
+      var(--c1),
+      var(--c1) 10%,
+      var(--c2) 40%
+    )
+    30;
+  animation: borderRadial var(--d) linear infinite forwards;
 }
 .video {
   width: 100%;
@@ -18,7 +75,16 @@
   align-items: center;
   position: absolute;
   top: 600px;
-  border-top: 2px solid black;
+
+  border-top: 1rem solid;
+  border-image: radial-gradient(
+      ellipse at var(--gradX) var(--gradY),
+      var(--c1),
+      var(--c1) 10%,
+      var(--c2) 40%
+    )
+    30;
+  animation: borderRadial var(--d) linear infinite forwards;
 }
 .logoContainer {
   border-radius: 50%;
@@ -30,8 +96,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 250px;
-  border: 35px solid black;
-  box-shadow: 2px 2px 5px white;
+  border: 2rem solid black;
 }
 
 .logo {
