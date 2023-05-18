@@ -19,13 +19,13 @@ function App() {
       <div>
         {pathname !== "/" && <Nav />}
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/detail/:id" element={<Detail />} />
-          <Route path="/rutinas" element={<PaginationRutinas />} />
-          <Route path="/ejercicios" element={<Pagination />} />
-          <Route path="/form" element={<PostRutina />} />
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/detail/:id" element={<Detail />} />
+          <Route exact path="/rutinas" element={<PaginationRutinas />} />
+          <Route exact path="/ejercicios" element={<Pagination />} />
+          <Route exact path="/form" element={<PostRutina />} />
         </Routes>
         {pathname !== "/" && <SmallCentered />}
       </div>
