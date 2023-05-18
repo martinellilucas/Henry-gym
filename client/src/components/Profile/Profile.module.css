@@ -1,8 +1,9 @@
 .img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 2px solid royalblue;
+  margin-right: 50px;
 }
 .innerImg {
   width: 100px;
@@ -10,9 +11,14 @@
   border-radius: 50%;
   border: 2px solid royalblue;
 }
-
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .title {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: lighter;
 }
 .text {
