@@ -84,7 +84,9 @@ const Nav = () => {
           LOGIN
         </Button>
       ) : (
-        <Profile />
+        <div className={style.profileContainer}>
+          <Profile />
+        </div>
       )}
     </Box>
   );
