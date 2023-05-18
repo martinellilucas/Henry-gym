@@ -1,6 +1,6 @@
-//import SearchBar from "../SearchBar/SearchBar";
-import logo from "../../assets/logo.png";
-import style from "../Nav/Nav.module.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,13 +9,31 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import style from "../Nav/Nav.module.css";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const navigate = useNavigate(); // Accede al objeto de navegación
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToMembresias = () => {
     const membresiasSection = document.getElementById("membresias");
@@ -26,6 +44,10 @@ const Nav = () => {
         inline: "nearest",
       });
     }
+  };
+
+  const handleLogout = () => {
+    logout({ returnTo: "https://henry-gym-pf.onrender.com/home" });
   };
 
   return (
@@ -45,25 +67,17 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>CLASSES</BreadcrumbLink>
+          <BreadcrumbLink>CLASES</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          {isAuthenticated && user ? (
-            <BreadcrumbLink as={NavLink} to="/rutinas">
-              ROUTINES
-            </BreadcrumbLink>
-          ) : (
-            <></>
-          )}
+          <BreadcrumbLink as={NavLink} to="/rutinas">
+            ROUTINES
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          {isAuthenticated && user ? (
-            <BreadcrumbLink as={NavLink} to="/ejercicios">
-              EXERCISES
-            </BreadcrumbLink>
-          ) : (
-            <></>
-          )}
+          <BreadcrumbLink as={NavLink} to="/ejercicios">
+            EXERCISES
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToMembresias}>
@@ -76,21 +90,21 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isAuthenticated && !user ? (
-        <Button
-          onClick={() => {
-            loginWithRedirect();
-          }}
-          className={style.btn}
-          colorScheme="blackAlpha"
-          size="lg"
-        >
-          LOGIN
-        </Button>
+      {!isAuthenticated ? (
+        <NavLink to="/home">
+          <Button
+            onClick={() => loginWithRedirect()}
+            className={style.btn}
+            colorScheme="blackAlpha"
+            size="lg"
+          >
+            LOGIN
+          </Button>
+        </NavLink>
       ) : (
         <div className={style.profileContainer}>
           <Profile />
-          <Button colorScheme="blackAlpha" onClick={() => logout()}>
+          <Button colorScheme="blackAlpha" onClick={handleLogout}>
             LOGOUT
           </Button>
         </div>
