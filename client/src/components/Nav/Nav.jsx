@@ -10,7 +10,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
@@ -27,7 +27,7 @@ const Nav = () => {
       });
     }
   };
-
+  const navigate = useNavigate();
   return (
     <Box
       className={style.nav}
@@ -92,9 +92,10 @@ const Nav = () => {
           <Profile />
           <Button
             colorScheme="blackAlpha"
-            onClick={() =>
-              logout({ returnTo: `${window.location.origin}/home` })
-            }
+            onClick={() => {
+              logout();
+              navigate("/home");
+            }}
           >
             LOGOUT
           </Button>
