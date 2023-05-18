@@ -45,7 +45,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>CLASSES</BreadcrumbLink>
+          <BreadcrumbLink as={NavLink} to="/clases" >CLASSES</BreadcrumbLink>
         </BreadcrumbItem>
         {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
