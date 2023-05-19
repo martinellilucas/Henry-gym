@@ -1,6 +1,9 @@
 const { Ejercicio, Rutina } = require("../db");
+const cloudinary = require('cloudinary').v2;
+
 
 const postRutinas = async (difficulty, grupoMuscular, ejercicios, imagen) => {
+
   const nombres = [];
   ejercicios.forEach((element) => {
     nombres.push(element.name);
