@@ -54,7 +54,7 @@
 .btn {
   position: absolute;
   top: 70%;
-  left: 47.5%;
+  left: 47%;
   padding: 1.5em 2.5em;
   border-radius: 15px;
   border: 0.35rem solid;
@@ -76,7 +76,7 @@
 }
 .bottomContainer {
   width: 100%;
-  height: 435px;
+  height: 433px;
   background: #28242b;
   position: absolute;
   top: 505px;
