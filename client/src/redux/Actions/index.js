@@ -85,4 +85,6 @@ export const postRutina = (rutina) => {
   };
 };
 
+
+
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
