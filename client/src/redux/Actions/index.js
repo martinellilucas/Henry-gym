@@ -88,7 +88,7 @@ export const postRutina = (rutina) => {
 export const postUser = (user) => {
  return async function () {
   await axios
-  .post("https://henry-gym.onrender.com/cliente",user)
+  .post("https://henry-gym-production.up.railway.app/cliente",user)
   .then((res) => {
     return res.data
   })
