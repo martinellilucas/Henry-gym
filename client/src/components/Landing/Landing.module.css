@@ -92,8 +92,8 @@
 .logoContainer {
   border-radius: 50%;
   background-color: white;
-  height: 630px;
-  width: 630px;
+  height: 450px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,13 +103,14 @@
 }
 
 .logo {
-  height: 400px;
-  width: 400px;
+  height: 250px;
+  width: 250px;
 }
 
 .title {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: bold;
+  font-family: "Titillium Web", sans-serif;
 }
 
 @keyframes shine {
@@ -126,12 +127,11 @@
   padding: 2rem;
 }
 .msg {
-  font-size: 3em;
+  font-size: 2em;
   color: white;
   font-weight: 700;
   text-align: center;
-  font-size: 40px;
-
+  font-size: 30px;
   text-transform: uppercase;
   background: linear-gradient(90deg, #000, #fff, #000);
   letter-spacing: 5px;
