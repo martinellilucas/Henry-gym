@@ -1,8 +1,17 @@
 const { Cliente } = require("../db");
 
-const postCliente = async (nombre, email) => {
-  const newClient = await Cliente.create({nombre, email});
-  return newClient;
+const postCliente = async (name,email,email_verified,picture) => {
+
+  const newClient = await Cliente.findOrCreate({
+    where : {
+    nombre : name,
+    email : email,
+    emailVerified: email_verified,
+    picture : picture
+    }
+  })
+
+  
 };
 
 module.exports = postCliente;
