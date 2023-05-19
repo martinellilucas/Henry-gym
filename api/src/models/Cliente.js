@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
     },
     tipoDeSuscripcion: {
       type: DataTypes.ENUM,
-      values: ["Bronce,Plata", "Oro", "Platino"],
+      values: ["Bronce","Plata", "Oro", "Platino"],
       defaultValue: 'Bronce',
       allowNull: false,
     },
