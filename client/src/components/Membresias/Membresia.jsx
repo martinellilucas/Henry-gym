@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import {item1, item2, item3, checkoutOptions1, checkoutOptions2, checkoutOptions3} from './stripeUtils';
 import {
   Box,
   Stack,
@@ -17,7 +18,20 @@ import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import style from "./Membresia.module.css";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+
+const apiKey =
+  "pk_test_51N8xmZIF7SQaSdDealGz7yLZH1CFgYHwp5OCZSiqr3GMevHfzBUvTj0piTgUaws75el46STbzYvrv1jREtlCgA5q0029JjmZC7";
+
+let stripePromise;
+
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(apiKey);
+  }
+  return stripePromise;
+};
 
 function PriceWrapper({ children }) {
   return (
@@ -34,8 +48,34 @@ function PriceWrapper({ children }) {
     </Box>
   );
 }
+const redirectToCheckoutsilver = async (item1) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(
+    checkoutOptions1
+  );
+  console.log("Stripe checkout error", error);
+};
+const redirectToCheckoutgold= async (item2) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(
+    checkoutOptions2
+  );
+  console.log("Stripe checkout error", error);
+};
+const redirectToCheckoutplatinum = async (item3) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(
+    checkoutOptions3
+  );
+  console.log("Stripe checkout error", error);
+};
 
 export default function ThreeTierPricing() {
+
+
   return (
     <Box className={style.body} py={12}>
       <VStack spacing={2} textAlign="center">
@@ -109,15 +149,14 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <NavLink to="/home">
-                <Button
-                  className={style.Button}
-                  colorScheme="red"
-                  variant="outline"
-                >
-                  Start now
-                </Button>
-              </NavLink>
+              <Button
+                onClick={() => redirectToCheckoutsilver(item1)}
+                className={style.Button}
+                colorScheme="red"
+                variant="outline"
+              >
+                Start now
+              </Button>
             </Box>
           </VStack>
         </PriceWrapper>
@@ -190,11 +229,11 @@ export default function ThreeTierPricing() {
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
-                <NavLink to="/about">
-                  <Button className={style.Button} colorScheme="red">
-                    Start now
-                  </Button>
-                </NavLink>
+                <Button 
+                onClick={() => redirectToCheckoutgold(item2)}
+                className={style.Button} colorScheme="red">
+                  Start now
+                </Button>
               </Box>
             </VStack>
           </Box>
@@ -247,15 +286,14 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <NavLink to="/home">
                 <Button
+                  onClick={() => redirectToCheckoutplatinum(item3)}
                   className={style.Button}
                   colorScheme="red"
                   variant="outline"
                 >
                   Start now
                 </Button>
-              </NavLink>
             </Box>
           </VStack>
         </PriceWrapper>

@@ -85,6 +85,7 @@ export const postRutina = (rutina) => {
   };
 };
 
+
 export const postUser = (user) => {
  return async function () {
   await axios
@@ -94,5 +95,6 @@ export const postUser = (user) => {
   })
  }
 }
+
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
