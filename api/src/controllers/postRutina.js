@@ -13,9 +13,9 @@ const postRutinas = async (difficulty, grupoMuscular, ejercicios, imagen) => {
     imagen,
   });
 
-  ejercicios.forEach(async (ejer) => {
+  for (const ejer of ejercicios) {
     await newRutina.addEjercicio(ejer.id);
-  });
+  }
 
   return newRutina;
 };
