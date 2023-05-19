@@ -1,4 +1,11 @@
 .img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px royalblue;
+}
+
+.innerImg {
   --color: royalblue; /* the color of the border */
   --border: 5px; /* the thickness of the border */
   --offset: 30px; /* control the movement of the border */

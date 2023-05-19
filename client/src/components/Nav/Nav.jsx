@@ -90,9 +90,8 @@ const Nav = () => {
           onClick={() => {
             loginWithRedirect();
           }}
-          className={style.btn}
+          className={style.button}
           colorScheme="blackAlpha"
-          size="lg"
         >
           LOGIN
         </Button>
