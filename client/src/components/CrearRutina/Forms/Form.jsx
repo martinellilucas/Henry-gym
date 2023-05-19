@@ -31,7 +31,7 @@ const Form1 = ({ form, error, onChange, setError }) => {
   return (
     <Box className={style.form}>
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-        Create your on routine
+        Create your own routine
       </Heading>
       <Box display="flex" flexDirection="column">
         <Box>

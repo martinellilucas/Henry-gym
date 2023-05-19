@@ -1,3 +1,4 @@
+import "@stripe/stripe-js"
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../src/components/Nav/Nav";
@@ -11,7 +12,12 @@ import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import PostRutina from "./components/CrearRutina/CrearRutina";
 import Auth0ProviderWithHistory from "./auth0provider";
+
+import SubscriptionSuccess from "./components/Success/success";
+import SubscriptionCancel from "./components/Cancel/cancel";
+
 import ClasesMembresia from "./components/Clases/Clases";
+
 
 function App() {
   const { pathname } = useLocation();
@@ -28,7 +34,10 @@ function App() {
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
           <Route path="/form" element={<PostRutina />} />
+          <Route path="/success" element={<SubscriptionSuccess />} />
+          <Route path="/cancel" element={<SubscriptionCancel />} />
           <Route path="/clases" element={<ClasesMembresia />} />
+
         </Routes>
         {pathname !== "/" && <SmallCentered />}
       </div>

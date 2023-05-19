@@ -14,7 +14,7 @@ export default function Pagination() {
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
-  const count = 8;
+  const count = 9;
   const pageIndex = [];
 
   const ejerciciosPages = Math.ceil(allEjercicios.length / count);
