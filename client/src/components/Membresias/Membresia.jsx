@@ -1,5 +1,12 @@
 import { ReactNode } from "react";
-import {item1, item2, item3, checkoutOptions1, checkoutOptions2, checkoutOptions3} from './stripeUtils';
+import {
+  item1,
+  item2,
+  item3,
+  checkoutOptions1,
+  checkoutOptions2,
+  checkoutOptions3,
+} from "./stripeUtils";
 import {
   Box,
   Stack,
@@ -51,31 +58,23 @@ function PriceWrapper({ children }) {
 const redirectToCheckoutsilver = async (item1) => {
   console.log("redirectToCheckout");
   const stripe = await getStripe();
-  const { error } = await stripe.redirectToCheckout(
-    checkoutOptions1
-  );
+  const { error } = await stripe.redirectToCheckout(checkoutOptions1);
   console.log("Stripe checkout error", error);
 };
-const redirectToCheckoutgold= async (item2) => {
+const redirectToCheckoutgold = async (item2) => {
   console.log("redirectToCheckout");
   const stripe = await getStripe();
-  const { error } = await stripe.redirectToCheckout(
-    checkoutOptions2
-  );
+  const { error } = await stripe.redirectToCheckout(checkoutOptions2);
   console.log("Stripe checkout error", error);
 };
 const redirectToCheckoutplatinum = async (item3) => {
   console.log("redirectToCheckout");
   const stripe = await getStripe();
-  const { error } = await stripe.redirectToCheckout(
-    checkoutOptions3
-  );
+  const { error } = await stripe.redirectToCheckout(checkoutOptions3);
   console.log("Stripe checkout error", error);
 };
 
 export default function ThreeTierPricing() {
-
-
   return (
     <Box className={style.body} py={12}>
       <VStack spacing={2} textAlign="center">
@@ -125,7 +124,7 @@ export default function ThreeTierPricing() {
                 30
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /monthly
+                /month
               </Text>
             </HStack>
           </Box>
@@ -201,7 +200,7 @@ export default function ThreeTierPricing() {
                   50
                 </Text>
                 <Text fontSize="3xl" color="gray.500">
-                  /monthly
+                  /month
                 </Text>
               </HStack>
             </Box>
@@ -229,9 +228,11 @@ export default function ThreeTierPricing() {
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
-                <Button 
-                onClick={() => redirectToCheckoutgold(item2)}
-                className={style.Button} colorScheme="red">
+                <Button
+                  onClick={() => redirectToCheckoutgold(item2)}
+                  className={style.Button}
+                  colorScheme="red"
+                >
                   Start now
                 </Button>
               </Box>
@@ -258,7 +259,7 @@ export default function ThreeTierPricing() {
                 100
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /monthly
+                /month
               </Text>
             </HStack>
           </Box>
@@ -286,14 +287,14 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-                <Button
-                  onClick={() => redirectToCheckoutplatinum(item3)}
-                  className={style.Button}
-                  colorScheme="red"
-                  variant="outline"
-                >
-                  Start now
-                </Button>
+              <Button
+                onClick={() => redirectToCheckoutplatinum(item3)}
+                className={style.Button}
+                colorScheme="red"
+                variant="outline"
+              >
+                Start now
+              </Button>
             </Box>
           </VStack>
         </PriceWrapper>
