@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const routeEjercicios = require("./routeEjercicios");
 const routeRutinas = require("./routeRutinas");
-//const routeSuscripcion = require("./routeSuscripcion");
 const routeClase = require("./routeClase");
 const routeEntrenador = require("./routeEntrenador");
 
