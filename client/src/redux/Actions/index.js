@@ -86,5 +86,15 @@ export const postRutina = (rutina) => {
 };
 
 
+export const postUser = (user) => {
+ return async function () {
+  await axios
+  .post("https://henry-gym.onrender.com/cliente",user)
+  .then((res) => {
+    return res.data
+  })
+ }
+}
+
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
