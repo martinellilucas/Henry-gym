@@ -4,14 +4,14 @@ import { Box, Button, Flex, Text, filter } from "@chakra-ui/react";
 import EjercicioCards from "../EjercicioCards/EjercicioCards";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
-import { getEjercicios } from "../../redux/Actions";
-import { filterByMusculo } from "../../redux/Actions";
-import { filterByDificultad } from "../../redux/Actions";
+import { filters, getEjercicios } from "../../redux/Actions";
 
 export default function Pagination() {
-  const allEjercicios = useSelector((state) => state.ejercicios);
+  const allEjercicios = useSelector((state) => state.filteredEjercicios);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
+  const [selectedMusculo, setSelectedMusculo] = useState("");
+  const [selectedDificultad, setSelectedDificultad] = useState("");
 
   const dispatch = useDispatch();
   const count = 9;
@@ -53,16 +53,16 @@ export default function Pagination() {
 
   function handlerFilteredMusculos(e) {
     e.preventDefault();
-    dispatch(filterByMusculo(e.target.value));
+    setSelectedMusculo(e.target.value);
+    dispatch(filters(e.target.value, selectedDificultad));
     setPage(1);
-    document.getElementById("selectDificultad").selectedIndex = 0;
   }
 
   function handlerFilteredDificultad(e) {
     e.preventDefault();
-    dispatch(filterByDificultad(e.target.value));
+    setSelectedDificultad(e.target.value);
+    dispatch(filters(selectedMusculo, e.target.value));
     setPage(1);
-    document.getElementById("selectMusculo").selectedIndex = 0;
   }
 
   return (
