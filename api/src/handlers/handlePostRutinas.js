@@ -13,7 +13,7 @@ const handlerPostRutinas = async (req, res) => {
 
     res.status(200).json(rutinaCreada);
   } catch (e) {
-    res.status(400).send(`este es el error ${e}`);
+    res.status(400).send(`este es el error ${e.message}`);
   }
 };
 

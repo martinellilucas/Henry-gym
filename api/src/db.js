@@ -1,8 +1,17 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
+const cloudinary = require('cloudinary').v2;
+const {cloud_name,api_key,api_secret} = process.env
 const fs = require("fs");
 const path = require("path");
 const { DB_URL } = process.env;
+
+
+cloudinary.config({
+  cloud_name,
+  api_key,
+  api_secret
+});
 
 const sequelize = new Sequelize(DB_URL, {
   logging: false,
