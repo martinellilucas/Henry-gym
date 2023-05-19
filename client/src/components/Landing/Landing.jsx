@@ -16,7 +16,11 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        <h1 className={style.msg}>Welcome, click 'explore' button to enter.</h1>
+        <div className={style.box}>
+          <h1 className={style.msg}>
+            Welcome, click 'explore' button to enter.
+          </h1>
+        </div>
 
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />

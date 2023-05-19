@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_URL, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
+const { DB_URL } = process.env;
 
 const sequelize = new Sequelize(DB_URL, {
   logging: false,
