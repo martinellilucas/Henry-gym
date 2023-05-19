@@ -50,6 +50,9 @@
   font-family: "Titillium Web", sans-serif;
 }
 .btn {
+  position: absolute;
+  top: 70%;
+  left: 46.5%;
   padding: 1.5em 2.5em;
   border-radius: 15px;
   border: 0.35rem solid;
@@ -73,9 +76,6 @@
   width: 100%;
   height: 443px;
   background: #28242b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: 600px;
 
@@ -92,24 +92,25 @@
 .logoContainer {
   border-radius: 50%;
   background-color: white;
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: -30%;
+  left: 40%;
   border: 1rem solid black;
 }
 
 .logo {
-  height: 180px;
-  width: 180px;
+  height: 250px;
+  width: 250px;
 }
 
 .title {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: bolder;
   font-family: "Titillium Web", sans-serif;
 }
