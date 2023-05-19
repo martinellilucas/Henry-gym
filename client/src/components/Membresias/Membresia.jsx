@@ -77,18 +77,25 @@ export default function ThreeTierPricing() {
 
 
   return (
-    <Box py={12}>
+    <Box className={style.body} py={12}>
       <VStack spacing={2} textAlign="center">
-        <Heading as="h1" fontSize="5xl" fontWeight="bolder" textAlign="center">
-          ¡Join one of our plans!
+        <Heading
+          fontFamily='"Titillium Web", sans-serif'
+          as="h1"
+          fontSize="5xl"
+          fontWeight="bolder"
+          textAlign="center"
+        >
+          JOIN ONE OF OUR PLANS!
         </Heading>
         <Text
+          fontFamily='"Titillium Web", sans-serif'
           textAlign="center"
           fontSize="lg"
           fontWeight="bolder"
           color={"gray.500"}
         >
-          ¡Choose the one that best suits you and start right away!
+          Choose the one that best suits you and start right away!
         </Text>
       </VStack>
       <Stack

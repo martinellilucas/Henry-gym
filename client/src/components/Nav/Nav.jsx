@@ -5,17 +5,17 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
   Button,
   Box,
 } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const scrollToMembresias = () => {
     const membresiasSection = document.getElementById("membresias");
@@ -27,7 +27,7 @@ const Nav = () => {
       });
     }
   };
-  const navigate = useNavigate();
+
   return (
     <Box
       className={style.nav}
@@ -45,26 +45,22 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink>CLASSES</BreadcrumbLink>
+          <BreadcrumbLink as={NavLink} to="/clases" >CLASSES</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbItem className={style.item}>
-          {isAuthenticated && user ? (
+        {isAuthenticated && (
+          <BreadcrumbItem className={style.item}>
             <BreadcrumbLink as={NavLink} to="/rutinas">
               ROUTINES
             </BreadcrumbLink>
-          ) : (
-            <></>
-          )}
-        </BreadcrumbItem>
-        <BreadcrumbItem className={style.item}>
-          {isAuthenticated && user ? (
+          </BreadcrumbItem>
+        )}
+        {isAuthenticated && (
+          <BreadcrumbItem className={style.item}>
             <BreadcrumbLink as={NavLink} to="/ejercicios">
               EXERCISES
             </BreadcrumbLink>
-          ) : (
-            <></>
-          )}
-        </BreadcrumbItem>
+          </BreadcrumbItem>
+        )}
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToMembresias}>
             MEMBERSHIPS
@@ -76,7 +72,7 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      {!isAuthenticated && !user ? (
+      {!isAuthenticated ? (
         <Button
           onClick={() => {
             loginWithRedirect();
@@ -90,15 +86,6 @@ const Nav = () => {
       ) : (
         <div className={style.profileContainer}>
           <Profile />
-          <Button
-            colorScheme="blackAlpha"
-            onClick={() => {
-              logout();
-              navigate("/home");
-            }}
-          >
-            LOGOUT
-          </Button>
         </div>
       )}
     </Box>

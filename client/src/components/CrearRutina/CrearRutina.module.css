@@ -1,26 +1,26 @@
 .textoInd {
-    height: 300px;
-    border-radius: 15px;
-    resize: none;
-    padding: 15px;
-    font-size: 1em;
-    font-family: 'Roboto', sans-serif;
-    margin: 10px 0;
-    outline: black;
-    width: 100%;
-    border: 1px solid #000000
+  height: 300px;
+  border-radius: 15px;
+  resize: none;
+  padding: 15px;
+  font-size: 1em;
+
+  margin: 10px 0;
+  outline: black;
+  width: 100%;
+  border: 1px solid #000000;
 }
 
-
-.div2{
-    width: 100%;
-    height: 100%;
-    min-height: 70vh;
+.div2 {
+  width: 100%;
+  height: 100%;
+  min-height: 70vh;
+  font-family: "Titillium Web", sans-serif;
 }
 
-.form3{
-    width: 100%;
-    text-align: center;
-    font-size: 2.5em;
-    margin-top: 30%;
+.form3 {
+  width: 100%;
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 30%;
 }

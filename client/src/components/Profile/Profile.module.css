@@ -1,20 +1,55 @@
 .img {
-  width: 40px;
-  height: 40px;
+  --color: royalblue; /* the color of the border */
+  --border: 5px; /* the thickness of the border */
+  --offset: 30px; /* control the movement of the border */
+  --gap: 5px; /* the gap on hover */
+
   border-radius: 50%;
-  border: 2px solid royalblue;
+  cursor: pointer;
+  padding: calc(var(--border) + var(--gap));
+  border: var(--offset) solid #0000;
+  --_m: radial-gradient(
+    50% 50%,
+    #000 calc(100% - var(--offset)),
+    #0000 calc(100% - var(--border))
+  );
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  --_g: #0000 calc(99% - var(--border)),
+    var(--color) calc(100% - var(--border)) 99%, #0000;
+  --_s: var(--offset);
+  --_r: 100% 100% at;
+  background: radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s))
+      calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s))
+      calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s))
+      calc(0% - var(--_s)),
+    radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s))
+      calc(0% - var(--_s));
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+img:hover {
+  --_s: 0px;
 }
 
-.name {
-  font-size: 1em;
-  color: white;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.profileContainer {
+.body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+}
+.title {
+  font-size: 1.2em;
+  font-weight: lighter;
+}
+.text {
+  font-size: 1em;
+  font-weight: lighter;
+}
+.body {
+  font-family: "Titillium Web", sans-serif;
 }
