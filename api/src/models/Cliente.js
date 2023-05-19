@@ -19,8 +19,8 @@ module.exports = (sequelize) => {
     },
     tipoDeSuscripcion: {
       type: DataTypes.ENUM,
-      values: ["Plata", "Oro", "Platino", null],
-      defaultValue: null,
+      values: ["Bronce,Plata", "Oro", "Platino"],
+      defaultValue: 'Bronce',
       allowNull: false,
     },
     isAdmin: {
