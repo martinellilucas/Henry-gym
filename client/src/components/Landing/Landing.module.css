@@ -48,8 +48,13 @@
 }
 .body {
   font-family: "Titillium Web", sans-serif;
+  max-width: 100%;
+  max-height: 100%;
 }
 .btn {
+  position: absolute;
+  top: 70%;
+  left: 47%;
   padding: 1.5em 2.5em;
   border-radius: 15px;
   border: 0.35rem solid;
@@ -71,13 +76,10 @@
 }
 .bottomContainer {
   width: 100%;
-  height: 443px;
+  height: 433px;
   background: #28242b;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   position: absolute;
-  top: 600px;
+  top: 505px;
 
   border-top: 1rem solid;
   border-image: radial-gradient(
@@ -92,24 +94,27 @@
 .logoContainer {
   border-radius: 50%;
   background-color: white;
-  height: 630px;
-  width: 630px;
+  height: 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 250px;
-  border: 2rem solid black;
+  position: absolute;
+  top: -30%;
+  left: 40%;
+  border: 1rem solid black;
 }
 
 .logo {
-  height: 400px;
-  width: 400px;
+  height: 250px;
+  width: 250px;
 }
 
 .title {
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: "Titillium Web", sans-serif;
 }
 
 @keyframes shine {
@@ -120,18 +125,13 @@
     background-position-x: 500%;
   }
 }
-.box {
-  box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
-  border-radius: 15px;
-  padding: 2rem;
-}
+
 .msg {
-  font-size: 3em;
+  font-size: 1.8em;
   color: white;
   font-weight: 700;
   text-align: center;
-  font-size: 40px;
-
+  font-size: 30px;
   text-transform: uppercase;
   background: linear-gradient(90deg, #000, #fff, #000);
   letter-spacing: 5px;
@@ -141,5 +141,76 @@
   background-repeat: no-repeat;
   background-size: 80%;
   animation: shine 5s linear infinite;
-  position: relative;
+  position: absolute;
+  left: 58%;
+  top: 45%;
+}
+
+@keyframes showTopText {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(0, 50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes showBottomText {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.animatedTitle {
+  color: #ffffff;
+  font-family: "Titillium Web", sans-serif;
+  height: 25vmin;
+  left: 20%;
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 30vmin;
+}
+.animatedTitle > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.animatedTitle > div div {
+  font-size: 3vmin;
+  padding: 2vmin 0;
+  position: absolute;
+}
+.animatedTitle > div div span {
+  display: block;
+}
+.animatedTitle > div.textTop {
+  border-bottom: 1vmin solid #000;
+  top: 0;
+}
+.animatedTitle > div.textTop div {
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+.animatedTitle > div.textTop div span:first-child {
+  color: #767676;
+}
+.animatedTitle > div.textBottom {
+  bottom: 0;
+}
+.animatedTitle > div.textBottom div {
+  animation: showBottomText 0.5s;
+  animation-delay: 1.75s;
+  animation-fill-mode: forwards;
+  top: 0;
+  transform: translate(0, -100%);
 }

@@ -17,16 +17,28 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    emailVerified : {
+      type : DataTypes.BOOLEAN,
+      allowNull : false 
+    },
     tipoDeSuscripcion: {
       type: DataTypes.ENUM,
-      values: ["Bronce","Plata", "Oro", "Platino"],
-      defaultValue: 'Bronce',
+      values: ["Bronze", "Silver", "Gold", "Platinum"],
+      defaultValue: 'Bronze',
       allowNull: false,
+    },
+    picture :{
+      type : DataTypes.STRING,
+      allowNull : true
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false
+    },
+    comment : {
+      type : DataTypes.ARRAY(DataTypes.STRING),
+      allowNull : true
     }
   }, {
     timestamps: false // Desactiva los timestamps

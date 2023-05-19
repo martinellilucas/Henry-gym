@@ -70,11 +70,22 @@ export const postRutina = (rutina) => {
   };
 };
 
+
 export const filters = (muscle, difficulty) => {
   return {
     type: FILTER,
     payload: { muscle, difficulty },
   };
 };
+
+export const postUser = (user) => {
+ return async function () {
+  await axios
+  .post("https://henry-gym-production.up.railway.app/cliente",user)
+  .then((res) => {
+    return res.data
+  })
+ }
+}
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

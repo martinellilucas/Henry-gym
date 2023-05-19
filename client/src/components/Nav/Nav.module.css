@@ -54,7 +54,7 @@
   width: 100%;
   background: rgb(10, 10, 10, 0.9);
   border-bottom: 0.35rem solid;
-  height: 120px;
+  height: 60px;
   border-image: radial-gradient(
       ellipse at var(--gradX) var(--gradY),
       var(--c1),
@@ -66,26 +66,30 @@
   font-family: "Titillium Web", sans-serif;
 }
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 35px;
+  height: 35px;
   background-color: white;
   border-radius: 50%;
-  margin-left: 30px;
   border: 2px solid white;
+  margin-left: 30px;
 }
 
 .itemContainer {
-  height: max-content;
+  width: 100%;
   font-size: 1.2em;
   font-weight: bolder;
-  text-align: center;
-  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .item {
   color: white;
 }
 .button {
   margin-right: 30px;
+  height: max-content;
+  width: max-content;
 }
 .profileContainer {
   margin-left: 30px;

@@ -2,14 +2,13 @@ const postCliente = require("../controllers/postCliente");
 
 const handlerPostCliente = async (req, res) => {
   try {
-    const { nombre, email } = req.body;
+    const {name,email,email_verified,picture} = req.body;
 
-    const clienteCreado = await postCliente(
-        nombre, 
-        email
+    const cliente = await postCliente(
+      name,email,email_verified,picture
     );
 
-    res.status(200).json(clienteCreado);
+    res.status(200).json(cliente);
   } catch (e) {
     res.status(400).send(`este es el error ${e}`);
   }

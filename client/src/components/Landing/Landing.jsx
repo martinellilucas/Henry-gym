@@ -16,10 +16,21 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        <div className={style.box}>
+        <div>
           <h1 className={style.msg}>
             Welcome, click 'explore' button to enter.
           </h1>
+          <div className={style.animatedTitle}>
+            <div className={style.textTop}>
+              <div>
+                <span>especial classes</span>
+                <span>workout routines</span>
+              </div>
+            </div>
+            <div className={style.textBottom}>
+              <div>bodybuilding exercises</div>
+            </div>
+          </div>
         </div>
 
         <Box className={style.logoContainer}>

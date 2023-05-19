@@ -44,7 +44,11 @@ const Profile = () => {
             <DrawerCloseButton />
             <DrawerHeader>Profile</DrawerHeader>
             <DrawerBody className={style.body}>
-              <img className={style.img} src={user.picture} alt={user.name} />
+              <img
+                className={style.innerImg}
+                src={user.picture}
+                alt={user.name}
+              />
 
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
