@@ -118,11 +118,11 @@ export default function SmallCentered() {
               _active={{ bg: "blue.700" }}
               _focus={{ boxShadow: "outline" }}
               label={"WhatsApp"}
-              href={"#"}
+              href={"https://chat.whatsapp.com/Hxtm3bEo2u65CLqDW8AfZD#"}
             >
               <FaWhatsapp />
             </SocialButton>
-            <SocialButton label={"Instagram"} href={"#"}>
+            <SocialButton label={"Instagram"} href={"https://www.instagram.com/goldsgym/"}>
               <FaInstagram
                 _hover={{ bg: "blue.600" }}
                 _active={{ bg: "grey" }}
