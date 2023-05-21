@@ -5,6 +5,7 @@ import EjercicioCards from "../EjercicioCards/EjercicioCards";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
 import { filters, getEjercicios } from "../../redux/Actions";
+import Loading from "../Loading/Loading";
 
 export default function Pagination() {
   const allEjercicios = useSelector((state) => state.filteredEjercicios);
@@ -138,7 +139,11 @@ export default function Pagination() {
           </Button>
         </Flex>
       </Flex>
-      <EjercicioCards ejercicios={paginate} />
+      {!paginate.length ? (
+        <Loading />
+      ) : (
+        <EjercicioCards ejercicios={paginate} />
+      )}
     </Box>
   );
 }
