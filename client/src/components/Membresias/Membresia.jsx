@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   item1,
   item2,
@@ -75,6 +76,7 @@ const redirectToCheckoutplatinum = async (item3) => {
 };
 
 export default function ThreeTierPricing() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
     <Box className={style.body} py={12}>
       <VStack spacing={2} textAlign="center">
@@ -149,7 +151,11 @@ export default function ThreeTierPricing() {
             </List>
             <Box w="80%" pt={7}>
               <Button
-                onClick={() => redirectToCheckoutsilver(item1)}
+                onClick={
+                  isAuthenticated
+                    ? () => redirectToCheckoutsilver(item1)
+                    : () => loginWithRedirect()
+                }
                 className={style.Button}
                 colorScheme="red"
                 variant="outline"
@@ -229,7 +235,11 @@ export default function ThreeTierPricing() {
               </List>
               <Box w="80%" pt={7}>
                 <Button
-                  onClick={() => redirectToCheckoutgold(item2)}
+                  onClick={
+                    isAuthenticated
+                      ? () => redirectToCheckoutgold(item2)
+                      : () => loginWithRedirect()
+                  }
                   className={style.Button}
                   colorScheme="red"
                 >
@@ -288,7 +298,11 @@ export default function ThreeTierPricing() {
             </List>
             <Box w="80%" pt={7}>
               <Button
-                onClick={() => redirectToCheckoutplatinum(item3)}
+                onClick={
+                  isAuthenticated
+                    ? () => redirectToCheckoutplatinum(item3)
+                    : () => loginWithRedirect()
+                }
                 className={style.Button}
                 colorScheme="red"
                 variant="outline"
