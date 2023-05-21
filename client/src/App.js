@@ -15,6 +15,9 @@ import Auth0ProviderWithHistory from "./auth0provider";
 
 import SubscriptionSuccess from "./components/Success/success";
 import SubscriptionCancel from "./components/Cancel/cancel";
+import SubscriptionSuccess2 from "./components/Success/success2";
+import SubscriptionSuccess3 from "./components/Success/success3";
+
 
 import ClasesMembresia from "./components/Clases/Clases";
 
@@ -37,6 +40,8 @@ function App() {
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
           <Route path="/clases" element={<ClasesMembresia />} />
+          <Route path="/success2" element={<SubscriptionSuccess2 />} />
+          <Route path="/success3" element={<SubscriptionSuccess3 />} />
 
         </Routes>
         {pathname !== "/" && <SmallCentered />}
