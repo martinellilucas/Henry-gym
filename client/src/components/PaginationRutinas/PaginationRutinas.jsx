@@ -5,6 +5,7 @@ import Cards from "../Cards/Cards";
 import { getRutinas } from "../../redux/Actions";
 import style from "./PaginationRutinas.module.css";
 import { NavLink } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function Pagination() {
   const allRutinas = useSelector((state) => state.rutinas);
@@ -79,7 +80,11 @@ export default function Pagination() {
             </Button>
           </Flex>
         </Flex>
-        <Cards rutinas={paginate} disabled={false} />
+        {!paginate.length ? (
+          <Loading />
+        ) : (
+          <Cards rutinas={paginate} disabled={false} />
+        )}
       </Box>
     </div>
   );
