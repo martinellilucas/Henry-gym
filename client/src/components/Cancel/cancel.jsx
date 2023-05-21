@@ -1,9 +1,11 @@
 import React from 'react';
+import PagoCancelado from '../../assets/pagocancelado.png'
+import style from './cancel.module.css'
 
 const SubscriptionCancel = () => { 
   return (
-        <div >
-  <h3> Se cancelo su suscripcion </h3>
+        <div>
+            <img src={PagoCancelado} alt="pagocancelado" className={style.imagen} />
         </div>
   );
 };

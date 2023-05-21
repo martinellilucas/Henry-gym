@@ -1,0 +1,10 @@
+.imagen {
+    display:flex;
+    width: 100%;
+    max-height: 78vh;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
