@@ -56,11 +56,10 @@ const Profile = ({ membership }) => {
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
               <Text className={style.text}>Membership</Text>
-              {membership ? (
-                <span>{membership}</span>
-              ) : (
-                <span>Not a member !</span>
-              )}
+              {membership === "Platinum" ? <img src={Platino} /> : <></>}
+              {membership === "Silver" ? <img src={Plata} /> : <></>}
+              {membership === "Gold" ? <img src={Oro} /> : <></>}
+              {membership === "Bronze" && <span>Not a member!</span>}
             </DrawerBody>
 
             <DrawerFooter>
