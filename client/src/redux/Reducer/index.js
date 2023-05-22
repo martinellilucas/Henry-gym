@@ -6,6 +6,7 @@ import {
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
   FILTER,
+  GET_USER_MEMBERSHIP,
 } from "../Actions/index";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   rutinaDetail: [],
   rutinas: [],
   dificultad: [],
+  membership: "",
 };
 
 export default function footReducer(state = initialState, action) {
@@ -55,7 +57,8 @@ export default function footReducer(state = initialState, action) {
           ejercicio.difficulty.includes(difficulty)
       );
       return { ...state, filteredEjercicios: multipleFilter };
-
+    case GET_USER_MEMBERSHIP:
+      return { ...state, membership: action.payload };
     default:
       return { ...state };
   }

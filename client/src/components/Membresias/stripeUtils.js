@@ -19,14 +19,14 @@ export const item3 = {
 export const checkoutOptions1 = {
   lineItems: [item1],
   mode: "subscription",
-  successUrl: `${window.location.origin}/succes`,
+  successUrl: `${window.location.origin}/success3`,
   cancelUrl: `${window.location.origin}/cancel`,
 };
 
 export const checkoutOptions2 = {
   lineItems: [item2],
   mode: "subscription",
-  successUrl: `${window.location.origin}/success`,
+  successUrl: `${window.location.origin}/success2`,
   cancelUrl: `${window.location.origin}/cancel`,
 };
 
