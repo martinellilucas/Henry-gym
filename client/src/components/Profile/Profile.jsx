@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Profile.module.css";
 
@@ -26,9 +26,7 @@ const Profile = () => {
   const btnRef = React.useRef();
   const membership = useSelector((state) => state.membership);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getUserMembership(user?.email));
-  }, [dispatch, user?.email]);
+
   if (isLoading) {
     return <div>LOADING...</div>;
   }
