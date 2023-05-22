@@ -8,15 +8,15 @@ import { Box } from "@chakra-ui/react";
 
 import ThreeTierPricing from "../Membresias/Membresia.jsx";
 import { useEffect } from "react";
-
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { postUser } from "../../redux/Actions";
+import ClasesHome from "../ClasesHome/ClasesHome";
 
 const Home = () => {
-  const { user } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
-
+  const membership = useSelector((state) => state.membership);
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
@@ -28,10 +28,18 @@ const Home = () => {
       <Carousel></Carousel>
       <div className={style.titleContainer}>
         <Box>
-          <h1 id="membresias">OUR MEMBERSHIPS</h1>
+          {membership === "Bronze" || !isAuthenticated ? (
+            <h1 id="membresias">OUR MEMBERSHIPS</h1>
+          ) : (
+            <h1 id="membresias">SELECT YOUR CLASSES</h1>
+          )}
         </Box>
       </div>
-      <ThreeTierPricing></ThreeTierPricing>
+      {membership === "Bronze" || !isAuthenticated ? (
+        <ThreeTierPricing></ThreeTierPricing>
+      ) : (
+        <ClasesHome></ClasesHome>
+      )}
     </div>
   );
 };
