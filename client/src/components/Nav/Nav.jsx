@@ -15,7 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 
 const Nav = () => {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -60,13 +60,13 @@ const Nav = () => {
             CLASSES
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {isAuthenticated && (
-          <BreadcrumbItem className={style.item}>
-            <BreadcrumbLink as={NavLink} to="/rutinas">
-              ROUTINES
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        )}
+
+        <BreadcrumbItem className={style.item}>
+          <BreadcrumbLink as={NavLink} to="/rutinas">
+            ROUTINES
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+
         {isAuthenticated && (
           <BreadcrumbItem className={style.item}>
             <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/ejercicios">
