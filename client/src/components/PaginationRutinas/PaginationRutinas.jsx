@@ -6,8 +6,10 @@ import { getRutinas } from "../../redux/Actions";
 import style from "./PaginationRutinas.module.css";
 import { NavLink } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Pagination() {
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const allRutinas = useSelector((state) => state.rutinas);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
@@ -58,27 +60,55 @@ export default function Pagination() {
           align="center"
           justify="center"
         >
-          <Flex margin="50px" align="center">
-            <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
-              &lt;
-            </Button>
-            {pageIndex.map((index) => (
+          {" "}
+          {isAuthenticated ? (
+            <Flex margin="50px" align="center">
               <Button
-                key={index}
-                value={index}
-                onClick={() => handleClickButton(index)}
-                colorScheme={index === currentPage ? "blackAlpha" : undefined}
+                onClick={() => handleClickArrow("-")}
+                disabled={page === 1}
               >
-                {index}
+                &lt;
               </Button>
-            ))}
-            <Button
-              onClick={() => handleClickArrow("+")}
-              disabled={page === rutinasPages}
-            >
-              &gt;
-            </Button>
-          </Flex>
+              {pageIndex.map((index) => (
+                <Button
+                  key={index}
+                  value={index}
+                  onClick={() => handleClickButton(index)}
+                  colorScheme={index === currentPage ? "blackAlpha" : undefined}
+                >
+                  {index}
+                </Button>
+              ))}
+              <Button
+                onClick={() => handleClickArrow("+")}
+                disabled={page === rutinasPages}
+              >
+                &gt;
+              </Button>
+            </Flex>
+          ) : (
+            <Flex margin="50px" align="center">
+              <Button onClick={() => loginWithRedirect()} disabled={page === 1}>
+                &lt;
+              </Button>
+              {pageIndex.map((index) => (
+                <Button
+                  key={index}
+                  value={index}
+                  onClick={() => loginWithRedirect()}
+                  colorScheme={index === currentPage ? "blackAlpha" : undefined}
+                >
+                  {index}
+                </Button>
+              ))}
+              <Button
+                onClick={() => loginWithRedirect()}
+                disabled={page === rutinasPages}
+              >
+                &gt;
+              </Button>
+            </Flex>
+          )}
         </Flex>
         {!paginate.length ? (
           <Loading />

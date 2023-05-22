@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEjercicios, postRutina } from "../../redux/Actions";
 import Form1 from "./Forms/Form";
 import { useLocalStore } from "./useLocalStorage";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ThankYou = () => {
   return (
@@ -22,21 +23,22 @@ const ThankYou = () => {
 };
 
 export default function PostRutina() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const toast = useToast();
   const [step, setStep] = useState(1);
   const dispatch = useDispatch();
   const ejercicios = useSelector((state) => state.ejercicios);
 
   const [form, setForm] = useState({
-    difficulty: window.localStorage.getItem('difficulty'),
+    difficulty: window.localStorage.getItem("difficulty"),
     grupoMuscular: [],
-    imagen: window.localStorage.getItem('imagen'),
+    imagen: window.localStorage.getItem("imagen"),
     ejercicios: [],
   });
 
-   const [difficulty,setDifficulty ] = useLocalStore('difficulty','')
-   const [grupoMuscular,setGrupoMuscular] = useLocalStore('grupoMuscular',[])
-   const [imagen,setImagen] = useLocalStore('imagen','')
+  const [difficulty, setDifficulty] = useLocalStore("difficulty", "");
+  const [grupoMuscular, setGrupoMuscular] = useLocalStore("grupoMuscular", []);
+  const [imagen, setImagen] = useLocalStore("imagen", "");
 
   const [error, setError] = useState({
     difficulty: "",
@@ -81,9 +83,7 @@ export default function PostRutina() {
             ejercicios.find((e) => e.muscle === value),
           ],
         }));
-        setGrupoMuscular(
-          value
-        )
+        setGrupoMuscular(value);
       } else {
         setForm((prevForm) => ({
           ...prevForm,
@@ -96,17 +96,11 @@ export default function PostRutina() {
         ...prevForm,
         [target]: value,
       }));
-      if(target === 'difficulty' ){
-        setDifficulty(
-          value
-         )
+      if (target === "difficulty") {
+        setDifficulty(value);
       } else {
-
-        setImagen(
-          value
-        )
+        setImagen(value);
       }
-      
     }
   };
 
@@ -134,8 +128,8 @@ export default function PostRutina() {
         grupoMuscular: [],
         ejercicios: [],
       });
-      setDifficulty('');
-      setImagen('');
+      setDifficulty("");
+      setImagen("");
       setStep(2);
     }
   };
@@ -172,17 +166,28 @@ export default function PostRutina() {
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
-            {step === 1 && (
-              <Button
-                type="submit"
-                w="7rem"
-                colorScheme="red"
-                variant="solid"
-                isDisabled={isDisabled}
-              >
-                Submit
-              </Button>
-            )}
+            {step === 1 &&
+              (isAuthenticated ? (
+                <Button
+                  type="submit"
+                  w="7rem"
+                  colorScheme="red"
+                  variant="solid"
+                  isDisabled={isDisabled}
+                >
+                  Submit
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => loginWithRedirect()}
+                  w="7rem"
+                  colorScheme="red"
+                  variant="solid"
+                  isDisabled={isDisabled}
+                >
+                  Submit
+                </Button>
+              ))}
           </Flex>
         </ButtonGroup>
       </Box>
