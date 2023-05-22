@@ -18,7 +18,7 @@ import {
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserMembership } from "../../redux/Actions";
 const Profile = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
