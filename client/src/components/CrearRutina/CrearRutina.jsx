@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getEjercicios, postRutina } from "../../redux/Actions";
 import Form1 from "./Forms/Form";
+import { useLocalStore } from "./useLocalStorage";
 
 const ThankYou = () => {
   return (
@@ -27,11 +28,15 @@ export default function PostRutina() {
   const ejercicios = useSelector((state) => state.ejercicios);
 
   const [form, setForm] = useState({
-    difficulty: "",
+    difficulty: window.localStorage.getItem('difficulty'),
     grupoMuscular: [],
-    imagen: "",
+    imagen: window.localStorage.getItem('imagen'),
     ejercicios: [],
   });
+
+   const [difficulty,setDifficulty ] = useLocalStore('difficulty','')
+   const [grupoMuscular,setGrupoMuscular] = useLocalStore('grupoMuscular',[])
+   const [imagen,setImagen] = useLocalStore('imagen','')
 
   const [error, setError] = useState({
     difficulty: "",
@@ -76,6 +81,9 @@ export default function PostRutina() {
             ejercicios.find((e) => e.muscle === value),
           ],
         }));
+        setGrupoMuscular(
+          value
+        )
       } else {
         setForm((prevForm) => ({
           ...prevForm,
@@ -88,6 +96,17 @@ export default function PostRutina() {
         ...prevForm,
         [target]: value,
       }));
+      if(target === 'difficulty' ){
+        setDifficulty(
+          value
+         )
+      } else {
+
+        setImagen(
+          value
+        )
+      }
+      
     }
   };
 
@@ -112,11 +131,11 @@ export default function PostRutina() {
         isClosable: true,
       });
       setForm({
-        difficulty: "",
         grupoMuscular: [],
-        imagen: "",
         ejercicios: [],
       });
+      setDifficulty('');
+      setImagen('');
       setStep(2);
     }
   };
