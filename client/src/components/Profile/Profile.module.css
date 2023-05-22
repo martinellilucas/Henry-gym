@@ -6,10 +6,7 @@
   margin-right: 30px;
   cursor: pointer;
 }
-.imgMemb {
-  width: 110px;
-  height: 150px;
-}
+
 .innerImg {
   --color: royalblue; /* the color of the border */
   --border: 5px; /* the thickness of the border */

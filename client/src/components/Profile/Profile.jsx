@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Profile.module.css";
 
@@ -18,11 +18,17 @@ import {
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
-const Profile = ({ membership }) => {
+import { useDispatch } from "react-redux";
+import { getUserMembership } from "../../redux/Actions";
+const Profile = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
+  const membership = useSelector((state) => state.membership);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserMembership(user?.email));
+  }, [dispatch, user?.email]);
   if (isLoading) {
     return <div>LOADING...</div>;
   }

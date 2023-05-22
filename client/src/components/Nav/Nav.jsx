@@ -10,16 +10,12 @@ import {
 } from "@chakra-ui/react";
 
 import { NavLink } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserMembership } from "../../redux/Actions";
 
 const Nav = () => {
-  const membership = useSelector((state) => state.membership);
-  const dispatch = useDispatch();
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -27,9 +23,7 @@ const Nav = () => {
       behavior: "smooth",
     });
   };
-  useEffect(() => {
-    dispatch(getUserMembership(user?.email));
-  }, [dispatch, user?.email]);
+
   const scrollToMembresias = () => {
     if (window.location.pathname !== "/home") {
       window.location.href = "/home";
@@ -103,7 +97,7 @@ const Nav = () => {
         </Button>
       ) : (
         <div className={style.profileContainer}>
-          <Profile membership={membership} />
+          <Profile />
         </div>
       )}
     </Box>
