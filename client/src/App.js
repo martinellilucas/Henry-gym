@@ -1,4 +1,4 @@
-import "@stripe/stripe-js"
+import "@stripe/stripe-js";
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../src/components/Nav/Nav";
@@ -18,9 +18,7 @@ import SubscriptionCancel from "./components/Cancel/cancel";
 import SubscriptionSuccess2 from "./components/Success/success2";
 import SubscriptionSuccess3 from "./components/Success/success3";
 
-
 import ClasesMembresia from "./components/Clases/Clases";
-
 
 function App() {
   const { pathname } = useLocation();
@@ -42,7 +40,6 @@ function App() {
           <Route path="/clases" element={<ClasesMembresia />} />
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
-
         </Routes>
         {pathname !== "/" && <SmallCentered />}
       </div>
