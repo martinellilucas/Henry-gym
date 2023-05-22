@@ -39,7 +39,10 @@ const Profile = () => {
           className={style.img}
           src={user.picture}
           alt={user.name}
-          onClick={onOpen}
+          onClick={() => {
+            onOpen();
+            dispatch(getUserMembership(user?.email));
+          }}
         />
 
         <Drawer
