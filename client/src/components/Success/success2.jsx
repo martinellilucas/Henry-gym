@@ -9,8 +9,8 @@ const SubscriptionSuccess2 = () => {
   const { user } = useAuth0();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(putUser(user.email, { tipoDeSuscripcion: "Gold" }));
-  }, [dispatch, user.email]);
+    dispatch(putUser(user?.email, { tipoDeSuscripcion: "Gold" }));
+  }, [dispatch, user?.email]);
   return (
     <div className={style.div2}>
       <video className={style.videoContainer} autoPlay muted loop>
