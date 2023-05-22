@@ -9,22 +9,19 @@ import { Box } from "@chakra-ui/react";
 import ThreeTierPricing from "../Membresias/Membresia.jsx";
 import { useEffect } from "react";
 
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import {postUser} from '../../redux/Actions'
+import { postUser } from "../../redux/Actions";
 
 const Home = () => {
+  const { user } = useAuth0();
+  const dispatch = useDispatch();
 
-  const {user} = useAuth0()
-  const dispatch = useDispatch()
-  
   useEffect(() => {
-    if(user){
-      dispatch(postUser(user)) 
+    if (user) {
+      dispatch(postUser(user));
     }
-  })
-
-  console.log(user)
+  });
 
   return (
     <div className={style.home}>
