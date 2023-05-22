@@ -6,7 +6,19 @@ export const GET_RUTINA_ID = "GET_RUTINA_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
+export const GET_USER_MEMBERSHIP = "GET_USER_MEMBERSHIP";
 
+export const getUserMembership = (email) => {
+  return async (dispatch) => {
+    const resp = await axios.get(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`
+    );
+    dispatch({
+      type: GET_USER_MEMBERSHIP,
+      payload: resp.data.tipoDeSuscripcion,
+    });
+  };
+};
 export const getRutinas = () => {
   return async (dispatch) => {
     const resp = await axios.get(
@@ -70,7 +82,6 @@ export const postRutina = (rutina) => {
   };
 };
 
-
 export const filters = (muscle, difficulty) => {
   return {
     type: FILTER,
@@ -79,13 +90,20 @@ export const filters = (muscle, difficulty) => {
 };
 
 export const postUser = (user) => {
- return async function () {
-  await axios
-  .post("https://henry-gym-production.up.railway.app/cliente",user)
-  .then((res) => {
-    return res.data
-  })
- }
-}
-
+  return async function () {
+    await axios
+      .post("https://henry-gym-production.up.railway.app/cliente", user)
+      .then((res) => {
+        return res.data;
+      });
+  };
+};
+export const putUser = (email, body) => {
+  return async function () {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
+      body
+    );
+  };
+};
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

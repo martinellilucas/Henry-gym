@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Profile.module.css";
+
 import {
   Drawer,
   DrawerBody,
@@ -14,8 +15,10 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-
-const Profile = () => {
+import Plata from "../../assets/Plata.png";
+import Platino from "../../assets/Platino.png";
+import Oro from "../../assets/Oro.png";
+const Profile = ({ membership }) => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -53,6 +56,11 @@ const Profile = () => {
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
               <Text className={style.text}>Membership</Text>
+              {membership ? (
+                <span>{membership}</span>
+              ) : (
+                <span>Not a member !</span>
+              )}
             </DrawerBody>
 
             <DrawerFooter>

@@ -1,13 +1,12 @@
-const {Cliente} = require("../db");
+const { Cliente } = require("../db");
 
-const putClienteSus = async (idcliente, nuevoTipoDeSuscripcion)=>{
+const putClienteSus = async (emailcliente, nuevoTipoDeSuscripcion) => {
+  const response = await Cliente.update(
+    { tipoDeSuscripcion: nuevoTipoDeSuscripcion },
+    { where: { email: emailcliente } }
+  );
 
-    const response = await Cliente.update(
-        { tipoDeSuscripcion: nuevoTipoDeSuscripcion },
-        { where: { id: idcliente } }
-      );
-
-    return `La suscripcion del usuario ha sido actualizada a ${nuevoTipoDeSuscripcion}`
-
-
+  return `La suscripcion del usuario ha sido actualizada a ${nuevoTipoDeSuscripcion}`;
 };
+
+module.exports = putClienteSus;

@@ -13,8 +13,10 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const membership = useSelector((state) => state.membership);
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const scrollToTop = () => {
@@ -97,7 +99,7 @@ const Nav = () => {
         </Button>
       ) : (
         <div className={style.profileContainer}>
-          <Profile />
+          <Profile membership={membership} />
         </div>
       )}
     </Box>
