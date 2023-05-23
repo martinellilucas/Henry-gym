@@ -20,12 +20,19 @@ import SubscriptionSuccess3 from "./components/Success/success3";
 
 import ClasesMembresia from "./components/Clases/Clases";
 
+import SidebarWithHeader from "./components/Dashboard/DashboardAdmin";
+
 function App() {
+
   const { pathname } = useLocation();
+  const showNavbarAndFooter = !(pathname === "/dashboard" || pathname === "/");
+
+
   return (
     <Auth0ProviderWithHistory>
       <div>
-        {pathname !== "/" && <Nav />}
+        {showNavbarAndFooter && <Nav />}
+
         <Routes>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Landing />} />
@@ -40,8 +47,9 @@ function App() {
           <Route path="/clases" element={<ClasesMembresia />} />
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
+          <Route path="/dashboard" element={<SidebarWithHeader />} />
         </Routes>
-        {pathname !== "/" && <SmallCentered />}
+        {showNavbarAndFooter && <SmallCentered />}
       </div>
     </Auth0ProviderWithHistory>
   );
