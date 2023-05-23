@@ -17,6 +17,7 @@ const Home = () => {
     if (user) {
       dispatch(postUser(user));
       dispatch(getUserByEmail(user?.email));
+      console.log(client?.tipoDeSuscripcion);
     }
   });
 
