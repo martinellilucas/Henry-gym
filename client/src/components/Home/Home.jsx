@@ -5,7 +5,7 @@ import ThreeTierPricing from "../Membresias/Membresia.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { postUser } from "../../redux/Actions";
+import { getUserMembership, postUser } from "../../redux/Actions";
 import ClasesHome from "../ClasesHome/ClasesHome";
 
 const Home = () => {
@@ -16,8 +16,9 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
+      dispatch(getUserMembership(user?.email));
     }
-  });
+  }, []);
 
   return (
     <div className={style.home}>
