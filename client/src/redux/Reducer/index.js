@@ -60,7 +60,7 @@ export default function footReducer(state = initialState, action) {
       return { ...state, filteredEjercicios: multipleFilter };
 
     case GET_USER_BY_EMAIL:
-      return { ...state, user: action.payload };
+      return { ...state, user: { ...action.payload } };
 
     default:
       return { ...state };
