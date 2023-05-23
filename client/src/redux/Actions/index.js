@@ -6,6 +6,7 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+export const GET_CLIENTES = "GET_CLIENTES";
 
 export const getRutinas = () => {
   return async (dispatch) => {
@@ -100,6 +101,15 @@ export const getUserByEmail = (email) => {
       `https://henry-gym-production.up.railway.app/cliente/${email}`
     );
     dispatch({ type: GET_USER_BY_EMAIL, payload: response.data });
+  };
+};
+
+export const getClientes = () => {
+  return async function (dispatch) {
+    const resp = await axios(
+      "https://henry-gym-production.up.railway.app/cliente"
+    );
+    dispatch({ type: GET_CLIENTES, payload: resp.data });
   };
 };
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

@@ -7,6 +7,7 @@ import {
   GET_RUTINAS,
   FILTER,
   GET_USER_BY_EMAIL,
+  GET_CLIENTES,
 } from "../Actions/index";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   dificultad: [],
   membership: "",
   user: {},
+  clientes: [],
 };
 
 export default function footReducer(state = initialState, action) {
@@ -61,7 +63,8 @@ export default function footReducer(state = initialState, action) {
 
     case GET_USER_BY_EMAIL:
       return { ...state, user: { ...action.payload } };
-
+    case GET_CLIENTES:
+      return { ...state, clientes: [...action.payload] };
     default:
       return { ...state };
   }
