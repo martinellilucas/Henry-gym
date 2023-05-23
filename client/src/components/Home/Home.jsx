@@ -1,11 +1,6 @@
-import Cards from "../Cards/Cards";
-
 import Carousel from "../Carousel/Caruosel.jsx";
-
 import style from "../Home/Home.module.css";
-
 import { Box } from "@chakra-ui/react";
-
 import ThreeTierPricing from "../Membresias/Membresia.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +12,7 @@ const Home = () => {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const membership = useSelector((state) => state.membership);
+
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
