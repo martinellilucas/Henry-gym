@@ -19,7 +19,7 @@ const SubscriptionSuccess = () => {
 
   useEffect(() => {
     dispatch(putUser(user?.email, { tipoDeSuscripcion: "Platinum" }));
-    return send(service_ID, template_ID, template_params, public_key);
+    send(service_ID, template_ID, template_params, public_key);
   }, [dispatch, user?.email]);
 
   return (
