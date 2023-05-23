@@ -9,7 +9,7 @@ import { getUserByEmail, postUser } from "../../redux/Actions";
 import ClasesHome from "../ClasesHome/ClasesHome";
 
 const Home = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   const dispatch = useDispatch();
   const client = useSelector((state) => state.client);
 
@@ -25,14 +25,14 @@ const Home = () => {
       <Carousel></Carousel>
       <div className={style.titleContainer}>
         <Box>
-          {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
+          {client?.tipoDeSuscripcion === "Bronze" ? (
             <h1 id="membresias">OUR MEMBERSHIPS</h1>
           ) : (
             <h1 id="membresias">SELECT YOUR CLASSES</h1>
           )}
         </Box>
       </div>
-      {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
+      {client?.tipoDeSuscripcion === "Bronze" ? (
         <ThreeTierPricing></ThreeTierPricing>
       ) : (
         <ClasesHome></ClasesHome>
