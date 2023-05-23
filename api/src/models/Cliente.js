@@ -36,9 +36,10 @@ module.exports = (sequelize) => {
       defaultValue: false,
       allowNull: false
     },
-    comment : {
-      type : DataTypes.ARRAY(DataTypes.STRING),
-      allowNull : true
+    isBanned : {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
     }
   }, {
     timestamps: false // Desactiva los timestamps
