@@ -11,13 +11,12 @@ import ClasesHome from "../ClasesHome/ClasesHome";
 const Home = () => {
   const { user } = useAuth0();
   const dispatch = useDispatch();
-  const client = useSelector((state) => state.client);
+  const client = useSelector((state) => state.user);
 
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
       dispatch(getUserByEmail(user?.email));
-      console.log(client?.tipoDeSuscripcion);
     }
   });
 
