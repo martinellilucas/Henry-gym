@@ -94,10 +94,10 @@ export const putUser = (email, body) => {
     );
   };
 };
-export const getUserByEmail = () => {
+export const getUserByEmail = (email) => {
   return async function (dispatch) {
     const response = await axios(
-      "https://henry-gym-production.up.railway.app/cliente/${email}"
+      `https://henry-gym-production.up.railway.app/cliente/${email}`
     );
     dispatch({ type: GET_USER_BY_EMAIL, payload: response.data });
   };

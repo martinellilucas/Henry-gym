@@ -2,11 +2,11 @@ const { Router } = require("express");
 const handlerGetClientes = require("../handlers/handlerGetClientes");
 const handlerPostCliente = require("../handlers/handlerPostCliente");
 const handlerPutCliente = require("../handlers/handlerPutCliente");
-const handlerIDCliente = require("../handlers/handlerIDCliente");
+const handlerClienteByEmail = require("../handlers/handlerClienteByEmail");
 const routeCliente = Router();
 
 routeCliente.get("/", handlerGetClientes);
-routeCliente.get("/:id", handlerIDCliente);
+routeCliente.get("/:id", handlerClienteByEmail);
 routeCliente.post("/", handlerPostCliente);
 
 routeCliente.put("/:email", handlerPutCliente);
