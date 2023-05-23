@@ -10,12 +10,22 @@ import {
 } from "@chakra-ui/react";
 
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserMembership } from "../../redux/Actions";
 
 const Nav = () => {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const membership = useSelector((state) => state.membership);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUserMembership(user?.email));
+    }
+  });
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -74,11 +84,19 @@ const Nav = () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
         )}
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToMembresias}>
-            MEMBERSHIPS
-          </BreadcrumbLink>
-        </BreadcrumbItem>
+        {membership !== "Bronze" || !isAuthenticated ? (
+          <BreadcrumbItem className={style.item}>
+            <BreadcrumbLink onClick={scrollToMembresias}>
+              MEMBERSHIPS
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        ) : (
+          <BreadcrumbItem className={style.item}>
+            <NavLink to="/memberships">
+              <BreadcrumbLink>MEMBERSHIPS</BreadcrumbLink>
+            </NavLink>
+          </BreadcrumbItem>
+        )}
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/about">
             ABOUT
