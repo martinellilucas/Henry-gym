@@ -84,7 +84,7 @@ const Nav = () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
         )}
-        {membership !== "Bronze" || !isAuthenticated ? (
+        {membership === "Bronze" || !isAuthenticated ? (
           <BreadcrumbItem className={style.item}>
             <BreadcrumbLink onClick={scrollToMembresias}>
               MEMBERSHIPS
