@@ -25,7 +25,7 @@ const Nav = () => {
     if (user) {
       dispatch(getUserMembership(user?.email));
     }
-  });
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
