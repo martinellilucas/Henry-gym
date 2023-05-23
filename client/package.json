@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^2.6.1",
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.10.0",
+    "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@stripe/stripe-js": "^1.53.0",

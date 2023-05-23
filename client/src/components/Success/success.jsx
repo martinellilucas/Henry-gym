@@ -4,13 +4,23 @@ import style from "./success.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { putUser } from "../../redux/Actions/index";
+import { emailjs } from "@emailjs/browser";
 
 const SubscriptionSuccess = () => {
   const { user } = useAuth0();
   const dispatch = useDispatch();
+  const service_ID = "service_e9n2sqh";
+  const template_ID = "template_34yu2wu";
+  const template_params = {
+    name: user?.nombre,
+    user_email: user?.email,
+  };
   useEffect(() => {
     dispatch(putUser(user?.email, { tipoDeSuscripcion: "Platinum" }));
+
+    return emailjs.send(service_ID, template_ID, template_params);
   }, [dispatch, user?.email]);
+
   return (
     <div className={style.div2}>
       <video className={style.videoContainer} autoPlay muted loop>
