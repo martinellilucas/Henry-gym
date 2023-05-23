@@ -84,7 +84,7 @@ const Profile = () => {
             </DrawerBody>
 
             <DrawerFooter>
-              {client.isAdmin ? (
+              {client?.isAdmin ? (
                 <NavLink to="/dashboard">
                   <Button colorScheme="blackAlpha">DASHBOARD</Button>
                 </NavLink>
