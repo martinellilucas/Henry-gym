@@ -25,14 +25,14 @@ const Home = () => {
       <Carousel></Carousel>
       <div className={style.titleContainer}>
         <Box>
-          {client.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
+          {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
             <h1 id="membresias">OUR MEMBERSHIPS</h1>
           ) : (
             <h1 id="membresias">SELECT YOUR CLASSES</h1>
           )}
         </Box>
       </div>
-      {client.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
+      {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
         <ThreeTierPricing></ThreeTierPricing>
       ) : (
         <ClasesHome></ClasesHome>

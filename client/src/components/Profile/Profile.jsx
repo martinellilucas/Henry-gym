@@ -63,22 +63,22 @@ const Profile = () => {
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
               <Text className={style.text}>Membership</Text>
-              {client.tipoDeSuscripcion === "Platinum" ? (
+              {client?.tipoDeSuscripcion === "Platinum" ? (
                 <img className={style.imgMemb} src={Platino} />
               ) : (
                 <></>
               )}
-              {client.tipoDeSuscripcion === "Silver" ? (
+              {client?.tipoDeSuscripcion === "Silver" ? (
                 <img className={style.imgMemb} src={Plata} />
               ) : (
                 <></>
               )}
-              {client.tipoDeSuscripcion === "Gold" ? (
+              {client?.tipoDeSuscripcion === "Gold" ? (
                 <img className={style.imgMemb} src={Oro} />
               ) : (
                 <></>
               )}
-              {client.tipoDeSuscripcion === "Bronze" && (
+              {client?.tipoDeSuscripcion === "Bronze" && (
                 <span>Not a member!</span>
               )}
             </DrawerBody>
