@@ -18,7 +18,7 @@ const Home = () => {
       dispatch(postUser(user));
       dispatch(getUserMembership(user?.email));
     }
-  }, []);
+  });
 
   return (
     <div className={style.home}>
