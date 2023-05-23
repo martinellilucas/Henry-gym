@@ -6,7 +6,6 @@ import {
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
   FILTER,
-  GET_USER_MEMBERSHIP,
   GET_USER_BY_EMAIL,
 } from "../Actions/index";
 
