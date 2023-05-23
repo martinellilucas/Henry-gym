@@ -5,18 +5,18 @@ import ThreeTierPricing from "../Membresias/Membresia.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getUserMembership, postUser } from "../../redux/Actions";
+import { getUserByEmail, postUser } from "../../redux/Actions";
 import ClasesHome from "../ClasesHome/ClasesHome";
 
 const Home = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   const dispatch = useDispatch();
-  const membership = useSelector((state) => state.membership);
+  const client = useSelector((state) => state.user);
 
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
-      dispatch(getUserMembership(user?.email));
+      dispatch(getUserByEmail(user?.email));
     }
   });
 
@@ -25,14 +25,14 @@ const Home = () => {
       <Carousel></Carousel>
       <div className={style.titleContainer}>
         <Box>
-          {membership === "Bronze" || !isAuthenticated ? (
+          {client?.tipoDeSuscripcion === "Bronze" ? (
             <h1 id="membresias">OUR MEMBERSHIPS</h1>
           ) : (
             <h1 id="membresias">SELECT YOUR CLASSES</h1>
           )}
         </Box>
       </div>
-      {membership === "Bronze" || !isAuthenticated ? (
+      {client?.tipoDeSuscripcion === "Bronze" ? (
         <ThreeTierPricing></ThreeTierPricing>
       ) : (
         <ClasesHome></ClasesHome>

@@ -1,22 +1,3 @@
-.div2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 74.9vh;
-}
-
-.videoContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-}
-
-.videoContainer video{
-    width: 80%;
-    height: auto;
-}
-
 .button {
     background-color: gray;
     color: white;
