@@ -19,12 +19,12 @@ import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserMembership } from "../../redux/Actions";
+import { getUserByEmail } from "../../redux/Actions";
 const Profile = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const membership = useSelector((state) => state.membership);
+  const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   if (isLoading) {
@@ -39,7 +39,7 @@ const Profile = () => {
           alt={user.name}
           onClick={() => {
             onOpen();
-            dispatch(getUserMembership(user?.email));
+            dispatch(getUserByEmail(user?.email));
           }}
         />
 
@@ -63,25 +63,34 @@ const Profile = () => {
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
               <Text className={style.text}>Membership</Text>
-              {membership === "Platinum" ? (
+              {client.tipoDeSuscripcion === "Platinum" ? (
                 <img className={style.imgMemb} src={Platino} />
               ) : (
                 <></>
               )}
-              {membership === "Silver" ? (
+              {client.tipoDeSuscripcion === "Silver" ? (
                 <img className={style.imgMemb} src={Plata} />
               ) : (
                 <></>
               )}
-              {membership === "Gold" ? (
+              {client.tipoDeSuscripcion === "Gold" ? (
                 <img className={style.imgMemb} src={Oro} />
               ) : (
                 <></>
               )}
-              {membership === "Bronze" && <span>Not a member!</span>}
+              {client.tipoDeSuscripcion === "Bronze" && (
+                <span>Not a member!</span>
+              )}
             </DrawerBody>
 
             <DrawerFooter>
+              {client.isAdmin ? (
+                <NavLink to="/dashboard">
+                  <Button colorScheme="blackAlpha">DASHBOARD</Button>
+                </NavLink>
+              ) : (
+                <></>
+              )}
               <Button
                 colorScheme="blackAlpha"
                 onClick={() => {

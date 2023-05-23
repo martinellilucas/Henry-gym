@@ -1,24 +1,12 @@
 import axios from "axios";
-
 export const GET_RUTINAS = "GET_RUTINAS";
 export const GET_EJERCICIOS = "GET_EJERCICIOS";
 export const GET_RUTINA_ID = "GET_RUTINA_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
-export const GET_USER_MEMBERSHIP = "GET_USER_MEMBERSHIP";
+export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 
-export const getUserMembership = (email) => {
-  return async (dispatch) => {
-    const resp = await axios.get(
-      `https://henry-gym-production.up.railway.app/cliente/${email}`
-    );
-    dispatch({
-      type: GET_USER_MEMBERSHIP,
-      payload: resp.data.tipoDeSuscripcion,
-    });
-  };
-};
 export const getRutinas = () => {
   return async (dispatch) => {
     const resp = await axios.get(
@@ -104,6 +92,14 @@ export const putUser = (email, body) => {
       `https://henry-gym-production.up.railway.app/cliente/${email}`,
       body
     );
+  };
+};
+export const getUserByEmail = () => {
+  return async function (dispatch) {
+    const response = await axios(
+      "https://henry-gym-production.up.railway.app/cliente/${email}"
+    );
+    dispatch({ type: GET_USER_BY_EMAIL, payload: response.data });
   };
 };
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
