@@ -8,7 +8,19 @@ export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
+export const GET_CLASES = "GET_CLASES";
 
+export const getClases = () => {
+  return async (dispatch) => {
+    const resp = await axios.get(
+      "https://henry-gym-production.up.railway.app/clase"
+    );
+    dispatch({
+      type: GET_CLASES,
+      payload: resp.data,
+    });
+  };
+};
 export const banUser = (email, body) => {
   return async () => {
     await axios.put(
