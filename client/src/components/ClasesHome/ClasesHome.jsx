@@ -107,8 +107,13 @@ export default function ClasesHome() {
           </Stack>
           <Popover>
             <PopoverTrigger>
-              {client.tipoDeSuscripcion === "Silver" ? (
-                <Text color="red">Upgrade your membership to subscribe.</Text>
+              {client?.tipoDeSuscripcion === "Silver" ? (
+                <Button
+                  isDisabled={client?.tipoDeSuscripcion === "Silver"}
+                  backgroundColor="#aaaaaa"
+                >
+                  Subscribe
+                </Button>
               ) : (
                 <Button backgroundColor="#aaaaaa">Subscribe</Button>
               )}
