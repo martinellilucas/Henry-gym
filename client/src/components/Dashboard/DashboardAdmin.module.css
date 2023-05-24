@@ -43,15 +43,40 @@
     background-color: #f2f2f2;
   }
 
+.buttonO{
+  display: flex;
+}
+
 .button3{
-    margin-left: 20%;
+    margin-left: 10%;
     margin-top: 2%;
-    width: 40%;
-    height: 5%;
-    border-radius: 50px;
-    border-color: black;
+    border-radius: 30%;
     font-size: 1.5rem;
     font-weight: bold;
     background-color: #160b8d;
     color: rgb(255, 255, 255);
+}
+
+.refreshButton {
+  margin-left: 20%;
+  background-color: #1e128c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.refreshButton:hover {
+  background-color: #c32424;
+}
+
+.refreshButton:focus {
+  outline: none;
+}
+
+.customButton:active {
+  background-color: #3e8e41;
 }

@@ -56,6 +56,10 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getClientes());
     dispatch(getUserByEmail(user?.email));
   }, [dispatch]);
+
+
+
+
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
@@ -236,10 +240,19 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
 };
 
 const Contenido = ({ clientes }) => {
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+
+
   return (
+
     <Box className={style.container}>
-      <Text className={style.text1} fontSize="2xl" fontWeight="bold">
+      
+      <Text className={style.text1} fontSize="5xl" fontWeight="bold">
         Welcome to the Dashboard Admin
+        <button className={style.refreshButton} onClick={refreshPage} >Refresh Page</button>
       </Text>
       <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
         Clients List:
@@ -248,7 +261,7 @@ const Contenido = ({ clientes }) => {
         <table className={style.tabla}>
           <thead>
             <tr>
-              <th>Name</th>
+              <th>User</th>
               <th>Suscription</th>
               <th>Is Banned</th>
               <th>Is Admin</th>
@@ -261,9 +274,11 @@ const Contenido = ({ clientes }) => {
                 <td>{item.nombre}</td>
                 <td>{item.tipoDeSuscripcion}</td>
                 <td>{item.isBanned.toString()}</td>
-                <td>{item.isAdmin.toString()}</td>
-                <td>
-                  <button className={style.button3}>A/I</button>
+                <td>{item.isAdmin.toString()}</td> 
+                <td className={style.buttonO}>
+                  
+                  <button className={style.button3}>BAN</button>
+                  <button className={style.button3}>ADM</button>
                 </td>
               </tr>
             ))}
@@ -280,7 +295,7 @@ const Contenido = ({ clientes }) => {
             color="gray"
             size="200px"
           >
-            <CircularProgressLabel>Silver</CircularProgressLabel>
+            <CircularProgressLabel>Sil.</CircularProgressLabel>
           </CircularProgress>
           <CircularProgress
             value={calculoMembresias(clientes, "Gold")}
@@ -294,10 +309,44 @@ const Contenido = ({ clientes }) => {
             color="teal"
             size="200px"
           >
-            <CircularProgressLabel>Platinum</CircularProgressLabel>
+            <CircularProgressLabel>Plat.</CircularProgressLabel>
           </CircularProgress>
         </Flex>
       </Box>
+      <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+        Client Comments
+      </Text>
+      <Box className={style.listado}>
+
+      <table className={style.tabla}>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Suscription</th>
+              <th>Comment Link</th>
+              <th>Is Admin</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clientes?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nombre}</td>
+                <td>{item.tipoDeSuscripcion}</td>
+                <td>{item.isBanned.toString()}</td>
+                <td>{item.isAdmin.toString()}</td> 
+                <td>
+                  
+                  <button className={style.button3}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </Box>
+        
+        
+
     </Box>
   );
 };
