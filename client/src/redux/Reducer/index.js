@@ -7,11 +7,13 @@ import {
   GET_RUTINAS,
   FILTER,
   GET_USER_MEMBERSHIP,
+  GET_EJERCICIOS_ID,
 } from "../Actions/index";
 
 const initialState = {
   ejercicios: [],
   filteredEjercicios: [],
+  ejercicioId: [],
   rutinaDetail: [],
   rutinas: [],
   dificultad: [],
@@ -26,6 +28,11 @@ export default function footReducer(state = initialState, action) {
         ejercicios: action.payload,
         filteredEjercicios: action.payload,
       };
+    case GET_EJERCICIOS_ID:
+      return {
+        ...state,
+        ejercicioId: action.payload
+      }
     case GET_RUTINA_ID:
       return {
         ...state,

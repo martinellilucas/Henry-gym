@@ -1,19 +1,30 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Box, Button, Flex, Text, filter } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Text, filter } from "@chakra-ui/react";
 import EjercicioCards from "../EjercicioCards/EjercicioCards";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
 import { filters, getEjercicios } from "../../redux/Actions";
 import Loading from "../Loading/Loading";
+import { NavLink } from "react-router-dom";
+import { getEjercicioId } from "../../redux/Actions";
+
+
 
 export default function Pagination() {
   const allEjercicios = useSelector((state) => state.filteredEjercicios);
+  const ejercicioID = useSelector((state) => state.ejercicioId)
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
   const [selectedMusculo, setSelectedMusculo] = useState("");
   const [selectedDificultad, setSelectedDificultad] = useState("");
 
+  // ESTADOS PARA EL CREADO DE RUTINA 
+  const [isOpen,setIsOpen] = useState(false)
+  const [ejer,setEjer] = useState({
+    ejercicios : []
+  })
+  
   const dispatch = useDispatch();
   const count = 9;
   const pageIndex = [];
@@ -24,8 +35,10 @@ export default function Pagination() {
   for (let i = 1; i <= ejerciciosPages; i++) {
     pageIndex.push(i);
   }
+   
+  
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(getEjercicios());
   }, []);
 
@@ -66,6 +79,37 @@ export default function Pagination() {
     setPage(1);
   }
 
+  // EJERCICIOS QUE SE SUMAN AL CARRITO
+
+    const changeState= () => {
+      setIsOpen(!isOpen)
+    }
+
+    const onClick =(e,id) => {
+    dispatch(getEjercicioId(id))
+
+    
+      if(ejercicioID.id){
+        if(!ejer.ejercicios)
+        console.log(ejercicioID);
+
+        
+
+
+        setEjer({
+          ...ejer,
+           ejercicios : [...ejer.ejercicios, ejercicioID]
+          }
+        );
+      }
+
+      
+  
+    //ASEGURO QUE NO SE ME REPITAN ACA 
+
+  }
+
+
   return (
     <Box className={style.body}>
       <Flex
@@ -74,16 +118,46 @@ export default function Pagination() {
         align="center"
         justify="center"
       >
+
+  
         <div className={style.filterContainer}>
           <div onChange={(e) => search(e)}>
             <SearchBar />
           </div>
+
+          {isOpen? 
+          <Flex
+          >
+          <ButtonGroup
+          >
+            <Button
+            onClick={()=> {changeState()}}
+             bg='red.500'
+            >Cancelar
+            </Button>
+            <NavLink to={'/form'}>
+            <Button
+              bg='blue.200'
+              disabled={true}
+            >
+              Siguiente
+            </Button>
+            </NavLink>
+          </ButtonGroup>
+          </Flex>
+           : 
+          
+          <Button
+            bg='blue.200'
+            onClick={()=> {changeState()}}
+          > Crea tu Rutina</Button>
+        }
           <select
             id="selectMusculo"
             onChange={(e) => handlerFilteredMusculos(e)}
             className={style.film}
+            placeholder="Select a muscle"
           >
-            <option value="">Filter by muscle</option>
             <option value="">All</option>
             <option value="abdominals">Abdominals</option>
             <option value="abductors">Abductors</option>
@@ -103,6 +177,8 @@ export default function Pagination() {
             <option value="traps">Traps</option>
             <option value="triceps">Triceps</option>
           </select>
+
+          
 
           <select
             id="selectDificultad"
@@ -142,7 +218,7 @@ export default function Pagination() {
       {!paginate.length ? (
         <Loading />
       ) : (
-        <EjercicioCards ejercicios={paginate} />
+        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick}/>
       )}
     </Box>
   );

@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_RUTINAS = "GET_RUTINAS";
 export const GET_EJERCICIOS = "GET_EJERCICIOS";
+export const GET_EJERCICIOS_ID = "GET_EJERCICIOS_ID";
 export const GET_RUTINA_ID = "GET_RUTINA_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
@@ -40,6 +41,19 @@ export const getEjercicios = () => {
       type: GET_EJERCICIOS,
       payload: response.data,
     });
+  };
+};
+
+export const getEjercicioId = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(
+      `https://henry-gym-production.up.railway.app/ejercicios/${id}`
+    );
+    dispatch({
+      type: GET_EJERCICIOS_ID,
+      payload: response.data,
+    });
+    
   };
 };
 

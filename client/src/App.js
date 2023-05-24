@@ -10,7 +10,7 @@ import About from "../src/components/About/About";
 import SmallCentered from "../src/components/Footer/footer";
 import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
-import PostRutina from "./components/CrearRutina/CrearRutina";
+import Multistep from "./components/CrearRutina/Form";
 import Auth0ProviderWithHistory from "./auth0provider";
 
 import SubscriptionSuccess from "./components/Success/success";
@@ -36,7 +36,7 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
-          <Route path="/form" element={<PostRutina />} />
+          <Route path="/form" element={<Multistep />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
           <Route path="/clases" element={<ClasesMembresia />} />

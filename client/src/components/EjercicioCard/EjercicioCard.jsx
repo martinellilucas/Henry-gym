@@ -7,17 +7,33 @@ import {
   Text,
   Stack,
   StackDivider,
+  Flex,
+  Button,
 } from "@chakra-ui/react";
 import style from "./EjercicioCard.module.css";
 
-export function EjercicioCard(e) {
+export function EjercicioCard({isOpen,ejercicios,onClick}) {
+
+  const {id,name,muscle,difficulty,instructions} = ejercicios;
+
+
+
   return (
-    <div key={e.id}>
+    <div key={id}>
       <Card className={style.card} bg="blackAlpha.700">
         <CardHeader>
+          <Flex justifyContent='space-between'>
           <Heading className={style.title} size="xl">
-            {e.name}
+            {name}
           </Heading>
+            {isOpen ? 
+              <Button
+               onClick={(e) => onClick(e,id)}
+              >
+                Add
+              </Button> : <></>
+            }
+          </Flex>
         </CardHeader>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
@@ -35,7 +51,7 @@ export function EjercicioCard(e) {
                 pt="2"
                 fontSize="sm"
               >
-                {e.difficulty}
+                {difficulty}
               </Text>
             </Box>
             <Box>
@@ -52,7 +68,7 @@ export function EjercicioCard(e) {
                 pt="2"
                 fontSize="sm"
               >
-                {e.muscle}
+                {muscle}
               </Text>
             </Box>
             <Box>
@@ -63,7 +79,7 @@ export function EjercicioCard(e) {
               >
                 Instructions
               </Heading>
-              <textarea className={style.textarea}>{e.instructions}</textarea>
+              <textarea className={style.textarea} disabled={true}>{instructions}</textarea>
             </Box>
           </Stack>
         </CardBody>
