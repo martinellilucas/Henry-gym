@@ -66,6 +66,7 @@ export default function SidebarWithHeader({ children }) {
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
+        fontFamily='"Titillium Web", sans-serif;'
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
       />
@@ -163,6 +164,7 @@ const NavItem = ({ icon, children, url, ...rest }) => {
 const MobileNav = ({ admin, onOpen, ...rest }) => {
   return (
     <Flex
+      fontFamily='"Titillium Web", sans-serif;'
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"

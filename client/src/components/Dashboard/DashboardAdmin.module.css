@@ -1,16 +1,18 @@
 .input {
   margin-right: 50%;
   width: 20%;
+  font-family: "Titillium Web", sans-serif;
 }
-
+.container {
+  margin-left: 15%;
+}
 .text1 {
-  margin-left: 25%;
   font-size: 4rem;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .clientlist {
-  background-color: red;
-  margin-left: 15%;
+  font-family: "Titillium Web", sans-serif;
   border-radius: 50px;
   border-color: black;
   font-size: 1.5rem;
@@ -20,7 +22,7 @@
 
 .listado {
   width: 100%;
-  margin-left: 15%;
+  font-family: "Titillium Web", sans-serif;
   border-radius: 50px;
   border-color: black;
   font-size: 1.5rem;
@@ -30,6 +32,7 @@
 .tabla {
   border-collapse: collapse;
   width: 80%;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .tabla th,
@@ -37,6 +40,7 @@
   padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .tabla th {
@@ -45,6 +49,7 @@
 
 .buttonO {
   display: flex;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .button3 {
@@ -55,6 +60,7 @@
   font-weight: bold;
   background-color: #160b8d;
   color: rgb(255, 255, 255);
+  font-family: "Titillium Web", sans-serif;
 }
 
 .refreshButton {
@@ -67,6 +73,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .refreshButton:hover {
