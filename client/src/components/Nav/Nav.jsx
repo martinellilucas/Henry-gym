@@ -14,7 +14,7 @@ import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserMembership } from "../../redux/Actions";
+import { getUserByEmail } from "../../redux/Actions";
 
 const Nav = () => {
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
