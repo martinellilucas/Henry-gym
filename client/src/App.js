@@ -50,6 +50,7 @@ function App() {
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
           <Route path="/dashboard" element={<SidebarWithHeader />} />
           <Route path="/perfil" element={<Perfil />} />
+
         </Routes>
         {showNavbarAndFooter && <SmallCentered />}
       </div>
