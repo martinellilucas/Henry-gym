@@ -39,7 +39,11 @@ import { ReactText } from "react";
 import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getClientes, getUserByEmail } from "../../redux/Actions";
+import {
+  getClientes,
+  getComentarios,
+  getUserByEmail,
+} from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
 
@@ -50,15 +54,14 @@ export default function SidebarWithHeader({ children }) {
   const admin = useSelector((state) => state.user);
   const { user } = useAuth0();
   const clientes = useSelector((state) => state.clientes);
+  const comentarios = useSelector((state) => state.comentarios);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getClientes());
     dispatch(getUserByEmail(user?.email));
+    dispatch(getComentarios());
   }, [dispatch]);
-
-
-
 
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
@@ -81,7 +84,11 @@ export default function SidebarWithHeader({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} admin={admin} />
-      <Contenido onOpen={onOpen} clientes={clientes} />
+      <Contenido
+        onOpen={onOpen}
+        clientes={clientes}
+        comentarios={comentarios}
+      />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -239,20 +246,18 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({ clientes }) => {
+const Contenido = ({ clientes, comentarios }) => {
   function refreshPage() {
     window.location.reload(false);
   }
 
-
-
   return (
-
     <Box className={style.container}>
-      
       <Text className={style.text1} fontSize="5xl" fontWeight="bold">
-        Welcome to the Dashboard Admin
-        <button className={style.refreshButton} onClick={refreshPage} >Refresh Page</button>
+        Admin's Dashboard
+        <button className={style.refreshButton} onClick={refreshPage}>
+          Refresh Data
+        </button>
       </Text>
       <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
         Clients List:
@@ -274,9 +279,8 @@ const Contenido = ({ clientes }) => {
                 <td>{item.nombre}</td>
                 <td>{item.tipoDeSuscripcion}</td>
                 <td>{item.isBanned.toString()}</td>
-                <td>{item.isAdmin.toString()}</td> 
+                <td>{item.isAdmin.toString()}</td>
                 <td className={style.buttonO}>
-                  
                   <button className={style.button3}>BAN</button>
                   <button className={style.button3}>ADM</button>
                 </td>
@@ -317,36 +321,31 @@ const Contenido = ({ clientes }) => {
         Client Comments
       </Text>
       <Box className={style.listado}>
-
-      <table className={style.tabla}>
+        <table className={style.tabla}>
           <thead>
             <tr>
               <th>User</th>
-              <th>Suscription</th>
-              <th>Comment Link</th>
-              <th>Is Admin</th>
+              <th>Class</th>
+              <th>Comment</th>
+              <th>Is Banned</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {clientes?.map((item, index) => (
+            {comentarios?.map((item, index) => (
               <tr key={index}>
-                <td>{item.nombre}</td>
-                <td>{item.tipoDeSuscripcion}</td>
+                <td>{item.nombreCliente}</td>
+                <td>{item.nombreClase}</td>
+                <textarea disabled={true}>{item.texto}</textarea>
                 <td>{item.isBanned.toString()}</td>
-                <td>{item.isAdmin.toString()}</td> 
                 <td>
-                  
-                  <button className={style.button3}>Delete</button>
+                  <button className={style.button3}>BAN</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        </Box>
-        
-        
-
+      </Box>
     </Box>
   );
 };

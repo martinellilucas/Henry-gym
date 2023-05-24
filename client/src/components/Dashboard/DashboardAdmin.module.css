@@ -1,60 +1,60 @@
-.input{
-    margin-right: 50%;
-    width: 20%;
+.input {
+  margin-right: 50%;
+  width: 20%;
 }
 
-.text1{
-    margin-left: 25%;
-    font-size: 4rem;
+.text1 {
+  margin-left: 25%;
+  font-size: 4rem;
 }
 
-.clientlist{
-    margin-left: 20%;
-    border-radius: 50px;
-    border-color: black;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 4%;
+.clientlist {
+  background-color: red;
+  margin-left: 15%;
+  border-radius: 50px;
+  border-color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 4%;
 }
 
-.listado{
-    margin-left: 20%;
-    border-radius: 50px;
-    border-color: black;
-    font-size: 1.5rem;
-    margin-top: 2%;
+.listado {
+  width: 100%;
+  margin-left: 15%;
+  border-radius: 50px;
+  border-color: black;
+  font-size: 1.5rem;
+  margin-top: 2%;
 }
-
-
 
 .tabla {
-    border-collapse: collapse;
-    width: 70%;
-  }
-  
-  .tabla th,
-  .tabla td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ddd;
-  }
-  
-  .tabla th {
-    background-color: #f2f2f2;
-  }
+  border-collapse: collapse;
+  width: 80%;
+}
 
-.buttonO{
+.tabla th,
+.tabla td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.tabla th {
+  background-color: #f2f2f2;
+}
+
+.buttonO {
   display: flex;
 }
 
-.button3{
-    margin-left: 10%;
-    margin-top: 2%;
-    border-radius: 30%;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background-color: #160b8d;
-    color: rgb(255, 255, 255);
+.button3 {
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 30%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #160b8d;
+  color: rgb(255, 255, 255);
 }
 
 .refreshButton {
