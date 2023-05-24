@@ -3,16 +3,14 @@ const { Clase } = require("../db");
 const getClase = async () => {
   const consult = await Clase.findAll();
   if (!consult.length) {
-    clases.map(async (clase) => {
+    for (const clase of clases) {
       await Clase.create({
         nombre: clase.nombre,
         dias: [...clase.dias],
-        horario: [...clase.horario],
+        horario: clase.horario,
       });
-    });
-    return await Clase.findAll();
-  } else {
-    return await Clase.findAll();
+    }
   }
+  return await Clase.findAll();
 };
 module.exports = getClase;
