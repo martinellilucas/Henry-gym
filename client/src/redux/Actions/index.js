@@ -7,6 +7,36 @@ export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const GET_CLIENTES = "GET_CLIENTES";
+export const GET_COMENTARIOS = "GET_COMENTARIOS";
+
+export const banUser = (email, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/clientes/${email}`,
+      body
+    );
+  };
+};
+export const banComentario = (id, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/comentarios/${id}`,
+      body
+    );
+  };
+};
+
+export const getComentarios = () => {
+  return async (dispatch) => {
+    const resp = await axios(
+      "https://henry-gym-production.up.railway.app/comentarios"
+    );
+    dispatch({
+      type: GET_COMENTARIOS,
+      payload: resp.data,
+    });
+  };
+};
 
 export const getRutinas = () => {
   return async (dispatch) => {
