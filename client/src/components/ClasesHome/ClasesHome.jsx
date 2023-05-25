@@ -131,7 +131,7 @@ export default function ClasesHome() {
                 {client?.tipoDeSuscripcion === "Silver" ? (
                   <NavLink to="/memberships">
                     <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership to subscribe.
+                      Upgrade your membership.
                     </Button>
                   </NavLink>
                 ) : (
