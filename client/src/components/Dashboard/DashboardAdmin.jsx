@@ -57,19 +57,20 @@ export default function SidebarWithHeader({ children }) {
   const handleBan = (e, item) => {
     console.log("Cambia banned");
     e.preventDefault();
-    if (item.isBanned) dispatch(banUser(item.email, { isBanned: false }));
-    else dispatch(banUser(item.email, { isBanned: true }));
+    if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
+    else dispatch(banUser(item?.email, { isBanned: true }));
   };
 
   const handleAdmin = (e, item) => {
     e.preventDefault();
     console.log("Cambia admin");
-    if (item.isAdmin) dispatch(adminUser(item.email, { isAdmin: false }));
-    else dispatch(adminUser(item.email, { isAdmin: true }));
+    if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
+    else dispatch(adminUser(item?.email, { isAdmin: true }));
   };
   const handleBanComent = (item) => {
-    if (item.isBanned) dispatch(banComentario(item.email, { isBanned: false }));
-    else dispatch(banComentario(item.email, { isBanned: true }));
+    if (item?.isBanned)
+      dispatch(banComentario(item?.email, { isBanned: false }));
+    else dispatch(banComentario(item?.email, { isBanned: true }));
   };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>

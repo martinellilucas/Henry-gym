@@ -18,7 +18,7 @@ const Home = () => {
       dispatch(postUser(user));
       dispatch(getUserByEmail(user?.email));
     }
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch]);
 
   return (
     <div className={style.home}>
