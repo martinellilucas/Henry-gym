@@ -1,0 +1,11 @@
+.chat {
+  display: none;
+  position: absolute;
+  top: 66%;
+  left: 15%;
+}
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
