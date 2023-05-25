@@ -8,8 +8,6 @@ const routeCliente = Router();
 routeCliente.get("/", handlerGetClientes);
 routeCliente.get("/:id", handlerClienteByEmail);
 routeCliente.post("/", handlerPostCliente);
-
 routeCliente.put("/:email", handlerPutCliente);
-routeCliente.put("/:isAdmin");
 
 module.exports = routeCliente;
