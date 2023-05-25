@@ -129,9 +129,9 @@ export default function ClasesHome() {
                   </Stack>
                 </RadioGroup>
                 {client?.tipoDeSuscripcion === "Silver" ? (
-                  <text mt={4} colorScheme="red">
+                  <Text mt={4} backgroundColor="red">
                     Upgrade your membership to subscribe.
-                  </text>
+                  </Text>
                 ) : (
                   <Button mt={4} colorScheme="blue">
                     Confirm
