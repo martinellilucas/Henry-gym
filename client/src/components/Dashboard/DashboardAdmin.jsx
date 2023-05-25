@@ -54,13 +54,19 @@ export default function SidebarWithHeader({ children }) {
   }, [dispatch, user?.email]);
 
   const handleBan = (item) => {
-    if (item.isBanned) dispatch(banUser(item.email, { isBanned: false }));
-    else dispatch(banUser(item.email, { isBanned: true }));
+    if (item.isBanned)
+      dispatch(banUser(item.email, { isAdmin: item.isAdmin, isBanned: false }));
+    else
+      dispatch(banUser(item.email, { isAdmin: item.isAdmin, isBanned: true }));
   };
 
   const handleAdmin = (item) => {
-    if (item.isAdmin) dispatch(banUser(item.email, { isAdmin: false }));
-    else dispatch(banUser(item.email, { isAdmin: true }));
+    if (item.isAdmin)
+      dispatch(
+        banUser(item.email, { isAdmin: false, isBanned: item.isBanned })
+      );
+    else
+      dispatch(banUser(item.email, { isAdmin: true, isAdmin: item.isAdmin }));
   };
   const handleBanComent = (item) => {
     if (item.isBanned) dispatch(banComentario(item.email, { isBanned: false }));
