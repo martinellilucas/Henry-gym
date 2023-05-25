@@ -16,13 +16,8 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
 } from "@chakra-ui/react";
-import { FiCompass, FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
+import { FiCompass, FiMenu } from "react-icons/fi";
 
 import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
@@ -54,24 +49,6 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getComentarios());
   }, [dispatch, user?.email]);
 
-  const handleBan = (e, item) => {
-    console.log("Cambia banned");
-    e.preventDefault();
-    if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
-    else dispatch(banUser(item?.email, { isBanned: true }));
-  };
-
-  const handleAdmin = (e, item) => {
-    e.preventDefault();
-    console.log("Cambia admin");
-    if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
-    else dispatch(adminUser(item?.email, { isAdmin: true }));
-  };
-  const handleBanComent = (item) => {
-    if (item?.isBanned)
-      dispatch(banComentario(item?.email, { isBanned: false }));
-    else dispatch(banComentario(item?.email, { isBanned: true }));
-  };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
@@ -98,9 +75,6 @@ export default function SidebarWithHeader({ children }) {
         onOpen={onOpen}
         clientes={clientes}
         comentarios={comentarios}
-        handleAdmin={handleAdmin}
-        handleBan={handleBan}
-        handleBanComent={handleBanComent}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -232,17 +206,28 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({
-  clientes,
-  comentarios,
-  handleAdmin,
-  handleBan,
-  handleBanComent,
-}) => {
+const Contenido = ({ clientes, comentarios }) => {
   function refreshPage() {
     window.location.reload(false);
   }
+  const dispatch = useDispatch();
+  const handleBan = (item) => {
+    console.log("Cambia banned", item);
 
+    if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
+    else dispatch(banUser(item?.email, { isBanned: true }));
+  };
+
+  const handleAdmin = (item) => {
+    console.log("Cambia admin", item);
+    if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
+    else dispatch(adminUser(item?.email, { isAdmin: true }));
+  };
+  const handleBanComent = (item) => {
+    if (item?.isBanned)
+      dispatch(banComentario(item?.email, { isBanned: false }));
+    else dispatch(banComentario(item?.email, { isBanned: true }));
+  };
   return (
     <Box className={style.container}>
       <Text className={style.text1} fontSize="5xl" fontWeight="bold">
@@ -275,13 +260,13 @@ const Contenido = ({
                 <td className={style.buttonO}>
                   <button
                     className={style.button3}
-                    onClick={(e, item) => handleBan(e, item)}
+                    onClick={() => handleBan(item)}
                   >
                     BAN
                   </button>
                   <button
                     className={style.button3}
-                    onClick={(e, item) => handleAdmin(e, item)}
+                    onClick={() => handleAdmin(item)}
                   >
                     ADM
                   </button>
@@ -342,7 +327,7 @@ const Contenido = ({
                 <td>{item.isBanned.toString()}</td>
                 <td>
                   <button
-                    onClick={handleBanComent(item)}
+                    onClick={() => handleBanComent(item)}
                     className={style.button3}
                   >
                     BAN
