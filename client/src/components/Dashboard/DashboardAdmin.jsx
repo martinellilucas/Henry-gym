@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import style from "./DashboardAdmin.module.css";
 
 import {
@@ -16,26 +16,14 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
   Menu,
   MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from "react-icons/fi";
-import { IconType } from "react-icons";
-import { ReactText } from "react";
+import { FiCompass, FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
+
 import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,8 +51,21 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getClientes());
     dispatch(getUserByEmail(user?.email));
     dispatch(getComentarios());
-  }, [dispatch]);
+  }, [dispatch, user?.email]);
 
+  const handleBan = (item) => {
+    if (item.isBanned) dispatch(banUser(item.email, { isBanned: false }));
+    else dispatch(banUser(item.email, { isBanned: true }));
+  };
+
+  const handleAdmin = (item) => {
+    if (item.isAdmin) dispatch(banUser(item.email, { isAdmin: false }));
+    else dispatch(banUser(item.email, { isAdmin: true }));
+  };
+  const handleBanComent = (item) => {
+    if (item.isBanned) dispatch(banComentario(item.email, { isBanned: false }));
+    else dispatch(banComentario(item.email, { isBanned: true }));
+  };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
@@ -91,6 +92,9 @@ export default function SidebarWithHeader({ children }) {
         onOpen={onOpen}
         clientes={clientes}
         comentarios={comentarios}
+        handleAdmin={handleAdmin}
+        handleBan={handleBan}
+        handleBanComent={handleBanComent}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -250,43 +254,16 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({ clientes, comentarios }) => {
+const Contenido = ({
+  clientes,
+  comentarios,
+  handleAdmin,
+  handleBanComent,
+  handleBan,
+}) => {
   function refreshPage() {
     window.location.reload(false);
   }
-
-  const TableRow = ({ item, index }) => {
-    const [isBanned, setIsBanned] = useState(item.isBanned);
-    const [isAdmin, setIsAdmin] = useState(item.isAdmin);
-    const dispatch = useDispatch();
-
-    const handleBan = () => {
-      setIsBanned(!isBanned);
-      dispatch(banUser(item.email, { isBanned: !isBanned }));
-    };
-
-    const handleAdmin = () => {
-      setIsAdmin(!isAdmin);
-      dispatch(banUser(item.email, { isAdmin: !isAdmin }));
-    };
-
-    return (
-      <tr key={index}>
-        <td>{item.nombre}</td>
-        <td>{item.tipoDeSuscripcion}</td>
-        <td>{isBanned.toString()}</td>
-        <td>{isAdmin.toString()}</td>
-        <td className={style.buttonO}>
-          <button className={style.button3} onClick={handleBan}>
-            BAN
-          </button>
-          <button className={style.button3} onClick={handleAdmin}>
-            ADM
-          </button>
-        </td>
-      </tr>
-    );
-  };
 
   return (
     <Box className={style.container}>
@@ -312,11 +289,20 @@ const Contenido = ({ clientes, comentarios }) => {
           </thead>
           <tbody>
             {clientes?.map((item, index) => (
-              <TableRow
-                item={item}
-                index={index}
-                key={index} // Agregar una clave única para cada TableRow
-              />
+              <tr key={index}>
+                <td>{item.nombre}</td>
+                <td>{item.tipoDeSuscripcion}</td>
+                <td>{item.isBanned.toString()}</td>
+                <td>{item.isAdmin.toString()}</td>
+                <td className={style.buttonO}>
+                  <button className={style.button3} onClick={handleBan(item)}>
+                    BAN
+                  </button>
+                  <button className={style.button3} onClick={handleAdmin(item)}>
+                    ADM
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
@@ -372,9 +358,7 @@ const Contenido = ({ clientes, comentarios }) => {
                 <td>{item.isBanned.toString()}</td>
                 <td>
                   <button
-                    onClick={dispatch(
-                      banComentario(item.id, { isBanned: item.isBanned })
-                    )}
+                    onClick={handleBanComent(item)}
                     className={style.button3}
                   >
                     BAN
