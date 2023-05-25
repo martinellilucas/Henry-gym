@@ -107,16 +107,7 @@ export default function ClasesHome() {
           </Stack>
           <Popover>
             <PopoverTrigger>
-              {client?.tipoDeSuscripcion === "Gold" ? (
-                <Button
-                  isDisabled={client?.tipoDeSuscripcion === "Gold"}
-                  backgroundColor="#aaaaaa"
-                >
-                  Subscribe
-                </Button>
-              ) : (
-                <Button backgroundColor="#aaaaaa">Subscribe</Button>
-              )}
+              <Button backgroundColor="#aaaaaa">Subscribe</Button>
             </PopoverTrigger>
             <PopoverContent>
               <PopoverArrow />
@@ -137,9 +128,15 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
