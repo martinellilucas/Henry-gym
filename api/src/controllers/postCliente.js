@@ -11,7 +11,7 @@ const postCliente = async (name,email,email_verified,picture) => {
     }
   })
 
-  
+  return newClient;
 };
 
 module.exports = postCliente;
