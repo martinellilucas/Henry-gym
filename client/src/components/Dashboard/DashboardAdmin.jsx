@@ -28,6 +28,7 @@ import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  adminUser,
   banComentario,
   getClientes,
   getComentarios,
@@ -53,20 +54,18 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getComentarios());
   }, [dispatch, user?.email]);
 
-  const handleBan = (item) => {
-    if (item.isBanned)
-      dispatch(banUser(item.email, { isAdmin: item.isAdmin, isBanned: false }));
-    else
-      dispatch(banUser(item.email, { isAdmin: item.isAdmin, isBanned: true }));
+  const handleBan = (e, item) => {
+    console.log("Cambia banned");
+    e.preventDefault();
+    if (item.isBanned) dispatch(banUser(item.email, { isBanned: false }));
+    else dispatch(banUser(item.email, { isBanned: true }));
   };
 
-  const handleAdmin = (item) => {
-    if (item.isAdmin)
-      dispatch(
-        banUser(item.email, { isAdmin: false, isBanned: item.isBanned })
-      );
-    else
-      dispatch(banUser(item.email, { isAdmin: true, isAdmin: item.isAdmin }));
+  const handleAdmin = (e, item) => {
+    e.preventDefault();
+    console.log("Cambia admin");
+    if (item.isAdmin) dispatch(adminUser(item.email, { isAdmin: false }));
+    else dispatch(adminUser(item.email, { isAdmin: true }));
   };
   const handleBanComent = (item) => {
     if (item.isBanned) dispatch(banComentario(item.email, { isBanned: false }));
@@ -209,51 +208,23 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
         placeholder="Buscar Cliente"
       ></input>
 
-      <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
+      <HStack spacing={{ base: "0", md: "6" }} marginRight="30px">
         <Flex alignItems={"center"}>
-          <Menu position="fixed">
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            >
-              <HStack>
-                <Avatar size={"sm"} src={Logo} />
+          <HStack>
+            <Avatar size={"sm"} src={Logo} />
 
-                <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
-                  <Text fontSize="sm">{admin?.nombre}</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-              position="fixed"
+            <VStack
+              display={{ base: "none", md: "flex" }}
+              alignItems="flex-start"
+              spacing="1px"
+              ml="2"
             >
-              <MenuItem>Perfil</MenuItem>
-              <MenuItem>Configuración</MenuItem>
-              <MenuItem>Membresia</MenuItem>
-              <MenuDivider />
-              <MenuItem>Desconectar</MenuItem>
-            </MenuList>
-          </Menu>
+              <Text fontSize="sm">{admin?.nombre}</Text>
+              <Text fontSize="xs" color="gray.600">
+                Admin
+              </Text>
+            </VStack>
+          </HStack>
         </Flex>
       </HStack>
     </Flex>
@@ -264,8 +235,8 @@ const Contenido = ({
   clientes,
   comentarios,
   handleAdmin,
-  handleBanComent,
   handleBan,
+  handleBanComent,
 }) => {
   function refreshPage() {
     window.location.reload(false);
@@ -301,10 +272,16 @@ const Contenido = ({
                 <td>{item.isBanned.toString()}</td>
                 <td>{item.isAdmin.toString()}</td>
                 <td className={style.buttonO}>
-                  <button className={style.button3} onClick={handleBan(item)}>
+                  <button
+                    className={style.button3}
+                    onClick={(e, item) => handleBan(e, item)}
+                  >
                     BAN
                   </button>
-                  <button className={style.button3} onClick={handleAdmin(item)}>
+                  <button
+                    className={style.button3}
+                    onClick={(e, item) => handleAdmin(e, item)}
+                  >
                     ADM
                   </button>
                 </td>

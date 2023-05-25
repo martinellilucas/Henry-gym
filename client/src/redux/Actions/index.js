@@ -30,6 +30,14 @@ export const banUser = (email, body) => {
     );
   };
 };
+export const adminUser = (email, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
+      body
+    );
+  };
+};
 
 export const banComentario = (id, body) => {
   return async () => {
