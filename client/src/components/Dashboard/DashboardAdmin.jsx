@@ -40,6 +40,7 @@ import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  banComentario,
   getClientes,
   getComentarios,
   getUserByEmail,
@@ -260,13 +261,13 @@ const Contenido = ({ clientes, comentarios }) => {
     const dispatch = useDispatch();
 
     const handleBan = () => {
-      dispatch(banUser(item.email, { isBanned: !isBanned }));
       setIsBanned(!isBanned);
+      dispatch(banUser(item.email, { isBanned: !isBanned }));
     };
 
     const handleAdmin = () => {
-      dispatch(banUser(item.email, { isAdmin: !isAdmin }));
       setIsAdmin(!isAdmin);
+      dispatch(banUser(item.email, { isAdmin: !isAdmin }));
     };
 
     return (
@@ -370,7 +371,14 @@ const Contenido = ({ clientes, comentarios }) => {
                 <textarea disabled={true}>{item.texto}</textarea>
                 <td>{item.isBanned.toString()}</td>
                 <td>
-                  <button className={style.button3}>BAN</button>
+                  <button
+                    onClick={dispatch(
+                      banComentario(item.id, { isBanned: item.isBanned })
+                    )}
+                    className={style.button3}
+                  >
+                    BAN
+                  </button>
                 </td>
               </tr>
             ))}
