@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import style from "./DashboardAdmin.module.css";
 
 import {
@@ -46,6 +46,8 @@ import {
 } from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
+import { banUser } from "../../redux/Actions/index";
+
 
 const LinkItems = [{ name: "Back to Web Site", icon: FiCompass }];
 
@@ -253,6 +255,50 @@ const Contenido = ({ clientes, comentarios }) => {
     window.location.reload(false);
   }
 
+
+
+
+
+
+    const TableRow = ({ item, index }) => {
+      const [isBanned, setIsBanned] = useState(item.isBanned);
+      const [isAdmin, setIsAdmin] = useState(item.isAdmin);
+      const dispatch = useDispatch();
+
+      
+    
+      const handleBan = () => {
+        
+        dispatch(banUser(item.email, {body: {isBanned: !isBanned}}));
+        setIsBanned(!isBanned);
+
+      };
+
+      const handleAdmin = () => {
+        
+        dispatch(banUser(item.email, {body: {isAdmin: !isAdmin}}));
+        setIsAdmin(!isAdmin);
+      };
+
+
+    
+      return (
+        <tr key={index}>
+          <td>{item.nombre}</td>
+          <td>{item.tipoDeSuscripcion}</td>
+          <td>{isBanned.toString()}</td>
+          <td>{isAdmin.toString()}</td>
+          <td className={style.buttonO}>
+            <button className={style.button3} onClick={handleBan}>
+              BAN
+            </button>
+            <button className={style.button3} onClick={handleAdmin} >ADM</button>
+          </td>
+        </tr>
+      );
+    };
+    
+
   return (
     <Box className={style.container}>
       <Text className={style.text1} fontSize="5xl" fontWeight="bold">
@@ -276,19 +322,15 @@ const Contenido = ({ clientes, comentarios }) => {
             </tr>
           </thead>
           <tbody>
-            {clientes?.map((item, index) => (
-              <tr key={index}>
-                <td>{item.nombre}</td>
-                <td>{item.tipoDeSuscripcion}</td>
-                <td>{item.isBanned.toString()}</td>
-                <td>{item.isAdmin.toString()}</td>
-                <td className={style.buttonO}>
-                  <button className={style.button3}>BAN</button>
-                  <button className={style.button3}>ADM</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+  {clientes?.map((item, index) => (
+    <TableRow
+      item={item}
+      index={index}
+      key={index} // Agregar una clave única para cada TableRow
+    />
+  ))}
+</tbody>
+
         </table>
       </Box>
       <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">

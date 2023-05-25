@@ -21,6 +21,8 @@ export const getClases = () => {
     });
   };
 };
+
+
 export const banUser = (email, body) => {
   return async () => {
     await axios.put(
@@ -29,6 +31,8 @@ export const banUser = (email, body) => {
     );
   };
 };
+
+
 export const banComentario = (id, body) => {
   return async () => {
     await axios.put(
