@@ -6,7 +6,7 @@ const putClienteSus = async (
   isBanned,
   isAdmin
 ) => {
-  if (isBanned) {
+  if (isBanned === true || isBanned === false) {
     const response = await Cliente.update(
       { isBanned: isBanned },
       { where: { email: emailcliente } }
@@ -14,7 +14,7 @@ const putClienteSus = async (
 
     return `El usuario ${response.nombre} ha sido baneado/desbaneado`;
   }
-  if (isAdmin) {
+  if (isAdmin === true || isAdmin === false) {
     const response = await Cliente.update(
       { isAdmin: isAdmin },
       { where: { email: emailcliente } }
