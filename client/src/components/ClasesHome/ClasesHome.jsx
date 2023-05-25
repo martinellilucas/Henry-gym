@@ -424,7 +424,6 @@ export default function ClasesHome() {
         >
           <img src={Pilates} alt="Crossfit" layout={"fill"} />{" "}
           <Box
-            onClick={scrollToTop}
             as={NavLink}
             to="/clases"
             className={style.overlay}
@@ -511,7 +510,6 @@ export default function ClasesHome() {
         >
           <img src={Musculacion} alt="Crossfit" layout={"fill"} />
           <Box
-            onClick={scrollToTop}
             as={NavLink}
             to="/clases"
             className={style.overlay}
