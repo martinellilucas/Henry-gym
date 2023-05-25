@@ -128,9 +128,15 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
