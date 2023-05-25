@@ -22,16 +22,14 @@ export const getClases = () => {
   };
 };
 
-
 export const banUser = (email, body) => {
   return async () => {
     await axios.put(
-      `https://henry-gym-production.up.railway.app/clientes/${email}`,
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
       body
     );
   };
 };
-
 
 export const banComentario = (id, body) => {
   return async () => {
