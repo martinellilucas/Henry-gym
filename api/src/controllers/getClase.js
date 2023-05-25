@@ -7,7 +7,7 @@ const getClase = async () => {
       await Clase.create({
         nombre: clase.nombre,
         dias: [...clase.dias],
-        horario: [...clase.horario],
+        horario: clase.horario,
       });
     });
     return await Clase.findAll();
