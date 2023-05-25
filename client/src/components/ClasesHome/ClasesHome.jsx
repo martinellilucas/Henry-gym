@@ -129,9 +129,11 @@ export default function ClasesHome() {
                   </Stack>
                 </RadioGroup>
                 {client?.tipoDeSuscripcion === "Silver" ? (
-                  <Button mt={4} colorScheme="blue">
-                    Confirm
-                  </Button>
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
                 ) : (
                   <Button mt={4} colorScheme="blue">
                     Confirm
@@ -213,9 +215,17 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -291,9 +301,17 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -369,9 +387,17 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -447,9 +473,17 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -526,9 +560,17 @@ export default function ClasesHome() {
                     })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
