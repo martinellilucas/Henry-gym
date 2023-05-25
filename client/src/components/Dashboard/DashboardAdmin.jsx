@@ -177,11 +177,6 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       >
         Logo
       </Text>
-      <input
-        className={style.input}
-        type="text"
-        placeholder="Buscar Cliente"
-      ></input>
 
       <HStack spacing={{ base: "0", md: "6" }} marginRight="30px">
         <Flex alignItems={"center"}>
