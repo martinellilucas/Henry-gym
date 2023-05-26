@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Progress,
   Box,
@@ -10,7 +10,6 @@ import {
   GridItem,
   FormLabel,
   Input,
-  Select,
   SimpleGrid,
   InputLeftAddon,
   InputGroup,
@@ -19,24 +18,51 @@ import {
 } from '@chakra-ui/react';
 
 import { useToast } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import EjercicioCards from '../EjercicioCards/EjercicioCards';
+import { postRutina } from '../../redux/Actions';
 
-const Form1 = () => {
+const Form1 = ({setForm,form}) => {
+  
+
+
+  
+  const onClick = (e) => {
+   const value = e.target.files[0]
+    setForm({
+      ...form,
+      imagen :value});
+  }
+ 
+
   return (
     <>
-      <FormControl>
-        <FormLabel htmlFor="image" fontWeight={'normal'} mt="2%">
-          Add a image to your routine
-        </FormLabel>
-          <Input
-            pr="4.5rem"
-            type='file'
-          />
-      </FormControl>
-      <FormControl>
-        <FormLabel htmlFor='ejercicios' fontWeight={'normal'} mt='2%'>
+        <FormControl >
+          <FormLabel htmlFor="image" fontWeight={'normal'} mt="2%" >
+            Add a image to your routine
+            <Input
+              type='file'
+               id='imagen'
+              accept="image/*"
+              onChange={(e) => { onClick(e) }}
+            />
+          </FormLabel>
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor='ejercicios' fontWeight={'normal'} mt='2%'>
             Aca van los ejercicios selecionados
-        </FormLabel>
-      </FormControl>
+          </FormLabel>
+        </FormControl>
+      <Flex
+        id='ejercicios'
+        justifyContent={'space-between'}
+      >
+        {form.ejercicios ?
+          <EjercicioCards
+            ejercicios={form.ejercicios}
+          /> : <></>}
+      </Flex>
+
     </>
   );
 };
@@ -108,7 +134,68 @@ const Form3 = () => {
 export default function Multistep() {
   const toast = useToast();
   const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(33.33);
+  const dispatch = useDispatch()
+  const [form, setForm] = useState({
+    ejercicios : [],
+    imagen : ''
+  })
+
+  const test = () => {
+    const item = window.localStorage.getItem('ejercicios')
+    if(item){  
+      setForm({...form,
+        ejercicios : JSON.parse(item)})
+    }
+  }
+
+ useEffect(()=> {
+  test()
+ },[])
+
+ 
+ const formdata = new FormData()
+
+
+
+ const onSubmit = (e)=> {
+  e.preventDefault()
+
+  console.log(form.imagen)
+
+  formdata.append('ejercicios',JSON.stringify(form.ejercicios))
+  formdata.append('imagen',form.imagen)
+  console.log([...formdata]);
+  if(form.imagen){
+    
+  
+
+   
+
+    dispatch(postRutina(formdata))
+      toast({
+        title: "Your routine has been created",
+        description:'You routine will be apear in the routine seccion',
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+    window.localStorage.setItem('ejercicios',[])
+    setForm({
+      ejercicios : [],
+      imagen : ""
+    })
+  } else {
+    toast({
+      title: 'Please select a image',
+      status : 'error',
+      duration: 3000,
+      isClosable : true
+    })
+
+  }
+ }
+  
+
   return (
     <>
       <Box
@@ -118,8 +205,16 @@ export default function Multistep() {
         maxWidth={800}
         p={6}
         m="10px auto"
-        as="form">
-        {step === 1 ? <Form1 /> : <Form3 />}
+        id='form'
+        as='form'
+        encType='multiform/form-data'
+        >
+
+        {step === 1 ?
+         <Form1
+          form={form}
+          setForm={setForm}
+          /> : <Form3 />}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
@@ -127,7 +222,6 @@ export default function Multistep() {
                 onClick={() => {
                   window.history.back();
                 }}
-                
                 colorScheme="teal"
                 variant="solid"
                 w="7rem"
@@ -135,20 +229,16 @@ export default function Multistep() {
                 Back
               </Button>
             </Flex>
-            {step === 2 ? (
+            {step === 1 ? (
               <Button
                 w="7rem"
                 colorScheme="red"
                 variant="solid"
-                onClick={() => {
-                  toast({
-                    title: 'Account created.',
-                    description: "We've created your account for you.",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                }}>
+                type='submit'
+                onClick={(e) => {
+                  onSubmit(e)
+                }}
+              >
                 Submit
               </Button>
             ) : null}

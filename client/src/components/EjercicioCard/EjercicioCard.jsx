@@ -28,7 +28,7 @@ export function EjercicioCard({isOpen,ejercicios,onClick}) {
           </Heading>
             {isOpen ? 
               <Button
-               onClick={(e) => onClick(e,id)}
+               onClick={() => onClick(ejercicios)}
               >
                 Add
               </Button> : <></>
