@@ -33,9 +33,6 @@ export default function PostComment({ onPostComment }) {
 
   const usuario = useSelector((state) => state.usuario);
 
-  //console.log(classes)
-  //console.log(uniqueClasses);
-
   const handleInputChange = (e) => {
     // Maneja el cambio en el valor del area del texto
     setTexto(e.target.value);
@@ -69,6 +66,7 @@ export default function PostComment({ onPostComment }) {
 
   useEffect(() => {
     dispatch(getUserByEmail(user?.email));
+    console.log(usuario?.isBanned);
     // Despachar la acción getClases al montar el componente
 
     dispatch(getClases());
@@ -101,29 +99,20 @@ export default function PostComment({ onPostComment }) {
         texto: texto,
       };
 
-      if (!usuario?.isBanned) {
-        dispatch(postComentario(comentario)).then(() => {
-          handleClose();
-          onPostComment();
-        });
-        setErrors("");
-        setClase("");
-        setTexto("");
-        setSubmitted(false);
-        toast({
-          title: "Thank you",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      } else {
-        toast({
-          title: "You are banned",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
+      dispatch(postComentario(comentario)).then(() => {
+        handleClose();
+        onPostComment();
+      });
+      setErrors("");
+      setClase("");
+      setTexto("");
+      setSubmitted(false);
+      toast({
+        title: "Thank you",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } else {
       toast({
         title: "You are not logged in",
@@ -187,7 +176,19 @@ export default function PostComment({ onPostComment }) {
         </DialogContent>
         <DialogActions className={styles.dialogActions}>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit" onClick={handleSubmit}>
+          <Button
+            type="submit"
+            onClick={
+              usuario?.isBanned
+                ? toast({
+                    title: "You are banned",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                  })
+                : handleSubmit
+            }
+          >
             Send
           </Button>
         </DialogActions>
