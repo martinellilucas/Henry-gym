@@ -1,7 +1,6 @@
 import axios from "axios";
 export const GET_RUTINAS = "GET_RUTINAS";
 export const GET_EJERCICIOS = "GET_EJERCICIOS";
-export const GET_EJERCICIOS_ID = "GET_EJERCICIOS_ID";
 export const GET_RUTINA_ID = "GET_RUTINA_ID";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
@@ -99,19 +98,6 @@ export const getEjercicios = () => {
   };
 };
 
-export const getEjercicioId = (id) => {
-  return async (dispatch) => {
-    const response = await axios.get(
-      `https://henry-gym-production.up.railway.app/ejercicios/${id}`
-    );
-    dispatch({
-      type: GET_EJERCICIOS_ID,
-      payload: response.data,
-    });
-    
-  };
-};
-
 export const rutinaById = (id) => {
   return async (dispatch) => {
     const response = await axios.get(
@@ -144,7 +130,7 @@ export const getEjerciciosByName = (name) => {
 export const postRutina = (rutina) => {
   return async function () {
     await axios
-      .post("https://henry-gym-production.up.railway.app/rutinas", rutina, {
+      .post("http://localhost:3001/rutinas", rutina, {
         headers:{'Content-type' : 'multipart/form-data'}
       })
       .then((res) => {
@@ -209,3 +195,14 @@ export const getComments = () => {
 };
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
+
+
+
+
+
+
+
+
+
+
+
