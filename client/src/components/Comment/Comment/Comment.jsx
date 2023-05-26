@@ -29,17 +29,21 @@ export default function Comment() {
       </div>
 
       <div className={styles.container}>
-        {comments.map((comment) => (
-          <div key={comment.id}>
-            <CardComment
-              id={comment.id}
-              texto={comment.texto}
-              nombreClase={comment.nombreClase}
-              nombreCliente={comment.nombreCliente}
-              imagenCliente={comment.picture}
-            />
-          </div>
-        ))}
+        {comments?.map((comment) =>
+          comment.isBanned ? (
+            <></>
+          ) : (
+            <div key={comment.id}>
+              <CardComment
+                id={comment.id}
+                texto={comment.texto}
+                nombreClase={comment.nombreClase}
+                nombreCliente={comment.nombreCliente}
+                imagenCliente={comment.picture}
+              />
+            </div>
+          )
+        )}
       </div>
     </div>
   );
