@@ -101,6 +101,7 @@ export default function PostComment({ onPostComment }) {
         clase: clase,
         texto: texto,
       };
+      console.log(usuario.isBanned);
       if (!usuario?.isBanned) {
         dispatch(postComentario(comentario)).then(() => {
           handleClose();
@@ -125,8 +126,12 @@ export default function PostComment({ onPostComment }) {
         });
       }
     } else {
-      alert("Debes estar logeado.");
-      //loginWithRedirect();
+      toast({
+        title: "You are not logged in",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
