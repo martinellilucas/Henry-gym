@@ -18,92 +18,38 @@ export default function Comment() {
   const comments = useSelector((state) => state.comentarios);
   console.log(comments);
 
+  const handlePostComment = () => {
+    dispatch(getComentarios()); // Actualiza los comentarios después de agregar uno nuevo
+  };
+  
+
   useEffect(() => {
     dispatch(getComentarios());
   }, [dispatch]);
 
   return (
-    <div>
+    <div >
       <div className={styles.containerReviews}>
         <h2 className={styles.reviews}>REVIEWS</h2>
       </div>
         <div className={styles.postBoton}>
-          <PostComment />
+          <PostComment onPostComment={handlePostComment}/>
         </div>
-
-      <div>
+      
+      <div className={styles.container}>
         {comments.map((comment) => (
           <div key={comment.id}>
             <CommentCard
               id={comment.id}
               texto={comment.texto}
-              ClaseID={comment.ClaseID}
+              nombreClase={comment.nombreClase}
               nombreCliente={comment.nombreCliente}
+              imagenCliente={comment.picture}
             />
           </div>
+          
+          
         ))}
-        <Center>
-          <Box
-            maxW={"445px"}
-            w={"full"}
-            bg={useColorModeValue("white", "gray.900")}
-            boxShadow={"2xl"}
-            rounded={"md"}
-            p={6}
-            overflow={"hidden"}
-            m={"8"}
-          >
-            <Stack>
-              <Text
-                color={"green.500"}
-                textTransform={"uppercase"}
-                fontWeight={800}
-                fontSize={"sm"}
-                letterSpacing={1.1}
-              >
-                Crossfit
-              </Text>
-              <Text color={"gray.500"}>"Muy buena la clase"</Text>
-            </Stack>
-            <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
-              <Avatar src={""} alt={"Author"} />
-              <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-                <Text fontWeight={600}>Sebastian Gaviria</Text>
-              </Stack>
-            </Stack>
-          </Box>
-          <Box
-            maxW={"445px"}
-            w={"full"}
-            bg={useColorModeValue("white", "gray.900")}
-            boxShadow={"2xl"}
-            rounded={"md"}
-            p={6}
-            overflow={"hidden"}
-            m={"8"}
-          >
-            <Stack>
-              <Text
-                color={"green.500"}
-                textTransform={"uppercase"}
-                fontWeight={800}
-                fontSize={"sm"}
-                letterSpacing={1.1}
-              >
-                Musculacion
-              </Text>
-              <Text color={"gray.500"}>
-                "Los elementos de muy mala calidad"
-              </Text>
-            </Stack>
-            <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
-              <Avatar src={""} alt={"Author"} />
-              <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-                <Text fontWeight={600}>Lucas M</Text>
-              </Stack>
-            </Stack>
-          </Box>
-        </Center>
       </div>
     </div>
   );

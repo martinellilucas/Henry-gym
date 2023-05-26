@@ -33,6 +33,7 @@
 
 }
 .activityContainer {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -51,13 +52,26 @@
   outline: none;
   transition: border-color 0.3s ease;
 }
+.clasesErrors {
+  position: absolute; 
+  bottom: -20px;
+  color: red; 
+  font-size: 12px; 
+}
 
 .activitySelect:focus {
   border-color: #888;
 }
 
 .textareaContainer {
+  position: relative;
   margin-bottom: 20px;
+}
+.textareaError {
+  position: absolute; 
+  bottom: -20px; 
+  color: red; 
+  font-size: 12px; 
 }
 
 .textareaLabel {

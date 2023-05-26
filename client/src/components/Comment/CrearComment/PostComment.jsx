@@ -11,26 +11,29 @@ import {
 } from "@material-ui/core";
 import styles from "./PostComment.module.css";
 
-export default function PostComment() {
+export default function PostComment({onPostComment}) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [clase, setClase] = useState("");
   const [texto, setTexto] = useState("");
   const [placeholder, setPlaceholder] = useState("Agregue su comentario");
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
 
   const { isAuthenticated, user, loginWithRedirect } = useAuth0(); // Obtener la información del usuario autenticado
   const classes = useSelector((state) => state.clases);
-  // const uniqueClasses = classes
-  // ? [...new Set(classes.map((clase) => clase.nombre))]
-  // : [];
+  const uniqueClasses = classes
+    ? [...new Set(classes.map((clase) => clase.nombre))]
+    : [];
 
   //console.log(classes)
   //console.log(uniqueClasses);
 
-
   const handleInputChange = (e) => {
     // Maneja el cambio en el valor del area del texto
     setTexto(e.target.value);
+    // console.log(texto)
   };
 
   const handleInputFocus = () => {
@@ -55,6 +58,7 @@ export default function PostComment() {
     setOpen(false);
     setClase("");
     setTexto("");
+    setErrors("")
   };
 
   useEffect(() => {
@@ -62,24 +66,48 @@ export default function PostComment() {
     dispatch(getClases());
   }, [dispatch]);
 
+
+  const email = user?.email ?? "franco@gmail.com";
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newErrors = {}; // Crea un objeto para almacenar los errores
+
+  if (!clase.trim()) {
+    newErrors.clase = "El campo Clase es requerido.";
+  }
+
+  if (!texto.trim()) {
+    newErrors.texto = "El campo Texto es requerido.";
+  }
+
+  if (Object.keys(newErrors).length > 0) {
+    // Si hay errores, establece el estado de errors y no envía la solicitud
+    setErrors(newErrors);
+    setSubmitted(true);
+    return;
+  }
     // if (isAuthenticated && user && user.email) {
-      
-      const comentario = {
-        email: user?.email ??  'franco@gmail.com', 
-        clase: clase?.id,
-        texto: texto
-      };
-      dispatch(postComentario(comentario));
-   
-      setClase("");
-      setTexto("");
+    const comentario = {
+      email: email,
+      clase: clase ,
+      texto: texto ,
+    };
+    dispatch(postComentario(comentario)).then(() => {
       handleClose();
+      onPostComment();
+
+    });
+    setErrors("")
+    setClase("");
+    setTexto("");
+    setSubmitted(false);
     // } else {
     //   loginWithRedirect();
     // }
   };
+  
 
   return (
     <div>
@@ -96,6 +124,7 @@ export default function PostComment() {
           <form onSubmit={handleSubmit}>
             <div className={styles.activityContainer}>
               <select
+                required
                 className={styles.activitySelect}
                 value={clase}
                 onChange={(e) => setClase(e.target.value)}
@@ -103,17 +132,19 @@ export default function PostComment() {
                 <option value="" disabled>
                   Select a class
                 </option>
-                {classes &&
-                  classes.map((className) => (
+                {uniqueClasses &&
+                  uniqueClasses.map((className) => (
                     <option key={className} value={className}>
                       {className}
                     </option>
                   ))}
               </select>
+              {submitted && !clase && <p className={styles.clasesErrors}>{errors.clase}</p>}
             </div>
 
             <div className={styles.textareaContainer}>
               <textarea
+                required
                 className={styles.textarea}
                 value={texto}
                 onChange={handleInputChange}
@@ -121,6 +152,7 @@ export default function PostComment() {
                 onBlur={handleInputBlur}
                 placeholder={placeholder}
               ></textarea>
+               {submitted && !texto && <p className={styles.textareaError}>{errors.texto}</p>}
             </div>
           </form>
         </DialogContent>

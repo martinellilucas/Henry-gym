@@ -7,6 +7,12 @@
   justify-content: center;
 
 }
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Define dos columnas de igual tamaño */
+  grid-gap: 20px; /* Espacio entre las tarjetas */
+}
+
 
 .reviews{
   font-family: "Titillium Web", sans-serif;

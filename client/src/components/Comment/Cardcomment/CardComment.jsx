@@ -9,7 +9,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function CommentCard({ id, texto, ClaseID, nombreCliente, imagen}) {
+export default function CommentCard({ texto, nombreClase, nombreCliente, picture}) {
   return (
     <Center>
          <Box
@@ -30,15 +30,15 @@ export default function CommentCard({ id, texto, ClaseID, nombreCliente, imagen}
             fontWeight={800}
             fontSize={'sm'}
             letterSpacing={1.1}>
-            {ClaseID}
+            {nombreClase}
           </Text>
           <Text color={'gray.500'}>
-          {texto}
+          "{texto}"
           </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
           <Avatar
-            src={""}
+            src={picture}
             alt={'Author'}
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
