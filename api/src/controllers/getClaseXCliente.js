@@ -1,13 +1,13 @@
-const { Cliente } = require("../db");
-const { Clase } = require("../db");
+const { Cliente, Clase } = require("../db");
 
-const getClaseXCliente = async (clienteID) => {
-  const clienteXCliente = await Cliente.findByPk({
-    where: { id: clienteID },
-    include: Clase,
+const getClienteClaseData = async (clienteId) => {
+  const cliente = await Cliente.findByPk(clienteId);
+
+  const clienteClaseData = await cliente.getClases({
+    through: { attributes: [] }, // Opcional: para excluir atributos adicionales de la tabla intermedia
   });
 
-  return clienteXCliente;
+  return clienteClaseData;
 };
 
-module.exports = getClaseXCliente;
+module.exports = getClienteClaseData;
