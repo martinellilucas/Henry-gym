@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postComentario, getClases } from "../../../redux/Actions/index";
+import {
+  postComentario,
+  getClases,
+  getUserByEmail,
+} from "../../../redux/Actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   Dialog,
@@ -10,6 +14,7 @@ import {
   Button,
 } from "@material-ui/core";
 import styles from "./PostComment.module.css";
+import { useToast } from "@chakra-ui/react";
 
 export default function PostComment({ onPostComment }) {
   const dispatch = useDispatch();
@@ -19,12 +24,17 @@ export default function PostComment({ onPostComment }) {
   const [placeholder, setPlaceholder] = useState("Agregue su comentario");
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-
+  const toast = useToast();
   const { isAuthenticated, user, loginWithRedirect } = useAuth0(); // Obtener la información del usuario autenticado
   const classes = useSelector((state) => state.clases);
   const uniqueClasses = classes
     ? [...new Set(classes.map((clase) => clase.nombre))]
     : [];
+
+  const usuario = useSelector((state) => state.usuario);
+  useEffect(() => {
+    dispatch(getUserByEmail(user?.email));
+  });
 
   //console.log(classes)
   //console.log(uniqueClasses);
@@ -91,14 +101,29 @@ export default function PostComment({ onPostComment }) {
         clase: clase,
         texto: texto,
       };
-      dispatch(postComentario(comentario)).then(() => {
-        handleClose();
-        onPostComment();
-      });
-      setErrors("");
-      setClase("");
-      setTexto("");
-      setSubmitted(false);
+      if (!usuario?.isBanned) {
+        dispatch(postComentario(comentario)).then(() => {
+          handleClose();
+          onPostComment();
+        });
+        setErrors("");
+        setClase("");
+        setTexto("");
+        setSubmitted(false);
+        toast({
+          title: "Thank you",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "You are banned",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
     } else {
       alert("Debes estar logeado.");
       //loginWithRedirect();
