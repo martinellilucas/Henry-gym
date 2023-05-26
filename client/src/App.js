@@ -25,7 +25,14 @@ import Perfil from "./components/PersonalP/Personalp";
 
 function App() {
   const { pathname } = useLocation();
-  const showNavbarAndFooter = !(pathname === "/dashboard" || pathname === "/");
+  const showNavbarAndFooter = !(
+    pathname === "/dashboard" ||
+    pathname === "/dashboard/clients" ||
+    pathname === "/dashboard/comments" ||
+    pathname === "/dashboard/stadistics" ||
+    pathname === "/dashboard/classes" ||
+    pathname === "/"
+  );
 
   return (
     <Auth0ProviderWithHistory>
