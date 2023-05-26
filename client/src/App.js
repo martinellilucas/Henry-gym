@@ -12,6 +12,7 @@ import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import PostRutina from "./components/CrearRutina/CrearRutina";
 import Auth0ProviderWithHistory from "./auth0provider";
+import Comment from "./components/Comment/Comment/Comment"
 
 import SubscriptionSuccess from "./components/Success/success";
 import SubscriptionCancel from "./components/Cancel/cancel";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
           <Route path="/dashboard" element={<SidebarWithHeader />} />
           <Route path="/perfil" element={<Perfil />} />
+
         </Routes>
         {showNavbarAndFooter && <SmallCentered />}
       </div>

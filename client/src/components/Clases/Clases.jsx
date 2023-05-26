@@ -8,6 +8,7 @@ import Funcional from '../../assets/funcional.jpg'
 import Musculacion from '../../assets/musculacion.jpg'
 import Entrenador2 from '../../assets/personaltrainer2.jpg'
 import Entrenador1 from '../../assets/personaltrainer.jpg'
+import Comment from "../Comment/Comment/Comment"
 
 
 import {
@@ -299,7 +300,10 @@ can help you achieve your bodybuilding goals much faster.
           </Stack>
         </Stack>
       </Box>
+    <div className={style.comment}>
 
+      <Comment />
+    </div>
     </Center>
   );
 }
