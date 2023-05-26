@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUserByEmail, postUser } from "../../redux/Actions";
 import ClasesHome from "../ClasesHome/ClasesHome";
+import ChatBot from "../ChatBot/ChatBot.jsx";
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -37,6 +38,7 @@ const Home = () => {
       ) : (
         <ClasesHome></ClasesHome>
       )}
+      <ChatBot></ChatBot>
     </div>
   );
 };

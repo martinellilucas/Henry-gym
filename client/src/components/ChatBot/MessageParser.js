@@ -25,7 +25,16 @@ class MessageParser {
     }
     if (lowerCaseMessage.includes("opening")) {
       this.actionProvider.handleSchudle();
-    } else {
+    }
+    if (
+      !lowerCaseMessage.includes("hello") &&
+      !lowerCaseMessage.includes("memberships") &&
+      !lowerCaseMessage.includes("location") &&
+      !lowerCaseMessage.includes("facilities") &&
+      !lowerCaseMessage.includes("classes") &&
+      !lowerCaseMessage.includes("schudle") &&
+      !lowerCaseMessage.includes("opening")
+    ) {
       this.actionProvider.handleOptions();
     }
   }
