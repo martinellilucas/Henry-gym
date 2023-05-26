@@ -23,6 +23,7 @@ import {
 export default function ClasesMembresia() {
   return (
     <Center className={style.boxes}>
+      <h1 className={style.title}>OUR CLASSES</h1>
       <Box
         maxW={"445px"}
         w={"full"}
@@ -41,7 +42,12 @@ export default function ClasesMembresia() {
           mb={6}
           pos={"relative"}
         >
-          <img src={Crossfit} alt="Crossfit" layout={"fill"} />
+          <img
+            className={style.img}
+            src={Crossfit}
+            alt="Crossfit"
+            layout={"fill"}
+          />
         </Box>
         <Stack>
           <Text

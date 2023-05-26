@@ -22,7 +22,7 @@ export default function Comment() {
   return (
     <div>
       <div className={styles.containerReviews}>
-        <h2 className={styles.reviews}>REVIEWS</h2>
+        <h2 className={styles.title}>REVIEWS</h2>
       </div>
       <div className={styles.postBoton}>
         <PostComment onPostComment={handlePostComment} />
