@@ -20,6 +20,7 @@ const postComentario = async(email, clase, texto) =>{
         nombreCliente: cienteSeleccionado.nombre,
         emailCliente: cienteSeleccionado.email,
         nombreClase: claseSeleccionada.nombre
+
     }
 
     return comentario;
