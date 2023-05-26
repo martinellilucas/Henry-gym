@@ -9,6 +9,9 @@ import {
   GET_USER_BY_EMAIL,
   GET_CLIENTES,
   GET_COMMENTS,
+  GET_CLASES,
+  GET_COMENTARIOS,
+
 } from "../Actions/index";
 
 const initialState = {
@@ -21,6 +24,8 @@ const initialState = {
   user: {},
   clientes: [],
   comments: [],
+  comentarios: [],
+  clases: [],
 };
 
 export default function footReducer(state = initialState, action) {
@@ -74,6 +79,12 @@ export default function footReducer(state = initialState, action) {
         ...state,
         comments: action.payload,
       };
+
+    case GET_CLASES:
+      return { ...state, clases: action.payload };
+
+    case GET_COMENTARIOS:
+      return { ...state, comentarios: [...action.payload] };
 
     default:
       return { ...state };

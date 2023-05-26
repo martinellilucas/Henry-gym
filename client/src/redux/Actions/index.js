@@ -8,6 +8,59 @@ export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_COMMENTS = 'GET_COMMENTS';
+export const GET_COMENTARIOS = "GET_COMENTARIOS";
+export const GET_CLASES = "GET_CLASES";
+
+export const getClases = () => {
+  return async (dispatch) => {
+    const resp = await axios.get(
+      "https://henry-gym-production.up.railway.app/clase"
+    );
+    dispatch({
+      type: GET_CLASES,
+      payload: resp.data,
+    });
+  };
+};
+
+export const banUser = (email, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
+      body
+    );
+  };
+};
+export const adminUser = (email, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
+      body
+    );
+  };
+};
+
+export const banComentario = (id, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/comentarios/${id}`,
+      body
+    );
+  };
+};
+
+export const getComentarios = () => {
+  return async (dispatch) => {
+    const resp = await axios(
+      "https://henry-gym-production.up.railway.app/comentarios"
+    );
+    dispatch({
+      type: GET_COMENTARIOS,
+      payload: resp.data,
+    });
+  };
+};
+
 
 export const getRutinas = () => {
   return async (dispatch) => {

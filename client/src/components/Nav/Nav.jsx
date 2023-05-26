@@ -10,12 +10,23 @@ import {
 } from "@chakra-ui/react";
 
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserByEmail } from "../../redux/Actions";
 
 const Nav = () => {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const client = useSelector((state) => state.user);
+  const membership = client?.tipoDeSuscripcion;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUserByEmail(user?.email));
+    }
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -62,7 +73,7 @@ const Nav = () => {
         </BreadcrumbItem>
 
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/rutinas">
+          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/rutinas">
             ROUTINES
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -74,11 +85,19 @@ const Nav = () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
         )}
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToMembresias}>
-            MEMBERSHIPS
-          </BreadcrumbLink>
-        </BreadcrumbItem>
+        {membership === "Bronze" || !isAuthenticated ? (
+          <BreadcrumbItem className={style.item}>
+            <BreadcrumbLink onClick={scrollToMembresias}>
+              MEMBERSHIPS
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        ) : (
+          <BreadcrumbItem className={style.item}>
+            <NavLink onClick={scrollToTop} to="/memberships">
+              <BreadcrumbLink>MEMBERSHIPS</BreadcrumbLink>
+            </NavLink>
+          </BreadcrumbItem>
+        )}
         <BreadcrumbItem className={style.item}>
           <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/about">
             ABOUT

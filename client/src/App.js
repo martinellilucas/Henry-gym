@@ -12,22 +12,20 @@ import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import PostRutina from "./components/CrearRutina/CrearRutina";
 import Auth0ProviderWithHistory from "./auth0provider";
-
+import "react-chatbot-kit/build/main.css";
 import SubscriptionSuccess from "./components/Success/success";
 import SubscriptionCancel from "./components/Cancel/cancel";
 import SubscriptionSuccess2 from "./components/Success/success2";
 import SubscriptionSuccess3 from "./components/Success/success3";
-
+import ThreeTierPricing from "./components/Membresias/Membresia";
 import ClasesMembresia from "./components/Clases/Clases";
 
 import SidebarWithHeader from "./components/Dashboard/DashboardAdmin";
 import Perfil from "./components/PersonalP/Personalp";
 
 function App() {
-
   const { pathname } = useLocation();
   const showNavbarAndFooter = !(pathname === "/dashboard" || pathname === "/");
-
 
   return (
     <Auth0ProviderWithHistory>
@@ -42,6 +40,7 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
+          <Route path="/memberships" element={<ThreeTierPricing />} />
           <Route path="/form" element={<PostRutina />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />

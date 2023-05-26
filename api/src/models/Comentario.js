@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
     },
     texto: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     isBanned : {

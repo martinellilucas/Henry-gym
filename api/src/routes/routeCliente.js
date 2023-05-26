@@ -8,7 +8,7 @@ const routeCliente = Router();
 routeCliente.get("/", handlerGetClientes);
 routeCliente.get("/:id", handlerClienteByEmail);
 routeCliente.post("/", handlerPostCliente);
-
 routeCliente.put("/:email", handlerPutCliente);
+
 
 module.exports = routeCliente;
