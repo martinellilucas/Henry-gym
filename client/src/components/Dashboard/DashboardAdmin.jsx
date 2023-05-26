@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   adminUser,
   banComentario,
+  getClases,
   getClientes,
   getComentarios,
   getUserByEmail,
@@ -41,12 +42,14 @@ export default function SidebarWithHeader({ children }) {
   const { user } = useAuth0();
   const clientes = useSelector((state) => state.clientes);
   const comentarios = useSelector((state) => state.comentarios);
+  const clases = useSelector((state) => state.clases);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getClientes());
     dispatch(getUserByEmail(user?.email));
     dispatch(getComentarios());
+    dispatch(getClases());
   }, [dispatch, user?.email]);
 
   return (
@@ -75,6 +78,7 @@ export default function SidebarWithHeader({ children }) {
         onOpen={onOpen}
         clientes={clientes}
         comentarios={comentarios}
+        clases={clases}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -201,7 +205,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({ clientes, comentarios }) => {
+const Contenido = ({ clientes, comentarios, clases }) => {
   function refreshPage() {
     window.location.reload(false);
   }
@@ -216,9 +220,12 @@ const Contenido = ({ clientes, comentarios }) => {
     else dispatch(adminUser(item?.email, { isAdmin: true }));
   };
   const handleBanComent = (item) => {
-    if (item?.isBanned)
-      dispatch(banComentario(item?.email, { isBanned: false }));
-    else dispatch(banComentario(item?.email, { isBanned: true }));
+    if (item?.isBanned) {
+      dispatch(banComentario(item?.id, { isBanned: false }));
+    } else {
+      dispatch(banComentario(item?.id, { isBanned: true }));
+      dispatch(banUser(item?.emailCliente, { isBanned: true }));
+    }
   };
   return (
     <Box className={style.container}>
@@ -229,50 +236,10 @@ const Contenido = ({ clientes, comentarios }) => {
         </button>
       </Text>
       <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-        Clients List:
-      </Text>
-      <Box className={style.listado}>
-        <table className={style.tabla}>
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Suscription</th>
-              <th>Is Banned</th>
-              <th>Is Admin</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clientes?.map((item, index) => (
-              <tr key={index}>
-                <td>{item.nombre}</td>
-                <td>{item.tipoDeSuscripcion}</td>
-                <td>{item.isBanned.toString()}</td>
-                <td>{item.isAdmin.toString()}</td>
-                <td className={style.buttonO}>
-                  <button
-                    className={style.button3}
-                    onClick={() => handleBan(item)}
-                  >
-                    BAN
-                  </button>
-                  <button
-                    className={style.button3}
-                    onClick={() => handleAdmin(item)}
-                  >
-                    ADM
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Box>
-      <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
         Membership stadistics:
       </Text>
       <Box className={style.estadisticas}>
-        <Flex align="center" justify="center" height="300px">
+        <Flex align="center" justify="space-evenly" height="300px">
           <CircularProgress
             value={calculoMembresias(clientes, "Silver")}
             color="gray"
@@ -297,6 +264,72 @@ const Contenido = ({ clientes, comentarios }) => {
         </Flex>
       </Box>
       <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+        Clients List:
+      </Text>
+      <Box className={style.listado}>
+        <table className={style.tabla}>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Suscription</th>
+              <th>Is Banned</th>
+              <th>Is Admin</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clientes?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nombre}</td>
+                <td>{item.email}</td>
+                <td>{item.tipoDeSuscripcion}</td>
+                <td>{item.isBanned.toString()}</td>
+                <td>{item.isAdmin.toString()}</td>
+                <td className={style.buttonO}>
+                  <button
+                    className={style.button3}
+                    onClick={() => handleBan(item)}
+                  >
+                    BAN
+                  </button>
+                  <button
+                    className={style.button3}
+                    onClick={() => handleAdmin(item)}
+                  >
+                    ADM
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Box>
+      <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+        Classes
+      </Text>
+      <Box className={style.listado}>
+        <table className={style.tabla}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Days</th>
+              <th>Start time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clases?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nombre.toUpperCase()}</td>
+                <td>{item.dias.join(" ")}</td>
+                <td>{item.horario}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Box>
+
+      <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
         Client Comments
       </Text>
       <Box className={style.listado}>
@@ -304,6 +337,7 @@ const Contenido = ({ clientes, comentarios }) => {
           <thead>
             <tr>
               <th>User</th>
+              <th>Email</th>
               <th>Class</th>
               <th>Comment</th>
               <th>Is Banned</th>
@@ -314,6 +348,7 @@ const Contenido = ({ clientes, comentarios }) => {
             {comentarios?.map((item, index) => (
               <tr key={index}>
                 <td>{item.nombreCliente}</td>
+                <td>{item.emailCliente}</td>
                 <td>{item.nombreClase}</td>
                 <textarea disabled={true}>{item.texto}</textarea>
                 <td>{item.isBanned.toString()}</td>
