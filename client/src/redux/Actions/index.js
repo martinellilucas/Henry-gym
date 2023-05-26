@@ -130,7 +130,9 @@ export const getEjerciciosByName = (name) => {
 export const postRutina = (rutina) => {
   return async function () {
     await axios
-      .post("https://henry-gym-production.up.railway.app/rutinas", rutina)
+      .post("http://localhost:3001/rutinas", rutina, {
+        headers:{'Content-type' : 'multipart/form-data'}
+      })
       .then((res) => {
         return res.data;
       });
@@ -193,3 +195,14 @@ export const getComments = () => {
 };
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
+
+
+
+
+
+
+
+
+
+
+

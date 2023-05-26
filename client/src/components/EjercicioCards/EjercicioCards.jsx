@@ -1,8 +1,11 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid } from "@chakra-ui/react";
 import EjercicioCard from "../EjercicioCard/EjercicioCard";
 import style from "./EjercicioCards.module.css";
+import { useState } from "react";
 
-export default function EjercicioCards({ ejercicios }) {
+export default function EjercicioCards({ ejercicios, isOpen, onClick }) {
+
+
   return (
     <Box
       className={style.cards}
@@ -10,14 +13,17 @@ export default function EjercicioCards({ ejercicios }) {
       width="100%"
       justifyContent="center"
     >
-      {ejercicios?.map((e) => (
-        <EjercicioCard
-          key={e.id}
-          name={e.name}
-          difficulty={e.difficulty}
-          muscle={e.muscle}
-          instructions={e.instructions}
-        />
+      {ejercicios?.map((ej) => (
+        <Box
+          position={'relative'}
+        >
+          <EjercicioCard
+            ejercicios={ej}
+            isOpen={isOpen}
+            onClick={onClick}
+          />
+
+        </Box>
       ))}
     </Box>
   );
