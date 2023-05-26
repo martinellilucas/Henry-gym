@@ -8,16 +8,17 @@ import Funcional from "../../assets/funcional.jpg";
 import Musculacion from "../../assets/musculacion.jpg";
 import Entrenador2 from "../../assets/personaltrainer2.jpg";
 import Entrenador1 from "../../assets/personaltrainer.jpg";
+import Comment from "../Comment/Comment/Comment";
 
 import {
   Box,
   Center,
+  Heading,
   Text,
   Stack,
   Avatar,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Comment from "../Comment/Comment";
 
 export default function ClasesMembresia() {
   return (
