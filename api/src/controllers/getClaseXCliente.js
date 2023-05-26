@@ -1,11 +1,11 @@
 const { Cliente } = require("../db");
-const {Clase} = require("../db");
+const { Clase } = require("../db");
 
 const getClaseXCliente = async (clienteID) => {
-    const clienteXCliente = await Cliente.findByPk(clienteID, {
-        include: Clase 
-      });
-  
+  const clienteXCliente = await Cliente.findByPk({
+    where: { id: clienteID },
+    include: Clase,
+  });
 
   return clienteXCliente;
 };
