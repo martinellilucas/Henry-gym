@@ -48,7 +48,10 @@ function App() {
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
           <Route path="/dashboard" element={<SidebarWithHeader />} />
-          <Route path="/dashboard/*" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/clients" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/stadistics" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/comments" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/classes" element={<SidebarWithHeader />} />
           <Route path="/perfil" element={<Perfil />} />
         </Routes>
         {showNavbarAndFooter && <SmallCentered />}
