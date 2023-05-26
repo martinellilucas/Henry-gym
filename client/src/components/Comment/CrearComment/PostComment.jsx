@@ -32,9 +32,6 @@ export default function PostComment({ onPostComment }) {
     : [];
 
   const usuario = useSelector((state) => state.usuario);
-  useEffect(() => {
-    dispatch(getUserByEmail(user?.email));
-  });
 
   //console.log(classes)
   //console.log(uniqueClasses);
@@ -71,9 +68,11 @@ export default function PostComment({ onPostComment }) {
   };
 
   useEffect(() => {
+    dispatch(getUserByEmail(user?.email));
     // Despachar la acción getClases al montar el componente
+
     dispatch(getClases());
-  }, [dispatch]);
+  }, [dispatch, user?.email]);
 
   const email = user?.email ?? "franco@gmail.com";
 
@@ -101,7 +100,7 @@ export default function PostComment({ onPostComment }) {
         clase: clase,
         texto: texto,
       };
-      console.log(usuario.isBanned);
+
       if (!usuario?.isBanned) {
         dispatch(postComentario(comentario)).then(() => {
           handleClose();
