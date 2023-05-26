@@ -75,11 +75,11 @@ export default function PostComment({onPostComment}) {
     let newErrors = {}; // Crea un objeto para almacenar los errores
 
   if (!clase.trim()) {
-    newErrors.clase = "El campo Clase es requerido.";
+    newErrors.clase = "Elija una clase.";
   }
 
   if (!texto.trim()) {
-    newErrors.texto = "El campo Texto es requerido.";
+    newErrors.texto = "Escriba un comentario.";
   }
 
   if (Object.keys(newErrors).length > 0) {
@@ -88,7 +88,7 @@ export default function PostComment({onPostComment}) {
     setSubmitted(true);
     return;
   }
-    // if (isAuthenticated && user && user.email) {
+ if (isAuthenticated && user && user.email) {
     const comentario = {
       email: email,
       clase: clase ,
@@ -103,9 +103,10 @@ export default function PostComment({onPostComment}) {
     setClase("");
     setTexto("");
     setSubmitted(false);
-    // } else {
-    //   loginWithRedirect();
-    // }
+    } else {
+      alert("Debes estar logeado.");
+      //loginWithRedirect();
+    }
   };
   
 
