@@ -3,14 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CommentCard from "../Cardcomment/CardComment";
 import PostComment from "../CrearComment/PostComment";
 import { getComentarios } from "../../../redux/Actions";
-import {
-  Box,
-  Center,
-  Text,
-  Stack,
-  Avatar,
-  useColorModeValue,
-} from "@chakra-ui/react";
+
 import styles from "./Comment.module.css";
 
 export default function Comment() {
