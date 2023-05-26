@@ -30,8 +30,26 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getClases } from "../../redux/Actions";
 
 export default function ClasesHome() {
+  const client = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const clases = useSelector((state) => state.clases);
+  const crossfit = clases.filter((clases) => clases.nombre === "crossfit");
+  const functional = clases.filter((clases) => clases.nombre === "functional");
+  const yoga = clases.filter((clases) => clases.nombre === "yoga");
+  const zumba = clases.filter((clases) => clases.nombre === "zumba");
+  const pilates = clases.filter((clases) => clases.nombre === "pilates");
+  const musculacion = clases.filter(
+    (clases) => clases.nombre === "musculacion"
+  );
+  useEffect(() => {
+    dispatch(getClases());
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -89,7 +107,7 @@ export default function ClasesHome() {
           </Stack>
           <Popover>
             <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
+              <Button backgroundColor="#aaaaaa">Subscribe</Button>
             </PopoverTrigger>
             <PopoverContent>
               <PopoverArrow />
@@ -98,14 +116,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {crossfit.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -154,9 +187,9 @@ export default function ClasesHome() {
           </Text>
         </Stack>
         <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
-          <Avatar src={Entrenador1} alt={"Author"} />
+          <Avatar src={Entrenador3} alt={"Author"} />
           <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-            <Text fontWeight={600}>Victoria Magallanes</Text>
+            <Text fontWeight={600}>Sebastian Gaviria</Text>
             <Text color={"gray.500"}>Feb 21, 2023 ·</Text>
           </Stack>
           <Popover>
@@ -170,14 +203,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {functional.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -241,14 +289,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {yoga.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -312,14 +375,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {zumba.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -346,7 +424,6 @@ export default function ClasesHome() {
         >
           <img src={Pilates} alt="Crossfit" layout={"fill"} />{" "}
           <Box
-            onClick={scrollToTop}
             as={NavLink}
             to="/clases"
             className={style.overlay}
@@ -383,14 +460,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {pilates.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -418,7 +510,6 @@ export default function ClasesHome() {
         >
           <img src={Musculacion} alt="Crossfit" layout={"fill"} />
           <Box
-            onClick={scrollToTop}
             as={NavLink}
             to="/clases"
             className={style.overlay}
@@ -455,14 +546,29 @@ export default function ClasesHome() {
               <PopoverBody>
                 <RadioGroup defaultValue={null}>
                   <Stack spacing={2}>
-                    <Radio value="option1">Option 1</Radio>
-                    <Radio value="option2">Option 2</Radio>
-                    <Radio value="option3">Option 3</Radio>
+                    {musculacion.map((clase) => {
+                      return (
+                        <Radio value={clase.id}>
+                          {clase.dias.map((dia) => {
+                            return `${dia} `;
+                          })}
+                          {clase.horario}HS
+                        </Radio>
+                      );
+                    })}
                   </Stack>
                 </RadioGroup>
-                <Button mt={4} colorScheme="blue">
-                  Confirm
-                </Button>
+                {client?.tipoDeSuscripcion === "Silver" ? (
+                  <NavLink to="/memberships">
+                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
+                      Upgrade your membership.
+                    </Button>
+                  </NavLink>
+                ) : (
+                  <Button mt={4} colorScheme="blue">
+                    Confirm
+                  </Button>
+                )}
               </PopoverBody>
             </PopoverContent>
           </Popover>

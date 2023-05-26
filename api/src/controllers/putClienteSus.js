@@ -3,24 +3,24 @@ const { Cliente } = require("../db");
 const putClienteSus = async (
   emailcliente,
   nuevoTipoDeSuscripcion,
-  isBanned,
-  isAdmin
+  isAdmin,
+  isBanned
 ) => {
-  if (isBanned) {
-    const response = await Cliente.update(
-      { isBanned: isBanned },
-      { where: { email: emailcliente } }
-    );
-
-    return `El usuario ${response.nombre} ha sido baneado/desbaneado`;
-  }
-  if (isAdmin) {
+  if (isAdmin === true || isAdmin === false) {
     const response = await Cliente.update(
       { isAdmin: isAdmin },
       { where: { email: emailcliente } }
     );
 
     return `El usuario ${response.nombre} ahora es Admin`;
+  }
+  if (isBanned === true || isBanned === false) {
+    const response = await Cliente.update(
+      { isBanned: isBanned },
+      { where: { email: emailcliente } }
+    );
+
+    return `El usuario ${response.nombre} ha sido baneado/desbaneado`;
   }
   if (nuevoTipoDeSuscripcion.length) {
     const response = await Cliente.update(

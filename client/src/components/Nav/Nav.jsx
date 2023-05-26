@@ -73,7 +73,7 @@ const Nav = () => {
         </BreadcrumbItem>
 
         <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink as={NavLink} to="/rutinas">
+          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/rutinas">
             ROUTINES
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -93,7 +93,7 @@ const Nav = () => {
           </BreadcrumbItem>
         ) : (
           <BreadcrumbItem className={style.item}>
-            <NavLink to="/memberships">
+            <NavLink onClick={scrollToTop} to="/memberships">
               <BreadcrumbLink>MEMBERSHIPS</BreadcrumbLink>
             </NavLink>
           </BreadcrumbItem>

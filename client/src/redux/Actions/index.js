@@ -22,25 +22,24 @@ export const getClases = () => {
     });
   };
 };
-export const getClasesByName = (name) => {
-  return async (dispatch) => {
-    const resp = await axios.get(
-      `https://henry-gym-production.up.railway.app/clase/${name}`,
-    );
-    dispatch({
-      type: GET_CLASES_BY_NAME,
-      payload: resp.data,
-    });
-  };
-};
+
 export const banUser = (email, body) => {
   return async () => {
     await axios.put(
-      `https://henry-gym-production.up.railway.app/clientes/${email}`,
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
       body
     );
   };
 };
+export const adminUser = (email, body) => {
+  return async () => {
+    await axios.put(
+      `https://henry-gym-production.up.railway.app/cliente/${email}`,
+      body
+    );
+  };
+};
+
 export const banComentario = (id, body) => {
   return async () => {
     await axios.put(
