@@ -1,12 +1,6 @@
 .body {
-  background-image: url("../../assets/ejerciciosBG.png");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  width: 100%;
-  padding-top: 250px;
   font-family: "Titillium Web", sans-serif;
+  background-color: #aaa8ac;
 }
 
 .film {
@@ -20,4 +14,15 @@
   align-items: center;
   justify-content: space-evenly;
   width: 90%;
+}
+.img {
+  height: 600px;
+  width: 100%;
+}
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
 }

@@ -7,6 +7,7 @@ import style from "./PaginationRutinas.module.css";
 import { NavLink } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
+import rutinasBG from "../../assets/rutinasBG.png";
 
 export default function Pagination() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -50,6 +51,10 @@ export default function Pagination() {
 
   return (
     <div className={style.body}>
+      <div>
+        <img src={rutinasBG} alt="rutinasbg" />
+      </div>
+      <h1 className={style.title}>WORKOUT ROUTINES</h1>
       <Box className={style.container}>
         <NavLink to="/form">
           <Button colorScheme="blackAlpha">CREATE YOUR OWN</Button>

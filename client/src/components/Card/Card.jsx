@@ -26,9 +26,9 @@ const Card = ({ id, difficulty, ejercicios, grupoMuscular, imagen }) => {
           );
         })}
       </ul>
-      <Divider />
+
       <NavLink to={`/detail/${id}`}>
-        <Button className={style.btn} variant="solid" colorScheme="blackAlpha">
+        <Button className={style.btn} variant="solid" colorScheme="whiteAlpha">
           DETAIL
         </Button>
       </NavLink>

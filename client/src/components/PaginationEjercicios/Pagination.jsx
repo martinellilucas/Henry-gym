@@ -6,6 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
 import { filters, getEjercicios } from "../../redux/Actions";
 import Loading from "../Loading/Loading";
+import ejerciciosBG from "../../assets/ejerciciosBG.png";
 import { NavLink } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
@@ -125,6 +126,11 @@ export default function Pagination() {
 
   return (
     <Box className={style.body}>
+      <div>
+        <img className={style.img} src={ejerciciosBG} alt="ejerbg"></img>
+      </div>
+      <h1 className={style.title}>BODYBUILDING EXERCISES</h1>
+
       <Flex
         display="flex"
         flexDirection="column"
