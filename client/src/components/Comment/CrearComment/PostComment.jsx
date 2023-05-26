@@ -16,7 +16,7 @@ import {
 import styles from "./PostComment.module.css";
 import { useToast } from "@chakra-ui/react";
 
-export default function PostComment({ onPostComment }) {
+export default function PostComment({ onPostComment, usuario }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [clase, setClase] = useState("");
@@ -30,8 +30,6 @@ export default function PostComment({ onPostComment }) {
   const uniqueClasses = classes
     ? [...new Set(classes.map((clase) => clase.nombre))]
     : [];
-
-  const usuario = useSelector((state) => state.usuario);
 
   const handleInputChange = (e) => {
     // Maneja el cambio en el valor del area del texto
@@ -74,12 +72,9 @@ export default function PostComment({ onPostComment }) {
   };
 
   useEffect(() => {
-    dispatch(getUserByEmail(user?.email));
-    console.log(usuario?.isBanned);
     // Despachar la acción getClases al montar el componente
-
     dispatch(getClases());
-  }, [dispatch, user?.email]);
+  }, [dispatch]);
 
   const email = user?.email ?? "franco@gmail.com";
 
