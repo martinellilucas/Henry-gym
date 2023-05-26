@@ -1,19 +1,28 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Box, Button, Flex, Text, filter } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Text, filter } from "@chakra-ui/react";
 import EjercicioCards from "../EjercicioCards/EjercicioCards";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
 import { filters, getEjercicios } from "../../redux/Actions";
 import Loading from "../Loading/Loading";
 import ejerciciosBG from "../../assets/ejerciciosBG.png";
+import { NavLink } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+
+
 
 export default function Pagination() {
   const allEjercicios = useSelector((state) => state.filteredEjercicios);
+  const toast = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
   const [selectedMusculo, setSelectedMusculo] = useState("");
   const [selectedDificultad, setSelectedDificultad] = useState("");
+
+  // ESTADOS PARA EL CREADO DE RUTINA 
+  const [isOpen, setIsOpen] = useState(false)
+  const [ejer, setEjer] = useState([])
 
   const dispatch = useDispatch();
   const count = 9;
@@ -25,6 +34,8 @@ export default function Pagination() {
   for (let i = 1; i <= ejerciciosPages; i++) {
     pageIndex.push(i);
   }
+
+
 
   useEffect(() => {
     dispatch(getEjercicios());
@@ -67,6 +78,52 @@ export default function Pagination() {
     setPage(1);
   }
 
+  // EJERCICIOS QUE SE SUMAN AL CARRITO
+
+  const changeState = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const onClick = (ejercicios) => {
+    const boolean = ejer.find(item => item.id === ejercicios.id)
+    if (boolean) {
+      setEjer([...ejer.filter((item) => item.id !== ejercicios.id)])
+
+    } else {
+      setEjer([...ejer, ejercicios])
+    }
+  }
+
+
+  const onCancel = () => {
+    setEjer([])
+    setIsOpen(!isOpen)
+  }
+
+
+  const onSubmit = () => {
+
+    if (ejer.length < 2) {
+      toast({
+        title: "Please select at least two exercises",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      window.localStorage.setItem('ejercicios', JSON.stringify(ejer));
+      setEjer([]);
+      setIsOpen(!isOpen);
+      toast({
+        title: "Thank you",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  }
+
+
   return (
     <Box className={style.body}>
       <div>
@@ -84,12 +141,45 @@ export default function Pagination() {
           <div onChange={(e) => search(e)}>
             <SearchBar />
           </div>
+
+          {isOpen ?
+            <Flex
+            >
+              <ButtonGroup
+              >
+                <Button
+                  onClick={() => { onCancel() }}
+                  bg='red.500'
+                >Cancelar
+                </Button>
+
+                <Button
+                  bg='blue.200'
+                  onClick={() => onSubmit()}
+                >
+                  
+                  {ejer.length > 2 ?
+                    <NavLink to={'/form'}>
+                      Siguiente
+                     </NavLink>
+                    : <>Select to exercises</>}
+                </Button>
+
+              </ButtonGroup>
+            </Flex>
+            :
+
+            <Button
+              bg='blue.200'
+              onClick={() => { changeState() }}
+            > Crea tu Rutina</Button>
+          }
           <select
             id="selectMusculo"
             onChange={(e) => handlerFilteredMusculos(e)}
             className={style.film}
+            placeholder="Select a muscle"
           >
-            <option value="">Filter by muscle</option>
             <option value="">All</option>
             <option value="abdominals">Abdominals</option>
             <option value="abductors">Abductors</option>
@@ -109,6 +199,8 @@ export default function Pagination() {
             <option value="traps">Traps</option>
             <option value="triceps">Triceps</option>
           </select>
+
+
 
           <select
             id="selectDificultad"
@@ -148,7 +240,7 @@ export default function Pagination() {
       {!paginate.length ? (
         <Loading />
       ) : (
-        <EjercicioCards ejercicios={paginate} />
+        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick} />
       )}
     </Box>
   );
