@@ -11,7 +11,6 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import ChatBot from "../ChatBot/ChatBot";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -54,8 +53,6 @@ export default function SmallCentered() {
         py={4}
         spacing={4}
       >
-        <ChatBot />
-
         <Box alignItems={"center"} as={Stack}>
           <Text>Opening hours: </Text>
           <Text>Monday to Friday from 6:30 to 22:30</Text>
