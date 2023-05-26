@@ -207,14 +207,11 @@ const Contenido = ({ clientes, comentarios }) => {
   }
   const dispatch = useDispatch();
   const handleBan = (item) => {
-    console.log("Cambia banned", item);
-
     if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
     else dispatch(banUser(item?.email, { isBanned: true }));
   };
 
   const handleAdmin = (item) => {
-    console.log("Cambia admin", item);
     if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
     else dispatch(adminUser(item?.email, { isAdmin: true }));
   };
