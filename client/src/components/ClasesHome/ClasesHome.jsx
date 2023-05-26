@@ -217,7 +217,10 @@ export default function ClasesHome() {
                   <Stack spacing={2}>
                     {functional.map((clase) => {
                       return (
-                        <Radio value={clase.id}>
+                        <Radio
+                          value={clase.id}
+                          onChange={(e) => setSelectedClaseId(e.target.value)}
+                        >
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
@@ -234,7 +237,11 @@ export default function ClasesHome() {
                     </Button>
                   </NavLink>
                 ) : (
-                  <Button mt={4} colorScheme="blue">
+                  <Button
+                    mt={4}
+                    colorScheme="blue"
+                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                  >
                     Confirm
                   </Button>
                 )}
@@ -303,7 +310,10 @@ export default function ClasesHome() {
                   <Stack spacing={2}>
                     {yoga.map((clase) => {
                       return (
-                        <Radio value={clase.id}>
+                        <Radio
+                          value={clase.id}
+                          onChange={(e) => setSelectedClaseId(e.target.value)}
+                        >
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
@@ -320,7 +330,11 @@ export default function ClasesHome() {
                     </Button>
                   </NavLink>
                 ) : (
-                  <Button mt={4} colorScheme="blue">
+                  <Button
+                    mt={4}
+                    colorScheme="blue"
+                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                  >
                     Confirm
                   </Button>
                 )}
@@ -389,7 +403,10 @@ export default function ClasesHome() {
                   <Stack spacing={2}>
                     {zumba.map((clase) => {
                       return (
-                        <Radio value={clase.id}>
+                        <Radio
+                          value={clase.id}
+                          onChange={(e) => setSelectedClaseId(e.target.value)}
+                        >
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
@@ -406,7 +423,11 @@ export default function ClasesHome() {
                     </Button>
                   </NavLink>
                 ) : (
-                  <Button mt={4} colorScheme="blue">
+                  <Button
+                    mt={4}
+                    colorScheme="blue"
+                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                  >
                     Confirm
                   </Button>
                 )}
@@ -474,7 +495,10 @@ export default function ClasesHome() {
                   <Stack spacing={2}>
                     {pilates.map((clase) => {
                       return (
-                        <Radio value={clase.id}>
+                        <Radio
+                          value={clase.id}
+                          onChange={(e) => setSelectedClaseId(e.target.value)}
+                        >
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
@@ -491,7 +515,11 @@ export default function ClasesHome() {
                     </Button>
                   </NavLink>
                 ) : (
-                  <Button mt={4} colorScheme="blue">
+                  <Button
+                    mt={4}
+                    colorScheme="blue"
+                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                  >
                     Confirm
                   </Button>
                 )}
@@ -560,7 +588,10 @@ export default function ClasesHome() {
                   <Stack spacing={2}>
                     {musculacion.map((clase) => {
                       return (
-                        <Radio value={clase.id}>
+                        <Radio
+                          value={clase.id}
+                          onChange={(e) => setSelectedClaseId(e.target.value)}
+                        >
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
@@ -577,7 +608,11 @@ export default function ClasesHome() {
                     </Button>
                   </NavLink>
                 ) : (
-                  <Button mt={4} colorScheme="blue">
+                  <Button
+                    mt={4}
+                    colorScheme="blue"
+                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                  >
                     Confirm
                   </Button>
                 )}
