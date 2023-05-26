@@ -14,9 +14,14 @@
   ); /* Define dos columnas de igual tamaño */
   grid-gap: 20px; /* Espacio entre las tarjetas */
 }
-
-.reviews {
-  font-family: "Titillium Web", sans-serif;
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .postBoton {

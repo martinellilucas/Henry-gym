@@ -4,8 +4,12 @@
   justify-content: space-between;
   grid-gap: 1rem;
   height: 100%;
+  font-family: "Titillium Web", sans-serif;
+  background-color: #aaa8ac;
 }
-
+.img {
+  width: 100%;
+}
 .boxMargin {
   width: 100%;
   margin-bottom: 10px;
@@ -18,4 +22,11 @@
 }
 .comment {
   width: 100%;
+}
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
 }
