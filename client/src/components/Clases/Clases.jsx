@@ -12,13 +12,12 @@ import Entrenador1 from "../../assets/personaltrainer.jpg";
 import {
   Box,
   Center,
-  Heading,
   Text,
   Stack,
   Avatar,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Comment from "../Comment/comment";
+import Comment from "../Comment/Comment";
 
 export default function ClasesMembresia() {
   return (
