@@ -23,12 +23,12 @@ const ChatBot = () => {
         />
       </div>
 
-      <div className={style.btnContainer}>
-        <button onClick={displayChat}>
-          <FaAndroid size={30} />
-        </button>
-        <span>ChatBot</span>
-      </div>
+      <button onClick={displayChat}>
+        <div className={style.btnContainer}>
+          <FaAndroid size={40} color=" rgb(10, 10, 10, 0.6)" />
+          <span className={style.span}>ChatBot</span>
+        </div>
+      </button>
     </div>
   );
 };
