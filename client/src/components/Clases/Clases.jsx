@@ -299,7 +299,9 @@ can help you achieve your bodybuilding goals much faster.
           </Stack>
         </Stack>
       </Box>
-
+      <div className={style.comment}>
+        <Comment />
+      </div>
     </Center>
   );
 }
