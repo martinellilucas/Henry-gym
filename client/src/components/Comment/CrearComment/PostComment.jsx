@@ -36,7 +36,6 @@ export default function PostComment({ onPostComment }) {
   const handleInputChange = (e) => {
     // Maneja el cambio en el valor del area del texto
     setTexto(e.target.value);
-    // console.log(texto)
   };
 
   const handleInputFocus = () => {
@@ -53,7 +52,17 @@ export default function PostComment({ onPostComment }) {
 
   const handleOpen = () => {
     // Maneja la apertura del diálogo
-    setOpen(true);
+    console.log(usuario?.isBanned);
+    if (usuario?.isBanned) {
+      toast({
+        title: "You are banned",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -176,19 +185,7 @@ export default function PostComment({ onPostComment }) {
         </DialogContent>
         <DialogActions className={styles.dialogActions}>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button
-            type="submit"
-            onClick={
-              usuario?.isBanned
-                ? toast({
-                    title: "You are banned",
-                    status: "error",
-                    duration: 3000,
-                    isClosable: true,
-                  })
-                : handleSubmit
-            }
-          >
+          <Button type="submit" onClick={handleSubmit}>
             Send
           </Button>
         </DialogActions>
