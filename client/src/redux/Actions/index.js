@@ -7,6 +7,7 @@ export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const GET_CLIENTES = "GET_CLIENTES";
+export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
 export const GET_CLASES = "GET_CLASES";
 
@@ -59,6 +60,7 @@ export const getComentarios = () => {
     });
   };
 };
+
 
 export const getRutinas = () => {
   return async (dispatch) => {
@@ -164,4 +166,25 @@ export const getClientes = () => {
     dispatch({ type: GET_CLIENTES, payload: resp.data });
   };
 };
+
+
+
+
+
+export const getComments = () => {
+  return async (dispatch) => {
+      const response = await axios.get(`https://henry-gym-production.up.railway.app/comentarios`);
+      const data = response.data;
+      dispatch({
+        type: GET_COMMENTS,
+        payload: data,
+      });
+    
+  };
+};
+
+
+
+
+
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

@@ -8,8 +8,10 @@ import {
   FILTER,
   GET_USER_BY_EMAIL,
   GET_CLIENTES,
+  GET_COMMENTS,
   GET_CLASES,
   GET_COMENTARIOS,
+
 } from "../Actions/index";
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   membership: "",
   user: {},
   clientes: [],
+  comments: [],
   comentarios: [],
   clases: [],
 };
@@ -70,6 +73,12 @@ export default function footReducer(state = initialState, action) {
 
     case GET_CLIENTES:
       return { ...state, clientes: [...action.payload] };
+
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+      };
 
     case GET_CLASES:
       return { ...state, clases: action.payload };

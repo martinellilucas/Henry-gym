@@ -1,0 +1,43 @@
+.contenedor{
+  display: flex;
+  text-align: center;
+  margin: 8px;
+
+}
+.commentCard {
+  background-color: #f9f9f9;
+  width: 17rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 3px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.comment{
+  text-align: center;
+
+}
+.stars{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.classname {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.content {
+  margin-top: 5px;
+
+}
