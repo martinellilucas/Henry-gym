@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CommentCard from "../Cardcomment/CardComment";
+import CardComment from "../CardComment/CardComment";
 import PostComment from "../CrearComment/PostComment";
 import { getComentarios } from "../../../redux/Actions";
 
@@ -31,7 +31,7 @@ export default function Comment() {
       <div className={styles.container}>
         {comments.map((comment) => (
           <div key={comment.id}>
-            <CommentCard
+            <CardComment
               id={comment.id}
               texto={comment.texto}
               nombreClase={comment.nombreClase}
