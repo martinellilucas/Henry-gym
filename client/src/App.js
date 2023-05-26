@@ -47,9 +47,10 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
+          <Route path="/memberships" element={<ThreeTierPricing />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
-          <Route path="/form" element={<Multistep/>} />
+          <Route path="/form" element={<Multistep />} />
           <Route path="/clases" element={<ClasesMembresia />} />
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />

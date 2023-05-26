@@ -10,6 +10,28 @@ export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_COMMENTS = "GET_COMMENTS";
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
 export const GET_CLASES = "GET_CLASES";
+export const GET_CLASES_X_CLIENTE = "GET_CLASES_X_CLIENTE";
+
+export const getClasexCliente = (userId) => {
+  return async (dispatch) => {
+    const resp = await axios.get(
+      `https://henry-gym-production.up.railway.app/clasexcliente/${userId}`
+    );
+    dispatch({
+      type: GET_CLASES_X_CLIENTE,
+      payload: resp.data,
+    });
+  };
+};
+
+export const assignClaseToCliente = (clienteId, claseId) => {
+  return async () => {
+    await axios.post(
+      "https://henry-gym-production.up.railway.app/clasexcliente",
+      { clienteId, claseId }
+    );
+  };
+};
 
 export const postComentario = (comentario) => {
   return async function () {
@@ -131,7 +153,7 @@ export const postRutina = (rutina) => {
   return async function () {
     await axios
       .post("https://henry-gym-production.up.railway.app/rutinas", rutina, {
-        headers:{'Content-type' : 'multipart/form-data'}
+        headers: { "Content-type": "multipart/form-data" },
       })
       .then((res) => {
         return res.data;
@@ -195,14 +217,3 @@ export const getComments = () => {
 };
 
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
-
-
-
-
-
-
-
-
-
-
-
