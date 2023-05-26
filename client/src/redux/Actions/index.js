@@ -9,6 +9,8 @@ export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
 export const GET_CLASES = "GET_CLASES";
+export const GET_CLASES_BY_NAME = "GET_CLASES_BY_NAME"
+export const GET_CLASES_BY_ID = "GET_CLASES_BY_ID"
 
 export const getClases = () => {
   return async (dispatch) => {
@@ -21,6 +23,18 @@ export const getClases = () => {
     });
   };
 };
+export const getClasesById = () => {
+  return async (dispatch) => {
+    const resp = await axios(
+      "https://henry-gym-production.up.railway.app/clases"
+    );
+    dispatch({
+      type: GET_CLASES_BY_ID,
+      payload: resp.data,
+    });
+  };
+};
+
 
 export const banUser = (email, body) => {
   return async () => {
@@ -164,4 +178,20 @@ export const getClientes = () => {
     dispatch({ type: GET_CLIENTES, payload: resp.data });
   };
 };
+
+export const postComentario = (comentario) => {
+  return async function () {
+    console.log(comentario)
+    	await axios
+        .post("https://henry-gym-production.up.railway.app/comentarios",  comentario)     
+        .then((res) => {
+          return res.data;
+      });
+  };
+};
+
+
+
+
+
 export const clearDetail = () => ({ type: CLEAR_DETAIL });
