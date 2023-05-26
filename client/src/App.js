@@ -47,6 +47,7 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
+          <Route path="/memberships" element={<ThreeTierPricing />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
           <Route path="/form" element={<Multistep />} />
@@ -59,7 +60,6 @@ function App() {
           <Route path="/dashboard/comments" element={<SidebarWithHeader />} />
           <Route path="/dashboard/classes" element={<SidebarWithHeader />} />
           <Route path="/perfil" element={<Perfil />} />
-          <Route path="/memberships" element={<ThreeTierPricing />} />
         </Routes>
         {showNavbarAndFooter && <SmallCentered />}
       </div>

@@ -32,7 +32,11 @@ import {
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { assignClaseToCliente, getClases } from "../../redux/Actions";
+import {
+  assignClaseToCliente,
+  getClases,
+  getClasexCliente,
+} from "../../redux/Actions";
 
 export default function ClasesHome() {
   const [selectedClaseId, setSelectedClaseId] = useState(null);
@@ -49,7 +53,8 @@ export default function ClasesHome() {
   );
   useEffect(() => {
     dispatch(getClases());
-  }, []);
+    dispatch(getClasexCliente(client.id));
+  }, [dispatch]);
 
   const handleConfirm = (clienteId, claseId) => {
     dispatch(assignClaseToCliente(clienteId, claseId));

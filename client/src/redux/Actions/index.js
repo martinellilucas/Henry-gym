@@ -12,10 +12,10 @@ export const GET_COMENTARIOS = "GET_COMENTARIOS";
 export const GET_CLASES = "GET_CLASES";
 export const GET_CLASES_X_CLIENTE = "GET_CLASES_X_CLIENTE";
 
-export const getClasexCliente = () => {
+export const getClasexCliente = (userId) => {
   return async (dispatch) => {
     const resp = await axios.get(
-      "https://henry-gym-production.up.railway.app/clasexcliente"
+      `https://henry-gym-production.up.railway.app/clasexcliente/${userId}`
     );
     dispatch({
       type: GET_CLASES_X_CLIENTE,
