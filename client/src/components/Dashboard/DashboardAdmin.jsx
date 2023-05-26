@@ -15,13 +15,12 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  Stack,
 } from "@chakra-ui/react";
 import { FiCompass, FiMenu } from "react-icons/fi";
 import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   adminUser,
   banComentario,
