@@ -1,19 +1,21 @@
 .boxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    grid-gap: 1rem;
-    height: 100%;
-  }
-  
-  .boxMargin {
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: #f1f1f1;
-    padding: 10px;
-    box-sizing: border-box;
-    height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-gap: 1rem;
+  height: 100%;
+}
 
-  }
+.boxMargin {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.comment {
+  width: 100%;
+}

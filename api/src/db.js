@@ -4,7 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const {cloud_name,api_key,api_secret} = process.env
 const fs = require("fs");
 const path = require("path");
-const { DB_URL } = process.env;
+const {DB_URL, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
 
 cloudinary.config({
@@ -17,13 +17,13 @@ const sequelize = new Sequelize(DB_URL, {
   logging: false,
   native: false,
 });
-/* const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/henrygym`,
-  {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
-); */
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/henrygym`,
+//   {
+//     logging: false, // set to console.log to see the raw SQL queries
+//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   }
+// ); 
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -47,7 +47,7 @@ let capsEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Cliente, Ejercicio, Rutina } = sequelize.models;
+const { Cliente, Ejercicio, Rutina, Comentario, Clase } = sequelize.models;
 
 // Aca vendrian las relaciones
 
@@ -56,6 +56,13 @@ Ejercicio.belongsToMany(Rutina, { through: "RutinaxEjercicio" });
 
 Rutina.belongsToMany(Cliente, { through: "RutinaxCliente" });
 Cliente.belongsToMany(Rutina, { through: "RutinaxCliente" });
+
+Cliente.belongsToMany(Clase, { through: "ClaseXCliente" });
+Clase.belongsToMany(Cliente, { through: "ClaseXCliente" });
+
+Comentario.belongsTo(Cliente, {foreignKey: 'ClienteID'});
+Comentario.belongsTo(Clase, {foreignKey: 'ClaseID'});
+
 
 module.exports = {
   ...sequelize.models,

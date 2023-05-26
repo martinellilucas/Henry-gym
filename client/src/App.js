@@ -1,4 +1,4 @@
-import "@stripe/stripe-js"
+import "@stripe/stripe-js";
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../src/components/Nav/Nav";
@@ -12,22 +12,33 @@ import Pagination from "./components/PaginationEjercicios/Pagination";
 import PaginationRutinas from "./components/PaginationRutinas/PaginationRutinas";
 import Multistep from "./components/CrearRutina/Form";
 import Auth0ProviderWithHistory from "./auth0provider";
-
+import "react-chatbot-kit/build/main.css";
 import SubscriptionSuccess from "./components/Success/success";
 import SubscriptionCancel from "./components/Cancel/cancel";
 import SubscriptionSuccess2 from "./components/Success/success2";
 import SubscriptionSuccess3 from "./components/Success/success3";
-
-
+import ThreeTierPricing from "./components/Membresias/Membresia";
 import ClasesMembresia from "./components/Clases/Clases";
 
+import SidebarWithHeader from "./components/Dashboard/DashboardAdmin";
+import Perfil from "./components/PersonalP/Personalp";
 
 function App() {
   const { pathname } = useLocation();
+  const showNavbarAndFooter = !(
+    pathname === "/dashboard" ||
+    pathname === "/dashboard/clients" ||
+    pathname === "/dashboard/comments" ||
+    pathname === "/dashboard/stadistics" ||
+    pathname === "/dashboard/classes" ||
+    pathname === "/"
+  );
+
   return (
     <Auth0ProviderWithHistory>
       <div>
-        {pathname !== "/" && <Nav />}
+        {showNavbarAndFooter && <Nav />}
+
         <Routes>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Landing />} />
@@ -36,15 +47,20 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
-          <Route path="/form" element={<Multistep />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
+          <Route path="/form" element={<Multistep/>} />
           <Route path="/clases" element={<ClasesMembresia />} />
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
-
+          <Route path="/dashboard" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/clients" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/stadistics" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/comments" element={<SidebarWithHeader />} />
+          <Route path="/dashboard/classes" element={<SidebarWithHeader />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
-        {pathname !== "/" && <SmallCentered />}
+        {showNavbarAndFooter && <SmallCentered />}
       </div>
     </Auth0ProviderWithHistory>
   );

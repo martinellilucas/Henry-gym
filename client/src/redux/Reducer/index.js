@@ -7,7 +7,6 @@ import {
   GET_RUTINAS,
   FILTER,
   GET_USER_MEMBERSHIP,
-  GET_EJERCICIOS_ID,
 } from "../Actions/index";
 
 const initialState = {
@@ -18,6 +17,11 @@ const initialState = {
   rutinas: [],
   dificultad: [],
   membership: "",
+  user: {},
+  clientes: [],
+  comments: [],
+  comentarios: [],
+  clases: [],
 };
 
 export default function footReducer(state = initialState, action) {
@@ -64,8 +68,25 @@ export default function footReducer(state = initialState, action) {
           ejercicio.difficulty.includes(difficulty)
       );
       return { ...state, filteredEjercicios: multipleFilter };
-    case GET_USER_MEMBERSHIP:
-      return { ...state, membership: action.payload };
+
+    case GET_USER_BY_EMAIL:
+      return { ...state, user: { ...action.payload } };
+
+    case GET_CLIENTES:
+      return { ...state, clientes: [...action.payload] };
+
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+      };
+
+    case GET_CLASES:
+      return { ...state, clases: action.payload };
+
+    case GET_COMENTARIOS:
+      return { ...state, comentarios: [...action.payload] };
+
     default:
       return { ...state };
   }

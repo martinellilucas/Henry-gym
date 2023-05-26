@@ -11,7 +11,6 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { ReactNode } from "react";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -54,6 +53,11 @@ export default function SmallCentered() {
         py={4}
         spacing={4}
       >
+        <Box alignItems={"center"} as={Stack}>
+          <Text>Opening hours: </Text>
+          <Text>Monday to Friday from 6:30 to 22:30</Text>
+          <Text> Saturday from 9:00 to 12:00 </Text>
+        </Box>
         <Box as={Stack} alignItems={"center"}>
           <Stack
             direction={"row"}
@@ -89,12 +93,6 @@ export default function SmallCentered() {
             </Link>
           </Stack>
         </Box>
-
-        <Box alignItems={"center"} as={Stack}>
-          <Text>Opening hours: </Text>
-          <Text>Monday to Friday from 6:30 to 22:30</Text>
-          <Text> Saturday from 9:00 to 12:00 </Text>
-        </Box>
       </Container>
 
       <Box
@@ -122,7 +120,10 @@ export default function SmallCentered() {
             >
               <FaWhatsapp />
             </SocialButton>
-            <SocialButton label={"Instagram"} href={"https://www.instagram.com/goldsgym/"}>
+            <SocialButton
+              label={"Instagram"}
+              href={"https://www.instagram.com/goldsgym/"}
+            >
               <FaInstagram
                 _hover={{ bg: "blue.600" }}
                 _active={{ bg: "grey" }}
