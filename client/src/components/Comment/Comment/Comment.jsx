@@ -29,7 +29,7 @@ export default function Comment() {
       </div>
 
       <div className={styles.container}>
-        {comments.map((comment) =>
+        {comments?.map((comment) =>
           comment.isBanned ? (
             <></>
           ) : (
