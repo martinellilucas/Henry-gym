@@ -35,7 +35,6 @@ export const assignClaseToCliente = (clienteId, claseId) => {
 
 export const postComentario = (comentario) => {
   return async function () {
-    console.log(comentario);
     await axios
       .post(
         "https://henry-gym-production.up.railway.app/comentarios",

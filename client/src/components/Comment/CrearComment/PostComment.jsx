@@ -50,7 +50,7 @@ export default function PostComment({ onPostComment, usuario }) {
 
   const handleOpen = () => {
     // Maneja la apertura del diálogo
-    console.log(usuario?.isBanned);
+    console.log(usuario);
     if (usuario?.isBanned) {
       toast({
         title: "You are banned",
