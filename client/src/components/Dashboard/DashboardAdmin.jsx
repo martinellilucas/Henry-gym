@@ -298,7 +298,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
         <Text className={style.title}>Admin's Dashboard</Text>
 
         <Button
-          colorScheme="blackAlpha"
+          colorScheme="blue"
           className={style.refreshButton}
           onClick={refreshPage}
         >
@@ -370,18 +370,15 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                     <td>{item.isBanned.toString()}</td>
                     <td>{item.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
-                      <button
-                        className={style.button3}
-                        onClick={() => handleBan(item)}
-                      >
+                      <Button colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
-                      </button>
-                      <button
-                        className={style.button3}
+                      </Button>
+                      <Button
+                        colorScheme="green"
                         onClick={() => handleAdmin(item)}
                       >
-                        ADM
-                      </button>
+                        ADMIN
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -447,12 +444,12 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                     <textarea disabled={true}>{item.texto}</textarea>
                     <td>{item.isBanned.toString()}</td>
                     <td>
-                      <button
+                      <Button
                         onClick={() => handleBanComent(item)}
-                        className={style.button3}
+                        colorScheme="red"
                       >
                         BAN
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}

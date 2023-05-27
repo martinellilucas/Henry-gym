@@ -62,6 +62,7 @@
 
 .buttonO {
   display: flex;
+  justify-content: space-around;
   font-family: "Titillium Web", sans-serif;
 }
 
