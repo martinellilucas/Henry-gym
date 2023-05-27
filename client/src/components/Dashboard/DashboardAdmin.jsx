@@ -168,6 +168,7 @@ const NavItem = ({ icon, children, url, ...rest }) => {
         )}
         {children}
       </Flex>
+      <Divider></Divider>
     </Link>
   );
 };
@@ -186,6 +187,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
+      <Divider orientation="vertical" marginRight={"30px"}></Divider>
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
