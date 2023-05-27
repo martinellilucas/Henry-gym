@@ -41,7 +41,7 @@
   color: white;
 }
 .img {
-  --color: royalblue; /* the color of the border */
+  --color: #28242b; /* the color of the border */
   --border: 5px; /* the thickness of the border */
   --offset: 30px; /* control the movement of the border */
   --gap: 5px; /* the gap on hover */
