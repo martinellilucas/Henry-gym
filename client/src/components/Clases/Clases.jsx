@@ -19,8 +19,18 @@ import {
   Avatar,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUserByEmail } from "../../redux/Actions";
 
 export default function ClasesMembresia() {
+  const usuario = useSelector((state) => state.usuario);
+  const { user } = useAuth0();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserByEmail(user?.email));
+    console.log(usuario);
+  });
   return (
     <Center className={style.boxes}>
       <h1 className={style.title}>OUR CLASSES</h1>
@@ -307,7 +317,7 @@ export default function ClasesMembresia() {
         </Stack>
       </Box>
       <div className={style.comment}>
-        <Comment />
+        <Comment usuario={usuario} />
       </div>
     </Center>
   );
