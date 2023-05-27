@@ -27,7 +27,11 @@ export default function Comment() {
         <h2 className={styles.title}>REVIEWS</h2>
       </div>
       <div className={styles.postBoton}>
-        <PostComment usuario={usuario} onPostComment={handlePostComment} />
+        {usuario ? (
+          <PostComment usuario={usuario} onPostComment={handlePostComment} />
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className={styles.container}>
