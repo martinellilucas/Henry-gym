@@ -13,15 +13,15 @@ import Comment from "../Comment/Comment/Comment";
 import {
   Box,
   Center,
-  Heading,
   Text,
   Stack,
   Avatar,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserByEmail } from "../../redux/Actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesMembresia() {
   const usuario = useSelector((state) => state.usuario);
