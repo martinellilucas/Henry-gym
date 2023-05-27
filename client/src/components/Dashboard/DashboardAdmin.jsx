@@ -15,6 +15,8 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  Button,
+  Divider,
 } from "@chakra-ui/react";
 import { FiCompass, FiMenu } from "react-icons/fi";
 import Logo from "../../assets/logo.png";
@@ -248,13 +250,23 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
   };
   return (
     <Box className={style.container}>
-      <Text className={style.text1} fontSize="5xl" fontWeight="bold">
-        Admin's Dashboard
-        <button className={style.refreshButton} onClick={refreshPage}>
+      <div className={style.titleContainer}>
+        <Text className={style.title}>Admin's Dashboard</Text>
+
+        <Button
+          colorScheme="blackAlpha"
+          className={style.refreshButton}
+          onClick={refreshPage}
+        >
           Refresh Data
-        </button>
-      </Text>
-      {pathname === "/dashboard/stadistics" ? (
+        </Button>
+      </div>
+      <Divider
+        marginTop={"50px"}
+        w={"80%"}
+        border={"5px solid white"}
+      ></Divider>
+      {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
         <>
           <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
             Membership stadistics:
