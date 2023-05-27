@@ -1,3 +1,7 @@
+.home {
+  background-color: #aaa8ac;
+  font-family: "Titillium Web", sans-serif;
+}
 .titleContainer {
   font-size: 5em;
   width: 100%;
@@ -5,7 +9,8 @@
   color: white;
   background-color: #28242b;
 }
-.home {
-  background-color: #aaa8ac;
-  font-family: "Titillium Web", sans-serif;
+@media screen and (max-width: 800px) {
+  .titleContainer {
+    font-size: 2em;
+  }
 }
