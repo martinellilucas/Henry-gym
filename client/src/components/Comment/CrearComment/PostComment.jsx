@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  postComentario,
-  getClases,
-  getUserByEmail,
-} from "../../../redux/Actions/index";
+import { postComentario, getClases } from "../../../redux/Actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   Dialog,
@@ -25,7 +21,7 @@ export default function PostComment({ onPostComment, usuario }) {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const toast = useToast();
-  const { isAuthenticated, user, loginWithRedirect } = useAuth0(); // Obtener la información del usuario autenticado
+  const { isAuthenticated, user } = useAuth0(); // Obtener la información del usuario autenticado
   const classes = useSelector((state) => state.clases);
   const uniqueClasses = classes
     ? [...new Set(classes.map((clase) => clase.nombre))]

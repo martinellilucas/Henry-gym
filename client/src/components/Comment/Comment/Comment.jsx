@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardComment from "../CardComment/CardComment";
 import PostComment from "../CrearComment/PostComment";
-import { getComentarios, getUserByEmail } from "../../../redux/Actions";
+import { getComentarios } from "../../../redux/Actions";
 import styles from "./Comment.module.css";
 
 export default function Comment({ usuario }) {

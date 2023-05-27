@@ -24,12 +24,11 @@ import { getUserByEmail } from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesMembresia() {
-  const usuario = useSelector((state) => state.usuario);
+  const usuario = useSelector((state) => state.user);
   const { user } = useAuth0();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserByEmail(user?.email));
-    console.log(usuario);
   });
   return (
     <Center className={style.boxes}>
