@@ -34,6 +34,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
 import { banUser } from "../../redux/Actions/index";
+import Swal from "sweetalert2";
 
 const LinkItems = [
   {
@@ -232,21 +233,64 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
   const dispatch = useDispatch();
   const handleBan = (item) => {
-    if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
-    else dispatch(banUser(item?.email, { isBanned: true }));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are going to ban/unban the user",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ban the user!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Banned", "The user has been banned/unbanned", "success");
+        if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
+        else dispatch(banUser(item?.email, { isBanned: true }));
+      }
+    });
   };
 
   const handleAdmin = (item) => {
-    if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
-    else dispatch(adminUser(item?.email, { isAdmin: true }));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You about to make a user admin or remove his admin privileges",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, do it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Done", "The user is / is not now an admin", "success");
+        if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
+        else dispatch(adminUser(item?.email, { isAdmin: true }));
+      }
+    });
   };
   const handleBanComent = (item) => {
-    if (item?.isBanned) {
-      dispatch(banComentario(item?.id, { isBanned: false }));
-    } else {
-      dispatch(banComentario(item?.id, { isBanned: true }));
-      dispatch(banUser(item?.emailCliente, { isBanned: true }));
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ban it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Deleted!",
+          "The comment is not visible in the page and the user has been banned",
+          "success"
+        );
+        if (item?.isBanned) {
+          dispatch(banComentario(item?.id, { isBanned: false }));
+        } else {
+          dispatch(banComentario(item?.id, { isBanned: true }));
+          dispatch(banUser(item?.emailCliente, { isBanned: true }));
+        }
+      }
+    });
   };
   return (
     <Box className={style.container}>
