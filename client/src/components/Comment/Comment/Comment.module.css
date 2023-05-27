@@ -8,11 +8,8 @@
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* Define dos columnas de igual tamaño */
-  grid-gap: 20px; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(4, 1fr); /* Define 4 columnas de igual tamaño */
+  grid-gap: 1rem; /* Espacio entre las tarjetas */
 }
 .title {
   font-size: 5em;
