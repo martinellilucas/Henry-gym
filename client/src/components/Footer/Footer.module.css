@@ -1,0 +1,13 @@
+@media screen and (max-width: 800px) {
+  .schudle {
+    font-size: 0.6em;
+  }
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+  .button {
+    font-size: 0.5em;
+    align-self: center;
+  }
+}

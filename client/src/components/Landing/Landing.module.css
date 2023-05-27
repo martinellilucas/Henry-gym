@@ -54,7 +54,7 @@
 .btn {
   position: absolute;
   top: 70%;
-  left: 47%;
+  left: 46.5%;
   padding: 1.5em 2.5em;
   border-radius: 15px;
   border: 0.35rem solid;
@@ -213,4 +213,49 @@
   animation-fill-mode: forwards;
   top: 0;
   transform: translate(0, -100%);
+}
+
+@media screen and (max-width: 800px) {
+  .bottomContainer {
+    top: 230px;
+    height: 650px;
+  }
+  .logoContainer {
+    border-radius: 50%;
+    background-color: white;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -12%;
+    left: 40%;
+    border: 15px solid black;
+  }
+  .logo {
+    height: 75px;
+    width: 75px;
+  }
+  .title {
+    font-size: 0.7em;
+    font-weight: bolder;
+    font-family: "Titillium Web", sans-serif;
+  }
+  .msg {
+    top: 15%;
+    left: 20%;
+    font-size: 0.9em;
+  }
+  .animatedTitle {
+    left: 50%;
+    top: 50%;
+  }
+
+  .btn {
+    left: 40%;
+    top: 75%;
+    font-size: 1em;
+  }
 }

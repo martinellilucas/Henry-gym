@@ -109,10 +109,11 @@ const Nav = () => {
           onClick={() => {
             loginWithRedirect();
           }}
-          className={style.button}
           colorScheme="blackAlpha"
+          py={1}
+          px={5}
         >
-          LOGIN
+          <span className={style.button}>LOGIN</span>
         </Button>
       ) : (
         <div className={style.profileContainer}>
