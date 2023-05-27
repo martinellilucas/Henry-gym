@@ -3,23 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import CardComment from "../CardComment/CardComment";
 import PostComment from "../CrearComment/PostComment";
 import { getComentarios, getUserByEmail } from "../../../redux/Actions";
-
 import styles from "./Comment.module.css";
-import { useAuth0 } from "@auth0/auth0-react";
 
-export default function Comment() {
+export default function Comment({ usuario }) {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comentarios);
-  const usuario = useSelector((state) => state.usuario);
-  const { user } = useAuth0();
+
   const handlePostComment = () => {
     dispatch(getComentarios()); // Actualiza los comentarios después de agregar uno nuevo
   };
 
   useEffect(() => {
     dispatch(getComentarios());
-    dispatch(getUserByEmail(user?.email));
-  }, [dispatch, user?.email]);
+  }, [dispatch]);
 
   return (
     <div>
@@ -27,11 +23,7 @@ export default function Comment() {
         <h2 className={styles.title}>REVIEWS</h2>
       </div>
       <div className={styles.postBoton}>
-        {usuario ? (
-          <PostComment usuario={usuario} onPostComment={handlePostComment} />
-        ) : (
-          <></>
-        )}
+        <PostComment usuario={usuario} onPostComment={handlePostComment} />
       </div>
 
       <div className={styles.container}>
