@@ -27,6 +27,10 @@ const SubscriptionSuccess2 = () => {
       <video className={style.videoContainer} autoPlay muted loop>
         <source src={VideoGold} type="video/mp4" />
       </video>
+      <a href="/home" className={style.button}>
+        {" "}
+        Select your classes{" "}
+      </a>
     </div>
   );
 };
