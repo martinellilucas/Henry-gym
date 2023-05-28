@@ -87,11 +87,10 @@ export default function Carousel() {
           <Box
             key={index}
             height={"3xl"}
-            position="relative"
-            backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             backgroundImage={`url(${url})`}
+            className={style.img}
           />
         ))}
       </Slider>
