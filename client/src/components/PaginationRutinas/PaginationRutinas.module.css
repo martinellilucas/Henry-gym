@@ -23,6 +23,13 @@
   color: white;
   background-color: #28242b;
 }
+.pagesContainer {
+  display: flex;
+  grid-gap: 1em;
+  grid-template-rows: repeat(1, 1fr);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 @media screen and (max-width: 800px) {
   .title {
     font-size: 2em;

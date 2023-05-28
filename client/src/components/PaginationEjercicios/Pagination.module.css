@@ -26,3 +26,42 @@
   color: white;
   background-color: #28242b;
 }
+.button {
+  font-size: 0.2em;
+}
+.pagesContainer {
+  display: flex;
+  grid-gap: 1em;
+  grid-template-rows: repeat(1, 1fr);
+}
+@media screen and (max-width: 1050px) {
+  .title {
+    font-size: 2em;
+  }
+  .img {
+    height: 300px;
+  }
+  .button {
+    font-size: 0.8em;
+  }
+  .film {
+    font-size: 0.8em;
+  }
+  .pagesContainer {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+@media screen and (max-width: 900px) {
+  .filterContainer {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 900px) {
+  .pagesContainer {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

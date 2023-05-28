@@ -97,7 +97,7 @@ export default function Pagination() {
               </Button>
             </Flex>
           ) : (
-            <Flex margin="50px" align="center">
+            <div className={style.pagesContainer}>
               <Button
                 className={style.pages}
                 onClick={() => loginWithRedirect()}
@@ -123,7 +123,7 @@ export default function Pagination() {
               >
                 &gt;
               </Button>
-            </Flex>
+            </div>
           )}
         </Flex>
         {!paginate.length ? (
