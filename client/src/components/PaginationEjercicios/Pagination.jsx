@@ -10,8 +10,6 @@ import ejerciciosBG from "../../assets/ejerciciosBG.png";
 import { NavLink } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-
-
 export default function Pagination() {
   const allEjercicios = useSelector((state) => state.filteredEjercicios);
   const toast = useToast();
@@ -20,9 +18,9 @@ export default function Pagination() {
   const [selectedMusculo, setSelectedMusculo] = useState("");
   const [selectedDificultad, setSelectedDificultad] = useState("");
 
-  // ESTADOS PARA EL CREADO DE RUTINA 
-  const [isOpen, setIsOpen] = useState(false)
-  const [ejer, setEjer] = useState([])
+  // ESTADOS PARA EL CREADO DE RUTINA
+  const [isOpen, setIsOpen] = useState(false);
+  const [ejer, setEjer] = useState([]);
 
   const dispatch = useDispatch();
   const count = 9;
@@ -34,8 +32,6 @@ export default function Pagination() {
   for (let i = 1; i <= ejerciciosPages; i++) {
     pageIndex.push(i);
   }
-
-
 
   useEffect(() => {
     dispatch(getEjercicios());
@@ -81,28 +77,24 @@ export default function Pagination() {
   // EJERCICIOS QUE SE SUMAN AL CARRITO
 
   const changeState = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const onClick = (ejercicios) => {
-    const boolean = ejer.find(item => item.id === ejercicios.id)
+    const boolean = ejer.find((item) => item.id === ejercicios.id);
     if (boolean) {
-      setEjer([...ejer.filter((item) => item.id !== ejercicios.id)])
-
+      setEjer([...ejer.filter((item) => item.id !== ejercicios.id)]);
     } else {
-      setEjer([...ejer, ejercicios])
+      setEjer([...ejer, ejercicios]);
     }
-  }
-
+  };
 
   const onCancel = () => {
-    setEjer([])
-    setIsOpen(!isOpen)
-  }
-
+    setEjer([]);
+    setIsOpen(!isOpen);
+  };
 
   const onSubmit = () => {
-
     if (ejer.length < 2) {
       toast({
         title: "Please select at least two exercises",
@@ -111,7 +103,7 @@ export default function Pagination() {
         isClosable: true,
       });
     } else {
-      window.localStorage.setItem('ejercicios', JSON.stringify(ejer));
+      window.localStorage.setItem("ejercicios", JSON.stringify(ejer));
       setEjer([]);
       setIsOpen(!isOpen);
       toast({
@@ -121,8 +113,7 @@ export default function Pagination() {
         isClosable: true,
       });
     }
-  }
-
+  };
 
   return (
     <Box className={style.body}>
@@ -142,38 +133,42 @@ export default function Pagination() {
             <SearchBar />
           </div>
 
-          {isOpen ?
-            <Flex
-            >
-              <ButtonGroup
-              >
+          {isOpen ? (
+            <Flex>
+              <ButtonGroup>
                 <Button
-                  onClick={() => { onCancel() }}
-                  bg='red.500'
-                >Cancelar
-                </Button>
-
-                <Button
-                  bg='blue.200'
-                  onClick={() => onSubmit()}
+                  className={style.button}
+                  onClick={() => {
+                    onCancel();
+                  }}
+                  bg="red.500"
                 >
-                  
-                  {ejer.length > 2 ?
-                    <NavLink to={'/form'}>
-                      Siguiente
-                     </NavLink>
-                    : <>Select to exercises</>}
+                  Cancelar
                 </Button>
 
+                <Button bg="blue.200" onClick={() => onSubmit()}>
+                  {ejer.length > 2 ? (
+                    <NavLink className={style.button} to={"/form"}>
+                      Siguiente
+                    </NavLink>
+                  ) : (
+                    <>Select two exercises</>
+                  )}
+                </Button>
               </ButtonGroup>
             </Flex>
-            :
-
+          ) : (
             <Button
-              bg='blue.200'
-              onClick={() => { changeState() }}
-            > Crea tu Rutina</Button>
-          }
+              className={style.button}
+              bg="blue.200"
+              onClick={() => {
+                changeState();
+              }}
+            >
+              {" "}
+              Crea tu Rutina
+            </Button>
+          )}
           <select
             id="selectMusculo"
             onChange={(e) => handlerFilteredMusculos(e)}
@@ -200,8 +195,6 @@ export default function Pagination() {
             <option value="triceps">Triceps</option>
           </select>
 
-
-
           <select
             id="selectDificultad"
             onChange={(e) => handlerFilteredDificultad(e)}
@@ -214,13 +207,18 @@ export default function Pagination() {
             <option value="expert">Expert</option>
           </select>
         </div>
-        <Flex margin="50px" align="center">
-          <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
+        <div className={style.pagesContainer}>
+          <Button
+            className={style.button}
+            onClick={() => handleClickArrow("-")}
+            disabled={page === 1}
+          >
             &lt;
           </Button>
 
           {pageIndex.map((index) => (
             <Button
+              className={style.button}
               key={index}
               value={index}
               onClick={() => handleClickButton(index)}
@@ -230,17 +228,24 @@ export default function Pagination() {
             </Button>
           ))}
           <Button
+            className={style.button}
             onClick={() => handleClickArrow("+")}
             disabled={page === ejerciciosPages}
           >
             &gt;
           </Button>
-        </Flex>
+        </div>
       </Flex>
       {!paginate.length ? (
         <Loading />
       ) : (
-        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick} />
+        <EjercicioCards
+          ejercicios={paginate}
+          isOpen={isOpen}
+          setEjer={setEjer}
+          ejer={ejer}
+          onClick={onClick}
+        />
       )}
     </Box>
   );

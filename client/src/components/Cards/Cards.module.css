@@ -1,9 +1,17 @@
 .cardsContainer {
   display: grid;
   margin: 0 auto;
-  grid-gap: 1rem;
-  margin-left: 2%;
-  margin-bottom: 5%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 6rem;
+  grid-template-columns: repeat(3, 1fr);
   font-family: "Titillium Web", sans-serif;
+}
+@media screen and (max-width: 1250px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

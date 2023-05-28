@@ -57,7 +57,9 @@ export default function Pagination() {
       <h1 className={style.title}>WORKOUT ROUTINES</h1>
       <Box className={style.container}>
         <NavLink to="/form">
-          <Button colorScheme="blackAlpha">CREATE YOUR OWN</Button>
+          <Button className={style.button} colorScheme="blackAlpha">
+            CREATE YOUR OWN
+          </Button>
         </NavLink>
         <Flex
           display="flex"
@@ -69,6 +71,7 @@ export default function Pagination() {
           {isAuthenticated ? (
             <Flex margin="50px" align="center">
               <Button
+                className={style.pages}
                 onClick={() => handleClickArrow("-")}
                 disabled={page === 1}
               >
@@ -76,6 +79,7 @@ export default function Pagination() {
               </Button>
               {pageIndex.map((index) => (
                 <Button
+                  className={style.pages}
                   key={index}
                   value={index}
                   onClick={() => handleClickButton(index)}
@@ -85,6 +89,7 @@ export default function Pagination() {
                 </Button>
               ))}
               <Button
+                className={style.pages}
                 onClick={() => handleClickArrow("+")}
                 disabled={page === rutinasPages}
               >
@@ -92,12 +97,17 @@ export default function Pagination() {
               </Button>
             </Flex>
           ) : (
-            <Flex margin="50px" align="center">
-              <Button onClick={() => loginWithRedirect()} disabled={page === 1}>
+            <div className={style.pagesContainer}>
+              <Button
+                className={style.pages}
+                onClick={() => loginWithRedirect()}
+                disabled={page === 1}
+              >
                 &lt;
               </Button>
               {pageIndex.map((index) => (
                 <Button
+                  className={style.pages}
                   key={index}
                   value={index}
                   onClick={() => loginWithRedirect()}
@@ -107,12 +117,13 @@ export default function Pagination() {
                 </Button>
               ))}
               <Button
+                className={style.pages}
                 onClick={() => loginWithRedirect()}
                 disabled={page === rutinasPages}
               >
                 &gt;
               </Button>
-            </Flex>
+            </div>
           )}
         </Flex>
         {!paginate.length ? (

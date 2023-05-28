@@ -76,3 +76,14 @@
 img:hover {
   --_s: 0px;
 }
+@media screen and (max-width: 800px) {
+  .imgContainer {
+    flex-direction: column;
+  }
+  .title {
+    font-size: 2em;
+  }
+  .text {
+    font-size: 0.8em;
+  }
+}
