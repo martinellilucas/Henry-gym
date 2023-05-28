@@ -42,7 +42,7 @@ const Detail = () => {
                   <div key={e.id}>
                     <h1 className={style.subTitle}>{e.name}</h1>
 
-                    <h3 className={style.subTitle}>Instructions </h3>
+                    <h3 className={style.grupoMuscular}>Instructions: </h3>
                     <p className={style.instructions}>{e.instructions}</p>
                   </div>
                 );
