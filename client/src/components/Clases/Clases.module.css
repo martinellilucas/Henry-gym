@@ -1,24 +1,23 @@
 .boxes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   grid-gap: 1rem;
-  height: 100%;
   font-family: "Titillium Web", sans-serif;
   background-color: #aaa8ac;
+}
+.cardsContainer {
+  display: grid;
+  grid-gap: 3em;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 30px;
 }
 .img {
   width: 100%;
 }
 .boxMargin {
   width: 100%;
-  margin-bottom: 10px;
   background-color: #f1f1f1;
-  padding: 10px;
   box-sizing: border-box;
-  height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 .comment {
   width: 100%;
@@ -29,4 +28,19 @@
   text-align: center;
   color: white;
   background-color: #28242b;
+}
+
+@media screen and (max-width: 1350px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
