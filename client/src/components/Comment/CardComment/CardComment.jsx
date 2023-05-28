@@ -18,9 +18,9 @@ export default function CommentCard({
   return (
     <Center>
       <Box
-        maxW={"445px"}
+        maxW={"600px"}
         w={"full"}
-        bg={useColorModeValue("white", "gray.900")}
+        bg={("white")}
         boxShadow={"2xl"}
         rounded={"md"}
         p={6}

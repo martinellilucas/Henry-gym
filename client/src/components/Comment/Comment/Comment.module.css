@@ -8,8 +8,8 @@
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Define 4 columnas de igual tamaño */
-  grid-gap: 1rem; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem; 
 }
 .title {
   font-size: 5em;
@@ -26,3 +26,17 @@
   display: flex;
   justify-content: center;
 }
+.reviewList{
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  width: 95%; /* ver */
+  margin: auto;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
