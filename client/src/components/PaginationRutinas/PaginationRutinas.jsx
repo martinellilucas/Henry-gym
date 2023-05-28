@@ -69,7 +69,7 @@ export default function Pagination() {
         >
           {" "}
           {isAuthenticated ? (
-            <Flex margin="50px" align="center">
+            <div className={style.pagesContainer}>
               <Button
                 className={style.pages}
                 onClick={() => handleClickArrow("-")}
@@ -95,7 +95,7 @@ export default function Pagination() {
               >
                 &gt;
               </Button>
-            </Flex>
+            </div>
           ) : (
             <div className={style.pagesContainer}>
               <Button
