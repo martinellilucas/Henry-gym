@@ -17,8 +17,7 @@ export default function Pagination() {
   const [page, setPage] = useState(1);
   const [selectedMusculo, setSelectedMusculo] = useState("");
   const [selectedDificultad, setSelectedDificultad] = useState("");
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   // ESTADOS PARA EL CREADO DE RUTINA
   const [isOpen, setIsOpen] = useState(false);
@@ -35,20 +34,16 @@ export default function Pagination() {
     pageIndex.push(i);
   }
 
-    const test = () => {
-    const item = window.localStorage.getItem('ejercicios')
-    if(item){
-      setEjer(
-        JSON.parse(item)
-      )
+  const test = () => {
+    const item = window.localStorage.getItem("ejercicios");
+    if (item) {
+      setEjer(JSON.parse(item));
     }
-  } 
-
-
+  };
 
   useEffect(() => {
     dispatch(getEjercicios());
-    test()
+    test();
   }, []);
 
   const handleClickArrow = (operation) => {
@@ -104,11 +99,10 @@ export default function Pagination() {
   };
 
   const onCancel = () => {
-    setEjer([])
-    setIsOpen(!isOpen)
-    window.localStorage.setItem('ejercicios' , [])
-  }
-
+    setEjer([]);
+    setIsOpen(!isOpen);
+    window.localStorage.setItem("ejercicios", []);
+  };
 
   const onDenied = () => {
     toast({
@@ -117,22 +111,20 @@ export default function Pagination() {
       duration: 3000,
       isClosable: true,
     });
-  }
+  };
 
-const onSubmit = () => {
-      window.localStorage.setItem('ejercicios', JSON.stringify(ejer));
-      setEjer([]);
-      setIsOpen(!isOpen);
-      toast({
-        title: "Thank you",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      navigate('/form')
-    }
-
- 
+  const onSubmit = () => {
+    window.localStorage.setItem("ejercicios", JSON.stringify(ejer));
+    setEjer([]);
+    setIsOpen(!isOpen);
+    toast({
+      title: "Thank you",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+    navigate("/form");
+  };
 
   return (
     <Box className={style.body}>
@@ -165,16 +157,25 @@ const onSubmit = () => {
                   Cancelar
                 </Button>
 
-                {ejer.length >= 2 ? 
-                <Button
-                 onClick={() => {onSubmit()}}
-                 bg={"blue.300"}
-                >Next</Button>  
-                : <Button 
-                  bg={"gray.300"}
-                onClick={() =>{onDenied()}}
-                >Select two exercises</Button>
-              }
+                {ejer.length >= 2 ? (
+                  <Button
+                    onClick={() => {
+                      onSubmit();
+                    }}
+                    bg={"blue.300"}
+                  >
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    bg={"gray.300"}
+                    onClick={() => {
+                      onDenied();
+                    }}
+                  >
+                    Select two exercises
+                  </Button>
+                )}
               </ButtonGroup>
             </Flex>
           ) : (
@@ -231,14 +232,15 @@ const onSubmit = () => {
       {!paginate.length ? (
         <Loading />
       ) : (
-        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick} />
+        <EjercicioCards
+          ejercicios={paginate}
+          isOpen={isOpen}
+          setEjer={setEjer}
+          ejer={ejer}
+          onClick={onClick}
+        />
       )}
-      <Box 
-        display={"flex"}
-        justifyContent={"center"}    
-      >
-          <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
-
+      <Box display={"flex"} justifyContent={"center"}>
         <div className={style.pagesContainer}>
           <Button
             className={style.button}
@@ -249,7 +251,7 @@ const onSubmit = () => {
           </Button>
           {pageIndex.map((index) => (
             <Button
-              size={'sm'}
+              size={"sm"}
               className={style.button}
               key={index}
               value={index}
@@ -266,8 +268,8 @@ const onSubmit = () => {
           >
             &gt;
           </Button>
+        </div>
       </Box>
     </Box>
-    
   );
 }
