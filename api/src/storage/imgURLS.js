@@ -19,7 +19,7 @@ const urls = {
     "https://c8.alamy.com/comp/G1HD2R/hamstrings-muscles-anatomy-muscle-isolated-on-white-3d-illustration-G1HD2R.jpg",
   lats: "https://www.bodybuildingmealplan.com/wp-content/uploads/Lat-Stretches-scaled.jpg",
   lower_back:
-    "https://static.wixstatic.com/media/607962_328777f2e77547d0a5ff698303fb56ef~mv2.jpg/v1/crop/x_85,y_0,w_656,h_897/fill/w_500,h_684,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/LOWER%20BACK%20MUSCULAR%20PAIN.jpg",
+    "https://cdn.jackedgorilla.com/wp-content/uploads/2021/10/The-Best-Lower-Back-Exercises-Bridges.jpg",
   middle_back:
     "https://morenospine.com/wp-content/uploads/2020/01/middle-back-pain.jpeg",
   neck: "https://t3.ftcdn.net/jpg/01/10/74/02/360_F_110740296_IvOB04c7wcsYV9DBkwx2YgUKlelnfDan.jpg",
