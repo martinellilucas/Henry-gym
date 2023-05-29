@@ -74,7 +74,7 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getUserByEmail(user?.email));
     dispatch(getComentarios());
     dispatch(getClases());
-  }, [dispatch, client, user?.email]);
+  }, [dispatch, user?.email]);
 
   const handleSubmitClient = (e) => {
     e.preventDefault();
