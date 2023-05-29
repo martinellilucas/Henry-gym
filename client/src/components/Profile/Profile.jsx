@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Profile.module.css";
 import { NavLink } from "react-router-dom";
@@ -19,8 +19,9 @@ import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByEmail } from "../../redux/Actions";
+import { getClasexCliente, getUserByEmail } from "../../redux/Actions";
 const Profile = () => {
+  const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -40,6 +41,7 @@ const Profile = () => {
           onClick={() => {
             onOpen();
             dispatch(getUserByEmail(user?.email));
+            dispatch(getClasexCliente(user?.id));
           }}
         />
 

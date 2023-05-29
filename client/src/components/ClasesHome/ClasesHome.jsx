@@ -40,6 +40,7 @@ import {
 
 export default function ClasesHome() {
   const [selectedClaseId, setSelectedClaseId] = useState(null);
+  const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const clases = useSelector((state) => state.clases);
@@ -53,7 +54,6 @@ export default function ClasesHome() {
   );
   useEffect(() => {
     dispatch(getClases());
-    dispatch(getClasexCliente(client.id));
   }, [dispatch]);
 
   const handleConfirm = (clienteId, claseId) => {
@@ -117,7 +117,12 @@ export default function ClasesHome() {
           </Stack>
           <Popover>
             <PopoverTrigger>
-              <Button backgroundColor="#aaaaaa">Subscribe</Button>
+              <Button
+                onClick={() => dispatch(getClasexCliente(client.id))}
+                backgroundColor="#aaaaaa"
+              >
+                Subscribe
+              </Button>
             </PopoverTrigger>
             <PopoverContent>
               <PopoverArrow />
@@ -152,6 +157,7 @@ export default function ClasesHome() {
                     onClick={() => handleConfirm(client.id, selectedClaseId)}
                     mt={4}
                     colorScheme="blue"
+                    isDisabled={clasesxCliente.Clases.length >= 2}
                   >
                     Confirm
                   </Button>
