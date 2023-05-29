@@ -1,6 +1,6 @@
 import style from "./Search.module.css";
 
-const Search = ({ search, setSearch, handleSubmitClient }) => {
+const Search = ({ search, setSearch, handleSubmit }) => {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setSearch(value);
@@ -10,11 +10,11 @@ const Search = ({ search, setSearch, handleSubmitClient }) => {
       <input
         className={style.input}
         type="text"
-        placeholder="client email"
+        placeholder="search"
         value={search.email}
         onChange={handleInputChange}
       ></input>
-      <button type="submit" onClick={(e) => handleSubmitClient(e)}>
+      <button type="submit" onClick={(e) => handleSubmit(e)}>
         🔍
       </button>
     </div>

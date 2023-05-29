@@ -13,6 +13,7 @@ import {
   GET_COMENTARIOS,
   GET_CLASES_X_CLIENTE,
   SEARCH_USER_BY_EMAIL,
+  SEARCH_CLASE_BY_NAME,
 } from "../Actions/index";
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
   comments: [],
   comentarios: [],
   clases: [],
+  allClases: [],
   clasesxCliente: [],
 };
 
@@ -102,6 +104,12 @@ export default function footReducer(state = initialState, action) {
         clientes: state.clientes.filter(
           (cliente) => cliente.email === action.payload.email
         ),
+      };
+    case SEARCH_CLASE_BY_NAME:
+      return {
+        ...state,
+        allClases: [...state.clientes],
+        clases: [...action.payload],
       };
 
     default:

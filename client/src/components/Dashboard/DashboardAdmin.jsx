@@ -66,7 +66,7 @@ export default function SidebarWithHeader({ children }) {
   const [client, setClient] = useState("");
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-
+  const [clase, setClase] = useState("");
   useEffect(() => {
     dispatch(getClientes());
     /*  dispatch(getUserByEmail(user?.email)); */
@@ -75,6 +75,10 @@ export default function SidebarWithHeader({ children }) {
   }, [dispatch, client /* user?.email */]);
 
   const handleSubmitClient = (e) => {
+    e.preventDefault();
+    dispatch(searchClientByEmail(client));
+  };
+  const handleSubmitClase = (e) => {
     e.preventDefault();
     dispatch(searchClientByEmail(client));
   };
@@ -109,6 +113,9 @@ export default function SidebarWithHeader({ children }) {
         client={client}
         setClient={setClient}
         handleSubmitClient={handleSubmitClient}
+        clase={clase}
+        setClase={setClase}
+        handleSubmitClase={handleSubmitClase}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -246,6 +253,9 @@ const Contenido = ({
   client,
   setClient,
   handleSubmitClient,
+  clase,
+  setClase,
+  handleSubmitClase,
 }) => {
   function refreshPage() {
     window.location.reload(false);
@@ -419,9 +429,16 @@ const Contenido = ({
       )}
       {pathname === "/dashboard/classes" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Classes
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Classes:
+            </Text>
+            <Search
+              search={clase}
+              setSearch={setClase}
+              handleSubmitClient={handleSubmitClase}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
