@@ -116,8 +116,8 @@ export default function footReducer(state = initialState, action) {
     case SEARCH_COMENTARIOS_BY_NAME:
       return {
         ...state,
-        allComments: [...state.comments],
-        comments: [...action.payload],
+        allComments: [...state.comentarios],
+        comentarios: [...action.payload],
       };
 
     default:
