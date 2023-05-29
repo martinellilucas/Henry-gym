@@ -7,7 +7,7 @@ const getClaseByName = async (name) => {
     consulta = await Clase.findOne({ where: { id: name } });
   } else {
     consulta = await Clase.findAll({
-      where: { nombre: { [Op.iLike]: `%${name}` } },
+      where: { nombre: { [Op.iLike]: `${name}%` } },
     });
   }
 
