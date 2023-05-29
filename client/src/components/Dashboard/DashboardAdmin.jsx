@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./DashboardAdmin.module.css";
 import {
   IconButton,
@@ -30,11 +30,13 @@ import {
   getClientes,
   getComentarios,
   getUserByEmail,
+  searchClientByEmail,
 } from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
 import { banUser } from "../../redux/Actions/index";
 import Swal from "sweetalert2";
+import Search from "./Search/Search";
 
 const LinkItems = [
   {
@@ -57,20 +59,25 @@ const LinkItems = [
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const admin = useSelector((state) => state.user);
-  const { user } = useAuth0();
+  /* const { user } = useAuth0(); */
   const clientes = useSelector((state) => state.clientes);
   const comentarios = useSelector((state) => state.comentarios);
   const clases = useSelector((state) => state.clases);
+  const [client, setClient] = useState("");
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  console.log(LinkItems);
+
   useEffect(() => {
     dispatch(getClientes());
-    dispatch(getUserByEmail(user?.email));
+    /*  dispatch(getUserByEmail(user?.email)); */
     dispatch(getComentarios());
     dispatch(getClases());
-  }, [dispatch, user?.email]);
+  }, [dispatch, client /* user?.email */]);
 
+  const handleSubmitClient = (e) => {
+    e.preventDefault();
+    dispatch(searchClientByEmail(client));
+  };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
@@ -99,6 +106,9 @@ export default function SidebarWithHeader({ children }) {
         comentarios={comentarios}
         clases={clases}
         pathname={pathname}
+        client={client}
+        setClient={setClient}
+        handleSubmitClient={handleSubmitClient}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -228,12 +238,20 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({ clientes, comentarios, clases, pathname }) => {
+const Contenido = ({
+  clientes,
+  comentarios,
+  clases,
+  pathname,
+  client,
+  setClient,
+  handleSubmitClient,
+}) => {
   function refreshPage() {
     window.location.reload(false);
   }
-
   const dispatch = useDispatch();
+
   const handleBan = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -294,6 +312,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       }
     });
   };
+
   return (
     <Box className={style.container}>
       <div className={style.titleContainer}>
@@ -348,9 +367,16 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       )}
       {pathname === "/dashboard/clients" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Clients List:
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Clients List:
+            </Text>
+            <Search
+              search={client}
+              setSearch={setClient}
+              handleSubmitClient={handleSubmitClient}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
