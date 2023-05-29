@@ -23,14 +23,13 @@
 
   font-family: "Titillium Web", sans-serif;
 }
-
-.clientlist {
+.clientSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  width: 80%;
   font-family: "Titillium Web", sans-serif;
-  border-radius: 50px;
-  border-color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 4%;
 }
 
 .listado {
