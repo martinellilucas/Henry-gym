@@ -104,7 +104,6 @@ export default function Pagination() {
   };
 
   const onCancel = () => {
-
     setEjer([])
     setIsOpen(!isOpen)
     window.localStorage.setItem('ejercicios' , [])
@@ -120,22 +119,8 @@ export default function Pagination() {
     });
   }
 
-  const onSubmit = () => {
+const onSubmit = () => {
       window.localStorage.setItem('ejercicios', JSON.stringify(ejer));
-    setEjer([]);
-    setIsOpen(!isOpen);
-  };
-
-  const onSubmit = () => {
-    if (ejer.length < 2) {
-      toast({
-        title: "Please select at least two exercises",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    } else {
-      window.localStorage.setItem("ejercicios", JSON.stringify(ejer));
       setEjer([]);
       setIsOpen(!isOpen);
       toast({
@@ -145,9 +130,9 @@ export default function Pagination() {
         isClosable: true,
       });
       navigate('/form')
-    };
-  
+    }
 
+ 
 
   return (
     <Box className={style.body}>
