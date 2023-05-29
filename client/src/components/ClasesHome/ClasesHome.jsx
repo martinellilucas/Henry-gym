@@ -36,9 +36,12 @@ import {
   assignClaseToCliente,
   getClases,
   getClasexCliente,
+  getUserByEmail,
 } from "../../redux/Actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesHome() {
+  const { user } = useAuth0();
   const [selectedClaseId, setSelectedClaseId] = useState(null);
   const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const client = useSelector((state) => state.user);
@@ -54,6 +57,8 @@ export default function ClasesHome() {
   );
   useEffect(() => {
     dispatch(getClases());
+    dispatch(getUserByEmail(user?.email));
+    dispatch(getClasexCliente(client.id));
   }, [dispatch]);
 
   console.log(client);
@@ -159,7 +164,7 @@ export default function ClasesHome() {
                     onClick={() => handleConfirm(client.id, selectedClaseId)}
                     mt={4}
                     colorScheme="blue"
-                    isDisabled={clasesxCliente.Clases.length >= 2}
+                    isDisabled={clasesxCliente.length >= 2}
                   >
                     Confirm
                   </Button>
