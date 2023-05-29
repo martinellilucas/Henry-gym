@@ -41,7 +41,7 @@ const Profile = () => {
           onClick={() => {
             onOpen();
             dispatch(getUserByEmail(user?.email));
-            dispatch(getClasexCliente(user?.id));
+            dispatch(getClasexCliente(client?.id));
           }}
         />
 
@@ -64,6 +64,20 @@ const Profile = () => {
 
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
+              <Text className={style.text}>
+                {clasesxCliente.map((clase) => {
+                  return (
+                    <Text value={clase.id}>
+                      {`${clase.nombre}`}: {` `}
+                      {clase.dias.map((dia) => {
+                        return `${dia.slice(0, 3)} `;
+                      })}
+                      {"  at  "}
+                      {clase.horario.slice(0, 5)}HS
+                    </Text>
+                  );
+                })}
+              </Text>
               <Text className={style.text}>Membership</Text>
               {client?.tipoDeSuscripcion === "Platinum" ? (
                 <img className={style.imgMemb} src={Platino} />

@@ -58,7 +58,6 @@ export default function ClasesHome() {
   useEffect(() => {
     dispatch(getClases());
     dispatch(getUserByEmail(user?.email));
-    dispatch(getClasexCliente(client.id));
   }, [dispatch]);
 
   console.log(client);
@@ -147,7 +146,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -242,7 +241,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -335,7 +334,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -428,7 +427,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -520,7 +519,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -613,7 +612,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
