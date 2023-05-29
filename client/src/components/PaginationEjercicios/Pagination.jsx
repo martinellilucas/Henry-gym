@@ -6,7 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import style from "./Pagination.module.css";
 import { filters, getEjercicios } from "../../redux/Actions";
 import Loading from "../Loading/Loading";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
 
@@ -18,13 +18,15 @@ export default function Pagination() {
   const [page, setPage] = useState(1);
   const [selectedMusculo, setSelectedMusculo] = useState("");
   const [selectedDificultad, setSelectedDificultad] = useState("");
+  const navigate = useNavigate()
+
 
   // ESTADOS PARA EL CREADO DE RUTINA 
   const [isOpen, setIsOpen] = useState(false)
   const [ejer, setEjer] = useState([])
 
   const dispatch = useDispatch();
-  const count = 9;
+  const count = 6;
   const pageIndex = [];
 
   const ejerciciosPages = Math.ceil(allEjercicios.length / count);
@@ -34,10 +36,18 @@ export default function Pagination() {
     pageIndex.push(i);
   }
 
-
+    const test = () => {
+    const item = window.localStorage.getItem('ejercicios')
+    if(item){
+      setEjer(
+        JSON.parse(item)
+      )
+    }
+  } 
 
   useEffect(() => {
     dispatch(getEjercicios());
+    test()
   }, []);
 
   const handleClickArrow = (operation) => {
@@ -87,7 +97,6 @@ export default function Pagination() {
     const boolean = ejer.find(item => item.id === ejercicios.id)
     if (boolean) {
       setEjer([...ejer.filter((item) => item.id !== ejercicios.id)])
-
     } else {
       setEjer([...ejer, ejercicios])
     }
@@ -97,19 +106,20 @@ export default function Pagination() {
   const onCancel = () => {
     setEjer([])
     setIsOpen(!isOpen)
+    window.localStorage.setItem('ejercicios' , [])
   }
 
 
-  const onSubmit = () => {
+  const onDenied = () => {
+    toast({
+      title: "Please select at least two exercises for the next step",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
 
-    if (ejer.length < 2) {
-      toast({
-        title: "Please select at least two exercises",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    } else {
+  const onSubmit = () => {
       window.localStorage.setItem('ejercicios', JSON.stringify(ejer));
       setEjer([]);
       setIsOpen(!isOpen);
@@ -119,8 +129,9 @@ export default function Pagination() {
         duration: 3000,
         isClosable: true,
       });
+      navigate('/form')
     }
-  }
+  
 
 
   return (
@@ -147,17 +158,16 @@ export default function Pagination() {
                 >Cancelar
                 </Button>
 
+                {ejer.length >= 2 ? 
                 <Button
-                  bg='blue.200'
-                  onClick={() => onSubmit()}
-                >
-                  
-                  {ejer.length > 2 ?
-                    <NavLink to={'/form'}>
-                      Siguiente
-                     </NavLink>
-                    : <>Select to exercises</>}
-                </Button>
+                 onClick={() => {onSubmit()}}
+                 bg={"blue.300"}
+                >Next</Button>  
+                : <Button 
+                  bg={"gray.300"}
+                onClick={() =>{onDenied()}}
+                >Select two exercises</Button>
+              }
 
               </ButtonGroup>
             </Flex>
@@ -208,13 +218,22 @@ export default function Pagination() {
             <option value="expert">Expert</option>
           </select>
         </div>
-        <Flex margin="50px" align="center">
+      </Flex>
+      {!paginate.length ? (
+        <Loading />
+      ) : (
+        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick} />
+      )}
+      <Box 
+        display={"flex"}
+        justifyContent={"center"}    
+      >
           <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
             &lt;
           </Button>
-
           {pageIndex.map((index) => (
             <Button
+              size={'sm'}
               key={index}
               value={index}
               onClick={() => handleClickButton(index)}
@@ -229,13 +248,9 @@ export default function Pagination() {
           >
             &gt;
           </Button>
-        </Flex>
-      </Flex>
-      {!paginate.length ? (
-        <Loading />
-      ) : (
-        <EjercicioCards ejercicios={paginate} isOpen={isOpen} setEjer={setEjer} ejer={ejer} onClick={onClick} />
-      )}
+      </Box>
+      
     </Box>
+    
   );
 }

@@ -1,0 +1,9 @@
+.cards {
+    width: 100%;
+    display: grid;
+    margin: 0 auto;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    font-family: "Titillium Web", sans-serif;
+  }
+  

@@ -21,3 +21,9 @@
   justify-content: space-evenly;
   width: 90%;
 }
+
+.paginate {
+  size: 30rem;
+  padding-left: '1%';
+}
+

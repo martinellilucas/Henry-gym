@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Progress,
   Box,
   ButtonGroup,
   Button,
@@ -19,22 +18,17 @@ import {
 
 import { useToast } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import EjercicioCards from '../EjercicioCards/EjercicioCards';
 import { postRutina } from '../../redux/Actions';
+import PostCards from './PostCards/PostCards';
+import { useNavigate } from 'react-router-dom';
 
 const Form1 = ({setForm,form}) => {
-  
-
-
-  
   const onClick = (e) => {
    const value = e.target.files[0]
     setForm({
       ...form,
       imagen :value});
   }
- 
-
   return (
     <>
         <FormControl >
@@ -58,8 +52,10 @@ const Form1 = ({setForm,form}) => {
         justifyContent={'space-between'}
       >
         {form.ejercicios ?
-          <EjercicioCards
+          <PostCards
             ejercicios={form.ejercicios}
+            form={form}
+            setForm={setForm}
           /> : <></>}
       </Flex>
 
@@ -139,10 +135,11 @@ export default function Multistep() {
     ejercicios : [],
     imagen : ''
   })
+  const navigate = useNavigate()
 
   const test = () => {
     const item = window.localStorage.getItem('ejercicios')
-    if(item){  
+    if(form){  
       setForm({...form,
         ejercicios : JSON.parse(item)})
     }
@@ -166,11 +163,6 @@ export default function Multistep() {
   formdata.append('imagen',form.imagen)
   console.log([...formdata]);
   if(form.imagen){
-    
-  
-
-   
-
     dispatch(postRutina(formdata))
       toast({
         title: "Your routine has been created",
@@ -193,12 +185,36 @@ export default function Multistep() {
     })
 
   }
+  if(form.ejercicios.length >= 2){
+    dispatch(postRutina(formdata))
+      toast({
+        title: "Your routine has been created",
+        description:'You routine will be apear in the routine seccion',
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+    window.localStorage.setItem('ejercicios',[])
+    setForm({
+      ejercicios : [],
+      imagen : ""
+    })
+  } else {
+    navigate('/ejercicios')
+    toast({
+      title: 'Please select at least two exercises',
+      status : 'error',
+      duration: 3000,
+      isClosable : true
+    })
+  }
  }
   
 
   return (
     <>
       <Box
+        
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"

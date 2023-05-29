@@ -1,18 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, useToast } from "@chakra-ui/react";
 import Cards from "../Cards/Cards";
 import { getRutinas } from "../../redux/Actions";
 import style from "./PaginationRutinas.module.css";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Pagination() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const [ejer,setEjer] = useState([])
   const allRutinas = useSelector((state) => state.rutinas);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate()
+  const toast = useToast()
 
   const dispatch = useDispatch();
   const count = 8;
@@ -25,9 +28,42 @@ export default function Pagination() {
     pageIndex.push(i);
   }
 
+  const test = () => {
+    const item = window.localStorage.getItem('ejercicios')
+    if(item){
+      setEjer(
+        JSON.parse(item)
+      )
+    }
+    console.log(ejer)
+  }
+
   useEffect(() => {
     dispatch(getRutinas());
+    test()
   }, []);
+
+  
+  const goForm = () => {
+    navigate('/form')
+    toast({
+      title: "Please select one picture for your routine",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+
+  const goExercise = () => {
+    navigate('/ejercicios')
+    toast({
+      title: "Please select at least two exercises",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+  
 
   const handleClickArrow = (operation) => {
     if (operation === "-") {
@@ -51,9 +87,21 @@ export default function Pagination() {
   return (
     <div className={style.body}>
       <Box className={style.container}>
-        <NavLink to="/form">
-          <Button colorScheme="blackAlpha">CREATE YOUR OWN</Button>
-        </NavLink>
+          {ejer.length ? 
+          <Button colorScheme="blackAlpha" 
+          onClick={() => {
+            goForm()
+          }}>
+            Create your own
+          </Button> :
+          <Button colorScheme="blackAlpha"
+            onClick={() => {
+              goExercise()
+            }}
+          >
+            Create your own
+          </Button>  
+          }
         <Flex
           display="flex"
           flexDirection="column"
