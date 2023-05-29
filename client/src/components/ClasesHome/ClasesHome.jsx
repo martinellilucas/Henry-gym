@@ -56,6 +56,8 @@ export default function ClasesHome() {
     dispatch(getClases());
   }, [dispatch]);
 
+  console.log(client);
+
   const handleConfirm = (clienteId, claseId) => {
     dispatch(assignClaseToCliente(clienteId, claseId));
   };
