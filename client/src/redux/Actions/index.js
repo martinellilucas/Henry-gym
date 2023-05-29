@@ -7,6 +7,7 @@ export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const SEARCH_USER_BY_EMAIL = "SEARCH_USER_BY_EMAIL";
+export const SEARCH_CLASE_BY_NAME = "SEARCH_CLASE_BY_NAME";
 export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_COMMENTS = "GET_COMMENTS";
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
@@ -210,7 +211,14 @@ export const searchClientByEmail = (email) => {
       dispatch({ type: GET_CLIENTES, payload: resp.data });
     };
 };
-
+export const searchClaseByName = (name) => {
+  return async function (dispatch) {
+    const response = await axios(
+      `https://henry-gym-production.up.railway.app/clase/${name}`
+    );
+    dispatch({ type: SEARCH_CLASE_BY_NAME, payload: response.data });
+  };
+};
 export const getClientes = () => {
   return async function (dispatch) {
     const resp = await axios(

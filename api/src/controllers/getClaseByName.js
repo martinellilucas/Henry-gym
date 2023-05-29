@@ -2,13 +2,11 @@ const { Clase } = require("../db");
 
 const getClaseByName = async (name) => {
   let consulta;
-  if(name.includes('-')){
+  if (name.includes("-")) {
     consulta = await Clase.findOne({ where: { id: name } });
+  } else {
+    consulta = await Clase.findAll({ where: { nombre: name } });
   }
-  else{
-    consulta = await Clase.findOne({ where: { nombre: name } });
-  }
-  
 
   return consulta;
 };
