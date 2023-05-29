@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/react";
 import style from "./EjercicioCard.module.css";
 
-export function EjercicioCard({isOpen,ejercicios,onClick}) {
+export function EjercicioCard({isOpen,ejercicios,onClick,ejer}) {
 
   const {id,name,muscle,difficulty,instructions} = ejercicios;
 
-
+  const isIn = ejer.find(item => item.id === id)
 
   return (
     <div key={id}>
@@ -27,20 +27,29 @@ export function EjercicioCard({isOpen,ejercicios,onClick}) {
             {name}
           </Heading>
             {isOpen ? 
-              <Button
-               onClick={() => onClick(ejercicios)}
-              >
-                Add
-              </Button> : <></>
+                isIn ? 
+                      <Button
+                        onClick={() => onClick(ejercicios)}
+                        bg={'red.500'}
+                      >Remove</Button>: 
+                      <Button
+                        bg={'blue.500'}
+                        onClick={() => onClick(ejercicios)}
+                      > Add </Button> : <></>
             }
           </Flex>
         </CardHeader>
-        <CardBody>
+        <CardBody >
           <Stack divider={<StackDivider />} spacing="4">
-            <Box>
+            <Flex 
+              justifyContent={'space-around'}
+            >
+            <Box
+              justifyContent={"center"}
+            >
               <Heading
                 className={style.title}
-                size="s"
+                size="md"
                 textTransform="uppercase"
               >
                 Difficulty
@@ -54,10 +63,12 @@ export function EjercicioCard({isOpen,ejercicios,onClick}) {
                 {difficulty}
               </Text>
             </Box>
-            <Box>
+            <Box
+              justifyContent={"center"}
+            >
               <Heading
                 className={style.title}
-                size="s"
+                size="md"
                 textTransform="uppercase"
               >
                 Muscle
@@ -71,6 +82,7 @@ export function EjercicioCard({isOpen,ejercicios,onClick}) {
                 {muscle}
               </Text>
             </Box>
+            </Flex>
             <Box>
               <Heading
                 className={style.title}

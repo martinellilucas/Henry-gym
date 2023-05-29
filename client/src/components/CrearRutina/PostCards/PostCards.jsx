@@ -1,10 +1,9 @@
 import { Box } from "@chakra-ui/react";
-import EjercicioCard from "../EjercicioCard/EjercicioCard";
-import style from "./EjercicioCards.module.css";
+import style from "./PostCards.module.css";
+import Post from './Post/Post'
 
-export default function EjercicioCards({ ejercicios, isOpen, onClick, ejer }) {
-
-
+export default function PostCards({ ejercicios ,form,setForm}) {
+    console.log();
   return (
     <Box
       className={style.cards}
@@ -16,13 +15,11 @@ export default function EjercicioCards({ ejercicios, isOpen, onClick, ejer }) {
         <Box
           position={'relative'}
         >
-          <EjercicioCard
-            ejer={ejer}
+          <Post
+            form={form}
+            setForm={setForm}
             ejercicios={ej}
-            isOpen={isOpen}
-            onClick={onClick}
           />
-
         </Box>
       ))}
     </Box>
