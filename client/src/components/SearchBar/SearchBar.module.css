@@ -13,8 +13,9 @@
   width: max-content;
   font-weight: bold;
   font-size: 1.2em;
-  padding: 2px 10px;
+  padding: 2px 4px;
   border: 2px solid black;
+  font-family: "Titillium Web", sans-serif;
 }
 .button:hover {
   background-color: rgb(178, 180, 180);
@@ -24,7 +25,7 @@
   cursor: auto;
   border: none;
   border-radius: 5px;
-  font-size: 1.2em;
+  font-size: 1em;
   color: black;
   background-color: lightgray;
   margin: none;
@@ -32,4 +33,14 @@
   padding: 2px 10px;
   font-weight: bold;
   border: 2px solid black;
+  font-family: "Titillium Web", sans-serif;
+}
+
+@media screen and (max-width: 1050px) {
+  .input {
+    font-size: 0.8em;
+  }
+  .button {
+    font-size: 0.8em;
+  }
 }

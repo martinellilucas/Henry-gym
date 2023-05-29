@@ -4,4 +4,16 @@
   margin: 0 auto;
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
+  font-family: "Titillium Web", sans-serif;
+}
+
+@media screen and (max-width: 1050px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

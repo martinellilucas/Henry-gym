@@ -1,0 +1,46 @@
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 1rem;
+  font-family: "Titillium Web", sans-serif;
+  background-color: #aaa8ac;
+}
+.cardsContainer {
+  display: grid;
+  grid-gap: 3em;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 30px;
+}
+.img {
+  width: 100%;
+}
+.boxMargin {
+  width: 100%;
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+}
+.comment {
+  width: 100%;
+}
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
+}
+
+@media screen and (max-width: 1350px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

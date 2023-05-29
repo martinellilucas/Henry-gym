@@ -1,16 +1,19 @@
 const { Router } = require("express");
 const routeEjercicios = require("./routeEjercicios");
 const routeRutinas = require("./routeRutinas");
-const routeSuscripcion = require("./routeSuscripcion");
 const routeClase = require("./routeClase");
-const routeEntrenador = require("./routeEntrenador");
+const routeComentario = require('./routeComentario');
+const routeCliente = require("./routeCliente");
+const routeClaseXCliente = require("./routeClaseXCliente")
+
 const router = Router();
 
 router.use("/ejercicios", routeEjercicios);
 router.use("/rutinas", routeRutinas);
-router.use("/suscripcion", routeSuscripcion)
 router.use("/clase", routeClase);
-router.use("/entrenador", routeEntrenador)
+router.use("/cliente", routeCliente);
+router.use("/comentarios", routeComentario)
+router.use("/clasexcliente", routeClaseXCliente)
 
 
 module.exports = router;

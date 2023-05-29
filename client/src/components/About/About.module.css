@@ -1,42 +1,89 @@
-.container{
-    font-family: 'Bebas Neue', sans-serif;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #aaa8ac;
+  align-items: center;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
+}
+
+.txtContainer {
+  background-color: #28242b;
+  text-align: center;
+  padding: 30px;
+}
+.text {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.imgContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px;
+}
+
+.trainerName {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+.img {
+  --color: #28242b; /* the color of the border */
+  --border: 5px; /* the thickness of the border */
+  --offset: 30px; /* control the movement of the border */
+  --gap: 5px; /* the gap on hover */
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  padding: calc(var(--border) + var(--gap));
+  border: var(--offset) solid #0000;
+  --_m: radial-gradient(
+    50% 50%,
+    #000 calc(100% - var(--offset)),
+    #0000 calc(100% - var(--border))
+  );
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  --_g: #0000 calc(99% - var(--border)),
+    var(--color) calc(100% - var(--border)) 99%, #0000;
+  --_s: var(--offset);
+  --_r: 100% 100% at;
+  background: radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s))
+      calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s))
+      calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s))
+      calc(0% - var(--_s)),
+    radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s))
+      calc(0% - var(--_s));
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+img:hover {
+  --_s: 0px;
+}
+@media screen and (max-width: 800px) {
+  .imgContainer {
     flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    background: #f5f5f5;
-    padding: 0 1rem;
-    color: #000000;
-    text-align: center;
-}
-
-.title{
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.text{
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.imgContainer{
-    display: flex;
-    justify-content: space-between; 
-    margin-top:20px;
-
-}
-
-.img{
-    width: 350px;
-    height: 350px;
-    border-radius: 300%;
-}
-
-.trainerName{
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    margin-top: 10px;
-    text-align: center;
+  }
+  .title {
+    font-size: 2em;
+  }
+  .text {
+    font-size: 0.8em;
+  }
 }

@@ -1,6 +1,71 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+:root {
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+}
+@keyframes borderRadial {
+  20% {
+    --gradX: 100%;
+    --gradY: 50%;
+  }
+  40% {
+    --gradX: 100%;
+    --gradY: 100%;
+  }
+  60% {
+    --gradX: 50%;
+    --gradY: 100%;
+  }
+  80% {
+    --gradX: 0%;
+    --gradY: 50%;
+  }
+  100% {
+    --gradX: 50%;
+    --gradY: 0%;
+  }
+}
+.body {
+  font-family: "Titillium Web", sans-serif;
+  max-width: 100%;
+  max-height: 100%;
+}
 .btn {
+  position: absolute;
+  top: 70%;
+  left: 46.5%;
   padding: 1.5em 2.5em;
-  box-shadow: 2px 2px 5px white;
+  border-radius: 15px;
+  border: 0.35rem solid;
+  border-image: radial-gradient(
+      ellipse at var(--gradX) var(--gradY),
+      var(--c1),
+      var(--c1) 10%,
+      var(--c2) 40%
+    )
+    30;
+  animation: borderRadial var(--d) linear infinite forwards;
 }
 .video {
   width: 100%;
@@ -11,35 +76,186 @@
 }
 .bottomContainer {
   width: 100%;
-  height: 443px;
+  height: 433px;
   background: #28242b;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   position: absolute;
-  top: 600px;
-  border-top: 2px solid black;
+  top: 505px;
+
+  border-top: 1rem solid;
+  border-image: radial-gradient(
+      ellipse at var(--gradX) var(--gradY),
+      var(--c1),
+      var(--c1) 10%,
+      var(--c2) 40%
+    )
+    30;
+  animation: borderRadial var(--d) linear infinite forwards;
 }
 .logoContainer {
   border-radius: 50%;
   background-color: white;
-  height: 630px;
-  width: 630px;
+  height: 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 250px;
-  border: 35px solid black;
-  box-shadow: 2px 2px 5px white;
+  position: absolute;
+  top: -30%;
+  left: 40%;
+  border: 1rem solid black;
 }
 
 .logo {
-  height: 400px;
-  width: 400px;
+  height: 250px;
+  width: 250px;
 }
 
 .title {
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: "Titillium Web", sans-serif;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
+}
+
+.msg {
+  font-size: 1.8em;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 5s linear infinite;
+  position: absolute;
+  left: 58%;
+  top: 45%;
+}
+
+@keyframes showTopText {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(0, 50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes showBottomText {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.animatedTitle {
+  color: #ffffff;
+  font-family: "Titillium Web", sans-serif;
+  height: 25vmin;
+  left: 20%;
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 30vmin;
+}
+.animatedTitle > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.animatedTitle > div div {
+  font-size: 3vmin;
+  padding: 2vmin 0;
+  position: absolute;
+}
+.animatedTitle > div div span {
+  display: block;
+}
+.animatedTitle > div.textTop {
+  border-bottom: 1vmin solid #000;
+  top: 0;
+}
+.animatedTitle > div.textTop div {
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+.animatedTitle > div.textTop div span:first-child {
+  color: #767676;
+}
+.animatedTitle > div.textBottom {
+  bottom: 0;
+}
+.animatedTitle > div.textBottom div {
+  animation: showBottomText 0.5s;
+  animation-delay: 1.75s;
+  animation-fill-mode: forwards;
+  top: 0;
+  transform: translate(0, -100%);
+}
+
+@media screen and (max-width: 800px) {
+  .bottomContainer {
+    top: 230px;
+    height: 650px;
+  }
+  .logoContainer {
+    border-radius: 50%;
+    background-color: white;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -12%;
+    left: 40%;
+    border: 15px solid black;
+  }
+  .logo {
+    height: 75px;
+    width: 75px;
+  }
+  .title {
+    font-size: 0.7em;
+    font-weight: bolder;
+    font-family: "Titillium Web", sans-serif;
+  }
+  .msg {
+    top: 15%;
+    left: 20%;
+    font-size: 0.9em;
+  }
+  .animatedTitle {
+    left: 50%;
+    top: 50%;
+  }
+
+  .btn {
+    left: 40%;
+    top: 75%;
+    font-size: 1em;
+  }
 }

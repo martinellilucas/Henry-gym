@@ -1,4 +1,12 @@
-import { ReactNode } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+  item1,
+  item2,
+  item3,
+  checkoutOptions1,
+  checkoutOptions2,
+  checkoutOptions3,
+} from "./stripeUtils";
 import {
   Box,
   Stack,
@@ -17,38 +25,50 @@ import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import style from "./Membresia.module.css";
-import { NavLink } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+
+const apiKey =
+  "pk_test_51N8xmZIF7SQaSdDealGz7yLZH1CFgYHwp5OCZSiqr3GMevHfzBUvTj0piTgUaws75el46STbzYvrv1jREtlCgA5q0029JjmZC7";
+
+let stripePromise;
+
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(apiKey);
+  }
+  return stripePromise;
+};
 
 function PriceWrapper({ children }) {
-  return (
-    <Box
-      width="25%"
-      mb={4}
-      shadow="base"
-      borderWidth="1px"
-      alignSelf={{ base: "center", lg: "flex-start" }}
-      borderColor={useColorModeValue("gray.200", "gray.500")}
-      borderRadius={"xl"}
-    >
-      {children}
-    </Box>
-  );
+  return <Box className={style.body}>{children}</Box>;
 }
+const redirectToCheckoutsilver = async (item1) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(checkoutOptions1);
+  console.log("Stripe checkout error", error);
+};
+const redirectToCheckoutgold = async (item2) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(checkoutOptions2);
+  console.log("Stripe checkout error", error);
+};
+const redirectToCheckoutplatinum = async (item3) => {
+  console.log("redirectToCheckout");
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout(checkoutOptions3);
+  console.log("Stripe checkout error", error);
+};
 
 export default function ThreeTierPricing() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
-    <Box py={12}>
+    <Box className={style.threeTier} py={4}>
       <VStack spacing={2} textAlign="center">
-        <Heading as="h1" fontSize="5xl" fontWeight="bolder" textAlign="center">
-          ¡Join one of our plans!
-        </Heading>
-        <Text
-          textAlign="center"
-          fontSize="lg"
-          fontWeight="bolder"
-          color={"gray.500"}
-        >
-          ¡Choose the one that best suits you and start right away!
+        <Heading className={style.title}>JOIN ONE OF OUR PLANS!</Heading>
+        <Text className={style.subtitle}>
+          Choose the one that best suits you and start right away!
         </Text>
       </VStack>
       <Stack
@@ -59,7 +79,7 @@ export default function ThreeTierPricing() {
         py={10}
       >
         <PriceWrapper>
-          <Box py={4} px={12}>
+          <Box className={style.topCard}>
             <Text fontWeight="500" fontSize="2xl">
               Silver
             </Text>
@@ -78,14 +98,14 @@ export default function ThreeTierPricing() {
                 30
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /monthly
+                /month
               </Text>
             </HStack>
           </Box>
           <VStack
-            bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
+            className={style.bottomCard}
             borderBottomRadius={"xl"}
+            bg={useColorModeValue("gray.50", "gray.700")}
           >
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
@@ -102,15 +122,18 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <NavLink to="/home">
-                <Button
-                  className={style.Button}
-                  colorScheme="red"
-                  variant="outline"
-                >
-                  Start now
-                </Button>
-              </NavLink>
+              <Button
+                onClick={
+                  isAuthenticated
+                    ? () => redirectToCheckoutsilver(item1)
+                    : () => loginWithRedirect()
+                }
+                className={style.Button}
+                colorScheme="red"
+                variant="outline"
+              >
+                Start now
+              </Button>
             </Box>
           </VStack>
         </PriceWrapper>
@@ -127,7 +150,6 @@ export default function ThreeTierPricing() {
                 textTransform="uppercase"
                 bg={useColorModeValue("red.300", "red.700")}
                 px={3}
-                py={1}
                 color={useColorModeValue("gray.900", "gray.300")}
                 fontSize="sm"
                 fontWeight="600"
@@ -136,7 +158,7 @@ export default function ThreeTierPricing() {
                 Most popular
               </Text>
             </Box>
-            <Box py={4} px={12}>
+            <Box className={style.topCard}>
               <Text fontWeight="500" fontSize="2xl">
                 Gold
               </Text>
@@ -155,14 +177,14 @@ export default function ThreeTierPricing() {
                   50
                 </Text>
                 <Text fontSize="3xl" color="gray.500">
-                  /monthly
+                  /month
                 </Text>
               </HStack>
             </Box>
             <VStack
               bg={useColorModeValue("gray.50", "gray.700")}
-              py={4}
               borderBottomRadius={"xl"}
+              className={style.bottomCard}
             >
               <List spacing={3} textAlign="start" px={12}>
                 <ListItem>
@@ -183,17 +205,23 @@ export default function ThreeTierPricing() {
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
-                <NavLink to="/about">
-                  <Button className={style.Button} colorScheme="red">
-                    Start now
-                  </Button>
-                </NavLink>
+                <Button
+                  onClick={
+                    isAuthenticated
+                      ? () => redirectToCheckoutgold(item2)
+                      : () => loginWithRedirect()
+                  }
+                  className={style.Button}
+                  colorScheme="red"
+                >
+                  Start now
+                </Button>
               </Box>
             </VStack>
           </Box>
         </PriceWrapper>
         <PriceWrapper>
-          <Box py={4} px={12}>
+          <Box className={style.topCard}>
             <Text fontWeight="500" fontSize="2xl">
               Platinum
             </Text>
@@ -212,14 +240,14 @@ export default function ThreeTierPricing() {
                 100
               </Text>
               <Text fontSize="3xl" color="gray.500">
-                /monthly
+                /month
               </Text>
             </HStack>
           </Box>
           <VStack
             bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
             borderBottomRadius={"xl"}
+            className={style.bottomCard}
           >
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
@@ -240,15 +268,18 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <NavLink to="/home">
-                <Button
-                  className={style.Button}
-                  colorScheme="red"
-                  variant="outline"
-                >
-                  Start now
-                </Button>
-              </NavLink>
+              <Button
+                onClick={
+                  isAuthenticated
+                    ? () => redirectToCheckoutplatinum(item3)
+                    : () => loginWithRedirect()
+                }
+                className={style.Button}
+                colorScheme="red"
+                variant="outline"
+              >
+                Start now
+              </Button>
             </Box>
           </VStack>
         </PriceWrapper>

@@ -5,12 +5,10 @@ import { Button } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Landing = () => {
-  const { loginWithRedirect, user, isLoading } = useAuth0();
   return (
-    <Box>
+    <Box className={style.body}>
       <Box className={style.videoContainer}>
         <video className={style.video} autoPlay muted loop>
           <source src={Video} type="video/mp4" />
@@ -18,16 +16,23 @@ const Landing = () => {
       </Box>
 
       <Box className={style.bottomContainer}>
-        {!isLoading && !user && (
-          <Button
-            onClick={() => loginWithRedirect()}
-            className={style.btn}
-            colorScheme="blackAlpha"
-            size="lg"
-          >
-            LOGIN
-          </Button>
-        )}
+        <div>
+          <h1 className={style.msg}>
+            Welcome, click 'explore' button to enter.
+          </h1>
+          <div className={style.animatedTitle}>
+            <div className={style.textTop}>
+              <div>
+                <span>especial classes</span>
+                <span>workout routines</span>
+              </div>
+            </div>
+            <div className={style.textBottom}>
+              <div>bodybuilding exercises</div>
+            </div>
+          </div>
+        </div>
+
         <Box className={style.logoContainer}>
           <Image className={style.logo} src={Logo} alt="logo" />
           <h1 className={style.title}>HENRY'S GYM</h1>

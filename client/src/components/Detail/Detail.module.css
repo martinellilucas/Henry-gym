@@ -1,29 +1,25 @@
 .body {
-  background-image: url("../../assets/detailBG.png");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  font-family: "Titillium Web", sans-serif;
+}
+.title {
+  font-size: 5em;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
 }
 .card {
   display: grid;
-  border-radius: 15px;
-  border: 30px solid rgb(104, 100, 100);
   padding: 40px;
-  margin: 300px;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
   background: rgb(173, 170, 170);
-  box-shadow: 2px 2px 5px white;
-  text-shadow: 1px 1px 5px white;
 }
 .rutina {
-  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .img {
   width: 80%;
@@ -31,9 +27,23 @@
   border-radius: 15px;
 }
 
-.title {
+.titleCard {
+  font-size: 3em;
+  font-weight: bolder;
+  background-color: #28242b;
+  width: 100%;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+.subTitle {
   font-size: 2em;
   font-weight: bolder;
+  background-color: #28242b;
+  width: 100%;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
 }
 .grupoMuscular {
   font-size: 1.5em;
@@ -41,4 +51,30 @@
 }
 .instructions {
   font-size: 1.2em;
+  text-align: center;
+  padding: 5px;
+}
+
+@media screen and (max-width: 1050px) {
+  .title {
+    font-size: 2em;
+  }
+  .card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .titleCard {
+    font-size: 1em;
+  }
+  .subTitle {
+    font-size: 0.8em;
+  }
+  .img {
+    width: 60%;
+  }
+  .grupoMuscular {
+    font-size: 1em;
+  }
+  .instructions {
+    font-size: 0.8em;
+  }
 }

@@ -5,8 +5,13 @@ import {
   GET_RUTINA_ID,
   GET_NAME_EJERCICIOS,
   GET_RUTINAS,
-  FILTER_BY_MUSCULO,
-  FILTER_BY_DIFICULTAD,
+  FILTER,
+  GET_USER_BY_EMAIL,
+  GET_CLIENTES,
+  GET_COMMENTS,
+  GET_CLASES,
+  GET_COMENTARIOS,
+  GET_CLASES_X_CLIENTE,
 } from "../Actions/index";
 
 const initialState = {
@@ -15,6 +20,13 @@ const initialState = {
   rutinaDetail: [],
   rutinas: [],
   dificultad: [],
+  membership: "",
+  user: {},
+  clientes: [],
+  comments: [],
+  comentarios: [],
+  clases: [],
+  clasesxCliente: [],
 };
 
 export default function footReducer(state = initialState, action) {
@@ -48,20 +60,35 @@ export default function footReducer(state = initialState, action) {
         rutinas: action.payload,
       };
 
-    case FILTER_BY_MUSCULO:
+    case FILTER:
+      const { muscle, difficulty } = action.payload;
+      const multipleFilter = state.ejercicios.filter(
+        (ejercicio) =>
+          ejercicio.muscle.includes(muscle) &&
+          ejercicio.difficulty.includes(difficulty)
+      );
+      return { ...state, filteredEjercicios: multipleFilter };
+
+    case GET_USER_BY_EMAIL:
+      return { ...state, user: { ...action.payload } };
+
+    case GET_CLIENTES:
+      return { ...state, clientes: [...action.payload] };
+
+    case GET_COMMENTS:
       return {
         ...state,
-        ejercicios: state.filteredEjercicios.filter((ejercicio) =>
-          ejercicio.muscle.includes(action.payload)
-        ),
+        comments: action.payload,
       };
-    case FILTER_BY_DIFICULTAD:
-      return {
-        ...state,
-        ejercicios: state.filteredEjercicios.filter((ejercicio) =>
-          ejercicio.difficulty.includes(action.payload)
-        ),
-      };
+
+    case GET_CLASES:
+      return { ...state, clases: action.payload };
+
+    case GET_COMENTARIOS:
+      return { ...state, comentarios: [...action.payload] };
+
+    case GET_CLASES_X_CLIENTE:
+      return { ...state, clasesxCliente: action.payload };
 
     default:
       return { ...state };

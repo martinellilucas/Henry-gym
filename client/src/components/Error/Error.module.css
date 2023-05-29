@@ -4,21 +4,47 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: url("../../assets/Error.gif");
+  background-color: #aaa8ac;
 }
-
+.descContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #28242b;
+  width: 100%;
+}
 .descripcion {
-  margin-top: 23.1%;
-  font-size: 6em;
+  font-size: 5em;
   font-weight: bolder;
   text-align: center;
+  color: white;
+  font-family: "Titillium Web", sans-serif;
+  text-transform: uppercase;
 }
-
+.img {
+  width: 100%;
+  height: 680px;
+  background-image: url("../../assets/Error.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 .button {
-  align-self: center;
-  margin-top: 20%;
+  color: #28242b;
+  background-color: white;
+  padding: 0.2em 0.5em;
+  font-size: 1em;
+  border-radius: 5px;
+  font-weight: bold;
+}
+@media screen and (max-width: 1250px) {
+  .descripcion {
+    font-size: 2em;
+  }
+  .button {
+    font-size: 0.8em;
+  }
+  .img {
+    height: 580px;
+  }
 }

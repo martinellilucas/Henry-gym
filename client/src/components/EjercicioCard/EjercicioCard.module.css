@@ -1,6 +1,5 @@
 .card {
-  height: 450px;
-  margin-left: 10%;
+  font-family: "Titillium Web", sans-serif;
 }
 .textarea {
   height: 100px;

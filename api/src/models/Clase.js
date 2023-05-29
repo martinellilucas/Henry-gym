@@ -16,17 +16,22 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       dias: {
-        type: DataTypes.ARRAY(DataTypes.ENUM('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo')),
-        allowNull: false
+        type: DataTypes.ARRAY(
+          DataTypes.ENUM(
+            "Mondays",
+            "Tuesdays",
+            "Wednesdays",
+            "Thursdays",
+            "Fridays",
+            "Saturdays"
+          )
+        ),
+        allowNull: false,
       },
       horario: {
         type: DataTypes.TIME,
         allowNull: false,
       },
-      entrenador:{
-        type: DataTypes.UUID,
-        allowNull: false
-      }
     },
     {
       timestamps: false, // Desactiva los timestamps
