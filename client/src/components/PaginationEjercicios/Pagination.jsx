@@ -252,7 +252,8 @@ export default function Pagination() {
         display={"flex"}
         justifyContent={"center"}    
       >
-          <Button onClick={() => handleClickArrow("-")} disabled={page === 1}>
+          <Button onClick={() => handleClickArrow("-")} disabled={page === 1} />
+        
 
         <div className={style.pagesContainer}>
           <Button
@@ -281,8 +282,9 @@ export default function Pagination() {
           >
             &gt;
           </Button>
+          
       </Box>
     </Box>
     
   );
-}
+}}

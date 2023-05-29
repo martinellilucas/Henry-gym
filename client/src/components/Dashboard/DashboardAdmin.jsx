@@ -317,8 +317,10 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
           <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
             Membership stadistics:
           </Text>
-          <Box className={style.estadisticas}>
-            <Flex align="center" justify="space-evenly" height="300px">
+
+          <div className={style.estadisticas}>
+          <Box>
+            <Flex align="center" justify="space-evenly" height="100%">
               <CircularProgress
                 value={calculoMembresias(clientes, "Silver")}
                 color="gray"
@@ -342,6 +344,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               </CircularProgress>
             </Flex>
           </Box>
+          </div>
         </>
       ) : (
         <></>
