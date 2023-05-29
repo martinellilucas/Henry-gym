@@ -31,6 +31,7 @@ import {
   getComentarios,
   getUserByEmail,
   searchClientByEmail,
+  searchComentarioByName,
 } from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
@@ -59,7 +60,7 @@ const LinkItems = [
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const admin = useSelector((state) => state.user);
-  /* const { user } = useAuth0(); */
+  const { user } = useAuth0();
   const clientes = useSelector((state) => state.clientes);
   const comentarios = useSelector((state) => state.comentarios);
   const clases = useSelector((state) => state.clases);
@@ -67,12 +68,13 @@ export default function SidebarWithHeader({ children }) {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [clase, setClase] = useState("");
+  const [comentario, setComentario] = useState("");
   useEffect(() => {
     dispatch(getClientes());
-    /*  dispatch(getUserByEmail(user?.email)); */
+    dispatch(getUserByEmail(user?.email));
     dispatch(getComentarios());
     dispatch(getClases());
-  }, [dispatch, client /* user?.email */]);
+  }, [dispatch, client, user?.email]);
 
   const handleSubmitClient = (e) => {
     e.preventDefault();
@@ -80,7 +82,11 @@ export default function SidebarWithHeader({ children }) {
   };
   const handleSubmitClase = (e) => {
     e.preventDefault();
-    dispatch(searchClientByEmail(client));
+    dispatch(searchClientByEmail(clase));
+  };
+  const handleSubmitComentario = (e) => {
+    e.preventDefault();
+    dispatch(searchComentarioByName(comentario));
   };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
@@ -116,6 +122,9 @@ export default function SidebarWithHeader({ children }) {
         clase={clase}
         setClase={setClase}
         handleSubmitClase={handleSubmitClase}
+        comentario={comentario}
+        setComentario={setComentario}
+        handleSubmitComentario={handleSubmitComentario}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -256,6 +265,9 @@ const Contenido = ({
   clase,
   setClase,
   handleSubmitClase,
+  comentario,
+  setComentario,
+  handleSubmitComentario,
 }) => {
   function refreshPage() {
     window.location.reload(false);
@@ -384,7 +396,7 @@ const Contenido = ({
             <Search
               search={client}
               setSearch={setClient}
-              handleSubmitClient={handleSubmitClient}
+              handleSubmit={handleSubmitClient}
             />
           </div>
           <Box className={style.listado}>
@@ -436,7 +448,7 @@ const Contenido = ({
             <Search
               search={clase}
               setSearch={setClase}
-              handleSubmitClient={handleSubmitClase}
+              handleSubmit={handleSubmitClase}
             />
           </div>
           <Box className={style.listado}>
@@ -465,9 +477,16 @@ const Contenido = ({
       )}
       {pathname === "/dashboard/comments" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Client Comments
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Clients Comments:
+            </Text>
+            <Search
+              search={comentario}
+              setSearch={setComentario}
+              handleSubmit={handleSubmitComentario}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
