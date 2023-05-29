@@ -13,7 +13,7 @@ export default function CommentCard({
   texto,
   nombreClase,
   nombreCliente,
-  picture,
+  imagenCliente,
 }) {
   return (
     <Center>
@@ -40,7 +40,7 @@ export default function CommentCard({
           <Text color={"gray.500"}>"{texto}"</Text>
         </Stack>
         <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
-          <Avatar src={picture} alt={"Author"} />
+          <Avatar src={imagenCliente} alt={"Author"} />
           <Stack direction={"column"} spacing={0} fontSize={"sm"}>
             <Text fontWeight={600}>{nombreCliente}</Text>
           </Stack>

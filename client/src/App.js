@@ -21,7 +21,6 @@ import ThreeTierPricing from "./components/Membresias/Membresia";
 import ClasesMembresia from "./components/Clases/Clases";
 
 import SidebarWithHeader from "./components/Dashboard/DashboardAdmin";
-import Perfil from "./components/PersonalP/Personalp";
 
 function App() {
   const { pathname } = useLocation();
@@ -47,9 +46,10 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/rutinas" element={<PaginationRutinas />} />
           <Route path="/ejercicios" element={<Pagination />} />
+          <Route path="/memberships" element={<ThreeTierPricing />} />
           <Route path="/success" element={<SubscriptionSuccess />} />
           <Route path="/cancel" element={<SubscriptionCancel />} />
-          <Route path="/form" element={<Multistep/>} />
+          <Route path="/form" element={<Multistep />} />
           <Route path="/clases" element={<ClasesMembresia />} />
           <Route path="/success2" element={<SubscriptionSuccess2 />} />
           <Route path="/success3" element={<SubscriptionSuccess3 />} />
@@ -58,7 +58,6 @@ function App() {
           <Route path="/dashboard/stadistics" element={<SidebarWithHeader />} />
           <Route path="/dashboard/comments" element={<SidebarWithHeader />} />
           <Route path="/dashboard/classes" element={<SidebarWithHeader />} />
-          <Route path="/perfil" element={<Perfil />} />
         </Routes>
         {showNavbarAndFooter && <SmallCentered />}
       </div>

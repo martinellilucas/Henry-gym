@@ -7,14 +7,20 @@ const About = () => {
   return (
     <div className={style.container}>
       <h1 className={style.title}>About Us</h1>
-      <p className={style.text}>
-      We are an organization dedicated to helping people improve their health and well-being through physical exercise. 
-      Our primary goal is to provide a safe and comfortable space for our members to exercise and achieve their fitness goals. 
-      In addition to the facilities, we also offer personalized training services, group classes, nutrition and counseling to help our members 
-      achieve their goals. We believe that exercise is essential to maintaining a healthy and balanced life, and our team is made up of health 
-      and fitness experts who are committed to helping our members reach their full potential.
-
-      </p>
+      <hr></hr>
+      <div className={style.txtContainer}>
+        <p className={style.text}>
+          We are an organization dedicated to helping people improve their
+          health and well-being through physical exercise. Our primary goal is
+          to provide a safe and comfortable space for our members to exercise
+          and achieve their fitness goals. In addition to the facilities, we
+          also offer personalized training services, group classes, nutrition
+          and counseling to help our members achieve their goals. We believe
+          that exercise is essential to maintaining a healthy and balanced life,
+          and our team is made up of health and fitness experts who are
+          committed to helping our members reach their full potential.
+        </p>
+      </div>
       <div className={style.imgContainer}>
         <div>
           <img src={Vic} alt="Personal Trainer Vic" className={style.img} />

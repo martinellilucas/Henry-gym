@@ -12,6 +12,7 @@ const SubscriptionSuccess3 = () => {
   const service_ID = "service_e9n2sqh";
   const template_ID = "template_34yu2wu";
   const public_key = "vc3WZfsRXvECr-E7P";
+
   const template_params = {
     name: user?.nombre,
     user_email: user?.email,
@@ -27,6 +28,9 @@ const SubscriptionSuccess3 = () => {
       <video className={style.videoContainer} autoPlay muted loop>
         <source src={VideoSilver} type="video/mp4" />
       </video>
+      <a href="/home" className={style.button}>
+        HOME
+      </a>
     </div>
   );
 };

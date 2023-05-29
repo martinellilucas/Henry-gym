@@ -1,5 +1,4 @@
 .containerReviews {
-  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 2.5rem;
   display: flex;
@@ -8,19 +7,43 @@
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* Define dos columnas de igual tamaño */
-  grid-gap: 20px; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(4, 1fr); /* Define 4 columnas de igual tamaño */
+  grid-gap: 1rem; /* Espacio entre las tarjetas */
 }
-
-.reviews {
-  font-family: "Titillium Web", sans-serif;
+.title {
+  font-size: 5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #28242b;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .postBoton {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .postBoton {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 850px) {
+  .title {
+    font-size: 2em;
+  }
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

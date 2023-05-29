@@ -15,6 +15,8 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  Button,
+  Divider,
 } from "@chakra-ui/react";
 import { FiCompass, FiMenu } from "react-icons/fi";
 import Logo from "../../assets/logo.png";
@@ -32,6 +34,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
 import { banUser } from "../../redux/Actions/index";
+import Swal from "sweetalert2";
 
 const LinkItems = [
   {
@@ -165,6 +168,7 @@ const NavItem = ({ icon, children, url, ...rest }) => {
         )}
         {children}
       </Flex>
+      <Divider></Divider>
     </Link>
   );
 };
@@ -183,6 +187,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
+      <Divider orientation="vertical" marginRight={"30px"}></Divider>
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
@@ -230,31 +235,84 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
   const dispatch = useDispatch();
   const handleBan = (item) => {
-    if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
-    else dispatch(banUser(item?.email, { isBanned: true }));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are going to ban/unban the user",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ban the user!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Banned", "The user has been banned/unbanned", "success");
+        if (item?.isBanned) dispatch(banUser(item?.email, { isBanned: false }));
+        else dispatch(banUser(item?.email, { isBanned: true }));
+      }
+    });
   };
 
   const handleAdmin = (item) => {
-    if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
-    else dispatch(adminUser(item?.email, { isAdmin: true }));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You about to make a user admin or remove his admin privileges",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, do it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Done", "The user is / is not now an admin", "success");
+        if (item?.isAdmin) dispatch(adminUser(item?.email, { isAdmin: false }));
+        else dispatch(adminUser(item?.email, { isAdmin: true }));
+      }
+    });
   };
   const handleBanComent = (item) => {
-    if (item?.isBanned) {
-      dispatch(banComentario(item?.id, { isBanned: false }));
-    } else {
-      dispatch(banComentario(item?.id, { isBanned: true }));
-      dispatch(banUser(item?.emailCliente, { isBanned: true }));
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ban it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Deleted!",
+          "The comment is not visible in the page and the user has been banned",
+          "success"
+        );
+        if (item?.isBanned) {
+          dispatch(banComentario(item?.id, { isBanned: false }));
+        } else {
+          dispatch(banComentario(item?.id, { isBanned: true }));
+          dispatch(banUser(item?.emailCliente, { isBanned: true }));
+        }
+      }
+    });
   };
   return (
     <Box className={style.container}>
-      <Text className={style.text1} fontSize="5xl" fontWeight="bold">
-        Admin's Dashboard
-        <button className={style.refreshButton} onClick={refreshPage}>
+      <div className={style.titleContainer}>
+        <Text className={style.title}>Admin's Dashboard</Text>
+
+        <Button
+          colorScheme="blue"
+          className={style.refreshButton}
+          onClick={refreshPage}
+        >
           Refresh Data
-        </button>
-      </Text>
-      {pathname === "/dashboard/stadistics" ? (
+        </Button>
+      </div>
+      <Divider
+        marginTop={"50px"}
+        w={"80%"}
+        border={"5px solid white"}
+      ></Divider>
+      {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
         <>
           <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
             Membership stadistics:
@@ -314,18 +372,15 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                     <td>{item.isBanned.toString()}</td>
                     <td>{item.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
-                      <button
-                        className={style.button3}
-                        onClick={() => handleBan(item)}
-                      >
+                      <Button colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
-                      </button>
-                      <button
-                        className={style.button3}
+                      </Button>
+                      <Button
+                        colorScheme="green"
                         onClick={() => handleAdmin(item)}
                       >
-                        ADM
-                      </button>
+                        ADMIN
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -391,12 +446,12 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                     <textarea disabled={true}>{item.texto}</textarea>
                     <td>{item.isBanned.toString()}</td>
                     <td>
-                      <button
+                      <Button
                         onClick={() => handleBanComent(item)}
-                        className={style.button3}
+                        colorScheme="red"
                       >
                         BAN
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}

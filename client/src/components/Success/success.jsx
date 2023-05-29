@@ -28,9 +28,10 @@ const SubscriptionSuccess = () => {
         <source src={VideoPlatino} type="video/mp4" />
       </video>
 
-
-    <a href="/perfil" className={style.button}> Select your classes! </a>
-
+      <a href="/home" className={style.button}>
+        {" "}
+        Select your classes{" "}
+      </a>
     </div>
   );
 };

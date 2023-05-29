@@ -22,3 +22,16 @@
   color: rgb(10, 10, 10, 0.6);
   font-size: 0.8em;
 }
+@media screen and (max-width: 800px) {
+  .span {
+    display: none;
+  }
+  .btnContainer {
+    top: 90%;
+    width: 60px;
+    height: 60px;
+  }
+  .chat {
+    top: 35%;
+  }
+}

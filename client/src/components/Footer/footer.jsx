@@ -11,7 +11,7 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-
+import style from "./Footer.module.css";
 const SocialButton = ({ children, label, href }) => {
   return (
     <chakra.button
@@ -54,9 +54,11 @@ export default function SmallCentered() {
         spacing={4}
       >
         <Box alignItems={"center"} as={Stack}>
-          <Text>Opening hours: </Text>
-          <Text>Monday to Friday from 6:30 to 22:30</Text>
-          <Text> Saturday from 9:00 to 12:00 </Text>
+          <Text className={style.schudle}>Opening hours: </Text>
+          <Text className={style.schudle}>
+            Monday to Friday from 6:30 to 22:30
+          </Text>
+          <Text className={style.schudle}> Saturday from 9:00 to 12:00 </Text>
         </Box>
         <Box as={Stack} alignItems={"center"}>
           <Stack
@@ -73,23 +75,24 @@ export default function SmallCentered() {
               w="80px"
               src={Logo}
               background="white"
+              className={style.logo}
             />
             <Link
               as="a"
               href="/about"
               color="white"
-              fontWeight="bold"
               textDecoration="none"
               bg="grey"
               _hover={{ bg: "blue.600" }}
               _active={{ bg: "blue.700" }}
               _focus={{ boxShadow: "outline" }}
               borderRadius="8px"
-              height="max-content"
-              px={4}
-              py={2}
+              px={3}
+              py={1}
+              display="flex"
+              justifyContent={"center"}
             >
-              ABOUT
+              <span className={style.button}>ABOUT</span>
             </Link>
           </Stack>
         </Box>
@@ -104,12 +107,12 @@ export default function SmallCentered() {
           as={Stack}
           maxW={"6xl"}
           py={4}
-          direction={{ base: "column", md: "row" }}
+          direction={{ base: "row" }}
           spacing={4}
-          justify={{ base: "center", md: "space-between" }}
+          justify={{ base: "space-evenly" }}
           align={{ base: "center", md: "center" }}
         >
-          <Text>© Henry's gym</Text>
+          <Text className={style.schudle}>© Henry's gym</Text>
           <Stack direction={"row"} spacing={6}>
             <SocialButton
               _hover={{ bg: "blue.600" }}

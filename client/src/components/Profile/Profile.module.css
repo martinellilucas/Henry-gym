@@ -2,13 +2,13 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid royalblue;
+  border: 2px solid #28242b;
   margin-right: 30px;
   cursor: pointer;
 }
 
 .innerImg {
-  --color: royalblue; /* the color of the border */
+  --color: #28242b; /* the color of the border */
   --border: 5px; /* the thickness of the border */
   --offset: 30px; /* control the movement of the border */
   --gap: 5px; /* the gap on hover */
@@ -58,7 +58,4 @@ img:hover {
 .text {
   font-size: 1em;
   font-weight: lighter;
-}
-.body {
-  font-family: "Titillium Web", sans-serif;
 }

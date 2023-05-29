@@ -10,8 +10,9 @@ import {
   Button,
 } from "@material-ui/core";
 import styles from "./PostComment.module.css";
+import { useToast } from "@chakra-ui/react";
 
-export default function PostComment({ onPostComment }) {
+export default function PostComment({ onPostComment, usuario }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [clase, setClase] = useState("");
@@ -19,20 +20,16 @@ export default function PostComment({ onPostComment }) {
   const [placeholder, setPlaceholder] = useState("Agregue su comentario");
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-
-  const { isAuthenticated, user, loginWithRedirect } = useAuth0(); // Obtener la información del usuario autenticado
+  const toast = useToast();
+  const { isAuthenticated, user } = useAuth0(); // Obtener la información del usuario autenticado
   const classes = useSelector((state) => state.clases);
   const uniqueClasses = classes
     ? [...new Set(classes.map((clase) => clase.nombre))]
     : [];
 
-  //console.log(classes)
-  //console.log(uniqueClasses);
-
   const handleInputChange = (e) => {
     // Maneja el cambio en el valor del area del texto
     setTexto(e.target.value);
-    // console.log(texto)
   };
 
   const handleInputFocus = () => {
@@ -49,7 +46,16 @@ export default function PostComment({ onPostComment }) {
 
   const handleOpen = () => {
     // Maneja la apertura del diálogo
-    setOpen(true);
+    if (usuario?.isBanned) {
+      toast({
+        title: "You are banned",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -91,6 +97,7 @@ export default function PostComment({ onPostComment }) {
         clase: clase,
         texto: texto,
       };
+
       dispatch(postComentario(comentario)).then(() => {
         handleClose();
         onPostComment();
@@ -99,9 +106,19 @@ export default function PostComment({ onPostComment }) {
       setClase("");
       setTexto("");
       setSubmitted(false);
+      toast({
+        title: "Thank you",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } else {
-      alert("Debes estar logeado.");
-      //loginWithRedirect();
+      toast({
+        title: "You are not logged in",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

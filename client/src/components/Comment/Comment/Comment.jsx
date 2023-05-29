@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import CardComment from "../CardComment/CardComment";
 import PostComment from "../CrearComment/PostComment";
 import { getComentarios } from "../../../redux/Actions";
-
 import styles from "./Comment.module.css";
 
-export default function Comment() {
+export default function Comment({ usuario }) {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comentarios);
-  console.log(comments);
 
   const handlePostComment = () => {
     dispatch(getComentarios()); // Actualiza los comentarios después de agregar uno nuevo
@@ -22,10 +20,10 @@ export default function Comment() {
   return (
     <div>
       <div className={styles.containerReviews}>
-        <h2 className={styles.reviews}>REVIEWS</h2>
+        <h2 className={styles.title}>REVIEWS</h2>
       </div>
       <div className={styles.postBoton}>
-        <PostComment onPostComment={handlePostComment} />
+        <PostComment usuario={usuario} onPostComment={handlePostComment} />
       </div>
 
       <div className={styles.container}>

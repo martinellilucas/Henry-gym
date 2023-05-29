@@ -1,37 +1,52 @@
-.div2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 74.9vh;
+.div2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 74.9vh;
 }
 
-.videoContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
 }
 
-.videoContainer video{
-    width: 80%;
-    height: auto;
+.videoContainer video {
+  width: 80%;
+  height: auto;
 }
 
 .button {
-    background-color: gray;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    transition-duration: 0.4s;
-    cursor: pointer;
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.button:hover {
+  background-color: lightgray;
+}
+
+@media screen and (max-width: 1150px) {
+  .videoContainer {
+    width: 60%;
   }
-  
-  .button:hover {
-    background-color: lightgray;
+  .button {
+    font-size: 1em;
   }
+}
+@media screen and (max-width: 1150px) {
+  .div2 {
+    flex-direction: column;
+  }
+}

@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   item1,
@@ -26,7 +25,6 @@ import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import style from "./Membresia.module.css";
-// import { NavLink } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
 const apiKey =
@@ -42,19 +40,7 @@ const getStripe = () => {
 };
 
 function PriceWrapper({ children }) {
-  return (
-    <Box
-      width="25%"
-      mb={4}
-      shadow="base"
-      borderWidth="1px"
-      alignSelf={{ base: "center", lg: "flex-start" }}
-      borderColor={useColorModeValue("gray.200", "gray.500")}
-      borderRadius={"xl"}
-    >
-      {children}
-    </Box>
-  );
+  return <Box className={style.body}>{children}</Box>;
 }
 const redirectToCheckoutsilver = async (item1) => {
   console.log("redirectToCheckout");
@@ -78,24 +64,10 @@ const redirectToCheckoutplatinum = async (item3) => {
 export default function ThreeTierPricing() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
-    <Box className={style.body} py={12}>
+    <Box className={style.threeTier} py={4}>
       <VStack spacing={2} textAlign="center">
-        <Heading
-          fontFamily='"Titillium Web", sans-serif'
-          as="h1"
-          fontSize="5xl"
-          fontWeight="bolder"
-          textAlign="center"
-        >
-          JOIN ONE OF OUR PLANS!
-        </Heading>
-        <Text
-          fontFamily='"Titillium Web", sans-serif'
-          textAlign="center"
-          fontSize="lg"
-          fontWeight="bolder"
-          color={"gray.500"}
-        >
+        <Heading className={style.title}>JOIN ONE OF OUR PLANS!</Heading>
+        <Text className={style.subtitle}>
           Choose the one that best suits you and start right away!
         </Text>
       </VStack>
@@ -107,7 +79,7 @@ export default function ThreeTierPricing() {
         py={10}
       >
         <PriceWrapper>
-          <Box py={4} px={12}>
+          <Box className={style.topCard}>
             <Text fontWeight="500" fontSize="2xl">
               Silver
             </Text>
@@ -131,9 +103,9 @@ export default function ThreeTierPricing() {
             </HStack>
           </Box>
           <VStack
-            bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
+            className={style.bottomCard}
             borderBottomRadius={"xl"}
+            bg={useColorModeValue("gray.50", "gray.700")}
           >
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
@@ -178,7 +150,6 @@ export default function ThreeTierPricing() {
                 textTransform="uppercase"
                 bg={useColorModeValue("red.300", "red.700")}
                 px={3}
-                py={1}
                 color={useColorModeValue("gray.900", "gray.300")}
                 fontSize="sm"
                 fontWeight="600"
@@ -187,7 +158,7 @@ export default function ThreeTierPricing() {
                 Most popular
               </Text>
             </Box>
-            <Box py={4} px={12}>
+            <Box className={style.topCard}>
               <Text fontWeight="500" fontSize="2xl">
                 Gold
               </Text>
@@ -212,8 +183,8 @@ export default function ThreeTierPricing() {
             </Box>
             <VStack
               bg={useColorModeValue("gray.50", "gray.700")}
-              py={4}
               borderBottomRadius={"xl"}
+              className={style.bottomCard}
             >
               <List spacing={3} textAlign="start" px={12}>
                 <ListItem>
@@ -250,7 +221,7 @@ export default function ThreeTierPricing() {
           </Box>
         </PriceWrapper>
         <PriceWrapper>
-          <Box py={4} px={12}>
+          <Box className={style.topCard}>
             <Text fontWeight="500" fontSize="2xl">
               Platinum
             </Text>
@@ -275,8 +246,8 @@ export default function ThreeTierPricing() {
           </Box>
           <VStack
             bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
             borderBottomRadius={"xl"}
+            className={style.bottomCard}
           >
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
