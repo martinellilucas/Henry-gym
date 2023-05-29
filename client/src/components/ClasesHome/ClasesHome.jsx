@@ -36,10 +36,14 @@ import {
   assignClaseToCliente,
   getClases,
   getClasexCliente,
+  getUserByEmail,
 } from "../../redux/Actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesHome() {
+  const { user } = useAuth0();
   const [selectedClaseId, setSelectedClaseId] = useState(null);
+  const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const clases = useSelector((state) => state.clases);
@@ -53,8 +57,10 @@ export default function ClasesHome() {
   );
   useEffect(() => {
     dispatch(getClases());
-    dispatch(getClasexCliente(client.id));
+    dispatch(getUserByEmail(user?.email));
   }, [dispatch]);
+
+  console.log(client);
 
   const handleConfirm = (clienteId, claseId) => {
     dispatch(assignClaseToCliente(clienteId, claseId));
@@ -117,7 +123,12 @@ export default function ClasesHome() {
           </Stack>
           <Popover>
             <PopoverTrigger>
-              <Button backgroundColor="#aaaaaa">Subscribe</Button>
+              <Button
+                onClick={() => dispatch(getClasexCliente(client.id))}
+                backgroundColor="#aaaaaa"
+              >
+                Subscribe
+              </Button>
             </PopoverTrigger>
             <PopoverContent>
               <PopoverArrow />
@@ -135,7 +146,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -152,6 +163,7 @@ export default function ClasesHome() {
                     onClick={() => handleConfirm(client.id, selectedClaseId)}
                     mt={4}
                     colorScheme="blue"
+                    isDisabled={clasesxCliente.length >= 2}
                   >
                     Confirm
                   </Button>
@@ -229,7 +241,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -322,7 +334,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -415,7 +427,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -507,7 +519,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}
@@ -600,7 +612,7 @@ export default function ClasesHome() {
                           {clase.dias.map((dia) => {
                             return `${dia} `;
                           })}
-                          {clase.horario}HS
+                          {clase.horario.slice(0, 5)}HS
                         </Radio>
                       );
                     })}

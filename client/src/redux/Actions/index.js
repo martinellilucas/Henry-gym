@@ -19,7 +19,7 @@ export const getClasexCliente = (userId) => {
     );
     dispatch({
       type: GET_CLASES_X_CLIENTE,
-      payload: resp.data,
+      payload: resp.data.Clases,
     });
   };
 };
