@@ -30,6 +30,7 @@ import {
   getClientes,
   getComentarios,
   getUserByEmail,
+  searchClaseByName,
   searchClientByEmail,
   searchComentarioByName,
 } from "../../redux/Actions";
@@ -82,7 +83,7 @@ export default function SidebarWithHeader({ children }) {
   };
   const handleSubmitClase = (e) => {
     e.preventDefault();
-    dispatch(searchClientByEmail(clase));
+    dispatch(searchClaseByName(clase));
   };
   const handleSubmitComentario = (e) => {
     e.preventDefault();
