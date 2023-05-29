@@ -28,9 +28,11 @@ import {
   PopoverBody,
   Radio,
   RadioGroup,
+  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   assignClaseToCliente,
@@ -41,6 +43,9 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesHome() {
+  const initRef = React.useRef();
+  const { onClose } = useDisclosure();
+  const toast = useToast();
   const { user } = useAuth0();
   const [selectedClaseId, setSelectedClaseId] = useState(null);
   const clasesxCliente = useSelector((state) => state.clasesxCliente);
@@ -60,10 +65,22 @@ export default function ClasesHome() {
     dispatch(getUserByEmail(user?.email));
   }, [dispatch]);
 
-  console.log(client);
+  const goldText = clasesxCliente.length >= 1 ? "Max subs reached" : "Confirm";
+  const platText = clasesxCliente.length >= 3 ? "Max subs reached" : "Confirm";
 
   const handleConfirm = (clienteId, claseId) => {
     dispatch(assignClaseToCliente(clienteId, claseId));
+    showToast();
+  };
+
+  const showToast = () => {
+    toast({
+      title: "Subscription Successful",
+      description: "Your subscription has been successfully completed.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const scrollToTop = () => {
@@ -122,54 +139,93 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 08, 2023 ·</Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button
-                onClick={() => dispatch(getClasexCliente(client.id))}
-                backgroundColor="#aaaaaa"
-              >
-                Subscribe
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {crossfit.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
-                    mt={4}
-                    colorScheme="blue"
-                    isDisabled={clasesxCliente.length >= 2}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {crossfit.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>
@@ -222,48 +278,93 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 21, 2023 ·</Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {functional.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    mt={4}
-                    colorScheme="blue"
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {functional.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>
@@ -315,51 +416,97 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 08, 2023 ·</Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {yoga.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    mt={4}
-                    colorScheme="blue"
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {yoga.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>
+
       <Box
         maxW={"445px"}
         w={"55%"}
@@ -408,51 +555,97 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 08, 2023· </Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {zumba.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    mt={4}
-                    colorScheme="blue"
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {zumba.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>
+
       <Box
         maxW={"445px"}
         w={"55%"}
@@ -500,48 +693,93 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 23, 2023 · </Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {pilates.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    mt={4}
-                    colorScheme="blue"
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {pilates.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>
@@ -593,48 +831,93 @@ export default function ClasesHome() {
             <Text color={"gray.500"}>Feb 21, 2023·</Text>
           </Stack>
           <Popover>
-            <PopoverTrigger>
-              <Button backgroundColor={"#aaaaaa"}>Subscribe</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Select your schedule</PopoverHeader>
-              <PopoverBody>
-                <RadioGroup defaultValue={null}>
-                  <Stack spacing={2}>
-                    {musculacion.map((clase) => {
-                      return (
-                        <Radio
-                          value={clase.id}
-                          onChange={(e) => setSelectedClaseId(e.target.value)}
-                        >
-                          {clase.dias.map((dia) => {
-                            return `${dia} `;
-                          })}
-                          {clase.horario.slice(0, 5)}HS
-                        </Radio>
-                      );
-                    })}
-                  </Stack>
-                </RadioGroup>
-                {client?.tipoDeSuscripcion === "Silver" ? (
-                  <NavLink to="/memberships">
-                    <Button mt={4} color="gray.300" backgroundColor="#ac2e2ece">
-                      Upgrade your membership.
-                    </Button>
-                  </NavLink>
-                ) : (
+            {({ onClose }) => (
+              <>
+                <PopoverTrigger>
                   <Button
-                    mt={4}
-                    colorScheme="blue"
-                    onClick={() => handleConfirm(client.id, selectedClaseId)}
+                    onClick={() => dispatch(getClasexCliente(client.id))}
+                    backgroundColor="#aaaaaa"
                   >
-                    Confirm
+                    Subscribe
                   </Button>
-                )}
-              </PopoverBody>
-            </PopoverContent>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Select your schedule</PopoverHeader>
+                  <PopoverBody>
+                    <RadioGroup defaultValue={null}>
+                      <Stack spacing={2}>
+                        {musculacion.map((clase) => {
+                          return (
+                            <Radio
+                              value={clase.id}
+                              onChange={(e) =>
+                                setSelectedClaseId(e.target.value)
+                              }
+                            >
+                              {clase.dias.map((dia) => {
+                                return `${dia} `;
+                              })}
+                              {clase.horario.slice(0, 5)}HS
+                            </Radio>
+                          );
+                        })}
+                      </Stack>
+                    </RadioGroup>
+                    {client?.tipoDeSuscripcion === "Silver" ? (
+                      <NavLink to="/memberships">
+                        <Button
+                          mt={4}
+                          color="gray.300"
+                          backgroundColor="#ac2e2ece"
+                        >
+                          Upgrade your membership.
+                        </Button>
+                      </NavLink>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Gold" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 1
+                        }
+                        ref={initRef}
+                      >
+                        {goldText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {client?.tipoDeSuscripcion === "Platinum" ? (
+                      <Button
+                        onClick={() => {
+                          handleConfirm(client.id, selectedClaseId);
+                          onClose();
+                        }}
+                        mt={4}
+                        colorScheme="blue"
+                        isDisabled={
+                          !selectedClaseId || clasesxCliente.length >= 3
+                        }
+                        ref={initRef}
+                      >
+                        {platText}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
           </Popover>
         </Stack>
       </Box>

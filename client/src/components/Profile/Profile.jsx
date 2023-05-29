@@ -14,6 +14,7 @@ import {
   useDisclosure,
   Heading,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
@@ -67,14 +68,17 @@ const Profile = () => {
               <Text className={style.text}>
                 {clasesxCliente.map((clase) => {
                   return (
-                    <Text value={clase.id}>
-                      {`${clase.nombre}`}: {` `}
-                      {clase.dias.map((dia) => {
-                        return `${dia.slice(0, 3)} `;
-                      })}
-                      {"  at  "}
-                      {clase.horario.slice(0, 5)}HS
-                    </Text>
+                    <Flex key={clase.id} alignItems="center">
+                      <Text value={clase.id}>
+                        {`${clase.nombre}`}: {` `}
+                        {clase.dias.map((dia) => {
+                          return `${dia.slice(0, 3)} `;
+                        })}
+                        {"  at  "}
+                        {clase.horario.slice(0, 5)}HS
+                      </Text>
+                      <Button colorScheme="red">Unsubscribe</Button>
+                    </Flex>
                   );
                 })}
               </Text>
