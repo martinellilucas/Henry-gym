@@ -45,6 +45,7 @@
     transform: rotate(360deg);
   }
 }
+
 @media screen and (max-width: 800px) {
   table {
     width: 100%;

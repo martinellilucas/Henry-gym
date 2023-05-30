@@ -438,7 +438,7 @@ const Contenido = ({
             />
           </div>
           <div className={style.containerListado}>
-            <Box className={style.listadoClients}>
+            <Box>
               <table className={style.tabla}>
                 <thead>
                   <tr>
@@ -500,37 +500,39 @@ const Contenido = ({
               handleSubmit={handleSubmitClase}
             />
           </div>
-          <Box className={style.listado2}>
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Days</th>
-                  <th>Start time</th>
-                  <th>Delete Class</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clases?.map((item, index) => (
-                  <tr key={index}>
-                    <td className={style.class}>
-                      {item?.nombre.toUpperCase()}
-                    </td>
-                    <td className={style.days}>{item?.dias.join(" - ")}</td>
-                    <td className={style.schudle}>{item?.horario}</td>
-                    <td className={style.buttonO}>
-                      <Button
-                        colorScheme="red"
-                        onClick={() => handleDelete(item.id)}
-                      >
-                        DELETE
-                      </Button>
-                    </td>
+          <div className={style.containerListado}>
+            <Box>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Days</th>
+                    <th>Start time</th>
+                    <th>Delete Class</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
+                </thead>
+                <tbody>
+                  {clases?.map((item, index) => (
+                    <tr key={index}>
+                      <td className={style.class}>
+                        {item?.nombre.toUpperCase()}
+                      </td>
+                      <td className={style.days}>{item?.dias.join(" - ")}</td>
+                      <td className={style.schudle}>{item?.horario}</td>
+                      <td className={style.buttonO}>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          DELETE
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Box>
+          </div>
         </>
       ) : (
         <></>
@@ -552,7 +554,7 @@ const Contenido = ({
             />
           </div>
           <div className={style.containerListado}>
-            <Box className={style.listadoClients}>
+            <Box>
               <table className={style.tabla}>
                 <thead>
                   <tr>
