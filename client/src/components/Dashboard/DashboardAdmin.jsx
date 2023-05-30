@@ -26,6 +26,7 @@ import { useLocation } from "react-router-dom";
 import {
   adminUser,
   banComentario,
+  deleteClase,
   getClases,
   getClientes,
   getComentarios,
@@ -335,7 +336,26 @@ const Contenido = ({
       }
     });
   };
-
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Deleted!",
+          "The class has been deleted from the data base",
+          "success"
+        );
+        dispatch(deleteClase(id));
+      }
+    });
+  };
   return (
     <Box className={style.container}>
       <div className={style.titleContainer}>
@@ -459,6 +479,7 @@ const Contenido = ({
                   <th>Name</th>
                   <th>Days</th>
                   <th>Start time</th>
+                  <th>Delete Class</th>
                 </tr>
               </thead>
               <tbody>
@@ -467,6 +488,15 @@ const Contenido = ({
                     <td>{item?.nombre.toUpperCase()}</td>
                     <td>{item?.dias.join(" ")}</td>
                     <td>{item?.horario}</td>
+                    <td className={style.button}>
+                      {" "}
+                      <Button
+                        colorScheme="red"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        DELETE
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
