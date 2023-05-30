@@ -1,6 +1,5 @@
 .boxes {
   display: grid;
-
   grid-template-columns: repeat(3, 250px);
   background-color: #aaaaaa;
 }
@@ -13,6 +12,7 @@
   height: 100%;
   margin-left: 5px;
   margin-right: 5px;
+  width: 55%;
 }
 
 .classImage:hover {
@@ -37,4 +37,19 @@
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  .boxes {
+    width: 100%;
+    height: 100%;
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .boxMargin {
+    width: 90%;
+    margin-top: 10px;
+  }
 }
