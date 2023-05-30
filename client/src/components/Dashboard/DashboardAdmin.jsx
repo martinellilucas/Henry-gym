@@ -191,6 +191,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
+        marginLeft="-100px"
         variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
@@ -313,36 +314,53 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
         border={"5px solid white"}
       ></Divider>
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
-        <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Membership stadistics:
-          </Text>
-          <Box className={style.estadisticas}>
-            <Flex align="center" justify="space-evenly" height="300px">
-              <CircularProgress
-                value={calculoMembresias(clientes, "Silver")}
-                color="gray"
-                size="200px"
-              >
-                <CircularProgressLabel>Sil.</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Gold")}
-                color="gold"
-                size="200px"
-              >
-                <CircularProgressLabel>Gold</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Platinum")}
-                color="teal"
-                size="200px"
-              >
-                <CircularProgressLabel>Plat.</CircularProgressLabel>
-              </CircularProgress>
-            </Flex>
-          </Box>
-        </>
+        <div className={style.titleestadisticas}>
+          <div>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Membership stadistics:
+            </Text>
+          </div>
+          <div>
+            <Box>
+              <Flex align="center" height="300px">
+                
+                <div className={style.circulo}>
+                  
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Silver")}
+                  color="gray"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Sil.</CircularProgressLabel>
+                </CircularProgress>
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Gold")}
+                  color="gold"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Gold</CircularProgressLabel>
+                </CircularProgress>
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Platinum")}
+                  color="teal"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Plat.</CircularProgressLabel>
+                </CircularProgress>
+                </div>
+              </Flex>
+            </Box>
+          </div>
+        </div>
       ) : (
         <></>
       )}
