@@ -219,6 +219,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
+        marginLeft="-100px"
         variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
@@ -400,42 +401,58 @@ const Contenido = ({
           Refresh Data
         </Button>
       </div>
+
       <Divider
         marginTop={"50px"}
         w={"80%"}
         border={"5px solid white"}
       ></Divider>
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
-        <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Membership stadistics:
-          </Text>
-          <Box className={style.estadisticas}>
-            <Flex align="center" justify="space-evenly" height="300px">
-              <CircularProgress
-                value={calculoMembresias(clientes, "Silver")}
-                color="gray"
-                size="200px"
-              >
-                <CircularProgressLabel>Sil.</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Gold")}
-                color="gold"
-                size="200px"
-              >
-                <CircularProgressLabel>Gold</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Platinum")}
-                color="teal"
-                size="200px"
-              >
-                <CircularProgressLabel>Plat.</CircularProgressLabel>
-              </CircularProgress>
-            </Flex>
-          </Box>
-        </>
+        <div className={style.titleestadisticas}>
+          <div>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Membership stadistics:
+            </Text>
+          </div>
+          <div>
+            <Box>
+              <Flex align="center" height="300px">
+                <div className={style.circulo}>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Silver")}
+                    color="gray"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Sil.</CircularProgressLabel>
+                  </CircularProgress>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Gold")}
+                    color="gold"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Gold</CircularProgressLabel>
+                  </CircularProgress>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Platinum")}
+                    color="teal"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Plat.</CircularProgressLabel>
+                  </CircularProgress>
+                </div>
+              </Flex>
+            </Box>
+          </div>
+        </div>
       ) : (
         <></>
       )}
@@ -451,7 +468,9 @@ const Contenido = ({
               handleSubmit={handleSubmitClient}
             />
           </div>
-          <Box className={style.listado}>
+
+       <div className={style.containerListado}>
+          <Box >
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -508,6 +527,8 @@ const Contenido = ({
 
 
           </Box>
+</div>
+
         </>
       ) : (
         <></>
@@ -524,36 +545,39 @@ const Contenido = ({
               handleSubmit={handleSubmitClase}
             />
           </div>
-          <Box className={style.listado}>
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Days</th>
-                  <th>Start time</th>
-                  <th>Delete Class</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clases?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item?.nombre.toUpperCase()}</td>
-                    <td>{item?.dias.join(" ")}</td>
-                    <td>{item?.horario}</td>
-                    <td className={style.button}>
-                      {" "}
-                      <Button
-                        colorScheme="red"
-                        onClick={() => handleDelete(item.id)}
-                      >
-                        DELETE
-                      </Button>
-                    </td>
+          <div className={style.containerListado}>
+            <Box>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Days</th>
+                    <th>Start time</th>
+                    <th>Delete Class</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
+                </thead>
+                <tbody>
+                  {clases?.map((item, index) => (
+                    <tr key={index}>
+                      <td className={style.class}>
+                        {item?.nombre.toUpperCase()}
+                      </td>
+                      <td className={style.days}>{item?.dias.join(" - ")}</td>
+                      <td className={style.schudle}>{item?.horario}</td>
+                      <td className={style.buttonO}>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          DELETE
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Box>
+          </div>
         </>
       ) : (
         <></>
@@ -561,7 +585,11 @@ const Contenido = ({
       {pathname === "/dashboard/comments" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+            <Text
+              className={style.commentsList}
+              fontSize="2xl"
+              fontWeight="bold"
+            >
               Clients Comments:
             </Text>
             <Search
@@ -570,39 +598,46 @@ const Contenido = ({
               handleSubmit={handleSubmitComentario}
             />
           </div>
-          <Box className={style.listado}>
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Class</th>
-                  <th>Comment</th>
-                  <th>Is Banned</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comentarios?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item?.nombreCliente}</td>
-                    <td>{item?.emailCliente}</td>
-                    <td>{item.nombreClase}</td>
-                    <textarea disabled={true}>{item?.texto}</textarea>
-                    <td>{item?.isBanned.toString()}</td>
-                    <td>
-                      <Button
-                        onClick={() => handleBanComent(item)}
-                        colorScheme="red"
-                      >
-                        BAN
-                      </Button>
-                    </td>
+          <div className={style.containerListado}>
+            <Box>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Class</th>
+                    <th>Comment</th>
+                    <th>Is Banned</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
+                </thead>
+                <tbody>
+                  {comentarios?.map((item, index) => (
+                    <tr key={index}>
+                      <td className={style.user}>{item?.nombreCliente}</td>
+                      <td className={style.email}>{item?.emailCliente}</td>
+                      <td className={style.class}>{item.nombreClase}</td>
+
+                      <td className={style.comment}>
+                        <textarea disabled={true}>{item?.texto}</textarea>
+                      </td>
+                      <td className={style.isBanned}>
+                        {item?.isBanned.toString()}
+                      </td>
+                      <td className={style.buttonO}>
+                        <Button
+                          onClick={() => handleBanComent(item)}
+                          colorScheme="red"
+                        >
+                          BAN
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Box>
+          </div>
         </>
       ) : (
         <></>
