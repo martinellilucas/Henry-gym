@@ -50,52 +50,16 @@
   width: 100%;
   font-family: "Titillium Web", sans-serif;
 }
-.containerListado {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding: 0px 0px 0px 0px;
-}
-
-.listado {
-  width: 80%;
-  height: 100%;
-  font-family: "Titillium Web", sans-serif;
-  border-radius: 50px;
-  border-color: black;
-  font-size: 1.5rem;
-  margin-top: 2%;
-  display: flex;
-  margin: 0;
-  justify-content: center;
-}
-.listado2 {
-  width: 80%;
-  height: 100%;
-  font-family: "Titillium Web", sans-serif;
-  border-radius: 50px;
-  border-color: black;
-  font-size: 1.5rem;
-  margin-top: 2%;
-  display: flex;
-  margin: 0;
-  justify-content: center;
-}
 
 .tabla {
   border-collapse: collapse;
-  width: 80%;
   font-family: "Titillium Web", sans-serif;
 }
 
 .tabla th,
 .tabla td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ddd;
   font-family: "Titillium Web", sans-serif;
 }
@@ -130,7 +94,6 @@
   background-color: #3e8e41;
 }
 
-
 .circulo {
   display: flex;
   width: 100%;
@@ -141,7 +104,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-
   .container {
     min-height: 100vh;
     display: block;
@@ -159,28 +121,43 @@
   .circulo {
     display: block;
   }
-  .containerListado {
-    overflow-y: auto;
+  .user:nth-of-type(1):before {
+    content: "NAME";
   }
-  .listadoClients {
-    font-size: 0.9rem;
-    margin-top: 1%;
-    margin-right: 0%;
-    width: 100%;
-    display: block;
+  .email:nth-of-type(2):before {
+    content: "EMAIL";
   }
-  .listado2 {
-    font-size: 0.9rem;
-    margin-top: 1%;
-    margin-right: 0%;
-    width: 100%;
-    display: flex;
+  .suscription:nth-of-type(3):before {
+    content: "SUSCRIPTION";
   }
-  .clientList {
-    align-items: center;
-    display: flex;
+  .isBanned:nth-of-type(4):before {
+    content: "IS BANNED";
   }
-  .commentsList{
-    width: 40%;
+  .isAdmin:nth-of-type(5):before {
+    content: "IS ADMIN";
+  }
+  .buttonO:nth-of-type(6):before {
+    content: "ACTIONS";
+  }
+  .class:nth-of-type(1):before {
+    content: "CLASS";
+  }
+  .class:nth-of-type(3):before {
+    content: "CLASS";
+  }
+  .days:nth-of-type(2):before {
+    content: "DAYS";
+  }
+  .schudle:nth-of-type(3):before {
+    content: "START TIME";
+  }
+  .comment:nth-of-type(4):before {
+    content: "COMMENT";
+  }
+  .isBanned:nth-of-type(5):before {
+    content: "IS BANNED";
+  }
+  .buttonO:nth-of-type(4):before {
+    content: "ACTIONS";
   }
 }

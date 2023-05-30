@@ -371,11 +371,10 @@ const Contenido = ({
         </Button>
       </div>
 
-      <Divider 
+      <Divider
         marginTop={"50px"}
         w={"80%"}
         border={"5px solid white"}
-
       ></Divider>
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
         <div className={style.titleestadisticas}>
@@ -387,39 +386,37 @@ const Contenido = ({
           <div>
             <Box>
               <Flex align="center" height="300px">
-                
                 <div className={style.circulo}>
-                  
-                <CircularProgress
-                  value={calculoMembresias(clientes, "Silver")}
-                  color="gray"
-                  size="200px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <CircularProgressLabel>Sil.</CircularProgressLabel>
-                </CircularProgress>
-                <CircularProgress
-                  value={calculoMembresias(clientes, "Gold")}
-                  color="gold"
-                  size="200px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <CircularProgressLabel>Gold</CircularProgressLabel>
-                </CircularProgress>
-                <CircularProgress
-                  value={calculoMembresias(clientes, "Platinum")}
-                  color="teal"
-                  size="200px"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <CircularProgressLabel>Plat.</CircularProgressLabel>
-                </CircularProgress>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Silver")}
+                    color="gray"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Sil.</CircularProgressLabel>
+                  </CircularProgress>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Gold")}
+                    color="gold"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Gold</CircularProgressLabel>
+                  </CircularProgress>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Platinum")}
+                    color="teal"
+                    size="200px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <CircularProgressLabel>Plat.</CircularProgressLabel>
+                  </CircularProgress>
                 </div>
               </Flex>
             </Box>
@@ -441,43 +438,51 @@ const Contenido = ({
             />
           </div>
           <div className={style.containerListado}>
-          <Box className={style.listadoClients}>
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Suscription</th>
-                  <th>Is Banned</th>
-                  <th>Is Admin</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clientes?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item?.nombre}</td>
-                    <td>{item?.email}</td>
-                    <td>{item?.tipoDeSuscripcion}</td>
-                    <td>{item?.isBanned.toString()}</td>
-                    <td>{item?.isAdmin.toString()}</td>
-                    <td className={style.buttonO}>
-                      <Button  colorScheme="red" onClick={() => handleBan(item)}>
-                        BAN
-                      </Button>
-                      <Button 
-                        colorScheme="green"
-                        onClick={() => handleAdmin(item)}
-                      >
-                        ADMIN
-                      </Button>
-                    </td>
+            <Box className={style.listadoClients}>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Suscription</th>
+                    <th>Is Banned</th>
+                    <th>Is Admin</th>
+                    <th>Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
-
+                </thead>
+                <tbody>
+                  {clientes?.map((item, index) => (
+                    <tr key={index}>
+                      <td className={style.user}>{item?.nombre}</td>
+                      <td className={style.email}>{item?.email}</td>
+                      <td className={style.suscription}>
+                        {item?.tipoDeSuscripcion}
+                      </td>
+                      <td className={style.isBanned}>
+                        {item?.isBanned.toString()}
+                      </td>
+                      <td className={style.isAdmin}>
+                        {item?.isAdmin.toString()}
+                      </td>
+                      <td className={style.buttonO}>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => handleBan(item)}
+                        >
+                          BAN
+                        </Button>
+                        <Button
+                          colorScheme="green"
+                          onClick={() => handleAdmin(item)}
+                        >
+                          ADMIN
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Box>
           </div>
         </>
       ) : (
@@ -508,11 +513,12 @@ const Contenido = ({
               <tbody>
                 {clases?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item?.nombre.toUpperCase()}</td>
-                    <td>{item?.dias.join(" ")}</td>
-                    <td>{item?.horario}</td>
-                    <td className={style.button}>
-                      {" "}
+                    <td className={style.class}>
+                      {item?.nombre.toUpperCase()}
+                    </td>
+                    <td className={style.days}>{item?.dias.join(" - ")}</td>
+                    <td className={style.schudle}>{item?.horario}</td>
+                    <td className={style.buttonO}>
                       <Button
                         colorScheme="red"
                         onClick={() => handleDelete(item.id)}
@@ -532,7 +538,11 @@ const Contenido = ({
       {pathname === "/dashboard/comments" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.commentsList} fontSize="2xl" fontWeight="bold">
+            <Text
+              className={style.commentsList}
+              fontSize="2xl"
+              fontWeight="bold"
+            >
               Clients Comments:
             </Text>
             <Search
@@ -542,39 +552,44 @@ const Contenido = ({
             />
           </div>
           <div className={style.containerListado}>
-          <Box className={style.listadoClients}>
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Class</th>
-                  <th>Comment</th>
-                  <th>Is Banned</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comentarios?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item?.nombreCliente}</td>
-                    <td>{item?.emailCliente}</td>
-                    <td>{item.nombreClase}</td>
-                    <textarea disabled={true}>{item?.texto}</textarea>
-                    <td>{item?.isBanned.toString()}</td>
-                    <td>
-                      <Button
-                        onClick={() => handleBanComent(item)}
-                        colorScheme="red"
-                      >
-                        BAN
-                      </Button>
-                    </td>
+            <Box className={style.listadoClients}>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Class</th>
+                    <th>Comment</th>
+                    <th>Is Banned</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
+                </thead>
+                <tbody>
+                  {comentarios?.map((item, index) => (
+                    <tr key={index}>
+                      <td className={style.user}>{item?.nombreCliente}</td>
+                      <td className={style.email}>{item?.emailCliente}</td>
+                      <td className={style.class}>{item.nombreClase}</td>
+
+                      <td className={style.comment}>
+                        <textarea disabled={true}>{item?.texto}</textarea>
+                      </td>
+                      <td className={style.isBanned}>
+                        {item?.isBanned.toString()}
+                      </td>
+                      <td className={style.buttonO}>
+                        <Button
+                          onClick={() => handleBanComent(item)}
+                          colorScheme="red"
+                        >
+                          BAN
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Box>
           </div>
         </>
       ) : (
