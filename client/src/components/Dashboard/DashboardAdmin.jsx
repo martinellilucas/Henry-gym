@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./DashboardAdmin.module.css";
 import {
   IconButton,
@@ -30,11 +30,15 @@ import {
   getClientes,
   getComentarios,
   getUserByEmail,
+  searchClaseByName,
+  searchClientByEmail,
+  searchComentarioByName,
 } from "../../redux/Actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { calculoMembresias } from "./calculoMembresias";
 import { banUser } from "../../redux/Actions/index";
 import Swal from "sweetalert2";
+import Search from "./Search/Search";
 
 const LinkItems = [
   {
@@ -61,9 +65,11 @@ export default function SidebarWithHeader({ children }) {
   const clientes = useSelector((state) => state.clientes);
   const comentarios = useSelector((state) => state.comentarios);
   const clases = useSelector((state) => state.clases);
+  const [client, setClient] = useState("");
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  console.log(LinkItems);
+  const [clase, setClase] = useState("");
+  const [comentario, setComentario] = useState("");
   useEffect(() => {
     dispatch(getClientes());
     dispatch(getUserByEmail(user?.email));
@@ -71,6 +77,18 @@ export default function SidebarWithHeader({ children }) {
     dispatch(getClases());
   }, [dispatch, user?.email]);
 
+  const handleSubmitClient = (e) => {
+    e.preventDefault();
+    dispatch(searchClientByEmail(client));
+  };
+  const handleSubmitClase = (e) => {
+    e.preventDefault();
+    dispatch(searchClaseByName(clase));
+  };
+  const handleSubmitComentario = (e) => {
+    e.preventDefault();
+    dispatch(searchComentarioByName(comentario));
+  };
   return (
     <Box minH="100vh" bg={useColorModeValue("red.100", "gray.900")}>
       <SidebarContent
@@ -99,6 +117,15 @@ export default function SidebarWithHeader({ children }) {
         comentarios={comentarios}
         clases={clases}
         pathname={pathname}
+        client={client}
+        setClient={setClient}
+        handleSubmitClient={handleSubmitClient}
+        clase={clase}
+        setClase={setClase}
+        handleSubmitClase={handleSubmitClase}
+        comentario={comentario}
+        setComentario={setComentario}
+        handleSubmitComentario={handleSubmitComentario}
       />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
@@ -228,12 +255,26 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
   );
 };
 
-const Contenido = ({ clientes, comentarios, clases, pathname }) => {
+const Contenido = ({
+  clientes,
+  comentarios,
+  clases,
+  pathname,
+  client,
+  setClient,
+  handleSubmitClient,
+  clase,
+  setClase,
+  handleSubmitClase,
+  comentario,
+  setComentario,
+  handleSubmitComentario,
+}) => {
   function refreshPage() {
     window.location.reload(false);
   }
-
   const dispatch = useDispatch();
+
   const handleBan = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -294,6 +335,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       }
     });
   };
+
   return (
     <Box className={style.container}>
       <div className={style.titleContainer}>
@@ -348,9 +390,16 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       )}
       {pathname === "/dashboard/clients" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Clients List:
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Clients List:
+            </Text>
+            <Search
+              search={client}
+              setSearch={setClient}
+              handleSubmit={handleSubmitClient}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
@@ -366,11 +415,11 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               <tbody>
                 {clientes?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombre}</td>
-                    <td>{item.email}</td>
-                    <td>{item.tipoDeSuscripcion}</td>
-                    <td>{item.isBanned.toString()}</td>
-                    <td>{item.isAdmin.toString()}</td>
+                    <td>{item?.nombre}</td>
+                    <td>{item?.email}</td>
+                    <td>{item?.tipoDeSuscripcion}</td>
+                    <td>{item?.isBanned.toString()}</td>
+                    <td>{item?.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
                       <Button colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
@@ -393,9 +442,16 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       )}
       {pathname === "/dashboard/classes" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Classes
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Classes:
+            </Text>
+            <Search
+              search={clase}
+              setSearch={setClase}
+              handleSubmit={handleSubmitClase}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
@@ -408,9 +464,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               <tbody>
                 {clases?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombre.toUpperCase()}</td>
-                    <td>{item.dias.join(" ")}</td>
-                    <td>{item.horario}</td>
+                    <td>{item?.nombre.toUpperCase()}</td>
+                    <td>{item?.dias.join(" ")}</td>
+                    <td>{item?.horario}</td>
                   </tr>
                 ))}
               </tbody>
@@ -422,9 +478,16 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       )}
       {pathname === "/dashboard/comments" ? (
         <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Client Comments
-          </Text>
+          <div className={style.clientSearch}>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Clients Comments:
+            </Text>
+            <Search
+              search={comentario}
+              setSearch={setComentario}
+              handleSubmit={handleSubmitComentario}
+            />
+          </div>
           <Box className={style.listado}>
             <table className={style.tabla}>
               <thead>
@@ -440,11 +503,11 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               <tbody>
                 {comentarios?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombreCliente}</td>
-                    <td>{item.emailCliente}</td>
+                    <td>{item?.nombreCliente}</td>
+                    <td>{item?.emailCliente}</td>
                     <td>{item.nombreClase}</td>
-                    <textarea disabled={true}>{item.texto}</textarea>
-                    <td>{item.isBanned.toString()}</td>
+                    <textarea disabled={true}>{item?.texto}</textarea>
+                    <td>{item?.isBanned.toString()}</td>
                     <td>
                       <Button
                         onClick={() => handleBanComent(item)}

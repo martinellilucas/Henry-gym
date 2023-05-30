@@ -6,8 +6,10 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_NAME_EJERCICIOS = "GET_NAME_EJERCICIOS";
 export const FILTER = "FILTER";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+export const SEARCH_USER_BY_EMAIL = "SEARCH_USER_BY_EMAIL";
+export const SEARCH_CLASE_BY_NAME = "SEARCH_CLASE_BY_NAME";
+export const SEARCH_COMENTARIOS_BY_NAME = "SEARCH_COMENTARIOS_BY_NAME";
 export const GET_CLIENTES = "GET_CLIENTES";
-export const GET_COMMENTS = "GET_COMMENTS";
 export const GET_COMENTARIOS = "GET_COMENTARIOS";
 export const GET_CLASES = "GET_CLASES";
 export const GET_CLASES_X_CLIENTE = "GET_CLASES_X_CLIENTE";
@@ -19,7 +21,7 @@ export const getClasexCliente = (userId) => {
     );
     dispatch({
       type: GET_CLASES_X_CLIENTE,
-      payload: resp.data,
+      payload: resp.data.Clases,
     });
   };
 };
@@ -192,26 +194,45 @@ export const getUserByEmail = (email) => {
     dispatch({ type: GET_USER_BY_EMAIL, payload: response.data });
   };
 };
-
+export const searchClientByEmail = (email) => {
+  if (email.length) {
+    return async function (dispatch) {
+      const response = await axios(
+        `https://henry-gym-production.up.railway.app/cliente/${email}`
+      );
+      dispatch({ type: SEARCH_USER_BY_EMAIL, payload: response.data });
+    };
+  } else {
+    return async function (dispatch) {
+      const response = await axios(
+        `https://henry-gym-production.up.railway.app/cliente`
+      );
+      dispatch({ type: GET_CLIENTES, payload: response.data });
+    };
+  }
+};
+export const searchClaseByName = (name) => {
+  return async function (dispatch) {
+    const response = await axios(
+      `https://henry-gym-production.up.railway.app/clase/${name}`
+    );
+    dispatch({ type: SEARCH_CLASE_BY_NAME, payload: response.data });
+  };
+};
+export const searchComentarioByName = (name) => {
+  return async function (dispatch) {
+    const response = await axios(
+      `https://henry-gym-production.up.railway.app/comentarios/${name}`
+    );
+    dispatch({ type: SEARCH_COMENTARIOS_BY_NAME, payload: response.data });
+  };
+};
 export const getClientes = () => {
   return async function (dispatch) {
     const resp = await axios(
       "https://henry-gym-production.up.railway.app/cliente"
     );
     dispatch({ type: GET_CLIENTES, payload: resp.data });
-  };
-};
-
-export const getComments = () => {
-  return async (dispatch) => {
-    const response = await axios.get(
-      `https://henry-gym-production.up.railway.app/comentarios`
-    );
-    const data = response.data;
-    dispatch({
-      type: GET_COMMENTS,
-      payload: data,
-    });
   };
 };
 

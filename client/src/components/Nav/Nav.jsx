@@ -98,11 +98,6 @@ const Nav = () => {
             </NavLink>
           </BreadcrumbItem>
         )}
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/about">
-            ABOUT
-          </BreadcrumbLink>
-        </BreadcrumbItem>
       </Breadcrumb>
       {!isAuthenticated ? (
         <Button
