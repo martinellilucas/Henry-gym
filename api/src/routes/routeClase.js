@@ -8,8 +8,7 @@ const routeClase = Router();
 
 routeClase.get("/", handlerGetClase);
 routeClase.post("/", handlerPostClase);
-routeClase.delete('/', handlerDeleteClase);
+routeClase.delete("/:id", handlerDeleteClase);
 routeClase.get("/:name", handlerGetClaseByName);
-
 
 module.exports = routeClase;

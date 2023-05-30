@@ -1,12 +1,8 @@
 const { Clase } = require("../db");
 
 const deleteClase = async (id) => {
-  const clase = await Clase.findByPk(id)
-  if(!clase){
-    throw new Error('No se encontró la clase con el ID proporcionado');
-  }
+  const clase = await Clase.destroy({ where: { id: id }, force: true });
 
-  await clase.destroy();
-  return "Clase eliminada";
+  return clase;
 };
 module.exports = deleteClase;

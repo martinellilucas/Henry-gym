@@ -59,8 +59,9 @@
   background-color: #f2f2f2;
 }
 
-.buttonO {
+.button {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   font-family: "Titillium Web", sans-serif;
 }

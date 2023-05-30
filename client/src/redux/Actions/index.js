@@ -235,5 +235,11 @@ export const getClientes = () => {
     dispatch({ type: GET_CLIENTES, payload: resp.data });
   };
 };
-
+export const deleteClase = (id) => {
+  return async function () {
+    await axios.delete(
+      `https://henry-gym-production.up.railway.app/clase/${id}`
+    );
+  };
+};
 export const clearDetail = () => ({ type: CLEAR_DETAIL });

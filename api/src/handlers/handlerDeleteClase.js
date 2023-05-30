@@ -1,14 +1,11 @@
-
 const deleteClase = require("../controllers/deleteClase");
-const handlerDeleteClase = async () =>{
-    try {
-        const {id} = req.params;
-
-        const consulta = await deleteClase(id);
-        return consulta;
-      } catch (error) {
-        throw new Error('Ocurrió un error al eliminar la clase: ' + error.message);
-      }
-}
+const handlerDeleteClase = async (req, res) => {
+  try {
+    const { id } = req.params;
+    res.status(200).json(await deleteClase(id));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = handlerDeleteClase;
