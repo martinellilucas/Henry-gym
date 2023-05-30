@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Profile.module.css";
 import { NavLink } from "react-router-dom";
@@ -14,13 +14,15 @@ import {
   useDisclosure,
   Heading,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByEmail } from "../../redux/Actions";
+import { getClasexCliente, getUserByEmail } from "../../redux/Actions";
 const Profile = () => {
+  const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -40,6 +42,7 @@ const Profile = () => {
           onClick={() => {
             onOpen();
             dispatch(getUserByEmail(user?.email));
+            dispatch(getClasexCliente(client?.id));
           }}
         />
 
@@ -62,6 +65,23 @@ const Profile = () => {
 
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
+              <Text className={style.text}>
+                {clasesxCliente.map((clase) => {
+                  return (
+                    <Flex key={clase.id} alignItems="center">
+                      <Text value={clase.id}>
+                        {`${clase.nombre}`}: {` `}
+                        {clase.dias.map((dia) => {
+                          return `${dia.slice(0, 3)} `;
+                        })}
+                        {"  at  "}
+                        {clase.horario.slice(0, 5)}HS
+                      </Text>
+                      <Button colorScheme="red">Unsubscribe</Button>
+                    </Flex>
+                  );
+                })}
+              </Text>
               <Text className={style.text}>Membership</Text>
               {client?.tipoDeSuscripcion === "Platinum" ? (
                 <img className={style.imgMemb} src={Platino} />
