@@ -431,7 +431,7 @@ const Contenido = ({
       {pathname === "/dashboard/clients" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="normal">
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
               Clients List:
             </Text>
             <Search
