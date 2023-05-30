@@ -18,7 +18,7 @@ import {
   Button,
   Divider,
 } from "@chakra-ui/react";
-import { FiCompass, FiMenu } from "react-icons/fi";
+import { FiCompass, FiLink2, FiMenu } from "react-icons/fi";
 import Logo from "../../assets/logo.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,14 +47,24 @@ const LinkItems = [
     icon: FiCompass,
     url: "https://henrygym.onrender.com/home",
   },
-  { name: "Clients", url: "https://henrygym.onrender.com/dashboard/clients" },
+  {
+    name: "Clients",
+    icon: FiLink2,
+    url: "https://henrygym.onrender.com/dashboard/clients",
+  },
   {
     name: "Membership Stadistics",
+    icon: FiLink2,
     url: "https://henrygym.onrender.com/dashboard/stadistics",
   },
-  { name: "Classes", url: "https://henrygym.onrender.com/dashboard/classes" },
+  {
+    name: "Classes",
+    icon: FiLink2,
+    url: "https://henrygym.onrender.com/dashboard/classes",
+  },
   {
     name: "Comments",
+    icon: FiLink2,
     url: "https://henrygym.onrender.com/dashboard/comments",
   },
 ];
