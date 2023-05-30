@@ -357,16 +357,12 @@ const Contenido = ({
       }
     });
   };
-  
 
-
-
-
-
-  function paginate (array, tamaño) {
-    var result = [];      
-    for (var i = 0; i < array.length; i += tamaño) 
-    { result.push(array.slice(i, i + tamaño));}      
+  function paginate(array, tamaño) {
+    var result = [];
+    for (var i = 0; i < array.length; i += tamaño) {
+      result.push(array.slice(i, i + tamaño));
+    }
     return result;
   }
 
@@ -375,18 +371,12 @@ const Contenido = ({
   const [currentPage, setCurrentPage] = useState(1);
   const pageCount = Math.ceil(allClients.length / pageSize);
 
-
-
   const clientesPaginados = paginate(allClients, pageSize);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
     console.log(clientesPaginados[page - 1]);
   };
-
-  
-
-  
 
   return (
     <Box className={style.container}>
@@ -469,66 +459,77 @@ const Contenido = ({
             />
           </div>
 
-       <div className={style.containerListado}>
-          <Box >
-            <table className={style.tabla}>
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Suscription</th>
-                  <th>Is Banned</th>
-                  <th>Is Admin</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clientesPaginados[currentPage-1]?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item?.nombre}</td>
-                    <td>{item?.email}</td>
-                    <td>{item?.tipoDeSuscripcion}</td>
-                    <td>{item?.isBanned.toString()}</td>
-                    <td>{item?.isAdmin.toString()}</td>
-                    <td className={style.buttonO}>
-                      <Button colorScheme="red" onClick={() => handleBan(item)}>
-                        BAN
-                      </Button>
-                      <Button
-                        colorScheme="green"
-                        onClick={() => handleAdmin(item)}
-                      >
-                        ADMIN
-                      </Button>
-                    </td>
+          <div className={style.containerListado}>
+            <Box>
+              <table className={style.tabla}>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Suscription</th>
+                    <th>Is Banned</th>
+                    <th>Is Admin</th>
+                    <th>Action</th>
                   </tr>
+                </thead>
+                <tbody>
+                  {clientesPaginados[currentPage - 1]?.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item?.nombre}</td>
+                      <td>{item?.email}</td>
+                      <td>{item?.tipoDeSuscripcion}</td>
+                      <td>{item?.isBanned.toString()}</td>
+                      <td>{item?.isAdmin.toString()}</td>
+                      <td className={style.buttonO}>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => handleBan(item)}
+                        >
+                          BAN
+                        </Button>
+                        <Button
+                          colorScheme="green"
+                          onClick={() => handleAdmin(item)}
+                        >
+                          ADMIN
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className={style.pagesContainer}>
+                <Button
+                  colorScheme="blackAlpha"
+                  onClick={() =>
+                    handlePageChange(currentPage === 1 ? 1 : currentPage - 1)
+                  }
+                >
+                  {"<"}
+                </Button>
+
+                {Array.from({ length: pageCount }).map((_, index) => (
+                  <Button
+                    colorScheme="blackAlpha"
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </Button>
                 ))}
-              </tbody>
-            </table>
-            < button className={style.buttonP}
-            onClick={() => handlePageChange( currentPage === 1 ? 1  : currentPage - 1)}
 
-             > Back </button>
-
-            {Array.from({ length: pageCount }).map((_, index) => (
-               <button className={style.buttonP} onClick={() => handlePageChange(index + 1)} >  
-                {index + 1} 
-
-               </button>  ))}
-            
-            
-            
-            < button className={style.buttonP}
-            onClick={() => handlePageChange(currentPage === pageCount ? currentPage : currentPage + 1)}
-            
-            > Next </button>
-
-
-
-
-          </Box>
-</div>
-
+                <Button
+                  colorScheme="blackAlpha"
+                  onClick={() =>
+                    handlePageChange(
+                      currentPage === pageCount ? currentPage : currentPage + 1
+                    )
+                  }
+                >
+                  {">"}
+                </Button>
+              </div>
+            </Box>
+          </div>
         </>
       ) : (
         <></>

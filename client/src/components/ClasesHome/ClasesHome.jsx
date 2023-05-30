@@ -12,13 +12,11 @@ import Entrenador1 from "../../assets/personaltrainer.jpg";
 import {
   Box,
   Center,
-  Heading,
   Text,
   Stack,
   Avatar,
   useColorModeValue,
   Button,
-  Flex,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -29,7 +27,6 @@ import {
   Radio,
   RadioGroup,
   useToast,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -44,7 +41,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ClasesHome() {
   const initRef = React.useRef();
-  const { onClose } = useDisclosure();
+
   const toast = useToast();
   const { user } = useAuth0();
   const [selectedClaseId, setSelectedClaseId] = useState(null);
@@ -63,7 +60,7 @@ export default function ClasesHome() {
   useEffect(() => {
     dispatch(getClases());
     dispatch(getUserByEmail(user?.email));
-  }, [dispatch]);
+  }, [dispatch, user?.email]);
 
   const goldText = clasesxCliente.length >= 1 ? "Max subs reached" : "Confirm";
   const platText = clasesxCliente.length >= 3 ? "Max subs reached" : "Confirm";
