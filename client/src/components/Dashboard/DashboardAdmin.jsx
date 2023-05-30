@@ -370,7 +370,7 @@ const Contenido = ({
   }
 
   const allClients = useSelector((state) => state.clientes);
-  const pageSize = 2;
+  const pageSize = 3;
   const [currentPage, setCurrentPage] = useState(1);
   const pageCount = Math.ceil(allClients.length / pageSize);
 
