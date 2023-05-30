@@ -3,8 +3,18 @@
   width: 20%;
   font-family: "Titillium Web", sans-serif;
 }
+.DashboardAdmin_container__H790\+ {
+  margin: 0;
+}
 .container {
-  margin-left: 15%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0px 0px 0px 0px;
 }
 .titleContainer {
   display: flex;
@@ -13,6 +23,15 @@
   align-items: center;
   margin-top: 50px;
 }
+.titleestadisticas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .title {
   font-size: 5em;
   font-weight: bolder;
@@ -20,25 +39,51 @@
 }
 .refreshButton {
   border: none;
-
   font-family: "Titillium Web", sans-serif;
 }
 .clientSearch {
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: start;
+  justify-content: space-around;
   padding: 1em;
-  width: 80%;
+  width: 100%;
   font-family: "Titillium Web", sans-serif;
+}
+.containerListado {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0px 0px 0px 0px;
 }
 
 .listado {
-  width: 100%;
+  width: 80%;
+  height: 100%;
   font-family: "Titillium Web", sans-serif;
   border-radius: 50px;
   border-color: black;
   font-size: 1.5rem;
   margin-top: 2%;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+}
+.listado2 {
+  width: 80%;
+  height: 100%;
+  font-family: "Titillium Web", sans-serif;
+  border-radius: 50px;
+  border-color: black;
+  font-size: 1.5rem;
+  margin-top: 2%;
+  display: flex;
+  margin: 0;
+  justify-content: center;
 }
 
 .tabla {
@@ -83,4 +128,59 @@
 
 .customButton:active {
   background-color: #3e8e41;
+}
+
+
+.circulo {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .container {
+    min-height: 100vh;
+    display: block;
+  }
+  .titleContainer {
+    width: auto;
+    font-size: 9px;
+    flex-direction: column;
+    margin-top: 0px;
+  }
+  .titleestadisticas {
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+  }
+  .circulo {
+    display: block;
+  }
+  .containerListado {
+    overflow-y: auto;
+  }
+  .listadoClients {
+    font-size: 0.9rem;
+    margin-top: 1%;
+    margin-right: 0%;
+    width: 100%;
+    display: block;
+  }
+  .listado2 {
+    font-size: 0.9rem;
+    margin-top: 1%;
+    margin-right: 0%;
+    width: 100%;
+    display: flex;
+  }
+  .clientList {
+    align-items: center;
+    display: flex;
+  }
+  .commentsList{
+    width: 40%;
+  }
 }

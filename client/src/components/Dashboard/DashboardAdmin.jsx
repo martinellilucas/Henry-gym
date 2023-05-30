@@ -219,6 +219,7 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
+        marginLeft="-100px"
         variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
@@ -369,42 +370,61 @@ const Contenido = ({
           Refresh Data
         </Button>
       </div>
-      <Divider
+
+      <Divider 
         marginTop={"50px"}
         w={"80%"}
         border={"5px solid white"}
+
       ></Divider>
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
-        <>
-          <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
-            Membership stadistics:
-          </Text>
-          <Box className={style.estadisticas}>
-            <Flex align="center" justify="space-evenly" height="300px">
-              <CircularProgress
-                value={calculoMembresias(clientes, "Silver")}
-                color="gray"
-                size="200px"
-              >
-                <CircularProgressLabel>Sil.</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Gold")}
-                color="gold"
-                size="200px"
-              >
-                <CircularProgressLabel>Gold</CircularProgressLabel>
-              </CircularProgress>
-              <CircularProgress
-                value={calculoMembresias(clientes, "Platinum")}
-                color="teal"
-                size="200px"
-              >
-                <CircularProgressLabel>Plat.</CircularProgressLabel>
-              </CircularProgress>
-            </Flex>
-          </Box>
-        </>
+        <div className={style.titleestadisticas}>
+          <div>
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+              Membership stadistics:
+            </Text>
+          </div>
+          <div>
+            <Box>
+              <Flex align="center" height="300px">
+                
+                <div className={style.circulo}>
+                  
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Silver")}
+                  color="gray"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Sil.</CircularProgressLabel>
+                </CircularProgress>
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Gold")}
+                  color="gold"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Gold</CircularProgressLabel>
+                </CircularProgress>
+                <CircularProgress
+                  value={calculoMembresias(clientes, "Platinum")}
+                  color="teal"
+                  size="200px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgressLabel>Plat.</CircularProgressLabel>
+                </CircularProgress>
+                </div>
+              </Flex>
+            </Box>
+          </div>
+        </div>
       ) : (
         <></>
       )}
@@ -420,7 +440,8 @@ const Contenido = ({
               handleSubmit={handleSubmitClient}
             />
           </div>
-          <Box className={style.listado}>
+          <div className={style.containerListado}>
+          <Box className={style.listadoClients}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -441,10 +462,10 @@ const Contenido = ({
                     <td>{item?.isBanned.toString()}</td>
                     <td>{item?.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
-                      <Button colorScheme="red" onClick={() => handleBan(item)}>
+                      <Button  colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
                       </Button>
-                      <Button
+                      <Button 
                         colorScheme="green"
                         onClick={() => handleAdmin(item)}
                       >
@@ -456,6 +477,8 @@ const Contenido = ({
               </tbody>
             </table>
           </Box>
+
+          </div>
         </>
       ) : (
         <></>
@@ -472,7 +495,7 @@ const Contenido = ({
               handleSubmit={handleSubmitClase}
             />
           </div>
-          <Box className={style.listado}>
+          <Box className={style.listado2}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -509,7 +532,7 @@ const Contenido = ({
       {pathname === "/dashboard/comments" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+            <Text className={style.commentsList} fontSize="2xl" fontWeight="bold">
               Clients Comments:
             </Text>
             <Search
@@ -518,7 +541,8 @@ const Contenido = ({
               handleSubmit={handleSubmitComentario}
             />
           </div>
-          <Box className={style.listado}>
+          <div className={style.containerListado}>
+          <Box className={style.listadoClients}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -551,6 +575,7 @@ const Contenido = ({
               </tbody>
             </table>
           </Box>
+          </div>
         </>
       ) : (
         <></>
