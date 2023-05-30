@@ -45,17 +45,17 @@ const LinkItems = [
   {
     name: "Back to Web Site",
     icon: FiCompass,
-    url: "https://henry-gym.onrender.com/home",
+    url: "https://henrygym.onrender.com/home",
   },
-  { name: "Clients", url: "https://henry-gym.onrender.com/dashboard/clients" },
+  { name: "Clients", url: "https://henrygym.onrender.com/dashboard/clients" },
   {
     name: "Membership Stadistics",
-    url: "https://henry-gym.onrender.com/dashboard/stadistics",
+    url: "https://henrygym.onrender.com/dashboard/stadistics",
   },
-  { name: "Classes", url: "https://henry-gym.onrender.com/dashboard/classes" },
+  { name: "Classes", url: "https://henrygym.onrender.com/dashboard/classes" },
   {
     name: "Comments",
-    url: "https://henry-gym.onrender.com/dashboard/comments",
+    url: "https://henrygym.onrender.com/dashboard/comments",
   },
 ];
 
