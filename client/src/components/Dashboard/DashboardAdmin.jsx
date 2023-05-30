@@ -370,10 +370,12 @@ const Contenido = ({
           Refresh Data
         </Button>
       </div>
-      <Divider
+
+      <Divider 
         marginTop={"50px"}
         w={"80%"}
         border={"5px solid white"}
+
       ></Divider>
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
         <div className={style.titleestadisticas}>
@@ -429,7 +431,7 @@ const Contenido = ({
       {pathname === "/dashboard/clients" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+            <Text className={style.clientlist} fontSize="2xl" fontWeight="normal">
               Clients List:
             </Text>
             <Search
@@ -438,7 +440,8 @@ const Contenido = ({
               handleSubmit={handleSubmitClient}
             />
           </div>
-          <Box className={style.listado}>
+          <div className={style.containerListado}>
+          <Box className={style.listadoClients}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -459,10 +462,10 @@ const Contenido = ({
                     <td>{item?.isBanned.toString()}</td>
                     <td>{item?.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
-                      <Button colorScheme="red" onClick={() => handleBan(item)}>
+                      <Button  colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
                       </Button>
-                      <Button
+                      <Button 
                         colorScheme="green"
                         onClick={() => handleAdmin(item)}
                       >
@@ -474,6 +477,8 @@ const Contenido = ({
               </tbody>
             </table>
           </Box>
+
+          </div>
         </>
       ) : (
         <></>
@@ -490,7 +495,7 @@ const Contenido = ({
               handleSubmit={handleSubmitClase}
             />
           </div>
-          <Box className={style.listado}>
+          <Box className={style.listado2}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -527,7 +532,7 @@ const Contenido = ({
       {pathname === "/dashboard/comments" ? (
         <>
           <div className={style.clientSearch}>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+            <Text className={style.commentsList} fontSize="2xl" fontWeight="bold">
               Clients Comments:
             </Text>
             <Search
@@ -536,7 +541,8 @@ const Contenido = ({
               handleSubmit={handleSubmitComentario}
             />
           </div>
-          <Box className={style.listado}>
+          <div className={style.containerListado}>
+          <Box className={style.listadoClients}>
             <table className={style.tabla}>
               <thead>
                 <tr>
@@ -569,6 +575,7 @@ const Contenido = ({
               </tbody>
             </table>
           </Box>
+          </div>
         </>
       ) : (
         <></>
