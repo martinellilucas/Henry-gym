@@ -95,7 +95,7 @@ export default function footReducer(state = initialState, action) {
       return {
         ...state,
         allClients: [...state.clientes],
-        clientes: state.clientes.filter(
+        clientes: state.allClients.filter(
           (cliente) => cliente.email === action.payload.email
         ),
       };

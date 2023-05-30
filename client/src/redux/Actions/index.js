@@ -195,12 +195,21 @@ export const getUserByEmail = (email) => {
   };
 };
 export const searchClientByEmail = (email) => {
-  return async function (dispatch) {
-    const response = await axios(
-      `https://henry-gym-production.up.railway.app/cliente/${email}`
-    );
-    dispatch({ type: SEARCH_USER_BY_EMAIL, payload: response.data });
-  };
+  if (email.length) {
+    return async function (dispatch) {
+      const response = await axios(
+        `https://henry-gym-production.up.railway.app/cliente/${email}`
+      );
+      dispatch({ type: SEARCH_USER_BY_EMAIL, payload: response.data });
+    };
+  } else {
+    return async function (dispatch) {
+      const response = await axios(
+        `https://henry-gym-production.up.railway.app/cliente`
+      );
+      dispatch({ type: GET_CLIENTES, payload: response.data });
+    };
+  }
 };
 export const searchClaseByName = (name) => {
   return async function (dispatch) {

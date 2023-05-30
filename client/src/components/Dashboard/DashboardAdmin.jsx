@@ -415,11 +415,11 @@ const Contenido = ({
               <tbody>
                 {clientes?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombre}</td>
-                    <td>{item.email}</td>
-                    <td>{item.tipoDeSuscripcion}</td>
-                    <td>{item.isBanned.toString()}</td>
-                    <td>{item.isAdmin.toString()}</td>
+                    <td>{item?.nombre}</td>
+                    <td>{item?.email}</td>
+                    <td>{item?.tipoDeSuscripcion}</td>
+                    <td>{item?.isBanned.toString()}</td>
+                    <td>{item?.isAdmin.toString()}</td>
                     <td className={style.buttonO}>
                       <Button colorScheme="red" onClick={() => handleBan(item)}>
                         BAN
@@ -464,9 +464,9 @@ const Contenido = ({
               <tbody>
                 {clases?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombre.toUpperCase()}</td>
-                    <td>{item.dias.join(" ")}</td>
-                    <td>{item.horario}</td>
+                    <td>{item?.nombre.toUpperCase()}</td>
+                    <td>{item?.dias.join(" ")}</td>
+                    <td>{item?.horario}</td>
                   </tr>
                 ))}
               </tbody>
@@ -503,11 +503,11 @@ const Contenido = ({
               <tbody>
                 {comentarios?.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.nombreCliente}</td>
-                    <td>{item.emailCliente}</td>
+                    <td>{item?.nombreCliente}</td>
+                    <td>{item?.emailCliente}</td>
                     <td>{item.nombreClase}</td>
-                    <textarea disabled={true}>{item.texto}</textarea>
-                    <td>{item.isBanned.toString()}</td>
+                    <textarea disabled={true}>{item?.texto}</textarea>
+                    <td>{item?.isBanned.toString()}</td>
                     <td>
                       <Button
                         onClick={() => handleBanComent(item)}
