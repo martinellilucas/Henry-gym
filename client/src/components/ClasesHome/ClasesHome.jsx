@@ -93,7 +93,6 @@ export default function ClasesHome() {
     <Center className={style.boxes}>
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -103,7 +102,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
@@ -133,7 +132,7 @@ export default function ClasesHome() {
           </Text>
         </Stack>
         <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
-          <Avatar src={Entrenador3} alt={"Author"} />
+          <Avatar h={"100%"} src={Entrenador3} alt={"Author"} />
           <Stack direction={"column"} spacing={0} fontSize={"sm"}>
             <Text fontWeight={600}>Sebastian Gaviria</Text>
             <Text color={"gray.500"}>Feb 08, 2023 ·</Text>
@@ -143,6 +142,7 @@ export default function ClasesHome() {
               <>
                 <PopoverTrigger>
                   <Button
+                    className={style.buttom}
                     onClick={() => dispatch(getClasexCliente(client.id))}
                     backgroundColor="#aaaaaa"
                   >
@@ -232,7 +232,6 @@ export default function ClasesHome() {
 
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -242,7 +241,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
@@ -370,7 +369,6 @@ export default function ClasesHome() {
       </Box>
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -380,7 +378,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
@@ -509,7 +507,6 @@ export default function ClasesHome() {
 
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -519,7 +516,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
@@ -648,7 +645,6 @@ export default function ClasesHome() {
 
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -658,7 +654,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
@@ -786,7 +782,6 @@ export default function ClasesHome() {
 
       <Box
         maxW={"445px"}
-        w={"55%"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
@@ -796,7 +791,7 @@ export default function ClasesHome() {
       >
         <Box
           className={style.classImage}
-          h={"295px"}
+          h={"100%"}
           bg={"gray.100"}
           mt={-6}
           mx={-77}
