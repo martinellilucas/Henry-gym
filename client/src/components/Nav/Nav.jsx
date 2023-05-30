@@ -101,14 +101,13 @@ const Nav = () => {
       </Breadcrumb>
       {!isAuthenticated ? (
         <Button
+          marginRight="30px"
           onClick={() => {
             loginWithRedirect();
           }}
           colorScheme="blackAlpha"
-          py={1}
-          px={5}
         >
-          <span className={style.button}>LOGIN</span>
+          <span>LOGIN</span>
         </Button>
       ) : (
         <div className={style.profileContainer}>

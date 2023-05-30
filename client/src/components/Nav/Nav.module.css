@@ -86,12 +86,9 @@
 .item {
   color: white;
 }
-.button {
+.profileContainer {
   margin-right: 30px;
-  height: max-content;
-  width: max-content;
 }
-
 @media screen and (max-width: 800px) {
   .itemContainer {
     font-size: 0.5em;
