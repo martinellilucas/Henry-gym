@@ -84,3 +84,25 @@
 .customButton:active {
   background-color: #3e8e41;
 }
+
+
+.buttonP {
+  margin-top: 10px;
+  margin-left: 5px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #d7ded7; /* Color de fondo */
+  color: rgb(0, 0, 0); /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease; /* Transición suave en hover */
+}
+
+.buttonP:hover {
+  background-color: #8dbd90; /* Cambia el color de fondo en hover */
+}

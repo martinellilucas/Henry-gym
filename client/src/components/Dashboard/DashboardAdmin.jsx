@@ -356,6 +356,37 @@ const Contenido = ({
       }
     });
   };
+  
+
+
+
+
+
+  function paginate (array, tamaño) {
+    var result = [];      
+    for (var i = 0; i < array.length; i += tamaño) 
+    { result.push(array.slice(i, i + tamaño));}      
+    return result;
+  }
+
+  const allClients = useSelector((state) => state.clientes);
+  const pageSize = 2;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageCount = Math.ceil(allClients.length / pageSize);
+
+
+
+  const clientesPaginados = paginate(allClients, pageSize);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    console.log(clientesPaginados[page - 1]);
+  };
+
+  
+
+  
+
   return (
     <Box className={style.container}>
       <div className={style.titleContainer}>
@@ -433,7 +464,7 @@ const Contenido = ({
                 </tr>
               </thead>
               <tbody>
-                {clientes?.map((item, index) => (
+                {clientesPaginados[currentPage-1]?.map((item, index) => (
                   <tr key={index}>
                     <td>{item?.nombre}</td>
                     <td>{item?.email}</td>
@@ -455,6 +486,27 @@ const Contenido = ({
                 ))}
               </tbody>
             </table>
+            < button className={style.buttonP}
+            onClick={() => handlePageChange( currentPage === 1 ? 1  : currentPage - 1)}
+
+             > Back </button>
+
+            {Array.from({ length: pageCount }).map((_, index) => (
+               <button className={style.buttonP} onClick={() => handlePageChange(index + 1)} >  
+                {index + 1} 
+
+               </button>  ))}
+            
+            
+            
+            < button className={style.buttonP}
+            onClick={() => handlePageChange(currentPage === pageCount ? currentPage : currentPage + 1)}
+            
+            > Next </button>
+
+
+
+
           </Box>
         </>
       ) : (
