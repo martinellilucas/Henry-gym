@@ -42,26 +42,7 @@ const LinkItems = [
     name: "Membership Stadistics",
     url: "https://henrygym.onrender.com/dashboard/stadistics",
   },
-  { name: "Classes", url: "https://henrygym.onrender.com/dashboard/classes" },
-  {
-    name: "Comments",
-
-  },
-  {
-    name: "Clients",
-    icon: FiLink2,
-    url: "https://henrygym.onrender.com/dashboard/clients",
-  },
-  {
-    name: "Membership Stadistics",
-    icon: FiLink2,
-    url: "https://henrygym.onrender.com/dashboard/stadistics",
-  },
-  {
-    name: "Classes",
-    icon: FiLink2,
-    url: "https://henrygym.onrender.com/dashboard/classes",
-  },
+  { name: "Classes", url: "https://henrygym.onrender.com/dashboard/classes" } 
   {
     name: "Comments",
     icon: FiLink2,
