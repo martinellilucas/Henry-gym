@@ -273,7 +273,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               </table>
               <div className={style.pagesContainer}>
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(currentPage === 1 ? 1 : currentPage - 1)
                   }
@@ -283,7 +282,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
                 {Array.from({ length: pagesClients }).map((_, index) => (
                   <Button
-                    colorScheme="blackAlpha"
+                    colorScheme={
+                      index === currentPage ? "blackAlpha" : undefined
+                    }
                     onClick={() => handlePageChange(index + 1)}
                   >
                     {index + 1}
@@ -291,7 +292,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 ))}
 
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(
                       currentPage === pagesClients
@@ -355,7 +355,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               <PostClase />
               <div className={style.pagesContainer}>
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(currentPage === 1 ? 1 : currentPage - 1)
                   }
@@ -365,7 +364,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
                 {Array.from({ length: pagesClasses }).map((_, index) => (
                   <Button
-                    colorScheme="blackAlpha"
+                    colorScheme={
+                      index === currentPage ? "blackAlpha" : undefined
+                    }
                     onClick={() => handlePageChange(index + 1)}
                   >
                     {index + 1}
@@ -373,7 +374,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 ))}
 
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(
                       currentPage === pagesClasses
