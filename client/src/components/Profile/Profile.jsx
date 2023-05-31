@@ -15,6 +15,13 @@ import {
   Heading,
   Text,
   Flex,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
@@ -28,6 +35,14 @@ const Profile = () => {
   const btnRef = React.useRef();
   const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const handleUnsubscribe = () => {
+    // Lógica para desuscribirse aquí
+  };
+
+  const handleConfirm = () => {
+    handleUnsubscribe();
+  };
 
   if (isLoading) {
     return <div>LOADING...</div>;
@@ -77,7 +92,36 @@ const Profile = () => {
                         {"  at  "}
                         {clase.horario.slice(0, 5)}HS
                       </Text>
-                      <Button colorScheme="red">Unsubscribe</Button>
+                      <Popover>
+                        {({ onClose }) => (
+                          <>
+                            <PopoverTrigger>
+                              <Button colorScheme="red">Unsubscribe</Button>
+                            </PopoverTrigger>
+                            <PopoverContent>
+                              <PopoverHeader>Confirmation</PopoverHeader>
+                              <PopoverBody>
+                                Are you sure you want to unsubscribe from{" "}
+                                {clase.nombre}?
+                              </PopoverBody>
+                              <PopoverFooter d="flex" justifyContent="flex-end">
+                                <ButtonGroup>
+                                  <Button
+                                    value={clase.id}
+                                    colorScheme="red"
+                                    onClick={handleConfirm}
+                                  >
+                                    Confirm
+                                  </Button>
+                                  <Button onClick={() => onClose()}>
+                                    Cancel
+                                  </Button>
+                                </ButtonGroup>
+                              </PopoverFooter>
+                            </PopoverContent>
+                          </>
+                        )}
+                      </Popover>
                     </Flex>
                   );
                 })}
