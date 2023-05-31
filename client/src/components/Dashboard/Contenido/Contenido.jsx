@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "../DashboardAdmin.module.css";
 import { calculoMembresias } from "../calculoMembresias";
 import Swal from "sweetalert2";
@@ -22,6 +22,7 @@ import {
   banUser,
 } from "../../../redux/Actions/index";
 import { useState } from "react";
+import PostClase from "./PostClase/PostClase";
 
 const Contenido = ({ clientes, comentarios, clases, pathname }) => {
   function refreshPage() {
@@ -351,6 +352,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   ))}
                 </tbody>
               </table>
+              <PostClase />
               <div className={style.pagesContainer}>
                 <Button
                   colorScheme="blackAlpha"
