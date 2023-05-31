@@ -280,16 +280,20 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesClients }).map((_, index) => (
-                  <Button
-                    colorScheme={
-                      index === currentPage ? "blackAlpha" : undefined
-                    }
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Button>
-                ))}
+                {Array.from({ length: pagesClients }).map((_, index) => {
+                  return (
+                    index >= 0 && (
+                      <Button
+                        colorScheme={
+                          index === currentPage ? "blackAlpha" : undefined
+                        }
+                        onClick={() => handlePageChange(index)}
+                      >
+                        {index}
+                      </Button>
+                    )
+                  );
+                })}
 
                 <Button
                   onClick={() =>
@@ -362,16 +366,20 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesClasses }).map((_, index) => (
-                  <Button
-                    colorScheme={
-                      index === currentPage ? "blackAlpha" : undefined
-                    }
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Button>
-                ))}
+                {Array.from({ length: pagesClasses }).map((_, index) => {
+                  return (
+                    index > 0 && (
+                      <Button
+                        colorScheme={
+                          index === currentPage ? "blackAlpha" : undefined
+                        }
+                        onClick={() => handlePageChange(index)}
+                      >
+                        {index}
+                      </Button>
+                    )
+                  );
+                })}
 
                 <Button
                   onClick={() =>
@@ -454,16 +462,20 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesComments }).map((_, index) => (
-                  <Button
-                    colorScheme={
-                      index === currentPage ? "blackAlpha" : undefined
-                    }
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Button>
-                ))}
+                {Array.from({ length: pagesComments }).map((_, index) => {
+                  return (
+                    index > 0 && (
+                      <Button
+                        colorScheme={
+                          index === currentPage ? "blackAlpha" : undefined
+                        }
+                        onClick={() => handlePageChange(index)}
+                      >
+                        {index}
+                      </Button>
+                    )
+                  );
+                })}
 
                 <Button
                   onClick={() =>
