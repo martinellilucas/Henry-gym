@@ -35,14 +35,22 @@ const LinkItems = [
     name: "Back to Web Site",
     icon: FiCompass,
     url: "https://henrygym.onrender.com/home",
-
   },
-  { name: "Clients", url: "https://henrygym.onrender.com/dashboard/clients" },
+  {
+    name: "Clients",
+    icon: FiLink2,
+    url: "https://henrygym.onrender.com/dashboard/clients",
+  },
   {
     name: "Membership Stadistics",
+    icon: FiLink2,
     url: "https://henrygym.onrender.com/dashboard/stadistics",
   },
-  { name: "Classes", url: "https://henrygym.onrender.com/dashboard/classes" } 
+  {
+    name: "Classes",
+    icon: FiLink2,
+    url: "https://henrygym.onrender.com/dashboard/classes",
+  },
   {
     name: "Comments",
     icon: FiLink2,
