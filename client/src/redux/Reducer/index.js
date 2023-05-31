@@ -8,10 +8,12 @@ import {
   FILTER,
   GET_USER_BY_EMAIL,
   GET_CLIENTES,
-  GET_COMMENTS,
   GET_CLASES,
   GET_COMENTARIOS,
   GET_CLASES_X_CLIENTE,
+  SEARCH_USER_BY_EMAIL,
+  SEARCH_CLASE_BY_NAME,
+  SEARCH_COMENTARIOS_BY_NAME,
 } from "../Actions/index";
 
 const initialState = {
@@ -23,9 +25,11 @@ const initialState = {
   membership: "",
   user: {},
   clientes: [],
-  comments: [],
+  allClients: [],
   comentarios: [],
+  allComments: [],
   clases: [],
+  allClases: [],
   clasesxCliente: [],
 };
 
@@ -73,12 +77,10 @@ export default function footReducer(state = initialState, action) {
       return { ...state, user: { ...action.payload } };
 
     case GET_CLIENTES:
-      return { ...state, clientes: [...action.payload] };
-
-    case GET_COMMENTS:
       return {
         ...state,
-        comments: action.payload,
+        clientes: [...action.payload],
+        allClients: [...action.payload],
       };
 
     case GET_CLASES:
@@ -89,6 +91,26 @@ export default function footReducer(state = initialState, action) {
 
     case GET_CLASES_X_CLIENTE:
       return { ...state, clasesxCliente: action.payload };
+    case SEARCH_USER_BY_EMAIL:
+      return {
+        ...state,
+        allClients: [...state.clientes],
+        clientes: state.allClients.filter(
+          (cliente) => cliente.email === action.payload.email
+        ),
+      };
+    case SEARCH_CLASE_BY_NAME:
+      return {
+        ...state,
+        allClases: [...state.clientes],
+        clases: [...action.payload],
+      };
+    case SEARCH_COMENTARIOS_BY_NAME:
+      return {
+        ...state,
+        allComments: [...state.comentarios],
+        comentarios: [...action.payload],
+      };
 
     default:
       return { ...state };

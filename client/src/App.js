@@ -19,7 +19,6 @@ import SubscriptionSuccess2 from "./components/Success/success2";
 import SubscriptionSuccess3 from "./components/Success/success3";
 import ThreeTierPricing from "./components/Membresias/Membresia";
 import ClasesMembresia from "./components/Clases/Clases";
-
 import SidebarWithHeader from "./components/Dashboard/DashboardAdmin";
 
 function App() {

@@ -98,22 +98,16 @@ const Nav = () => {
             </NavLink>
           </BreadcrumbItem>
         )}
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/about">
-            ABOUT
-          </BreadcrumbLink>
-        </BreadcrumbItem>
       </Breadcrumb>
       {!isAuthenticated ? (
         <Button
+          marginRight="30px"
           onClick={() => {
             loginWithRedirect();
           }}
           colorScheme="blackAlpha"
-          py={1}
-          px={5}
         >
-          <span className={style.button}>LOGIN</span>
+          <span>LOGIN</span>
         </Button>
       ) : (
         <div className={style.profileContainer}>

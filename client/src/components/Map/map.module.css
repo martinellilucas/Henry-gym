@@ -1,0 +1,57 @@
+
+.aboutSection{
+  min-height: 45vh;
+}
+.encontranos{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.title{
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #28242b;
+  color: white;
+  font-size: 3em;
+
+}
+.ubic{
+  font-size: 1.5rem;
+  font-weight: lighter;
+  max-width:90rem;
+  margin: auto;
+  color: white;
+}
+.icon{
+  color: #eb4e27;
+}
+.containerMapa{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: grey;
+  height: 100%;
+}
+.containerUbic{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.aboutMapIcon{
+  color: #eb4e27;
+}
+
+@media screen and (max-width: 800px) {
+  .title{
+    font-size: 1rem;
+    height: 3rem;
+    }
+    .ubic{
+      font-size: 1rem;
+    }
+}

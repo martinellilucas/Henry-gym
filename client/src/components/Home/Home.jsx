@@ -33,6 +33,7 @@ const Home = () => {
           )}
         </Box>
       </div>
+
       {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
         <ThreeTierPricing></ThreeTierPricing>
       ) : (

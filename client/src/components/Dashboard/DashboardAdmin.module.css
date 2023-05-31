@@ -3,8 +3,22 @@
   width: 20%;
   font-family: "Titillium Web", sans-serif;
 }
+.DashboardAdmin_container__H790\+ {
+  margin: 0;
+}
 .container {
-  margin-left: 15%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0px 0px 0px 0px;
+}
+.containerListado {
+  font-size: 1.5em;
 }
 .titleContainer {
   display: flex;
@@ -13,6 +27,15 @@
   align-items: center;
   margin-top: 50px;
 }
+.titleestadisticas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .title {
   font-size: 5em;
   font-weight: bolder;
@@ -20,38 +43,27 @@
 }
 .refreshButton {
   border: none;
-
   font-family: "Titillium Web", sans-serif;
 }
-
-.clientlist {
-  font-family: "Titillium Web", sans-serif;
-  border-radius: 50px;
-  border-color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 4%;
-}
-
-.listado {
+.clientSearch {
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  padding: 1em;
   width: 100%;
   font-family: "Titillium Web", sans-serif;
-  border-radius: 50px;
-  border-color: black;
-  font-size: 1.5rem;
-  margin-top: 2%;
 }
 
 .tabla {
   border-collapse: collapse;
-  width: 80%;
   font-family: "Titillium Web", sans-serif;
 }
 
 .tabla th,
 .tabla td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ddd;
   font-family: "Titillium Web", sans-serif;
 }
@@ -60,8 +72,9 @@
   background-color: #f2f2f2;
 }
 
-.buttonO {
+.button {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   font-family: "Titillium Web", sans-serif;
 }
@@ -83,4 +96,80 @@
 
 .customButton:active {
   background-color: #3e8e41;
+}
+
+.pagesContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 0.5em;
+}
+
+.circulo {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    min-height: 100vh;
+    display: block;
+  }
+  .titleContainer {
+    width: auto;
+    font-size: 9px;
+    flex-direction: column;
+    margin-top: 0px;
+  }
+  .titleestadisticas {
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+  }
+  .circulo {
+    display: block;
+  }
+  .user:nth-of-type(1):before {
+    content: "NAME";
+  }
+  .email:nth-of-type(2):before {
+    content: "EMAIL";
+  }
+  .suscription:nth-of-type(3):before {
+    content: "SUSCRIPTION";
+  }
+  .isBanned:nth-of-type(4):before {
+    content: "IS BANNED";
+  }
+  .isAdmin:nth-of-type(5):before {
+    content: "IS ADMIN";
+  }
+  .buttonO:nth-of-type(6):before {
+    content: "ACTIONS";
+  }
+  .class:nth-of-type(1):before {
+    content: "CLASS";
+  }
+  .class:nth-of-type(3):before {
+    content: "CLASS";
+  }
+  .days:nth-of-type(2):before {
+    content: "DAYS";
+  }
+  .schudle:nth-of-type(3):before {
+    content: "START TIME";
+  }
+  .comment:nth-of-type(4):before {
+    content: "COMMENT";
+  }
+  .isBanned:nth-of-type(5):before {
+    content: "IS BANNED";
+  }
+  .buttonO:nth-of-type(4):before {
+    content: "ACTIONS";
+  }
 }

@@ -2,9 +2,12 @@ import style from "./About.module.css";
 import Vic from "../../assets/personaltrainer.jpg";
 import Robert from "../../assets/personaltrainer2.jpg";
 import Lucas from "../../assets/personaltrainer3.jpg";
+import MapsCompoponent from "../Map/Map"
 
 const About = () => {
   return (
+    <div>
+      
     <div className={style.container}>
       <h1 className={style.title}>About Us</h1>
       <hr></hr>
@@ -38,8 +41,12 @@ const About = () => {
           <img src={Lucas} alt="Personal Trainer Lucas" className={style.img} />
           <h2 className={style.trainerName}>Lucas</h2>
         </div>
-      </div>
+      </div> 
     </div>
+    <a name="ubic"/>
+    <MapsCompoponent/>
+    </div>
+
   );
 };
 
