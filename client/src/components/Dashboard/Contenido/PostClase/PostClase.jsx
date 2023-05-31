@@ -109,10 +109,10 @@ export default function PostClase({ onPostComment, usuario }) {
                 placeholder="Insert the name"
                 onChange={handleInputChange}
               ></input>
-              {errors.nombre && (
-                <p className={styles.clasesErrors}>{errors.nombre}</p>
-              )}
             </div>
+            {errors.nombre && (
+              <p className={styles.clasesErrors}>{errors.nombre}</p>
+            )}
 
             <div className={styles.checkBox}>
               <Checkbox
