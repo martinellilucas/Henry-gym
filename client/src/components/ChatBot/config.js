@@ -30,7 +30,7 @@ const config = {
         options: [
           {
             text: "Become a member now !",
-            url: "https://henry-gym.onrender.com/memberships",
+            url: "https://henrygym.onrender.com/memberships",
             id: 1,
           },
         ],
@@ -43,17 +43,31 @@ const config = {
         options: [
           {
             text: "Become a member now !",
-            url: "https://henry-gym.onrender.com/memberships",
+            url: "https://henrygym.onrender.com/memberships",
             id: 1,
           },
           {
             text: "Take a deep look on our classes",
-            url: "https://henry-gym.onrender.com/clases",
+            url: "https://henrygym.onrender.com/clases",
             id: 2,
           },
         ],
       },
     },
+    {
+      widgetName: "location",
+      widgetFunc: (props) => <LinkList {...props}></LinkList>,
+      props: {
+        options: [
+          {
+            text: "We are located here",
+            url: "https://henrygym.onrender.com/about#ubic",
+            id: 1,
+          },
+        ],
+      },
+    },
+
   ],
 };
 
