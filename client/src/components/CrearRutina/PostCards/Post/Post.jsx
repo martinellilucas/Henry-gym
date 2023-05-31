@@ -18,7 +18,7 @@ import {
       console.log(ejercicios);
       setForm({...form,
         ejercicios : form.ejercicios.filter((item) => item.id !== ejercicios.id)})
-    }
+         }
 
     return (
       <div key={id}>

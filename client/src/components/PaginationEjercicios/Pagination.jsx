@@ -83,6 +83,27 @@ export default function Pagination() {
     setPage(1);
   }
 
+  const renderPaginationButtons = () => {
+    const start = Math.max(currentPage - 1, 1);
+    const end = Math.min(currentPage + 1, ejerciciosPages);
+
+    const buttons = [];
+    for (let i = start; i <= end; i++) {
+      buttons.push(
+        <Button
+          key={i}
+          colorScheme={i === currentPage ? "blackAlpha" : undefined}
+          disabled={i === currentPage}
+          onClick={() => handleClickButton(i)}
+        >
+          {i}
+        </Button>
+      );
+    }
+    return buttons;
+  };
+
+
   // EJERCICIOS QUE SE SUMAN AL CARRITO
 
   const changeState = () => {
@@ -138,6 +159,7 @@ export default function Pagination() {
         flexDirection="column"
         align="center"
         justify="center"
+        
       >
         <div className={style.filterContainer}>
           <div onChange={(e) => search(e)}>
@@ -145,10 +167,14 @@ export default function Pagination() {
           </div>
 
           {isOpen ? (
-            <Flex>
-              <ButtonGroup>
+            <Flex
+            >
+              <ButtonGroup
+              
+              >
                 <Button
                   className={style.button}
+                  size={{base :'sm', md :"md"}}
                   onClick={() => {
                     onCancel();
                   }}
@@ -159,6 +185,7 @@ export default function Pagination() {
 
                 {ejer.length >= 2 ? (
                   <Button
+                    size={{base :'sm', md :"md"}}
                     onClick={() => {
                       onSubmit();
                     }}
@@ -168,6 +195,7 @@ export default function Pagination() {
                   </Button>
                 ) : (
                   <Button
+                    size={{base :'sm', md :"md"}}
                     bg={"gray.300"}
                     onClick={() => {
                       onDenied();
@@ -185,8 +213,8 @@ export default function Pagination() {
               onClick={() => {
                 changeState();
               }}
+              size={{base :'sm', md :"md"}}
             >
-              {" "}
               Crea tu Rutina
             </Button>
           )}
@@ -215,13 +243,13 @@ export default function Pagination() {
             <option value="traps">Traps</option>
             <option value="triceps">Triceps</option>
           </select>
-
+          
           <select
             id="selectDificultad"
             onChange={(e) => handlerFilteredDificultad(e)}
             className={style.film}
+            placeholder="Difficulty"
           >
-            <option value="">Filter by difficulty</option>
             <option value="">All</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
@@ -240,7 +268,6 @@ export default function Pagination() {
           onClick={onClick}
         />
       )}
-      <Box display={"flex"} justifyContent={"center"}>
         <div className={style.pagesContainer}>
           <Button
             className={style.button}
@@ -249,19 +276,11 @@ export default function Pagination() {
           >
             &lt;
           </Button>
-          {pageIndex.map((index) => (
-            <Button
-              size={"sm"}
-              className={style.button}
-              key={index}
-              value={index}
-              onClick={() => handleClickButton(index)}
-              colorScheme={index === currentPage ? "blackAlpha" : undefined}
-            >
-              {index}
-            </Button>
-          ))}
+          {
+            renderPaginationButtons()
+          }
           <Button
+      
             className={style.button}
             onClick={() => handleClickArrow("+")}
             disabled={page === ejerciciosPages}
@@ -269,7 +288,6 @@ export default function Pagination() {
             &gt;
           </Button>
         </div>
-      </Box>
     </Box>
   );
 }
