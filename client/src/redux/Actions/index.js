@@ -15,19 +15,11 @@ export const GET_CLASES = "GET_CLASES";
 export const GET_CLASES_X_CLIENTE = "GET_CLASES_X_CLIENTE";
 export const DELETE_CLASE_X_CLIENTE = "DELETE_CLASE_X_CLIENTE";
 
-export const deleteClasexCliente = (clienteId, claseId) => {
-  return async (dispatch) => {
-    await axios.delete(
-      `https://henry-gym-production.up.railway.app/clasexcliente/${clienteId}/${claseId}`
+export const deleteClasexCliente = (id, claseId) => {
+  return async () => {
+    await axios(
+      `https://henry-gym-production.up.railway.app/cliente/${id}/${claseId}`
     );
-
-    dispatch({
-      type: DELETE_CLASE_X_CLIENTE,
-      payload: {
-        clienteId,
-        claseId,
-      },
-    });
   };
 };
 export const getClasexCliente = (userId) => {
