@@ -280,9 +280,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesClients }).map((_, index) => {
+                {Array.from({ length: pagesClients + 1 }).map((_, index) => {
                   return (
-                    index >= 0 && (
+                    index > 0 && (
                       <Button
                         colorScheme={
                           index === currentPage ? "blackAlpha" : undefined
@@ -366,7 +366,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesClasses }).map((_, index) => {
+                {Array.from({ length: pagesClasses + 1 }).map((_, index) => {
                   return (
                     index > 0 && (
                       <Button
@@ -462,7 +462,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   {"<"}
                 </Button>
 
-                {Array.from({ length: pagesComments }).map((_, index) => {
+                {Array.from({ length: pagesComments + 1 }).map((_, index) => {
                   return (
                     index > 0 && (
                       <Button
