@@ -112,6 +112,12 @@
   font-size: 1.8em;
   font-family: "Titillium Web", sans-serif;
 }
+.stadisticsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .circulo {
   display: flex;
   flex-direction: column;
@@ -135,6 +141,9 @@
   .titleestadisticas {
     margin: 0;
     padding: 0px 0px 0px 0px;
+  }
+  .stadisticsContainer {
+    flex-direction: column;
   }
   .circulo {
     display: block;
