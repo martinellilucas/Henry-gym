@@ -61,7 +61,7 @@ const config = {
         options: [
           {
             text: "We are located here",
-            url: "https://henrygym.onrender.com/about#abajo",
+            url: "https://henrygym.onrender.com/about#ubic",
             id: 1,
           },
         ],

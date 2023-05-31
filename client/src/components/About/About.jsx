@@ -43,7 +43,7 @@ const About = () => {
         </div>
       </div> 
     </div>
-    <a name="abajo"/>
+    <a name="ubic"/>
     <MapsCompoponent/>
     </div>
 
