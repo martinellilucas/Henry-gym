@@ -51,7 +51,7 @@ export default function ClasesHome() {
 
   useEffect(() => {
     dispatch(getClases());
-    dispatch(getUserByEmail(user?.email));
+    dispatch(getUserByEmail("martinellilucas8@gmail.com"));
   }, [dispatch, user?.email]);
 
   const soloNombres = [...new Set(clases.map((clase) => clase.nombre))];
@@ -102,7 +102,7 @@ export default function ClasesHome() {
     });
   };
   return (
-    <Center className={style.boxes}>
+    <div className={style.boxes}>
       {soloNombres.map((name) => {
         const claseImage = dataClases.find(
           (clase) => clase.nombre === name
@@ -120,7 +120,7 @@ export default function ClasesHome() {
           >
             <Box
               className={style.classImage}
-              h={"100%"}
+              h={"80%"}
               bg={"gray.100"}
               mt={-6}
               mx={-77}
@@ -251,6 +251,6 @@ export default function ClasesHome() {
           </Box>
         );
       })}
-    </Center>
+    </div>
   );
 }

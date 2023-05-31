@@ -1,18 +1,18 @@
 .boxes {
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  padding: 2em;
   background-color: #aaaaaa;
+  width: 100%;
+  margin-left: 5%;
 }
 
 .boxMargin {
-  margin-bottom: 10px;
   background-color: #f1f1f1;
   padding: 10px;
-  box-sizing: border-box;
   height: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 55%;
+  width: 100%;
 }
 
 .classImage:hover {
