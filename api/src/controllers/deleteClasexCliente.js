@@ -1,14 +1,13 @@
-const { ClaseXCliente } = require("../db");
+const { Cliente } = require("../db");
+const { Clase } = require("../db");
 
-const deleteClaseXCliente = async (clienteID, claseID) => {
-  const eliminado = await ClaseXCliente.destroy({
-    where: {
-      ClienteId: clienteID,
-      ClaseId: claseID,
-    },
-    force: true,
-  });
-  return eliminado;
+const deleteClaseXCliente = async (clienteId, claseId) => {
+  const cliente = await Cliente.findByPk(clienteId);
+  const clase = await Clase.findByPk(claseId);
+
+  await cliente.removeClase(clase);
+
+  return clase;
 };
 
 module.exports = deleteClaseXCliente;
