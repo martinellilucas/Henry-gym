@@ -51,7 +51,7 @@ export default function ClasesHome() {
 
   useEffect(() => {
     dispatch(getClases());
-    dispatch(getUserByEmail("martinellilucas8@gmail.com"));
+    dispatch(getUserByEmail(user?.email));
   }, [dispatch, user?.email]);
 
   const soloNombres = [...new Set(clases.map((clase) => clase.nombre))];

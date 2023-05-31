@@ -17,8 +17,8 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       dispatch(postUser(user));
+      dispatch(getUserByEmail(user?.email));
     }
-    dispatch(getUserByEmail("martinellilucas8@gmail.com"));
   }, [dispatch, user]);
 
   return (
@@ -34,7 +34,7 @@ const Home = () => {
         </Box>
       </div>
 
-      {client?.tipoDeSuscripcion === "Bronze" /* || !isAuthenticated */ ? (
+      {client?.tipoDeSuscripcion === "Bronze" || !isAuthenticated ? (
         <ThreeTierPricing></ThreeTierPricing>
       ) : (
         <ClasesHome></ClasesHome>
