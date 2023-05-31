@@ -193,7 +193,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 <div className={style.circulo}>
                   <CircularProgress
                     value={calculoMembresias(clientes, "Bronze")}
-                    color="red"
+                    color="orange"
                     size="300px"
                   >
                     <CircularProgressLabel>
