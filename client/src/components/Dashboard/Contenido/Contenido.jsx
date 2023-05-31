@@ -3,6 +3,11 @@ import style from "../DashboardAdmin.module.css";
 import { calculoMembresias } from "../calculoMembresias";
 import Swal from "sweetalert2";
 import Search from "../Search/Search";
+import bronce from "../../../assets/broncelogo.png";
+import plata from "../../../assets/platalogo.png";
+import oro from "../../../assets/orologo.png";
+import platino from "../../../assets/platinologo.png";
+
 import {
   Box,
   Button,
@@ -173,44 +178,98 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
       {pathname === "/dashboard/stadistics" || pathname === "/dashboard" ? (
         <div className={style.titleestadisticas}>
           <div>
-            <Text className={style.clientlist} fontSize="2xl" fontWeight="bold">
+            <Text
+              className={style.clientlist}
+              fontFamily={'"Titillium Web", sans-serif'}
+              fontSize="4xl"
+              fontWeight="bold"
+            >
               Membership stadistics:
             </Text>
           </div>
           <div>
             <Box>
-              <Flex align="center" height="300px">
+              <Flex gap={"2em"} marginTop={"50px"} align="center">
+                <div className={style.circulo}>
+                  <CircularProgress
+                    value={calculoMembresias(clientes, "Bronze")}
+                    color="red"
+                    size="300px"
+                  >
+                    <CircularProgressLabel>
+                      <img
+                        className={style.logoMem}
+                        src={bronce}
+                        alt="Bronze"
+                      />
+                    </CircularProgressLabel>
+                  </CircularProgress>
+                  <h4 className={style.stadistics}>
+                    Clients amount:{" "}
+                    {(calculoMembresias(clientes, "Bronze") / 100) *
+                      clientes.length}
+                  </h4>
+                </div>
                 <div className={style.circulo}>
                   <CircularProgress
                     value={calculoMembresias(clientes, "Silver")}
                     color="gray"
-                    size="200px"
+                    size="300px"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <CircularProgressLabel>Sil.</CircularProgressLabel>
+                    <CircularProgressLabel>
+                      <img className={style.logoMem} src={plata} alt="Silver" />
+                    </CircularProgressLabel>
                   </CircularProgress>
+                  <h4 className={style.stadistics}>
+                    Clients amount:{" "}
+                    {(calculoMembresias(clientes, "Silver") / 100) *
+                      clientes.length}
+                  </h4>
+                </div>
+                <div className={style.circulo}>
                   <CircularProgress
                     value={calculoMembresias(clientes, "Gold")}
                     color="gold"
-                    size="200px"
+                    size="300px"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <CircularProgressLabel>Gold</CircularProgressLabel>
+                    <CircularProgressLabel>
+                      <img className={style.logoMem} src={oro} alt="Gold" />
+                    </CircularProgressLabel>
                   </CircularProgress>
+                  <h4 className={style.stadistics}>
+                    Clients amount:{" "}
+                    {(calculoMembresias(clientes, "Gold") / 100) *
+                      clientes.length}
+                  </h4>
+                </div>
+                <div className={style.circulo}>
                   <CircularProgress
                     value={calculoMembresias(clientes, "Platinum")}
                     color="teal"
-                    size="200px"
+                    size="300px"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <CircularProgressLabel>Plat.</CircularProgressLabel>
+                    <CircularProgressLabel>
+                      <img
+                        className={style.logoMem}
+                        src={platino}
+                        alt="Platinum"
+                      />
+                    </CircularProgressLabel>
                   </CircularProgress>
+                  <h4 className={style.stadistics}>
+                    Clients amount:{" "}
+                    {(calculoMembresias(clientes, "Platinum") / 100) *
+                      clientes.length}
+                  </h4>
                 </div>
               </Flex>
             </Box>

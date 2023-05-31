@@ -6,6 +6,9 @@
 .DashboardAdmin_container__H790\+ {
   margin: 0;
 }
+.logoMem {
+  margin-left: 25px;
+}
 .container {
   width: 100%;
   height: 100%;
@@ -105,14 +108,17 @@
   justify-content: center;
   grid-gap: 0.5em;
 }
-
+.stadistics {
+  font-size: 1.8em;
+  font-family: "Titillium Web", sans-serif;
+}
 .circulo {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
-  gap: 100px;
 }
 
 @media only screen and (max-width: 800px) {
