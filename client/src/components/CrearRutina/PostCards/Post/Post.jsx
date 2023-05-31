@@ -9,16 +9,23 @@ import {
     Button,
   } from "@chakra-ui/react";
   import style from "./Post.module.css";
+  import { useToast } from "@chakra-ui/react";
   
   export default function Post ({ejercicios,form,setForm}) {
+    const toast = useToast()
   
     const {id,name,muscle,difficulty} = ejercicios;
 
     const onRemove = (ejercicios) => {  
-      console.log(ejercicios);
-      setForm({...form,
-        ejercicios : form.ejercicios.filter((item) => item.id !== ejercicios.id)})
-         }
+      
+      
+        setForm({...form,
+          ejercicios : form.ejercicios.filter((item) => item.id !== ejercicios.id)})
+    
+     
+      }
+
+      
 
     return (
       <div key={id}>
@@ -91,6 +98,3 @@ import {
       </div>
     );
   }
-  
-
-  

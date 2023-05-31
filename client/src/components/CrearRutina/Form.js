@@ -62,11 +62,11 @@ const Form1 = ({setForm,form}) => {
           /> : 
           <Box 
             display={'flex'}
-            
+            h={{base : '315px'}}
           >
             <Text
               textAlign={'center'}
-              fontSize={{ base: '24px', md: '40px', lg: '56px' }}
+              fontSize={{ base: '24px', md :'28px' }}
             >Your exercises would go here, but you deleted them all, go and choose some</Text>
 
           </Box>}
@@ -157,7 +157,9 @@ export default function Multistep() {
 
   return (
     <Box
-      w={{base: '100%', md: '100%', lg:'100%'}}
+      h={{base: '100%', md: '100%', lg:'100%'}}
+      display={'flex'}
+      justifyContent={'center'}
       paddingTop={'6%'}
       paddingBottom={'5.90%'}
     >
@@ -166,7 +168,7 @@ export default function Multistep() {
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
-        maxWidth={800}
+        h={{base: '100%', md: '100%', lg:'100%'}}
         p={6}
         m="10px auto"
         id='form'

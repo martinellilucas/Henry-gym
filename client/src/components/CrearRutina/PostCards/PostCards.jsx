@@ -11,6 +11,7 @@ export default function PostCards({ ejercicios ,form,setForm}) {
       width="100%"
       justifyContent="center"
     >
+    
       {ejercicios?.map((ej) => (
         <Box>
           <Post
