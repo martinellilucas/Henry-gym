@@ -55,6 +55,7 @@ const Profile = () => {
   const handleUnsubscribe = (e) => {
     dispatch(deleteClasexCliente(client.id, e.target.value));
     showToast();
+    onClose();
   };
 
   if (isLoading) {
