@@ -184,7 +184,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               fontSize="4xl"
               fontWeight="bold"
             >
-              Membership stadistics:
+              Membership stadistics - Total clients: {clientes.length}
             </Text>
           </div>
           <div>
