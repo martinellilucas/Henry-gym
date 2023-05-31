@@ -14,6 +14,7 @@ import {
   SEARCH_USER_BY_EMAIL,
   SEARCH_CLASE_BY_NAME,
   SEARCH_COMENTARIOS_BY_NAME,
+  DELETE_CLASE_X_CLIENTE,
 } from "../Actions/index";
 
 const initialState = {
@@ -111,6 +112,11 @@ export default function footReducer(state = initialState, action) {
         allComments: [...state.comentarios],
         comentarios: [...action.payload],
       };
+    case DELETE_CLASE_X_CLIENTE:
+      const updatedClasesxCliente = state.clasesxCliente.filter(
+        (clase) => clase.id !== action.payload
+      );
+      return { ...state, clasesxCliente: updatedClasesxCliente };
 
     default:
       return { ...state };

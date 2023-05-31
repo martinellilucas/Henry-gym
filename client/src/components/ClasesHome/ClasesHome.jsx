@@ -68,6 +68,7 @@ export default function ClasesHome() {
   const handleConfirm = (clienteId, claseId) => {
     dispatch(assignClaseToCliente(clienteId, claseId));
     showToast();
+    setSelectedClaseId(null);
   };
 
   const showToast = () => {

@@ -15,12 +15,24 @@ import {
   Heading,
   Text,
   Flex,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  ButtonGroup,
+  useToast,
 } from "@chakra-ui/react";
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getClasexCliente, getUserByEmail } from "../../redux/Actions";
+import {
+  deleteClasexCliente,
+  getClasexCliente,
+  getUserByEmail,
+} from "../../redux/Actions";
 const Profile = () => {
   const clasesxCliente = useSelector((state) => state.clasesxCliente);
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
@@ -28,6 +40,22 @@ const Profile = () => {
   const btnRef = React.useRef();
   const client = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const toast = useToast();
+
+  const showToast = () => {
+    toast({
+      title: "Unsubscription Successful",
+      description: "Your subscription has been successfully canceled.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+
+  const handleUnsubscribe = (e) => {
+    dispatch(deleteClasexCliente(client.id, e.target.value));
+    showToast();
+  };
 
   if (isLoading) {
     return <div>LOADING...</div>;
@@ -77,7 +105,36 @@ const Profile = () => {
                         {"  at  "}
                         {clase.horario.slice(0, 5)}HS
                       </Text>
-                      <Button colorScheme="red">Unsubscribe</Button>
+                      <Popover>
+                        {({ onClose }) => (
+                          <>
+                            <PopoverTrigger>
+                              <Button colorScheme="red">Unsubscribe</Button>
+                            </PopoverTrigger>
+                            <PopoverContent>
+                              <PopoverHeader>Confirmation</PopoverHeader>
+                              <PopoverBody>
+                                Are you sure you want to unsubscribe from{" "}
+                                {clase.nombre}?
+                              </PopoverBody>
+                              <PopoverFooter d="flex" justifyContent="flex-end">
+                                <ButtonGroup>
+                                  <Button
+                                    value={clase.id}
+                                    colorScheme="red"
+                                    onClick={handleUnsubscribe}
+                                  >
+                                    Confirm
+                                  </Button>
+                                  <Button onClick={() => onClose()}>
+                                    Cancel
+                                  </Button>
+                                </ButtonGroup>
+                              </PopoverFooter>
+                            </PopoverContent>
+                          </>
+                        )}
+                      </Popover>
                     </Flex>
                   );
                 })}
