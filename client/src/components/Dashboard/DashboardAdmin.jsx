@@ -205,9 +205,8 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
-        fontFamily="monospace"
         fontWeight="bold"
-        fontFamily='"Titillium Web", sans-serif'
+        fontFamily='"Titillium Web", sans-serif;'
       >
         Henry's Gym
       </Text>
