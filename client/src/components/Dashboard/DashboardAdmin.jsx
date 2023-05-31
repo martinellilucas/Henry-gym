@@ -181,7 +181,7 @@ const NavItem = ({ icon, children, url, ...rest }) => {
 const MobileNav = ({ admin, onOpen, ...rest }) => {
   return (
     <Flex
-      fontFamily='"Titillium Web", sans-serif;'
+      fontFamily='"Titillium Web", sans-serif'
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"
@@ -207,8 +207,9 @@ const MobileNav = ({ admin, onOpen, ...rest }) => {
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold"
+        fontFamily='"Titillium Web", sans-serif'
       >
-        Logo
+        Henry's Gym
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }} marginRight="30px">
