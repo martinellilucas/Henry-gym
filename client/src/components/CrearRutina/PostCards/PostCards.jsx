@@ -12,9 +12,7 @@ export default function PostCards({ ejercicios ,form,setForm}) {
       justifyContent="center"
     >
       {ejercicios?.map((ej) => (
-        <Box
-          position={'relative'}
-        >
+        <Box>
           <Post
             form={form}
             setForm={setForm}

@@ -6,14 +6,10 @@ import {
   Heading,
   Flex,
   FormControl,
-  GridItem,
   FormLabel,
   Input,
   SimpleGrid,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
+  Text,
 } from '@chakra-ui/react';
 
 import { useToast } from '@chakra-ui/react';
@@ -30,100 +26,53 @@ const Form1 = ({setForm,form}) => {
       imagen :value});
   }
   return (
-    <>
-        <FormControl >
-          <FormLabel htmlFor="image" fontWeight={'normal'} mt="2%" >
-            Add a image to your routine
+    <Box display={'flex'} flexDirection={'column'} justifyContent={'center'}
+    >
+        <FormControl justifyContent={'center'}>
+          <FormLabel htmlFor="image" fontWeight={'normal'} mt="2%" justifyContent={'center'} >
+          <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} >
+          <Heading 
+            textAlign={'center'}
+            fontSize={{ base: '24px', md: '40px', lg: '56px' }} >Select one picture for your routine</Heading>
             <Input
+              margin={'4%'}
+              border={'0px'}
               type='file'
-               id='imagen'
+              id='imagen'
               accept="image/*"
               onChange={(e) => { onClick(e) }}
             />
+          </Box>
           </FormLabel>
         </FormControl>
         <FormControl>
           <FormLabel htmlFor='ejercicios' fontWeight={'normal'} mt='2%'>
-            Aca van los ejercicios selecionados
           </FormLabel>
         </FormControl>
       <Flex
         id='ejercicios'
-        justifyContent={'space-between'}
+        justifyContent={'center'}
+        flexDir={'column'}
       >
-        {form.ejercicios ?
+        {form.ejercicios.length ?
           <PostCards
             ejercicios={form.ejercicios}
             form={form}
             setForm={setForm}
-          /> : <></>}
+          /> : 
+          <Box 
+            display={'flex'}
+            
+          >
+            <Text
+              textAlign={'center'}
+              fontSize={{ base: '24px', md: '40px', lg: '56px' }}
+            >Your exercises would go here, but you deleted them all, go and choose some</Text>
+
+          </Box>}
       </Flex>
 
-    </>
-  );
-};
-
-const Form3 = () => {
-  return (
-    <>
-      <Heading w="100%" textAlign={'center'} fontWeight="normal">
-        Social Handles
-      </Heading>
-      <SimpleGrid columns={1} spacing={6}>
-        <FormControl as={GridItem} colSpan={[3, 2]}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: 'gray.50',
-            }}>
-            Website
-          </FormLabel>
-          <InputGroup size="sm">
-            <InputLeftAddon
-              bg="gray.50"
-              _dark={{
-                bg: 'gray.800',
-              }}
-              color="gray.500"
-              rounded="md">
-              http://
-            </InputLeftAddon>
-            <Input
-              type="tel"
-              placeholder="www.example.com"
-              focusBorderColor="brand.400"
-              rounded="md"
-            />
-          </InputGroup>
-        </FormControl>
-
-        <FormControl id="email" mt={1}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: 'gray.50',
-            }}>
-            About
-          </FormLabel>
-          <Textarea
-            placeholder="you@example.com"
-            rows={3}
-            shadow="sm"
-            focusBorderColor="brand.400"
-            fontSize={{
-              sm: 'sm',
-            }}
-          />
-          <FormHelperText>
-            Brief description for your profile. URLs are hyperlinked.
-          </FormHelperText>
-        </FormControl>
-      </SimpleGrid>
-    </>
+    </Box>
   );
 };
 
@@ -137,12 +86,20 @@ export default function Multistep() {
   })
   const navigate = useNavigate()
 
+
+  
+
+   
+
   const test = () => {
-    const item = window.localStorage.getItem('ejercicios')
-    if(form){  
-      setForm({...form,
-        ejercicios : JSON.parse(item)})
-    }
+    if(!form.ejercicios.length){  
+      const item = window.localStorage.getItem('ejercicios')
+      if(item){
+        setForm({...form,
+          ejercicios : JSON.parse(item)})
+      }
+      }
+      
   }
 
  useEffect(()=> {
@@ -156,65 +113,56 @@ export default function Multistep() {
 
  const onSubmit = (e)=> {
   e.preventDefault()
-
   console.log(form.imagen)
-
   formdata.append('ejercicios',JSON.stringify(form.ejercicios))
   formdata.append('imagen',form.imagen)
-  console.log([...formdata]);
-  if(form.imagen){
-    dispatch(postRutina(formdata))
-      toast({
-        title: "Your routine has been created",
-        description:'You routine will be apear in the routine seccion',
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      })
-    window.localStorage.setItem('ejercicios',[])
-    setForm({
-      ejercicios : [],
-      imagen : ""
-    })
-  } else {
-    toast({
-      title: 'Please select a image',
-      status : 'error',
-      duration: 3000,
-      isClosable : true
-    })
 
-  }
-  if(form.ejercicios.length >= 2){
-    dispatch(postRutina(formdata))
-      toast({
-        title: "Your routine has been created",
-        description:'You routine will be apear in the routine seccion',
-        status: "success",
-        duration: 3000,
-        isClosable: true,
+  if(form.imagen){
+    if(form.ejercicios.length >= 2){
+      dispatch(postRutina(formdata))
+        toast({
+          title: "Your routine has been created",
+          description:'You routine will be apear in the routine seccion',
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
+      window.localStorage.setItem('ejercicios',[])
+      setForm({
+        ejercicios : [],
+        imagen : ""
       })
-    window.localStorage.setItem('ejercicios',[])
-    setForm({
-      ejercicios : [],
-      imagen : ""
-    })
-  } else {
-    navigate('/ejercicios')
+      navigate('/rutinas')
+    } else {
+      navigate('/ejercicios')
+      toast({
+        title: 'Please select at least two exercises',
+        status : 'error',
+        duration: 3000,
+        isClosable : true
+      })
+    }
+   } else {
     toast({
-      title: 'Please select at least two exercises',
-      status : 'error',
+      title:"Select one image for your routine",
+      status: "error",
       duration: 3000,
-      isClosable : true
+      isClosable: true,
     })
+   }
   }
- }
+  
+
   
 
   return (
-    <>
+    <Box
+      w={{base: '100%', md: '100%', lg:'100%'}}
+      paddingTop={'6%'}
+      paddingBottom={'5.90%'}
+    >
       <Box
-        
+
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
@@ -225,12 +173,10 @@ export default function Multistep() {
         as='form'
         encType='multiform/form-data'
         >
-
-        {step === 1 ?
          <Form1
           form={form}
           setForm={setForm}
-          /> : <Form3 />}
+          />
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
@@ -245,7 +191,6 @@ export default function Multistep() {
                 Back
               </Button>
             </Flex>
-            {step === 1 ? (
               <Button
                 w="7rem"
                 colorScheme="red"
@@ -257,10 +202,9 @@ export default function Multistep() {
               >
                 Submit
               </Button>
-            ) : null}
           </Flex>
         </ButtonGroup>
       </Box>
-    </>
-  );
-}
+    </Box>
+    );
+  }

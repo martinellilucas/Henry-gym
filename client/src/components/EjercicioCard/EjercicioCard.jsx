@@ -19,11 +19,11 @@ export function EjercicioCard({isOpen,ejercicios,onClick,ejer}) {
   const isIn = ejer.find(item => item.id === id)
 
   return (
-    <div key={id}>
-      <Card className={style.card} bg="blackAlpha.700">
+    <div key={id} className={style.card}>
+      <Card bg="blackAlpha.700" >
         <CardHeader>
           <Flex justifyContent='space-between'>
-          <Heading className={style.title} size="xl">
+          <Heading className={style.title} size="lg" fontFamily={'Titillium Web'}>
             {name}
           </Heading>
             {isOpen ? 
