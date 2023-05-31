@@ -19,7 +19,7 @@ export default function Pagination() {
   const toast = useToast()
 
   const dispatch = useDispatch();
-  const count = 8;
+  const count = 6;
   const pageIndex = [];
 
   const rutinasPages = Math.ceil(allRutinas.length / count);
@@ -65,6 +65,25 @@ export default function Pagination() {
     });
   }
   
+  const renderPaginationButtons = () => {
+    const start = Math.max(currentPage - 1, 1);
+    const end = Math.min(currentPage + 1, rutinasPages);
+
+    const buttons = [];
+    for (let i = start; i <= end; i++) {
+      buttons.push(
+        <Button
+          key={i}
+          colorScheme={i === currentPage ? "blackAlpha" : undefined}
+          disabled={i === currentPage}
+          onClick={() => handleClickButton(i)}
+        >
+          {i}
+        </Button>
+      );
+    }
+    return buttons;
+  };
 
   const handleClickArrow = (operation) => {
     if (operation === "-") {
@@ -107,13 +126,19 @@ export default function Pagination() {
             Create your own
           </Button>  
           }
-        <Flex
+        
+        {!paginate.length ? (
+          <Loading />
+        ) : (
+          <Cards rutinas={paginate} disabled={false} />
+        )}
+      </Box>
+      <Flex
           display="flex"
           flexDirection="column"
           align="center"
           justify="center"
         >
-          {" "}
           {isAuthenticated ? (
             <div className={style.pagesContainer}>
               <Button
@@ -123,17 +148,9 @@ export default function Pagination() {
               >
                 &lt;
               </Button>
-              {pageIndex.map((index) => (
-                <Button
-                  className={style.pages}
-                  key={index}
-                  value={index}
-                  onClick={() => handleClickButton(index)}
-                  colorScheme={index === currentPage ? "blackAlpha" : undefined}
-                >
-                  {index}
-                </Button>
-              ))}
+              {
+                renderPaginationButtons()
+              }
               <Button
                 className={style.pages}
                 onClick={() => handleClickArrow("+")}
@@ -151,17 +168,6 @@ export default function Pagination() {
               >
                 &lt;
               </Button>
-              {pageIndex.map((index) => (
-                <Button
-                  className={style.pages}
-                  key={index}
-                  value={index}
-                  onClick={() => loginWithRedirect()}
-                  colorScheme={index === currentPage ? "blackAlpha" : undefined}
-                >
-                  {index}
-                </Button>
-              ))}
               <Button
                 className={style.pages}
                 onClick={() => loginWithRedirect()}
@@ -172,12 +178,6 @@ export default function Pagination() {
             </div>
           )}
         </Flex>
-        {!paginate.length ? (
-          <Loading />
-        ) : (
-          <Cards rutinas={paginate} disabled={false} />
-        )}
-      </Box>
     </div>
   );
 }

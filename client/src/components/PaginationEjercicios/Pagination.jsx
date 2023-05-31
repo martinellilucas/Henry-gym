@@ -128,6 +128,7 @@ export default function Pagination() {
   const onDenied = () => {
     toast({
       title: "Please select at least two exercises for the next step",
+      position: 'top',
       status: "error",
       duration: 3000,
       isClosable: true,
@@ -140,6 +141,7 @@ export default function Pagination() {
     setIsOpen(!isOpen);
     toast({
       title: "Thank you",
+      position : 'top',
       status: "success",
       duration: 3000,
       isClosable: true,
@@ -201,7 +203,7 @@ export default function Pagination() {
                       onDenied();
                     }}
                   >
-                    Select two exercises
+                    Next
                   </Button>
                 )}
               </ButtonGroup>
