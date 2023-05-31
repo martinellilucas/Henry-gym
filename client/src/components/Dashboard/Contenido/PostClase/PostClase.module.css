@@ -1,0 +1,27 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dialogContainer {
+  font-family: "Titillium Web", sans-serif;
+}
+.clasesErrors {
+  position: block;
+  margin: 15px;
+  color: red;
+  font-size: 12px;
+}
+.dialogTitle {
+  color: green;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: small;
+  letter-spacing: 1.1px;
+}
+.checkBox {
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(2, 1fr);
+}
