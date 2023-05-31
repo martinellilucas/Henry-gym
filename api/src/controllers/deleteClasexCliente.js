@@ -1,20 +1,14 @@
 const { ClaseXCliente } = require("../db");
 
 const deleteClaseXCliente = async (clienteID, claseID) => {
-  const claseXCliente = await ClaseXCliente.findOne({
+  const eliminado = await ClaseXCliente.destroy({
     where: {
       ClienteId: clienteID,
       ClaseId: claseID,
     },
+    force: true,
   });
-  if (!claseXCliente) {
-    return { error: "La clase no está asignada al cliente" };
-  }
-  await claseXCliente.destroy();
-
-  return { message: "La clase ha sido eliminada del cliente" };
+  return eliminado;
 };
 
-module.exports = {
-  deleteClaseXCliente,
-};
+module.exports = deleteClaseXCliente;

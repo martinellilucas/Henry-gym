@@ -1,6 +1,6 @@
 const { deleteClaseXCliente } = require("../controllers/deleteClasexCliente");
 
-const deleteClasexClienteHandler = async (req, res) => {
+const handlerDeleteClasexCliente = async (req, res) => {
   try {
     const { id, claseid } = req.params;
     res.status(200).json(await deleteClaseXCliente(id, claseid));
@@ -9,6 +9,4 @@ const deleteClasexClienteHandler = async (req, res) => {
   }
 };
 
-module.exports = {
-  deleteClasexClienteHandler,
-};
+module.exports = handlerDeleteClasexCliente;
