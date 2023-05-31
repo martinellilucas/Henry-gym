@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "../DashboardAdmin.module.css";
 import { calculoMembresias } from "../calculoMembresias";
 import Swal from "sweetalert2";
@@ -22,6 +22,7 @@ import {
   banUser,
 } from "../../../redux/Actions/index";
 import { useState } from "react";
+import PostClase from "./PostClase/PostClase";
 
 const Contenido = ({ clientes, comentarios, clases, pathname }) => {
   function refreshPage() {
@@ -272,7 +273,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
               </table>
               <div className={style.pagesContainer}>
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(currentPage === 1 ? 1 : currentPage - 1)
                   }
@@ -282,7 +282,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
                 {Array.from({ length: pagesClients }).map((_, index) => (
                   <Button
-                    colorScheme="blackAlpha"
+                    colorScheme={
+                      index === currentPage ? "blackAlpha" : undefined
+                    }
                     onClick={() => handlePageChange(index + 1)}
                   >
                     {index + 1}
@@ -290,7 +292,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 ))}
 
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(
                       currentPage === pagesClients
@@ -351,9 +352,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                   ))}
                 </tbody>
               </table>
+              <PostClase />
               <div className={style.pagesContainer}>
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(currentPage === 1 ? 1 : currentPage - 1)
                   }
@@ -363,7 +364,9 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
 
                 {Array.from({ length: pagesClasses }).map((_, index) => (
                   <Button
-                    colorScheme="blackAlpha"
+                    colorScheme={
+                      index === currentPage ? "blackAlpha" : undefined
+                    }
                     onClick={() => handlePageChange(index + 1)}
                   >
                     {index + 1}
@@ -371,7 +374,6 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 ))}
 
                 <Button
-                  colorScheme="blackAlpha"
                   onClick={() =>
                     handlePageChange(
                       currentPage === pagesClasses

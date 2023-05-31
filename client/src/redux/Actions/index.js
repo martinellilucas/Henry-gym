@@ -26,6 +26,15 @@ export const getClasexCliente = (userId) => {
   };
 };
 
+export const postClase = (clase) => {
+  return async function () {
+    await axios.post(
+      "https://henry-gym-production.up.railway.app/clase",
+      clase
+    );
+  };
+};
+
 export const assignClaseToCliente = (clienteId, claseId) => {
   return async () => {
     await axios.post(
