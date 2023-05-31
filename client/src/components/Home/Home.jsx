@@ -40,6 +40,7 @@ const Home = () => {
         <ClasesHome></ClasesHome>
       )}
       <ChatBot></ChatBot>
+      <a name="abajo"/>
     </div>
   );
 };

@@ -25,7 +25,8 @@ class ActionProvider {
   };
   handleLocation = () => {
     const message = this.createChatBotMessage(
-      "We are located in 423 W 55th St, New York, NY 10019, United States"
+      "We are located in 423 W 55th St, New York, NY 10019, United States",
+       { widget:"location" }
     );
     this.updateChatbotState(message);
   };
