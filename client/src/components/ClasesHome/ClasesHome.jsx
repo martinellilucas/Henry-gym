@@ -63,7 +63,7 @@ export default function ClasesHome() {
     { nombre: "yoga", imagen: yoga },
     { nombre: "zumba", imagen: zumba },
     { nombre: "pilates", imagen: pilates },
-    { nombre: "musculacion", imagen: musculacion },
+    { nombre: "bodybuilding", imagen: musculacion },
   ];
 
   const entrenadores = {

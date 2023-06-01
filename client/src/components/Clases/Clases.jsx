@@ -300,10 +300,10 @@ export default function ClasesMembresia() {
               fontSize={"sm"}
               letterSpacing={1.1}
             >
-              Musculation
+              Bodybuilding
             </Text>
             <Text color={"gray.500"}>
-              <b>Musculation</b> is the increase or development of the muscles
+              <b>Bodybuilding</b> is the increase or development of the muscles
               of the body, generally increasing its volume. It is also related
               to definition, to improve its appearance or aesthetics. A good
               training table, prepared by a professional, can help you achieve

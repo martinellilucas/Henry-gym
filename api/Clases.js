@@ -75,17 +75,17 @@ const clases = [
     horario: "11:00:00",
   },
   {
-    nombre: "musculacion",
+    nombre: "bodybuilding",
     dias: ["Mondays", "Tuesdays", "Wednesdays"],
     horario: "08:30:00",
   },
   {
-    nombre: "musculacion",
+    nombre: "bodybuilding",
     dias: ["Wednesdays", "Thursdays", "Fridays"],
     horario: "16:00:00",
   },
   {
-    nombre: "musculacion",
+    nombre: "bodybuilding",
     dias: ["Saturdays"],
     horario: "09:00:00",
   },
