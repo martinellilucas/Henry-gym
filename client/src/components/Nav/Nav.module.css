@@ -105,4 +105,8 @@
   .button {
     font-size: 0.4em;
   }
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
 }
