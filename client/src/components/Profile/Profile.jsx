@@ -97,7 +97,12 @@ const Profile = () => {
               <Text className={style.text}>
                 {clasesxCliente.map((clase) => {
                   return (
-                    <Flex flexDir={"column"} key={clase.id} alignItems="left">
+                    <Flex
+                      flexDir={"column"}
+                      key={clase.id}
+                      alignItems="left"
+                      mb={"20px"}
+                    >
                       <Text value={clase.id}>
                         {`${clase.nombre.toUpperCase()}`}: {` `}
                         {clase.dias.map((dia) => {
