@@ -82,9 +82,7 @@ const Profile = () => {
           finalFocusRef={btnRef}
         >
           <DrawerOverlay />
-          <DrawerContent
-            fontFamily={'font-family: "Titillium Web", sans-serif;'}
-          >
+          <DrawerContent fontFamily={'"Titillium Web", sans-serif'}>
             <DrawerCloseButton />
             <DrawerHeader>Profile</DrawerHeader>
             <DrawerBody className={style.body}>
