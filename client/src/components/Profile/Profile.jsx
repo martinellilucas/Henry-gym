@@ -23,6 +23,7 @@ import {
   PopoverFooter,
   ButtonGroup,
   useToast,
+  Divider,
 } from "@chakra-ui/react";
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
@@ -98,6 +99,8 @@ const Profile = () => {
               <Text fontFamily={'"Titillium Web", sans-serif'}>
                 {user.email}
               </Text>
+              <Text fontFamily={'"Titillium Web", sans-serif'}>CLASSES</Text>
+              <Divider border={"3px solid grey"} />
               <Text mb={"30px"}>
                 {clasesxCliente.map((clase) => {
                   return (
