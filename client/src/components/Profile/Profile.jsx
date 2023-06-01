@@ -96,12 +96,12 @@ const Profile = () => {
               <Heading fontFamily={'"Titillium Web", sans-serif'}>
                 {user.name}
               </Heading>
-              <Text fontFamily={'"Titillium Web", sans-serif'}>
+              <Text mb={"10px"} fontFamily={'"Titillium Web", sans-serif'}>
                 {user.email}
               </Text>
               <Text fontFamily={'"Titillium Web", sans-serif'}>CLASSES</Text>
-              <Divider border={"3px solid grey"} />
-              <Text mb={"30px"}>
+              <Divider w={"60%"} border={"3px solid grey"} />
+              <Text mb={"10px"}>
                 {clasesxCliente.map((clase) => {
                   return (
                     <Flex
@@ -159,7 +159,7 @@ const Profile = () => {
                   );
                 })}
               </Text>
-              <Text className={style.text}>Membership</Text>
+              <Text>Membership</Text>
               {client?.tipoDeSuscripcion === "Platinum" ? (
                 <img className={style.imgMemb} src={Platino} />
               ) : (
@@ -180,7 +180,7 @@ const Profile = () => {
               )}
             </DrawerBody>
 
-            <DrawerFooter justifyContent="space-between">
+            <DrawerFooter justifyContent="space-evenly">
               {client?.isAdmin ? (
                 <NavLink to="/dashboard">
                   <Button colorScheme="blackAlpha">DASHBOARD</Button>

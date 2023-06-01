@@ -53,3 +53,9 @@ img:hover {
 .imgMemb {
   width: 150px;
 }
+@media screen and (max-width: 800px) {
+  .img {
+    width: 20px;
+    height: 20px;
+  }
+}
