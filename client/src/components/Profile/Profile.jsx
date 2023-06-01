@@ -82,7 +82,9 @@ const Profile = () => {
           finalFocusRef={btnRef}
         >
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent
+            fontFamily={'font-family: "Titillium Web", sans-serif;'}
+          >
             <DrawerCloseButton />
             <DrawerHeader>Profile</DrawerHeader>
             <DrawerBody className={style.body}>
@@ -94,7 +96,7 @@ const Profile = () => {
 
               <Heading className={style.title}>{user.name}</Heading>
               <Text className={style.text}>{user.email}</Text>
-              <Text className={style.text}>
+              <Text className={style.text} mb={"30px"}>
                 {clasesxCliente.map((clase) => {
                   return (
                     <Flex
@@ -115,7 +117,9 @@ const Profile = () => {
                         {({ onClose }) => (
                           <>
                             <PopoverTrigger>
-                              <Button colorScheme="red">Unsubscribe</Button>
+                              <Button w={"fit-content"} colorScheme="red">
+                                Unsubscribe
+                              </Button>
                             </PopoverTrigger>
                             <PopoverContent>
                               <PopoverHeader>Confirmation</PopoverHeader>
