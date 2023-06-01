@@ -9,9 +9,9 @@ import { send } from "@emailjs/browser";
 const SubscriptionSuccess3 = () => {
   const { user } = useAuth0();
   const dispatch = useDispatch();
-  const service_ID = "service_e9n2sqh";
-  const template_ID = "template_34yu2wu";
-  const public_key = "vc3WZfsRXvECr-E7P";
+  const service_ID = "service_t2k00jf";
+  const template_ID = "template_952rpqy";
+  const public_key = "v5Bs8FpiH_zC1zHht";
 
   const template_params = {
     name: user?.nombre,
