@@ -112,7 +112,11 @@ const Nav = () => {
           </BreadcrumbItem>
         )}
         {membership === "Bronze" || !isAuthenticated ? (
-          <BreadcrumbItem className={style.link}>
+          <BreadcrumbItem
+            className={
+              pathname === "/memberships" ? style.linkActive : style.link
+            }
+          >
             <BreadcrumbLink
               as={NavLink}
               to="/home"
