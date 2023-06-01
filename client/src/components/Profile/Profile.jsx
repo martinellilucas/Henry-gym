@@ -103,7 +103,7 @@ const Profile = () => {
                       flexDir={"column"}
                       key={clase.id}
                       alignItems="center"
-                      justifyContent={"center"}
+                      justifyContent="center"
                       mb={"20px"}
                     >
                       <Text value={clase.id} textAlign={"left"}>
