@@ -102,10 +102,10 @@ const Profile = () => {
                     <Flex
                       flexDir={"column"}
                       key={clase.id}
-                      alignItems="left"
+                      alignItems="center"
                       mb={"20px"}
                     >
-                      <Text value={clase.id}>
+                      <Text value={clase.id} textAlign={"left"}>
                         {`${clase.nombre.toUpperCase()}`}: {` `}
                         {clase.dias.map((dia) => {
                           return `${dia.slice(0, 3)} `;
