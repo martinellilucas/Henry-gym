@@ -57,9 +57,11 @@ const Nav = () => {
       <img className={style.logo} src={logo} alt="logo" />
 
       <Breadcrumb separator=" " className={style.itemContainer}>
-        <BreadcrumbItem>
+        <BreadcrumbItem
+          className={pathname === "/home" ? style.linkActive : style.link}
+        >
           <BreadcrumbLink
-            className={pathname === "/home" ? style.linkActive : style.link}
+            textDecoration={"none"}
             onClick={scrollToTop}
             as={NavLink}
             to="/home"
@@ -67,9 +69,11 @@ const Nav = () => {
             HOME
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbItem>
+        <BreadcrumbItem
+          className={pathname === "/clases" ? style.linkActive : style.link}
+        >
           <BreadcrumbLink
-            className={pathname === "/clases" ? style.linkActive : style.link}
+            textDecoration={"none"}
             onClick={scrollToTop}
             as={NavLink}
             to="/clases"
@@ -78,9 +82,11 @@ const Nav = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
 
-        <BreadcrumbItem>
+        <BreadcrumbItem
+          className={pathname === "/rutinas" ? style.linkActive : style.link}
+        >
           <BreadcrumbLink
-            className={pathname === "/rutinas" ? style.linkActive : style.link}
+            textDecoration={"none"}
             onClick={scrollToTop}
             as={NavLink}
             to="/rutinas"
@@ -90,11 +96,13 @@ const Nav = () => {
         </BreadcrumbItem>
 
         {isAuthenticated && (
-          <BreadcrumbItem>
+          <BreadcrumbItem
+            className={
+              pathname === "/ejercicios" ? style.linkActive : style.link
+            }
+          >
             <BreadcrumbLink
-              className={
-                pathname === "/ejercicios" ? style.linkActive : style.link
-              }
+              textDecoration={"none"}
               onClick={scrollToTop}
               as={NavLink}
               to="/ejercicios"
@@ -104,25 +112,26 @@ const Nav = () => {
           </BreadcrumbItem>
         )}
         {membership === "Bronze" || !isAuthenticated ? (
-          <BreadcrumbItem>
+          <BreadcrumbItem className={style.link}>
             <BreadcrumbLink
               as={NavLink}
               to="/home"
-              className={style.link}
               onClick={scrollToMembresias}
+              textDecoration={"none"}
             >
               MEMBERSHIPS
             </BreadcrumbLink>
           </BreadcrumbItem>
         ) : (
-          <BreadcrumbItem>
+          <BreadcrumbItem
+            className={
+              pathname === "/memberships" ? style.linkActive : style.link
+            }
+          >
             <BreadcrumbLink
               as={NavLink}
               onClick={scrollToTop}
               to="/memberships"
-              className={
-                pathname === "/memberships" ? style.linkActive : style.link
-              }
             >
               MEMBERSHIPS
             </BreadcrumbLink>
