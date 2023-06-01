@@ -118,7 +118,11 @@ const Profile = () => {
                         {({ onClose }) => (
                           <>
                             <PopoverTrigger>
-                              <Button w={"fit-content"} colorScheme="red">
+                              <Button
+                                w={"fit-content"}
+                                alignSelf="center"
+                                colorScheme="red"
+                              >
                                 Unsubscribe
                               </Button>
                             </PopoverTrigger>
