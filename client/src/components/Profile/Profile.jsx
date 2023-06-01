@@ -28,6 +28,8 @@ import {
 import Plata from "../../assets/Plata.png";
 import Platino from "../../assets/Platino.png";
 import Oro from "../../assets/Oro.png";
+import Bronce from "../../assets/broncelogo.png";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteClasexCliente,
@@ -176,7 +178,14 @@ const Profile = () => {
                 <></>
               )}
               {client?.tipoDeSuscripcion === "Bronze" && (
-                <span>Not a member!</span>
+                <>
+                  <span>Not a member!</span>
+                  <img
+                    className={style.imgMemb}
+                    src={Bronce}
+                    alt="not-a-member"
+                  />
+                </>
               )}
             </DrawerBody>
 
