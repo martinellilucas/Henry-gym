@@ -9,7 +9,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../Profile/Profile";
@@ -21,7 +21,7 @@ const Nav = () => {
   const client = useSelector((state) => state.user);
   const membership = client?.tipoDeSuscripcion;
   const dispatch = useDispatch();
-
+  const { pathname } = useLocation();
   useEffect(() => {
     if (user) {
       dispatch(getUserByEmail(user?.email));
@@ -36,17 +36,13 @@ const Nav = () => {
   };
 
   const scrollToMembresias = () => {
-    if (window.location.pathname !== "/home") {
-      window.location.href = "/home";
-    } else {
-      const membresiasSection = document.getElementById("membresias");
-      if (membresiasSection) {
-        membresiasSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-      }
+    const membresiasSection = document.getElementById("membresias");
+    if (membresiasSection) {
+      membresiasSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
     }
   };
 
@@ -61,41 +57,75 @@ const Nav = () => {
       <img className={style.logo} src={logo} alt="logo" />
 
       <Breadcrumb separator=" " className={style.itemContainer}>
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/home">
+        <BreadcrumbItem>
+          <BreadcrumbLink
+            className={pathname === "/home" ? style.linkActive : style.link}
+            onClick={scrollToTop}
+            as={NavLink}
+            to="/home"
+          >
             HOME
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/clases">
+        <BreadcrumbItem>
+          <BreadcrumbLink
+            className={pathname === "/clases" ? style.linkActive : style.link}
+            onClick={scrollToTop}
+            as={NavLink}
+            to="/clases"
+          >
             CLASSES
           </BreadcrumbLink>
         </BreadcrumbItem>
 
-        <BreadcrumbItem className={style.item}>
-          <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/rutinas">
+        <BreadcrumbItem>
+          <BreadcrumbLink
+            className={pathname === "/rutinas" ? style.linkActive : style.link}
+            onClick={scrollToTop}
+            as={NavLink}
+            to="/rutinas"
+          >
             ROUTINES
           </BreadcrumbLink>
         </BreadcrumbItem>
 
         {isAuthenticated && (
-          <BreadcrumbItem className={style.item}>
-            <BreadcrumbLink onClick={scrollToTop} as={NavLink} to="/ejercicios">
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              className={
+                pathname === "/ejercicios" ? style.linkActive : style.link
+              }
+              onClick={scrollToTop}
+              as={NavLink}
+              to="/ejercicios"
+            >
               EXERCISES
             </BreadcrumbLink>
           </BreadcrumbItem>
         )}
         {membership === "Bronze" || !isAuthenticated ? (
-          <BreadcrumbItem className={style.item}>
-            <BreadcrumbLink onClick={scrollToMembresias}>
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              as={NavLink}
+              to="/home"
+              className={style.link}
+              onClick={scrollToMembresias}
+            >
               MEMBERSHIPS
             </BreadcrumbLink>
           </BreadcrumbItem>
         ) : (
-          <BreadcrumbItem className={style.item}>
-            <NavLink onClick={scrollToTop} to="/memberships">
-              <BreadcrumbLink>MEMBERSHIPS</BreadcrumbLink>
-            </NavLink>
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              as={NavLink}
+              onClick={scrollToTop}
+              to="/memberships"
+              className={
+                pathname === "/memberships" ? style.linkActive : style.link
+              }
+            >
+              MEMBERSHIPS
+            </BreadcrumbLink>
           </BreadcrumbItem>
         )}
       </Breadcrumb>
