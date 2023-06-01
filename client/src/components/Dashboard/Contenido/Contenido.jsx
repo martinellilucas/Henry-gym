@@ -478,13 +478,10 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 <tbody>
                   {comentariosPaginados[currentPage - 1]?.map((item, index) => (
                     <tr key={index}>
-                      <td className={style.user}>{item?.nombreCliente}</td>
-                      <td className={style.email}>{item?.emailCliente}</td>
+                      <td className={style.user}>{item.nombreCliente}</td>
+                      <td className={style.email}>{item.emailCliente}</td>
                       <td className={style.class}>{item.nombreClase}</td>
-
-                      <td className={style.comment}>
-                        <textarea disabled={true}>{item?.texto}</textarea>
-                      </td>
+                      <td className={style.comment}>{item.texto}</td>
                       <td className={style.isBanned}>
                         {item?.isBanned.toString()}
                       </td>
