@@ -6,6 +6,7 @@ import pilates from "../../assets/pilates.jpg";
 import zumba from "../../assets/zumba.jpg";
 import functional from "../../assets/funcional.jpg";
 import musculacion from "../../assets/musculacion.jpg";
+import defecto from "../../assets/default.jpg";
 import Entrenador2 from "../../assets/personaltrainer2.jpg";
 import Entrenador1 from "../../assets/personaltrainer.jpg";
 
@@ -64,6 +65,7 @@ export default function ClasesHome() {
     { nombre: "zumba", imagen: zumba },
     { nombre: "pilates", imagen: pilates },
     { nombre: "bodybuilding", imagen: musculacion },
+    { nombre: "default", imagen: defecto },
   ];
 
   const entrenadores = {
@@ -128,7 +130,7 @@ export default function ClasesHome() {
               pos={"relative"}
             >
               <img
-                src={claseImage ? claseImage : crossfit}
+                src={claseImage ? claseImage : defecto}
                 alt={name}
                 layout={"fill"}
               />
