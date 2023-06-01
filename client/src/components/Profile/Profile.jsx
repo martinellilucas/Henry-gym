@@ -185,6 +185,9 @@ const Profile = () => {
                     src={Bronce}
                     alt="not-a-member"
                   />
+                  <NavLink to="/memberships">
+                    <Button colorScheme="green">UPGRADE YOUR MEMBERSHIP</Button>
+                  </NavLink>
                 </>
               )}
             </DrawerBody>
