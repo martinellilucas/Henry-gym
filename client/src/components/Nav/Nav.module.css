@@ -82,13 +82,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .link {
   color: white;
+  text-decoration: none;
 }
 .linkActive {
   color: orange;
+  text-decoration: none;
 }
 .link:hover {
   color: orange;
