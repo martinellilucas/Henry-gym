@@ -92,9 +92,13 @@ const Profile = () => {
                 alt={user.name}
               />
 
-              <Heading className={style.title}>{user.name}</Heading>
-              <Text className={style.text}>{user.email}</Text>
-              <Text className={style.text} mb={"30px"}>
+              <Heading fontFamily={'"Titillium Web", sans-serif'}>
+                {user.name}
+              </Heading>
+              <Text fontFamily={'"Titillium Web", sans-serif'}>
+                {user.email}
+              </Text>
+              <Text mb={"30px"}>
                 {clasesxCliente.map((clase) => {
                   return (
                     <Flex

@@ -131,6 +131,7 @@ const Nav = () => {
             <BreadcrumbLink
               as={NavLink}
               onClick={scrollToTop}
+              textDecoration={"none"}
               to="/memberships"
             >
               MEMBERSHIPS
