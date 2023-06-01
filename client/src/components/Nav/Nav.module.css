@@ -83,9 +83,18 @@
   align-items: center;
   justify-content: center;
 }
-.item {
+
+.link {
   color: white;
 }
+.linkActive {
+  color: orange;
+}
+.link:hover {
+  color: orange;
+  text-decoration: none;
+}
+
 .profileContainer {
   margin-right: 30px;
 }
