@@ -98,9 +98,6 @@
   text-decoration: none;
 }
 
-.profileContainer {
-  margin-right: 30px;
-}
 @media screen and (max-width: 800px) {
   .itemContainer {
     font-size: 0.5em;

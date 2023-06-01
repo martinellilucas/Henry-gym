@@ -150,9 +150,7 @@ const Nav = () => {
           <span>LOGIN</span>
         </Button>
       ) : (
-        <div className={style.profileContainer}>
-          <Profile />
-        </div>
+        <Profile />
       )}
     </Box>
   );
