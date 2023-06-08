@@ -9,3 +9,8 @@ export const calculoMembresias = (clientes, membresia) => {
     return (porcion.length * 100) / total;
   }
 };
+
+export const calculo = (clientes, membresia) => {
+  return clientes.filter((cliente) => cliente.tipoDeSuscripcion === membresia)
+    .length;
+};

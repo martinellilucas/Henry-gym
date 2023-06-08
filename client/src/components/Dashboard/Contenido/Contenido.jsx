@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import style from "../DashboardAdmin.module.css";
-import { calculoMembresias } from "../calculoMembresias";
+import { calculo, calculoMembresias } from "../calculoMembresias";
 import Swal from "sweetalert2";
 import Search from "../Search/Search";
 import bronce from "../../../assets/broncelogo.png";
@@ -200,9 +200,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 </CircularProgressLabel>
               </CircularProgress>
               <h4 className={style.stadistics}>
-                Clients amount:{" "}
-                {(calculoMembresias(clientes, "Bronze") / 100) *
-                  clientes.length}
+                Clients amount: {calculo(clientes, "Bronze")}
               </h4>
             </div>
             <div className={style.circulo}>
@@ -219,9 +217,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 </CircularProgressLabel>
               </CircularProgress>
               <h4 className={style.stadistics}>
-                Clients amount:{" "}
-                {(calculoMembresias(clientes, "Silver") / 100) *
-                  clientes.length}
+                Clients amount: {calculo(clientes, "Silver")}
               </h4>
             </div>
             <div className={style.circulo}>
@@ -238,8 +234,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 </CircularProgressLabel>
               </CircularProgress>
               <h4 className={style.stadistics}>
-                Clients amount:{" "}
-                {(calculoMembresias(clientes, "Gold") / 100) * clientes.length}
+                Clients amount: {calculo(clientes, "Gold")}
               </h4>
             </div>
             <div className={style.circulo}>
@@ -256,9 +251,7 @@ const Contenido = ({ clientes, comentarios, clases, pathname }) => {
                 </CircularProgressLabel>
               </CircularProgress>
               <h4 className={style.stadistics}>
-                Clients amount:{" "}
-                {(calculoMembresias(clientes, "Platinum") / 100) *
-                  clientes.length}
+                Clients amount: {calculo(clientes, "Platinum")}
               </h4>
             </div>
           </div>
