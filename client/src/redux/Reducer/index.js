@@ -103,7 +103,7 @@ export default function footReducer(state = initialState, action) {
     case SEARCH_CLASE_BY_NAME:
       return {
         ...state,
-        allClases: [...state.clientes],
+        allClases: [...state.clases],
         clases: [...action.payload],
       };
     case SEARCH_COMENTARIOS_BY_NAME:
